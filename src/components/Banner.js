@@ -2,9 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import video from "../assets/videos/intro.mp4";
 
 export const Banner = () => {
+    
 
-    const [divHeight, setDivHeight] = useState(340);
-    const [divWidth, setDivWidth] = useState(600);
+    const [divHeight, setDivHeight] = useState((() => {if(window.innerWidth < 873){return 225;} else{return 340;}}));
+    const [divWidth, setDivWidth] = useState((() => {if(window.innerWidth < 873){return 300;} else{return 800;}}));
+
+    
+
     const videoRef = useRef(null);
 
 
@@ -13,18 +17,20 @@ export const Banner = () => {
     const winHeight = window.innerHeight;
     const winWidth = window.innerWidth;
     const docHeight = document.body.scrollHeight - winHeight;
-    const scrollFraction = (scrollTop) / (docHeight * 0.23) ;
+    const scrollFraction = (scrollTop) / (docHeight * 0.4) ;
 
-    setDivHeight(340);    
-
+        
+    
 
     if(winWidth < 873) {
-        setDivWidth(500 + scrollFraction * winWidth)
-        const newWidth = 500 + scrollFraction * winWidth;
-        setDivWidth(Math.min(newWidth,winWidth));
+        setDivHeight(225);
+        setDivWidth(300 + scrollFraction * winWidth)
+        const newWidth = 300 + scrollFraction * winWidth;
+        setDivWidth(Math.min(newWidth,winWidth + 30));
     } else{
-        setDivWidth(600 + scrollFraction * winWidth);
-        const newWidth = 600 + scrollFraction * winWidth;
+        setDivHeight(340);
+        setDivWidth(800 + scrollFraction * winWidth);
+        const newWidth = 800 + scrollFraction * winWidth;
         setDivWidth(Math.min(newWidth,winWidth));
     }
   };

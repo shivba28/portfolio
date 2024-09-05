@@ -30,6 +30,7 @@
 html{
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
+  overflow-x: hidden;
 }
 
 body{
@@ -253,7 +254,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  transform: translateY(70%);
+  transform: translateY(60%);
   animation: slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
 }
@@ -275,7 +276,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .slogan-left, .slogan-right{
   opacity: 0;
-  animation: slide-in 1s ease-in-out forwards 1s;
+  animation: slide-in 1s ease-in-out forwards;
   animation-fill-mode: forwards;
   margin: 1vw;
   align-self: baseline;
@@ -283,7 +284,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .slogan-left {
   animation-delay: 0s;
-  transform: translate(-150%);
+  transform: translate(-100%);
 }
 
 .slogan-right{
@@ -297,7 +298,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   opacity: 0;
   transform: translateY(100%);
   animation: fade-slide-up 1s ease-in-out forwards;
-  animation-delay: 2.5s;
+  animation-delay: 2s;
   z-index: 99;
 }
 
@@ -326,11 +327,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @keyframes slide-up {
   from{
-    transform: translateY(70%);
+    transform: translateY(60%);
   }
 
   to{
-    transform: translateY(20%);
+    transform: translateY(40%);
   }
 }
 
@@ -342,21 +343,34 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
   to {
     opacity: 1;
-    transform: translateY(-20%);
+    transform: translateY(5%);
   }
 }
 
 .content {
-  height: 2000px; /* Height of the content to allow scrolling */
+  height: 1500px; /* Height of the content to allow scrolling */
   padding: 50px;
   position: relative;
 }
 
 @media (max-width: 872px) {
+
+  .banner{
+    display: block;
+    text-align: center;
+  }
+
+  .right{
+    font-size: 7rem !important;
+  }
+
+  .left{
+    font-size: 3.5rem !important;
+  }
   
   .slogan-left{
       position: relative;
-      top: 10vh;
+      top: 5vh;
   }
 
 
@@ -364,15 +378,25 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     height: 1000px;
   }
 
+  .video-container{
+    transform: translateY(200%);
+    
+  }
+
+  .video-container video{
+    transform: scaleY(2.5);
+    border-radius: 5%;
+  }
+
   @keyframes fade-slide-up {
     0%{
       opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(200%);
     }
 
     100%{
       opacity: 1;
-      transform: translateY(30%);
+      transform: translateY(100%);
     }
   }
 

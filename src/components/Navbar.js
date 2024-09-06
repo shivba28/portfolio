@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link, animateScroll as scroll } from "react-scroll";
 import navIcon1 from '../assets/Logos/nav-icon1.svg';
 import navIcon2 from '../assets/Logos/github-mark-white.svg';
 import logo from '../assets/Logos/bitmoji.ico';
@@ -7,6 +8,8 @@ import logo from '../assets/Logos/bitmoji.ico';
 export const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
+
+
 
     useEffect(() => {
         const onScroll = () => {
@@ -38,17 +41,26 @@ export const NavBar = () => {
               </Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
+                <Link activeClass="link" to="home" spy={true} smooth={true} offset={-70} duration={800}>
                   <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
+                </Link>
+                <Link activeClass="link" to="about" spy={true} smooth={true} offset={-70} duration={800}>
                   <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About</Nav.Link>
+                </Link>
+                  <Link activeClass="link" to="skill" spy={true} smooth={true} offset={-70} duration={800}>
                   <Nav.Link href="#skill" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
+                </Link>  
+                <Link activeClass="link" to="project" spy={true} smooth={true} offset={-70} duration={800}>
                   <Nav.Link href="#project" className={activeLink === 'project' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('project')}>Projects</Nav.Link>
+                </Link>
                 </Nav>
+                
                 <span className="navbar-text">
                   <div className="social-icon">
                     <a href="https://www.linkedin.com/in/shivba-pawar/" target="_blank" rel="noreferrer"><img src={navIcon1} alt="" /></a>
                     <a href="https://github.com/shivba28" target="_blank" rel="noreferrer"><img src={navIcon2} alt="" /></a>
                   </div>
-                  <a href="#contact"><button className="vvd"><span>Let’s Connect</span></button></a>
+                  <Link activeClass="link" to="contact" spy={true} smooth={true} offset={-70} duration={800}><a href="#contact"><button className="vvd"><span>Let’s Connect</span></button></a></Link>
                 </span>
               </Navbar.Collapse>
             </Container>

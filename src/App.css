@@ -207,6 +207,10 @@ nav.navbar .navbar-toggler:focus {
 	outline: none;
     box-shadow: none;
 }
+
+.link{
+  text-decoration: none;
+}
 nav.navbar .navbar-toggler-icon {
   width: 24px;
   height: 17px;
@@ -330,7 +334,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .about-section {
   background-color: transparent;
-  backdrop-filter: blur(1.5rem);
+  backdrop-filter: blur(1rem);
   position: relative;
   top: 1vh;
   z-index: 2;
@@ -351,6 +355,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+}
+
+.about-section.show h2{
+  color:#121212;
 }
 
 .content {

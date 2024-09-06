@@ -98,10 +98,8 @@ export const Banner = () => {
 
                 
             <div className="about-section">
-                <h2>About Me</h2>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-                </p>
+                <h2 className='left'>HAVE I PLAYED THE PART WELL?</h2>
+                <h2 className='right'>Then Applaud, as I Exit.</h2>
             </div>
             <div className='content'>
             </div>

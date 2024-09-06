@@ -97,9 +97,9 @@ export const Banner = () => {
             </div>
 
                 
-            <div className="about-section">
-                <h2 className='left'>HAVE I PLAYED THE PART WELL?</h2>
-                <h2 className='right'>Then Applaud, as I Exit.</h2>
+            <div className="about-section" style={{fontFamily: "Special Elite"}}>
+                <h2 style={{fontSize: '5rem'}}>HAVE I PLAYED THE PART WELL?</h2>
+                <h2 style={{fontStyle:"normal", fontSize: '5rem', fontWeight:"900"}}>Then Applaud, as I Exit</h2>
             </div>
             <div className='content'>
             </div>

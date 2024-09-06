@@ -60,7 +60,9 @@ export const NavBar = () => {
                     <a href="https://www.linkedin.com/in/shivba-pawar/" target="_blank" rel="noreferrer"><img src={navIcon1} alt="" /></a>
                     <a href="https://github.com/shivba28" target="_blank" rel="noreferrer"><img src={navIcon2} alt="" /></a>
                   </div>
-                  <Link activeClass="link" to="contact" spy={true} smooth={true} offset={-70} duration={800}><a href="#contact"><button className="vvd"><span>Let’s Connect</span></button></a></Link>
+                  <Link activeClass="link" to="contact" spy={true} smooth={true} offset={-70} duration={800}>
+                    <a className={activeLink === 'contact' ? 'active navbar-link' : 'navbar-link'} href="#contact"><button className="vvd"><span>Let’s Connect</span></button></a>
+                  </Link>
                 </span>
               </Navbar.Collapse>
             </Container>

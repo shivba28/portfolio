@@ -19,7 +19,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Kranky&display=swap');
 
 *{
   margin: 0;
@@ -40,6 +40,10 @@ body{
   background-color: #121212 !important;
   color: #fff !important;
   font-family: 'Centra', sans-serif !important;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -254,7 +258,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  transform: translateY(60%);
+  transform: translateY(70%);
   animation: slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
 }
@@ -317,8 +321,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .sticky {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -15vh;
+  left: auto;
   width: 100%;
   height: 100vh;
   z-index: -1;
@@ -329,17 +333,36 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   backdrop-filter: blur(1.5rem);
   position: relative;
   top: 1vh;
-  z-index: 1;
+  z-index: 2;
   min-height: 100vh; /* Ensure it covers the viewport */
   opacity: 0;
   width: 100vw;
   padding: 2%;
-  transform: translateY(100vh);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translateY(130vh);
+  transition: opacity 0.5s ease;
+  
 }
 
 .about-section.show {
   opacity: 1;
+  text-align: center;
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.content {
+  height: 130vh; /* Height of the content to allow scrolling */
+  padding: 50px;
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+}
+
+.about{
+  background-color: #121212;
 }
 
 @keyframes slide-in {
@@ -354,11 +377,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @keyframes slide-up {
   from{
-    transform: translateY(60%);
+    transform: translateY(70%);
   }
 
   to{
-    transform: translateY(40%);
+    transform: translateY(50%);
   }
 }
 
@@ -370,15 +393,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
   to {
     opacity: 1;
-    transform: translateY(5%);
+    transform: translateY(25%);
   }
 }
 
-.content {
-  height: 101vh; /* Height of the content to allow scrolling */
-  padding: 50px;
-  position: relative;
-}
+
 
 @media (max-width: 872px) {
 

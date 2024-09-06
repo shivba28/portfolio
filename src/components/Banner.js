@@ -37,7 +37,7 @@ export const Banner = () => {
     const videoDiv = document.querySelector('.video-container');
     const aboutSection = document.querySelector('.about-section');
 
-    if (scrollTop > winHeight/2) {
+    if (scrollTop > winHeight/1.5) {
         videoDiv.classList.add('sticky');
         aboutSection.classList.add('show');
       } else {
@@ -66,8 +66,8 @@ export const Banner = () => {
   }, []);
 
     return(
-        <section className="main">
-            <div className="banner" id='home'>
+        <section className="main" id='home'>
+            <div className="banner">
                 <div className="slogan-left"><h1 className="left">THIS IS</h1></div>
                 <div className="slogan-right"><h1 className="right">my story</h1></div>
             </div>
@@ -104,6 +104,8 @@ export const Banner = () => {
                 </p>
             </div>
             <div className='content'>
+            </div>
+            <div className='content about' id="about">
             </div>
         </section>
     )

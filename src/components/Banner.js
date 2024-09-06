@@ -33,6 +33,18 @@ export const Banner = () => {
         const newWidth = 800 + scrollFraction * winWidth;
         setDivWidth(Math.min(newWidth,winWidth));
     }
+
+    const videoDiv = document.querySelector('.video-container');
+    const aboutSection = document.querySelector('.about-section');
+
+    if (scrollTop > winHeight/2) {
+        videoDiv.classList.add('sticky');
+        aboutSection.classList.add('show');
+      } else {
+        videoDiv.classList.remove('sticky');
+        aboutSection.classList.remove('show');
+      }
+
   };
 
   useEffect(() => {
@@ -84,7 +96,14 @@ export const Banner = () => {
                 </video>
             </div>
 
-            <div className="content">
+                
+            <div className="about-section">
+                <h2>About Me</h2>
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
+                </p>
+            </div>
+            <div className='content'>
             </div>
         </section>
     )

@@ -1,18 +1,18 @@
 @font-face {
   font-family: Centra;
-  src: url('./assets/font/CentraNo2-Bold.ttf');
+  src: url('./assets/Font/CentraNo2-Bold.ttf');
   font-weight: 700;
 }
 
 @font-face {
   font-family: Centra;
-  src: url('./assets/font/CentraNo2-Bold.ttf');
+  src: url('./assets/Font/CentraNo2-Bold.ttf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: Centra;
-  src: url('./assets/font/CentraNo2-Book.ttf');
+  src: url('./assets/Font/CentraNo2-Book.ttf');
   font-weight: 400;
 }
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import video from "../assets/videos/intro.mp4";
+import {ConsoleText} from './consoleText'
 
 export const Banner = () => {
     
@@ -98,8 +99,10 @@ export const Banner = () => {
 
                 
             <div className="about-section" style={{fontFamily: "Special Elite"}}>
-                <h2 style={{fontSize: '5rem'}}>HAVE I PLAYED THE PART WELL?</h2>
-                <h2 style={{fontStyle:"normal", fontSize: '5rem', fontWeight:"900"}}>Then Applaud, as I Exit</h2>
+                <ConsoleText 
+                    words={['HAVE I PLAYED THE PART WELL?', 'Then Applaud, as I Exit' ]} 
+                    colors={['black']} 
+                />
             </div>
             <div className='content'>
             </div>

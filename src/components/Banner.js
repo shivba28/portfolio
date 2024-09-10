@@ -100,7 +100,7 @@ export const Banner = () => {
                 
             <div className="about-section" style={{fontFamily: "Special Elite"}}>
                 <ConsoleText 
-                    words={['HAVE I PLAYED THE PART WELL?', 'Then Applaud, as I Exit' ]} 
+                    words={['HAVE I PLAYED THE PART WELL?', 'THEN APPLAUD, AS I EXIT.' ]} 
                     colors={['black']} 
                 />
             </div>

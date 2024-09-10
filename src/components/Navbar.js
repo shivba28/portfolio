@@ -5,7 +5,7 @@ import navIcon1 from '../assets/Logos/nav-icon1.svg';
 import navIcon2 from '../assets/Logos/github-mark-white.svg';
 import logo from '../assets/Logos/bitmoji.ico';
 
-export const NavBar = () => {
+export const NavBar = ({openModal}) => {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
 
@@ -44,14 +44,14 @@ export const NavBar = () => {
                 <Link activeClass="link" to="home" spy={true} smooth={true} offset={-70} duration={800}>
                   <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
                 </Link>
-                <Link activeClass="link" to="about" spy={true} smooth={true} offset={-70} duration={800}>
-                  <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About</Nav.Link>
-                </Link>
                   <Link activeClass="link" to="skill" spy={true} smooth={true} offset={-70} duration={800}>
                   <Nav.Link href="#skill" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
                 </Link>  
                 <Link activeClass="link" to="project" spy={true} smooth={true} offset={-70} duration={800}>
                   <Nav.Link href="#project" className={activeLink === 'project' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('project')}>Projects</Nav.Link>
+                </Link>
+                <Link activeClass="link" onClick={openModal}>
+                  <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About</Nav.Link>
                 </Link>
                 </Nav>
                 

@@ -1,0 +1,61 @@
+.blurred-background::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
+  backdrop-filter: blur(8px); /* Adjust the blur intensity */
+  z-index: -1; /* Place it behind the content */
+  pointer-events: none; /* Allow clicks through the overlay */
+}
+
+/* Style to prevent body scrolling */
+.no-scroll {
+  overflow: hidden;
+}
+
+.bio-section {
+    background-color: black;
+    color: white;
+    height: 100%;
+  }
+
+  .modal-body p{
+    width: 70%;
+  }
+
+  .modal-body h2{
+    font-family: "Kranky";
+    font-size: 2.5rem;
+  }
+  
+.image-section {
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+  }
+  
+.modal-content {
+    border: none;
+    overflow: hidden;
+    height: 75vh;
+    transform: translateY(50px);
+    width: 30vw !important;
+  }
+  
+.modal-body {
+    padding: 0;
+  }
+
+.row{
+    height: 100%;
+  }
+
+  .modal-dialog{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+  }

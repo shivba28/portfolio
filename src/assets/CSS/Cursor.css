@@ -1,0 +1,18 @@
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid lightgray;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 9999;
+    background-color: lightgray;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .custom-cursor.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  

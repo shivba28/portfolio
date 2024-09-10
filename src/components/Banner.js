@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import video from "../assets/videos/intro.mp4";
-import {ConsoleText} from './consoleText'
+import { ConsoleText } from './consoleText'
+import { TextScramble } from './scrambleText';
 
 export const Banner = () => {
     
@@ -66,6 +67,12 @@ export const Banner = () => {
     return () => clearTimeout(timeoutId);
   }, []);
 
+  const phrases = [
+    'What do tigers dream of when they take their little tiger snooze?',
+    "Do they dream of mauling zebras?",
+    'Or Halle Berry in her' + " 'Catwoman' " + 'suit?',
+  ];
+
     return(
         <section className="main" id='home'>
             <div className="banner">
@@ -96,17 +103,17 @@ export const Banner = () => {
                     Your browser does not support the video tag.
                 </video>
             </div>
-
                 
-            <div className="about-section" style={{fontFamily: "Special Elite"}}>
-                <ConsoleText 
+            <div className="about-section">
+            
+            <TextScramble phrases={phrases} />
+                
+                {/* <ConsoleText 
                     words={['HAVE I PLAYED THE PART WELL?', 'THEN APPLAUD, AS I EXIT.' ]} 
                     colors={['black']} 
-                />
+                /> */}
             </div>
             <div className='content'>
-            </div>
-            <div className='content about' id="about">
             </div>
         </section>
     )

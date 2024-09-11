@@ -29,6 +29,10 @@
   cursor: none !important;
 }
 
+:root:has(.modal.show) {
+  overflow:hidden;
+}
+
 html{
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
@@ -116,6 +120,10 @@ nav.navbar.scrolled {
 }
 nav.navbar a.navbar-brand {
     width: 9%;
+    transition: all 0.3s ease-in-out;
+}
+nav.navbar a.navbar-brand:hover {
+  transform: scale(1.1);
 }
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;

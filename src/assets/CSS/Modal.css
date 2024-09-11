@@ -1,14 +1,9 @@
-.blurred-background::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
-  backdrop-filter: blur(8px); /* Adjust the blur intensity */
-  z-index: -1; /* Place it behind the content */
-  pointer-events: none; /* Allow clicks through the overlay */
+.modal-open .container-fluid, .modal-open  .container {
+  filter: blur(25px);
+}
+
+.modal.fade.show {
+  backdrop-filter: blur(25px);
 }
 
 /* Style to prevent body scrolling */

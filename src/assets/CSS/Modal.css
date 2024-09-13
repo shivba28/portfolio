@@ -59,7 +59,6 @@
 
   .bio-section img{
     position: fixed;
-    top: 6vh;
-    transform: scale(1.5);
-    right: -7vw;
+    top: -5vh;
+    right: -11vw;
   }

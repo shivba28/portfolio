@@ -41,16 +41,16 @@ export const NavBar = ({openModal}) => {
               </Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                <Link activeClass="link" to="home" spy={true} smooth={true} offset={-70} duration={500}>
+                <Link className='link' to="home" spy={true} smooth={true} duration={500}>
                   <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
                 </Link>
-                  <Link activeClass="link" to="skill" spy={true} smooth={true} offset={-70} duration={500}>
+                  <Link activeClass="link" to="skill" spy={true} smooth={true} duration={800}>
                   <Nav.Link href="#skill" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
                 </Link>  
-                <Link activeClass="link" to="project" spy={true} smooth={true} offset={-70} duration={500}>
+                <Link activeClass="link" to="project" spy={true} smooth={true} duration={500}>
                   <Nav.Link href="#project" className={activeLink === 'project' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('project')}>Projects</Nav.Link>
                 </Link>
-                <Link activeClass="link" onClick={openModal}>
+                <Link to="about" activeClass="link" onClick={openModal}>
                   <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About</Nav.Link>
                 </Link>
                 </Nav>
@@ -60,7 +60,7 @@ export const NavBar = ({openModal}) => {
                     <a href="https://www.linkedin.com/in/shivba-pawar/" target="_blank" rel="noreferrer"><img src={navIcon1} alt="" /></a>
                     <a href="https://github.com/shivba28" target="_blank" rel="noreferrer"><img src={navIcon2} alt="" /></a>
                   </div>
-                  <Link activeClass="link" to="contact" spy={true} smooth={true} offset={-70} duration={500}>
+                  <Link activeClass="link" to="contact" spy={true} smooth={true} duration={500}>
                     <a className={activeLink === 'contact' ? 'active navbar-link' : 'navbar-link'} href="#contact"><button className="vvd"><span>Let’s Connect</span></button></a>
                   </Link>
                 </span>

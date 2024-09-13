@@ -25,6 +25,8 @@
     left:10px;
   }
 
+  /* Scramble Text CSS */
+
   .container-scramble{
     position: relative;
     justify-content: center;
@@ -47,3 +49,48 @@
   color: white;
 }
   
+
+
+
+/* Rotating Text CSS */
+
+.container-rotate {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Adjust as needed */
+  font-size: 4rem;
+  font-family: Lato, sans-serif;
+  font-weight: 600;
+  color: white;
+}
+
+.container-rotate p {
+  display: inline-flex;
+  margin: 0;
+  vertical-align: top;
+}
+
+.container-rotate .word {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+}
+
+.container-rotate .letter {
+  transform-origin: center center 25px;
+}
+
+.container-rotate .letter.out {
+  transform: rotateX(90deg);
+  transition: 0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
+}
+
+.container-rotate .letter.in {
+  transition: 0.38s ease;
+}
+
+.container-rotate .letter.behind {
+  transform: rotateX(-90deg);
+}

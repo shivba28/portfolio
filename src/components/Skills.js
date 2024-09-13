@@ -1,7 +1,14 @@
-export const Skills = () => {
-    return(
-        <div className="content about" id="skill">
+import { TextRotate } from "../components/Text-Animations/rotatingText";
 
+export const Skills = () => {
+
+    const words = ['React', 'Angular', 'Next.js', 'C#', 'Three.js']; // Replace with your words
+
+    return(
+        <div className="content about">
+            <div className="skills" id="skill">
+                <TextRotate words={words} />
+            </div>
         </div>
-    )
+    );
 }

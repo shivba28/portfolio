@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import video from "../assets/videos/intro.mp4";
-import { ConsoleText } from './consoleText'
-import { TextScramble } from './scrambleText';
+import { ConsoleText } from '../components/Text-Animations/consoleText'
+import { TextScramble } from '../components/Text-Animations/scrambleText';
 
 export const Banner = () => {
     

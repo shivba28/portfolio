@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import '../assets/CSS/text.css';
+import '../../assets/CSS/text.css';
 
 export const TextScramble = ({ phrases }) => {
     const [isVisible, setIsVisible] = useState(false);

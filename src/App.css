@@ -132,12 +132,15 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   padding: 0 25px;
   font-size: 18px;
   opacity: 0.75;
+  transition: all 0.2s ease-in-out;
 }
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
     opacity: 1;
-    transform: translateY(-2px);
-    transition: transform 0.2s ease-in-out;
+}
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover{
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-in-out;
 }
 span.navbar-text {
     display: flex;
@@ -222,7 +225,6 @@ nav.navbar .navbar-toggler:focus {
 
 .link{
   text-decoration: none;
-
 }
 
 nav.navbar .navbar-toggler-icon {

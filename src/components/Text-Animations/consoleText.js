@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../assets/CSS/text.css';
+import '../../assets/CSS/text.css';
 
 
 export const ConsoleText = ({ words, colors }) => {

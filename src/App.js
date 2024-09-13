@@ -22,9 +22,10 @@ function App() {
   return (
     <div className="App">
       <NavBar openModal={handleShow} />
+      <About show={show} handleClose={handleClose} />
       <Banner />
       <Skills />
-      <About show={show} handleClose={handleClose} />
+      
       <Cursor />
     </div>
   );

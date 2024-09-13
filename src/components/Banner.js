@@ -39,7 +39,7 @@ export const Banner = () => {
     const videoDiv = document.querySelector('.video-container');
     const aboutSection = document.querySelector('.about-section');
 
-    if (scrollTop > winHeight/1.5) {
+    if (scrollTop > winHeight/2) {
         videoDiv.classList.add('sticky');
         aboutSection.classList.add('show');
       } else {

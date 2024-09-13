@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 .modal-open .container-fluid, .modal-open  .container {
   filter: blur(25px);
 }
@@ -13,23 +14,24 @@
 
 .bio-section {
     background-color: black;
-    color: white;
+    color: lightgrey;
     height: 100%;
   }
 
   .modal-body p{
-    width: 70%;
+    font-family: "Inter", sans-serif;
+    width: 65%;
+    font-size: 19px;
+  }
+
+  .modal-body p span{
+    display: flex;
+    width: 82%;
   }
 
   .modal-body h2{
     font-family: "Kranky";
-    font-size: 2.5rem;
-  }
-  
-.image-section {
-    background-color: black;
-    background-size: cover;
-    background-position: center;
+    font-size: 3rem;
   }
   
 .modal-content {
@@ -53,4 +55,11 @@
     justify-content: center;
     flex-wrap: wrap;
     
+  }
+
+  .bio-section img{
+    position: fixed;
+    top: 6vh;
+    transform: scale(1.5);
+    right: -7vw;
   }

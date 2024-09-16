@@ -353,13 +353,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background-color: transparent;
   backdrop-filter: blur(1rem);
   position: relative;
-  top: 1vh;
   z-index: 2;
-  min-height: 100vh; /* Ensure it covers the viewport */
+  min-height: 121vh; /* Ensure it covers the viewport */
   opacity: 0;
   width: 100vw;
   padding: 2%;
-  transform: translateY(130vh);
+  transform: translateY(126vh);
   transition: opacity 0.5s ease;
   
 }
@@ -380,7 +379,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .content {
-  height: 130vh; /* Height of the content to allow scrolling */
+  height: 105vh; /* Height of the content to allow scrolling */
   padding: 50px;
   position: relative;
   z-index: 1;

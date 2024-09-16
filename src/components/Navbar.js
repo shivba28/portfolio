@@ -41,10 +41,10 @@ export const NavBar = ({openModal}) => {
               </Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                  <Nav.Link href="#home" to="home" spy={true} smooth={true} duration={800} className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-                  <Nav.Link to="skill" spy={true} smooth={true} duration={800} href="#skill" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-                  <Nav.Link href="#project" to="project" spy={true} smooth={true} duration={800} className={activeLink === 'project' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('project')}>Projects</Nav.Link>
-                  <Nav.Link href="#about" to="about" onClick={openModal} className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'}>About</Nav.Link>
+                  <Link to="home" spy={true} smooth={true} duration={800} className={activeLink === 'home' ? 'active navbar-link link' : 'navbar-link link'} onClick={() => onUpdateActiveLink('home')}>Home</Link>
+                  <Link to="skill" spy={true} smooth={true} duration={800}  className={activeLink === 'skills' ? 'active navbar-link link' : 'navbar-link link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Link>
+                  <Link to="project" spy={true} smooth={true} duration={800} className={activeLink === 'project' ? 'active navbar-link link' : 'navbar-link link'} onClick={() => onUpdateActiveLink('project')}>Projects</Link>
+                  <Link to="/" spy={true} smooth={true} duration={800} onClick={openModal} className={activeLink === 'about' ? 'active navbar-link link' : 'navbar-link link'}>About</Link>
                 </Nav>
                 
                 <span className="navbar-text">
@@ -52,7 +52,7 @@ export const NavBar = ({openModal}) => {
                     <a href="https://www.linkedin.com/in/shivba-pawar/" target="_blank" rel="noreferrer"><img src={navIcon1} alt="" /></a>
                     <a href="https://github.com/shivba28" target="_blank" rel="noreferrer"><img src={navIcon2} alt="" /></a>
                   </div>
-                    <a activeClass="link" to="contact" spy={true} smooth={true} duration={800} className={activeLink === 'contact' ? 'active navbar-link' : 'navbar-link'} href="#contact"><button className="vvd"><span>Let’s Connect</span></button></a>
+                    <Link href="#contact" to="contact" spy={true} smooth={true} duration={800} className={activeLink === 'contact' ? 'active navbar-link' : 'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
                 </span>
               </Navbar.Collapse>
             </Container>

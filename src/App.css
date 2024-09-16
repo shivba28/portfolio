@@ -125,7 +125,7 @@ nav.navbar a.navbar-brand {
 nav.navbar a.navbar-brand:hover {
   transform: scale(1.1);
 }
-nav.navbar .navbar-nav .nav-link.navbar-link {
+nav.navbar .navbar-nav .nav-link.navbar-link, .link {
   font-weight: 400;
   color: #fff !important;
   letter-spacing: 0.8px;
@@ -138,7 +138,7 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
     opacity: 1;
 } */
-nav.navbar .navbar-nav a.nav-link.navbar-link:hover{
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover, .link:hover{
   opacity: 1;
   transform: translateY(-2px);
   transition: transform 0.2s ease-in-out;
@@ -387,7 +387,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 100vw;
 }
 
-.about{
+.about, .skills{
   background-color: #121212;
 }
 

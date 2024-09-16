@@ -54,43 +54,77 @@
 
 /* Rotating Text CSS */
 
-.container-rotate {
+ .container-rotate {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Adjust as needed */
+  height: 50vh;
   font-size: 4rem;
   font-family: Lato, sans-serif;
   font-weight: 600;
   color: white;
 }
 
+ .text-1 {
+  position: absolute;
+  width: 450px;
+  left: 50%;
+  margin-left: -225px;
+  height: 40px;
+  top: 50%;
+  margin-top: -20px;
+}
+
 .container-rotate p {
-  display: inline-flex;
-  margin: 0;
+  display: inline-block;
   vertical-align: top;
+  margin: 0;
 }
 
 .container-rotate .word {
   position: absolute;
-  display: flex;
-  opacity: 0;
+  width: 220px;
+  opacity: 1;
 }
 
-.container-rotate .letter {
-  transform-origin: center center 25px;
+/*.container-rotate .letter {
+  display: inline-block;
+  position: relative;
+  transform: translateZ(25px);
+  transform-origin: 50% 50% 25px;
 }
 
-.container-rotate .letter.out {
-  transform: rotateX(90deg);
-  transition: 0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
-}
-
-.container-rotate .letter.in {
-  transition: 0.38s ease;
-}
-
-.container-rotate .letter.behind {
+.letter.behind {
   transform: rotateX(-90deg);
+}
+
+.letter.in {
+  opacity: 1;
+  transform: RotateX(0);
+}
+
+.letter.out {
+  opacity: 0;
+  transform: rotateX(-90deg);
+} */
+
+.wisteria {
+  color: #8e44ad;
+}
+
+.belize {
+  color: #2980b9;
+}
+
+.pomegranate {
+  color: #c0392b;
+}
+
+.green {
+  color: #16a085;
+}
+
+.midnight {
+  color: #2c3e50;
 }

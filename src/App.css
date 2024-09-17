@@ -379,7 +379,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .content {
-  height: 105vh; /* Height of the content to allow scrolling */
+  height: 106vh; /* Height of the content to allow scrolling */
   padding: 50px;
   position: relative;
   z-index: 1;

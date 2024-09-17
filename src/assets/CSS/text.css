@@ -58,9 +58,9 @@
  .container-rotate {
   display: flex;
   justify-content: center;
-  align-items: top;
+  align-items: center;
   height: 15vh;
-  top: 15vh;
+  top: 8vh;
   position: relative;
 }
 

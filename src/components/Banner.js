@@ -74,7 +74,7 @@ export const Banner = () => {
   ];
 
     return(
-        <section className="main" id='home'>
+        <section className="home" id='home'>
             <div className="banner">
                 <div className="slogan-left"><h1 className="left">THIS IS</h1></div>
                 <div className="slogan-right"><h1 className="right">my story</h1></div>
@@ -113,7 +113,7 @@ export const Banner = () => {
                     colors={['black']} 
                 /> */}
             </div>
-            <div className='content'>
+            <div className='content' style={{marginBottom: '19vh'}}>
             </div>
         </section>
     )

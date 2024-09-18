@@ -14,7 +14,7 @@ export const Skills = () => {
     return(
         <section id='skill'>
             <div className="content skills">
-                <Row style={{marginBottom: '10%', maxHeight:'15%'}}>
+                <Row style={{marginBottom: '12%', maxHeight:'15%'}}>
                     <Col  className="col">
                         <div className="tagline">
                             <TextRotate words={words} />

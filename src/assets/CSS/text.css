@@ -88,16 +88,16 @@
 }
 
 @keyframes animation {
-  0%,100% { transform: translateY(0) rotateZ(-10deg);  }
+  0%, 100% { transform: translateY(0) rotateZ(-10deg);  }
   20% { transform: translateY(0); }
-  25% { transform: translateY(-100%) rotateZ(10deg); }
+  23% { transform: translateY(-100%) rotateZ(10deg); }
   40% { transform: translateY(-100%); }
-  45% { transform: translateY(-200%) rotateZ(10deg); }
+  43% { transform: translateY(-200%) rotateZ(10deg); }
   60% { transform: translateY(-200%); }
-  65% { transform: translateY(-300%) rotateZ(10deg); }
+  63% { transform: translateY(-300%) rotateZ(10deg); }
   80% { transform: translateY(-300%); }
-  85% { transform: translateY(-400%) rotateZ(10deg); }
-  95% { transform: translateY(-400%); }
+  83% { transform: translateY(-400%) rotateZ(10deg); }
+  97% { transform: translateY(-400%); }
 
 }
 

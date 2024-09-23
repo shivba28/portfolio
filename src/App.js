@@ -5,6 +5,7 @@ import { Banner } from './components/Banner';
 import { About } from './components/About';
 import { Cursor } from './components/Cursor';
 import { Skills } from './components/Skills';
+import { Project } from './components/Projects';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
       <About show={show} handleClose={handleClose} />
       <Banner />
       <Skills />
-      
+      <Project />
       <Cursor />
     </div>
   );

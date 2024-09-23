@@ -104,7 +104,7 @@ export const Banner = () => {
                 </video>
             </div>
                 
-            <div className="about-section">
+            <div className="about-section" style={{marginBottom: '15vh', marginTop: '35vh'}}>
             
             <TextScramble phrases={phrases} />
                 
@@ -113,7 +113,7 @@ export const Banner = () => {
                     colors={['black']} 
                 /> */}
             </div>
-            <div className='content' style={{marginBottom: '19vh'}}>
+            <div className='content'>
             </div>
         </section>
     )

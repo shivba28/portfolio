@@ -342,7 +342,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .sticky {
   position: fixed;
-  top: -5vh;
+  top: 1vh;
   left: auto;
   width: 100%;
   height: 100vh;
@@ -379,14 +379,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .content {
-  height: 106vh; /* Height of the content to allow scrolling */
-  padding: 50px;
+  height: 100vh; /* Height of the content to allow scrolling */
   position: relative;
   z-index: 1;
   width: 100vw;
+  justify-content: center;
 }
 
-.about, .skills{
+.about, .skills, .project{
   background-color: #121212;
 }
 

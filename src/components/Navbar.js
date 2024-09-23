@@ -23,11 +23,7 @@ export const NavBar = ({openModal}) => {
         window.addEventListener("scroll", onScroll);
 
         return () => window.removeEventListener("scroll", onScroll);
-    }, [])
-
-    const onUpdateActiveLink = (value) => {
-        setActiveLink(value);
-      }
+    }, []);
 
     return (
           <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -41,9 +37,9 @@ export const NavBar = ({openModal}) => {
               </Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                  <Link to="home" spy={true} smooth={true} duration={800} className={activeLink === 'home' ? 'active navbar-link link' : 'navbar-link link'} onClick={() => onUpdateActiveLink('home')}>Home</Link>
-                  <Link to="skill" spy={true} smooth={true} duration={800}  className={activeLink === 'skills' ? 'active navbar-link link' : 'navbar-link link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Link>
-                  <Link to="project" spy={true} smooth={true} duration={800} className={activeLink === 'project' ? 'active navbar-link link' : 'navbar-link link'} onClick={() => onUpdateActiveLink('project')}>Projects</Link>
+                  <Link to="home" spy={true} smooth={true} duration={800} className={activeLink === 'home' ? 'active navbar-link link' : 'navbar-link link'}>Home</Link>
+                  <Link to="skill" spy={true} smooth={true} duration={800} className={activeLink === 'skills' ? 'active navbar-link link' : 'navbar-link link'}>Skills</Link>
+                  <Link to="project" spy={true} smooth={true} duration={800} className={activeLink === 'project' ? 'active navbar-link link' : 'navbar-link link'}>Projects</Link>
                   <Link to="/" spy={true} smooth={true} duration={800} onClick={openModal} className={activeLink === 'about' ? 'active navbar-link link' : 'navbar-link link'}>About</Link>
                 </Nav>
                 

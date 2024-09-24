@@ -2,7 +2,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import front_img from '../assets/Images/project_front.png';
-import back_img from '../assets/Images/project-back.jpeg';
 import '../assets/CSS/projects.css';
 
 export const Project = () => {

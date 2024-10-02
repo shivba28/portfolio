@@ -22,6 +22,7 @@
     font-family: "Inter", sans-serif;
     width: 65%;
     font-size: 19px;
+    transform: translateY(10%);
   }
 
   .modal-body p span{
@@ -32,6 +33,7 @@
   .modal-body h2{
     font-family: "Kranky";
     font-size: 3rem;
+    transform: translateY(50%);
   }
   
 .modal-content {
@@ -61,4 +63,12 @@
     position: fixed;
     top: -5vh;
     right: -11vw;
+  }
+
+  .bio-section .sign{
+    position: relative;
+    left: -2vh;
+    transform: translateY(10vh);
+    width: 30vh;
+    z-index: 1;
   }

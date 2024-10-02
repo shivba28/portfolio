@@ -1,5 +1,6 @@
 import { Modal, Col } from 'react-bootstrap';
 import img1 from '../assets/Images/about1.png';
+import sign from '../assets/Images/sign.png';
 import '../assets/CSS/Modal.css';
 
 export const About = ({ show, handleClose }) => {
@@ -29,6 +30,7 @@ I’ve even dabbled in making APIs, and yes, it’s as nerdy as it sounds.<br/><
 In short: I build things, break things (occasionally), and try to make the web a better place, one API call (and coffee cup) at a time!</span>
                             </p>
                             <img src={img1}></img>
+                            <img className='sign' src={sign}></img>
                         </div>
                         </Col>
                     </Modal.Body>

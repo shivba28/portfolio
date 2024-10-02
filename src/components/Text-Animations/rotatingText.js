@@ -8,7 +8,7 @@ export const TextRotate = ({words}) => {
 
     return(
         <div className='container-rotate'>
-            <h1>I work with&nbsp;
+            <h1 data-cursor="text">I work with&nbsp;
                 <div className='text'>
                     {words.map((word, index) =>(
                         <span key={index} className='word' id={'w-' + (index+1)}>{word}</span>

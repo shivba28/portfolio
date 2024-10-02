@@ -33,13 +33,13 @@ export const Skills = () => {
                                 </div>
                                 <div className='card-content'>
                                     <ListGroup>
-                                        <ListGroup.Item>Python</ListGroup.Item>
-                                        <ListGroup.Item>C#</ListGroup.Item>
-                                        <ListGroup.Item>Javascript/Typescript</ListGroup.Item>
-                                        <ListGroup.Item>HTML/CSS</ListGroup.Item>
-                                        <ListGroup.Item>PHP</ListGroup.Item>
-                                        <ListGroup.Item>SQL</ListGroup.Item>
-                                        <ListGroup.Item>Ruby</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Python</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">C#</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Javascript/Typescript</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">HTML/CSS</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">PHP</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">SQL</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Ruby</ListGroup.Item>
                                     </ListGroup>
                                 </div>
                             </Card>
@@ -53,13 +53,13 @@ export const Skills = () => {
                                 </div>
                                 <div className='card-content'>
                                 <ListGroup>
-                                        <ListGroup.Item>ASP.NET</ListGroup.Item>
-                                        <ListGroup.Item>VB.NET</ListGroup.Item>
-                                        <ListGroup.Item>Flask/Django</ListGroup.Item>
-                                        <ListGroup.Item>Next.js</ListGroup.Item>
-                                        <ListGroup.Item>GraphQL</ListGroup.Item>
-                                        <ListGroup.Item>React.js</ListGroup.Item>
-                                        <ListGroup.Item>Angular</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">ASP.NET</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">VB.NET</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Flask/Django</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Next.js</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">GraphQL</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">React.js</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Angular</ListGroup.Item>
                                     </ListGroup>
                                 </div>
                             </Card>
@@ -72,12 +72,12 @@ export const Skills = () => {
                                 </div>
                                 <div className='card-content'>
                                 <ListGroup>
-                                        <ListGroup.Item>Docker</ListGroup.Item>
-                                        <ListGroup.Item>Kubernetes</ListGroup.Item>
-                                        <ListGroup.Item>SSIS</ListGroup.Item>
-                                        <ListGroup.Item>JIRA</ListGroup.Item>
-                                        <ListGroup.Item>AWS</ListGroup.Item>
-                                        <ListGroup.Item>Jenkins</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Docker</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Kubernetes</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">SSIS</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">JIRA</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">AWS</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Jenkins</ListGroup.Item>
                                     </ListGroup>
                                 </div>
                             </Card>
@@ -90,11 +90,11 @@ export const Skills = () => {
                                 </div>
                                 <div className='card-content'>
                                 <ListGroup>
-                                        <ListGroup.Item>Selenium</ListGroup.Item>
-                                        <ListGroup.Item>Cypress</ListGroup.Item>
-                                        <ListGroup.Item>Test Driven Dev</ListGroup.Item>
-                                        <ListGroup.Item>OOP Concepts</ListGroup.Item>
-                                        <ListGroup.Item>Machine Learning</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Selenium</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Cypress</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Test Driven Dev</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">OOP Concepts</ListGroup.Item>
+                                        <ListGroup.Item data-cursor="block">Machine Learning</ListGroup.Item>
                                     </ListGroup>
                                 </div>
                             </Card>

@@ -1,12 +1,13 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavBar } from './components/Navbar';
 import { Banner } from './components/Banner';
 import { About } from './components/About';
-import { Cursor } from './components/Cursor';
 import { Skills } from './components/Skills';
 import { Project } from './components/Projects';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { IPadCursorProvider, useIPadCursor } from "ipad-cursor/react";
+
 
 function App() {
 
@@ -20,14 +21,19 @@ function App() {
     setShow(false);
   };
 
+  useIPadCursor();
+
+
+
   return (
     <div className="App">
-      <NavBar openModal={handleShow} />
-      <About show={show} handleClose={handleClose} />
-      <Banner />
-      <Skills />
-      <Project />
-      <Cursor />
+      <IPadCursorProvider>   
+        <NavBar openModal={handleShow} />
+        <About show={show} handleClose={handleClose} />
+        <Banner />
+        <Skills />
+        <Project />
+      </IPadCursorProvider>
     </div>
   );
 }

@@ -119,7 +119,7 @@ nav.navbar.scrolled {
   background-color: #121212;
 }
 nav.navbar a.navbar-brand {
-    width: 9%;
+    margin-right: 3%;
     transition: all 0.3s ease-in-out;
 }
 nav.navbar a.navbar-brand:hover {

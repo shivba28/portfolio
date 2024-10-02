@@ -15,20 +15,19 @@ export const Banner = () => {
     useGSAP(() => {
         gsap.timeline({
             scrollTrigger: {
-                trigger: '.home',
-                start: 'top',
-                end: "+=40%",
+                trigger: '.banner',
+                start: 'center center',
+                end: "+=100%",
                 scrub: true,
-                markers: true,
             }
         })
         .to(".video-container video", {
             scale: 2.1,
-            z: 150,
+            y:300,
             transformOrigin: "center center",
             ease: "power1.inOut"
           },
-        );
+        )
     })
 
     // const [divHeight, setDivHeight] = useState((() => {if(window.innerWidth < 873){return 225;} else{return 340;}}));
@@ -136,8 +135,6 @@ export const Banner = () => {
                     words={['HAVE I PLAYED THE PART WELL?', 'THEN APPLAUD, AS I EXIT.' ]} 
                     colors={['black']} 
                 /> */}
-            </div>
-            <div className='content'>
             </div>
         </section>
     )

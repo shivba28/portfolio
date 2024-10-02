@@ -102,7 +102,7 @@ export const TextScramble = ({ phrases }) => {
 
   return (
         <div className='container-scramble'>
-            <div ref={elRef} className="text" />
+            <div ref={elRef} className="text" data-cursor="text"/>
         </div>
     );
 };

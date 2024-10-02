@@ -279,9 +279,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  transform: translateY(70%);
   animation: slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
+  transform: translateY(50%);
 }
 
 .banner h1{
@@ -323,8 +323,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   opacity: 0;
   animation: fade-slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
-  z-index: 99;
-  width: 50%;
+  width: 40%;
+  justify-content: center;
+  display: flex;
 }
 
 .video-container video {
@@ -340,40 +341,27 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-radius: 20px;
 }
 
-.sticky {
-  position: fixed;
-  top: 1vh;
-  left: auto;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
-}
 
 .about-section {
   background-color: transparent;
   backdrop-filter: blur(1rem);
   position: relative;
   z-index: 2;
-  min-height: 121vh; /* Ensure it covers the viewport */
-  opacity: 0;
+  min-height: 100vh; /* Ensure it covers the viewport */
+  opacity: 1;
   width: 100vw;
   padding: 2%;
-  transform: translateY(126vh);
-  transition: opacity 0.5s ease;
-  
-}
-
-.about-section.show {
-  opacity: 1;
   text-align: center;
   display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-content: center;
+  
 }
 
-.about-section.show h2{
+
+.about-section h2{
   color:#121212;
   backdrop-filter: blur(5rem);
 }
@@ -418,7 +406,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
   to {
     opacity: 1;
-    transform: translateY(25%);
   }
 }
 

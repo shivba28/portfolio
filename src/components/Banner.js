@@ -8,76 +8,34 @@ import { TextScramble } from '../components/Text-Animations/scrambleText';
 
 export const Banner = () => {
     
-    gsap.registerPlugin(ScrollTrigger);
+    
 
     const videoRef = useRef(null);
+
 
     useGSAP(() => {
         gsap.timeline({
             scrollTrigger: {
                 trigger: '.banner',
-                start: 'center center',
-                end: "+=100%",
+                start: 'top center',
+                end: "+=10%",
                 scrub: true,
+                pin: true
             }
         })
-        .to(".video-container video", {
-            scale: 2.1,
-            y:300,
-            transformOrigin: "center center",
-            ease: "power1.inOut"
+        gsap.to(".video-container video", {
+            scale: 2.6,
+            transformOrigin: "top center",
+            ease: "power1.inOut",
+            scrollTrigger: {
+                trigger: '.banner',
+                start: 'top',
+                end: 'bottom',
+                scrub: true,
+            },
           },
         )
     })
-
-    // const [divHeight, setDivHeight] = useState((() => {if(window.innerWidth < 873){return 225;} else{return 340;}}));
-    // const [divWidth, setDivWidth] = useState((() => {if(window.innerWidth < 873){return 300;} else{return 800;}}));
-
-    
-
-    
-
-
-//   const handleScroll = () => {
-//     const scrollTop = window.scrollY;
-//     const winHeight = window.innerHeight;
-//     const winWidth = window.innerWidth;
-//     const docHeight = document.body.scrollHeight - winHeight;
-//     const scrollFraction = (scrollTop) / (docHeight * 0.4) ;
-
-        
-    
-
-//     if(winWidth < 873) {
-//         setDivHeight(225);
-//         setDivWidth(300 + scrollFraction * winWidth)
-//         const newWidth = 300 + scrollFraction * winWidth;
-//         setDivWidth(Math.min(newWidth,winWidth + 30));
-//     } else{
-//         setDivHeight(340);
-//         setDivWidth(800 + scrollFraction * winWidth);
-//         const newWidth = 800 + scrollFraction * winWidth;
-//         setDivWidth(Math.min(newWidth,winWidth));
-//     }
-
-//     const videoDiv = document.querySelector('.video-container');
-//     const aboutSection = document.querySelector('.about-section');
-
-//     if (scrollTop > winHeight/2) {
-//         videoDiv.classList.add('sticky');
-//         aboutSection.classList.add('show');
-//       } else {
-//         videoDiv.classList.remove('sticky');
-//         aboutSection.classList.remove('show');
-//       }
-
-//   };
-
-//   useEffect(() => {
-//     window.scrollTo(0, 0); // Scroll to the top on page load
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -116,12 +74,7 @@ export const Banner = () => {
             )} */}
 {/* style={{ height: `${divHeight}px`, width: `${divWidth}px`}} */}
             <div className={`video-container`} >
-                <video
-                    ref={videoRef} 
-                    loop 
-                    muted 
-                    playsInline
-                 className='video'>
+                <video ref={videoRef} loop muted playsInline className='video'>
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>

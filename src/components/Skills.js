@@ -47,7 +47,9 @@ export const Skills = () => {
                         <Col>
                             <Card id="card-2">
                                 <div className="image">
-                                <a href="https://www.flaticon.com/free-icons/framework" title="framework icons" target="_blank"><img src={frameImg}></img></a>
+                                <a href="https://www.flaticon.com/free-icons/framework" title="framework icons" target="_blank">
+                                    <img src={frameImg}></img>
+                                </a>
                                     &nbsp;
                                     <h3>Framework</h3>
                                 </div>
@@ -67,7 +69,9 @@ export const Skills = () => {
                         <Col>
                             <Card id="card-3">
                                 <div className="image">
-                                <a href="https://www.flaticon.com/free-icons/technology" title="technology icons" target="_blank"><img src={techImg}></img></a>&nbsp;
+                                <a href="https://www.flaticon.com/free-icons/technology" title="technology icons" target="_blank">
+                                    <img src={techImg}></img>
+                                </a>&nbsp;
                                     <h3>Technologies</h3>
                                 </div>
                                 <div className='card-content'>
@@ -85,7 +89,9 @@ export const Skills = () => {
                         <Col>
                             <Card id="card-4">
                                 <div className="image">
-                                <a href="https://www.flaticon.com/free-icons/test" title="test icons" target="_blank"><img src={testImg}></img></a>&nbsp;
+                                <a href="https://www.flaticon.com/free-icons/test" title="test icons" target="_blank">
+                                    <img src={testImg}></img>
+                                </a>&nbsp;
                                     <h3>Testing Tools & Concepts</h3>
                                 </div>
                                 <div className='card-content'>

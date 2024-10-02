@@ -344,7 +344,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 
-.about-section {
+.tagline-section {
   background-color: transparent;
   backdrop-filter: blur(1rem);
   position: relative;

@@ -88,7 +88,7 @@ export const Banner = () => {
                 </video>
             </div>
             <div className='content'></div>
-            <div className="about-section">
+            <div className="tagline-section">
                 <TextScramble phrases={phrases} />
             </div>
         </section>

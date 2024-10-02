@@ -274,14 +274,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /************ Banner Css ************/
 .banner{
   position: relative;
-  min-height: 50vh;
+  min-height: 35vh;
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   animation: slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
-  transform: translateY(50%);
+  transform: translateY(100%);
+  margin-bottom: 15vh;
 }
 
 .banner h1{
@@ -348,22 +349,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   position: relative;
   z-index: 2;
   min-height: 100vh; /* Ensure it covers the viewport */
-  opacity: 1;
   width: 100vw;
   padding: 2%;
   text-align: center;
   display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-  
-}
-
-
-.about-section h2{
-  color:#121212;
-  backdrop-filter: blur(5rem);
+  align-items: center;
 }
 
 .content {
@@ -390,11 +380,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @keyframes slide-up {
   from{
-    transform: translateY(70%);
+    transform: translateY(100%);
   }
 
   to{
-    transform: translateY(50%);
+    transform: translateY(70%);
   }
 }
 
@@ -406,6 +396,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
   to {
     opacity: 1;
+    transform: translateY(20%);
   }
 }
 

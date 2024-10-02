@@ -3,38 +3,47 @@ import video from "../assets/videos/intro.mp4";
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-//import { ConsoleText } from '../components/Text-Animations/consoleText'
 import { TextScramble } from '../components/Text-Animations/scrambleText';
 
 export const Banner = () => {
-    
-    
-
     const videoRef = useRef(null);
-
+    const containerRef = useRef(null);
 
     useGSAP(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+         // Pin the video container when scrolling and scale video
         gsap.timeline({
             scrollTrigger: {
-                trigger: '.banner',
-                start: 'top center',
-                end: "+=10%",
-                scrub: true,
-                pin: true
+                trigger: '.banner', // Element that triggers the animation
+                start: 'top top', // Start when the top of .banner hits the top of the viewport
+                end: '+=250%', // Keep it pinned until we scroll further down
+                scrub: true, // Smooth scrolling effect
+                pin: containerRef.current, // Pin the video container
+                anticipatePin: 1, // Prevent snapping when pinning/unpinning
+
             }
         })
-        gsap.to(".video-container video", {
+        .to(videoRef.current, {
             scale: 2.6,
-            transformOrigin: "top center",
+            transformOrigin: "center center",
             ease: "power1.inOut",
             scrollTrigger: {
-                trigger: '.banner',
-                start: 'top',
-                end: 'bottom',
+                trigger: '.banner', // Video animation is linked to .banner
+                start: 'top top',
+                end: 'bottom top', // Animation ends when the bottom of .banner reaches the top
                 scrub: true,
             },
-          },
-        )
+        })
+        .to(videoRef.current, {
+            scrollTrigger: {
+                trigger: containerRef.current, // Video animation is linked to .banner
+                start: 'top top',
+                end: '+=100%', // Animation ends when the bottom of .banner reaches the top
+                pin: true, // This keeps the video pinned
+                pinSpacing: false,
+            }
+        })
     })
 
   useEffect(() => {
@@ -72,22 +81,15 @@ export const Banner = () => {
                 allowfullscreen></iframe>
             </div>
             )} */}
-{/* style={{ height: `${divHeight}px`, width: `${divWidth}px`}} */}
-            <div className={`video-container`} >
+            <div className={`video-container`} ref={containerRef}>
                 <video ref={videoRef} loop muted playsInline className='video'>
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
-                
-            <div className="about-section" style={{marginBottom: '15vh', marginTop: '35vh'}}>
-            
-            <TextScramble phrases={phrases} />
-                
-                {/* <ConsoleText 
-                    words={['HAVE I PLAYED THE PART WELL?', 'THEN APPLAUD, AS I EXIT.' ]} 
-                    colors={['black']} 
-                /> */}
+            <div className='content'></div>
+            <div className="about-section">
+                <TextScramble phrases={phrases} />
             </div>
         </section>
     )

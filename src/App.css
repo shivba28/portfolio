@@ -278,15 +278,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-content: flex-end;
   flex-wrap: wrap;
   animation: slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
-  transform: translateY(100%);
+  transform: translateY(75%);
   margin-bottom: 15vh;
 }
 
 .banner h1{
-  font-size: 6rem;
+  font-size: 7rem;
   font-weight: 700;
   font-family: Figtree;
   margin: 0;
@@ -295,7 +296,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .right{
   font-family: "EB Garamond" !important;
   font-weight: 100 !important;
-  font-size: 10rem !important;
+  font-size: 12rem !important;
   color: #ffaec0;
   font-style: italic;
 }
@@ -380,11 +381,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @keyframes slide-up {
   from{
-    transform: translateY(100%);
+    transform: translateY(75%);
   }
 
   to{
-    transform: translateY(70%);
+    transform: translateY(50%);
   }
 }
 

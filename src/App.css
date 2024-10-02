@@ -321,10 +321,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .video-container {
   position: relative;
   opacity: 0;
-  transform: translateY(100%);
   animation: fade-slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
   z-index: 99;
+  width: 50%;
 }
 
 .video-container video {

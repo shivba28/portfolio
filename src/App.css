@@ -134,14 +134,13 @@ nav.navbar .navbar-nav .nav-link.navbar-link, .link {
   opacity: 0.75;
   transition: all 0.2s ease-in-out;
 }
-/* nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
+ nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
     opacity: 1;
-} */
-nav.navbar .navbar-nav a.nav-link.navbar-link:hover, .link:hover{
+    background-color: #7878784d;
+  }
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover, .link.active{
   opacity: 1;
-  transform: translateY(-2px);
-  transition: transform 0.2s ease-in-out;
 }
 span.navbar-text {
     display: flex;

@@ -6,7 +6,6 @@ import navIcon2 from '../assets/Logos/github-mark-white.svg';
 import logo from '../assets/Logos/bitmoji.ico';
 
 export const NavBar = ({openModal}) => {
-    const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
 
 
@@ -37,10 +36,10 @@ export const NavBar = ({openModal}) => {
               </Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                  <Link data-cursor="block" to="home" spy={true} smooth={true} duration={800} className={activeLink === 'home' ? 'active navbar-link link cursor-link' : 'navbar-link link cursor-link'}>Home</Link>
-                  <Link data-cursor="block" to="skill" spy={true} smooth={true} duration={800} className={activeLink === 'skills' ? 'active navbar-link link cursor-link' : 'navbar-link link cursor-link'}>Skills</Link>
-                  <Link data-cursor="block" to="project" spy={true} smooth={true} duration={800} className={activeLink === 'project' ? 'active navbar-link link cursor-link' : 'navbar-link link cursor-link'}>Projects</Link>
-                  <Link data-cursor="block" to="/" spy={true} smooth={true} duration={800} onClick={openModal} className={activeLink === 'about' ? 'active navbar-link link cursor-link' : 'navbar-link link cursor-link'}>About</Link>
+                  <Link data-cursor="block" to="home" spy={true} smooth={true} duration={800} className={'navbar-link link'}>Home</Link>
+                  <Link data-cursor="block" to="skill" spy={true} smooth={true} duration={800} className={'navbar-link link'}>Skills</Link>
+                  <Link data-cursor="block" to="project" spy={true} smooth={true} duration={800} className={'navbar-link link'}>Projects</Link>
+                  <Link data-cursor="block" to="/" spy={true} smooth={true} duration={800} onClick={openModal} className={'navbar-link link'}>About</Link>
                 </Nav>
                 
                 <span className="navbar-text">
@@ -48,7 +47,7 @@ export const NavBar = ({openModal}) => {
                     <a data-cursor="block" data-cursor-style="background: transparent" href="https://www.linkedin.com/in/shivba-pawar/" target="_blank" rel="noreferrer"><img src={navIcon1} alt="" /></a>
                     <a data-cursor="block" data-cursor-style="background: transparent" href="https://github.com/shivba28" target="_blank" rel="noreferrer"><img src={navIcon2} alt="" /></a>
                   </div>
-                    <Link data-cursor="block" data-cursor-style="background: transparent" href="#contact" to="contact" spy={true} smooth={true} duration={800} className={activeLink === 'contact' ? 'active navbar-link' : 'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
+                    <Link data-cursor="block" data-cursor-style="background: transparent" href="#contact" to="contact" spy={true} smooth={true} duration={800} className={'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
                 </span>
               </Navbar.Collapse>
             </Container>

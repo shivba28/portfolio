@@ -17,7 +17,7 @@ export const Banner = () => {
             scrollTrigger: {
                 trigger: '.banner', // Element that triggers the animation
                 start: 'top top', // Start when the top of .banner hits the top of the viewport
-                end: '+=300%', // Keep it pinned until we scroll further down
+                end: '+=1000%', // Keep it pinned until we scroll further down
                 scrub: true, // Smooth scrolling effect
                 pin: containerRef.current, // Pin the video container
                 anticipatePin: 1, // Prevent snapping when pinning/unpinning

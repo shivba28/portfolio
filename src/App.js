@@ -25,6 +25,24 @@ function App() {
 
 
 
+  useEffect(() => {
+    const originalTitle = document.title;
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        document.title = originalTitle;
+      } else {
+        document.title = "Chotto matte Onee-san!";
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   return (
     <div className="App">
       <IPadCursorProvider>   

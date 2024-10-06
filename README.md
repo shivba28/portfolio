@@ -2,7 +2,7 @@ Completed sections:
 1. Navbar
 2. Hero Banner
 
-   a. video expansion - *needs work*
+   a. video expansion - added GSAP
 
    b. tagline with blur bg
 

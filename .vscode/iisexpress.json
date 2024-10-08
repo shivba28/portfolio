@@ -2,5 +2,5 @@
   "port": 26823,
   "path": "./",
   "clr": "v4.0",
-  "protocol": "http"
+  "protocol": "https"
 }

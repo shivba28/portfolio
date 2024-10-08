@@ -33,6 +33,7 @@ export const Banner = () => {
                 end: 'bottom top', // Animation ends when the bottom of .banner reaches the top
                 scrub: true,
             },
+            onStart: () => {y:-100},
         })
         .to(videoRef.current, {
             scrollTrigger: {

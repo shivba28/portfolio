@@ -31,7 +31,7 @@
 
 .skills .card:hover{
     transform: translateY(-100px) rotateZ(3deg);
-    height : 500px; 
+    height : 600px; 
 }
 
 .skills #card-2:hover, .skills #card-4:hover{

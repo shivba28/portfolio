@@ -124,32 +124,61 @@ z-index: 10;
 color: white;
 }
 
-.skill-card .background .darkBg .dark-bg{
+.skill-card .dark-bg{
 position: absolute;
 opacity: 0;
-transform: translateY(50dvh);
+transform: rotate(-90deg) translateY(50dvh) rotate(90deg);
 transition: all 0.3s ease-in-out;
 width: 150%;
+background: url(../Images/trees-m.webp);
 }
 
-#card1:hover .background .darkBg .dark-bg{
-opacity: 1;
-transform: translateY(26dvh) scaleY(2);
-}
-
-.skill-card .background .lightBg .light-bg{
+.skill-card .light-bg{
     position: absolute;
     opacity: 1;
-    transition: all 0.1s ease-in-out;
-    height: auto;
+    transition: all 0.3s ease-in-out;
+    height: 50%;
     width: 110%;
-    transform: translateY(23dvh);
+    transform: rotate(90deg) translate(22dvh, 2dvh) rotate(-90deg);
+    background: url(../Images/mountain.png);
     }
-    
-#card1:hover .background .lightBg .light-bg{
-    opacity: 0;
-    transform: translateY(50dvh);
+
+#card1:hover .dark-bg, #card3:hover .dark-bg{
+        opacity: 1;
+        height: 30%;
+        transform: rotate(0deg) translateY(26dvh) rotate(0deg) scaleY(2);
 }
+    
+#card1:hover .light-bg, #card3:hover .light-bg{
+    opacity: 0;
+    height: 0%;
+    transform: rotate(0deg) translateY(50dvh) rotate(0deg);
+}
+
+#card2 .light-bg, #card4 .light-bg{
+    background: url(../Images/palm.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    left: 1.5dvw;
+    transition: all 0.3s ease-in-out;
+}
+#card2:hover .light-bg, #card4:hover .light-bg{
+    opacity: 0;
+    transform: rotate(0deg) translateY(50dvh) rotate(0deg);
+}
+
+#card2 .dark-bg, #card4 .dark-bg{
+    background: url(../Images/city.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    width: 100%;
+}
+#card2:hover .dark-bg, #card4:hover .dark-bg{
+    opacity: 1;
+    height: 30%;
+    transform: rotate(0deg) translateY(30dvh) rotate(0deg) scaleY(1.3);
+    }
 
 @-webkit-keyframes sunRotate{
     from{ transform: rotate(0deg);}

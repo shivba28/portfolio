@@ -22,7 +22,7 @@ export const Stars = () => {
             <span className="star star13"></span>
         </div>
         <div className="moon"><img src={moon} /></div>
-        <img className="dark-bg" src={trees}/>
+        <div className="dark-bg"/>
         </section>
     )
 }

@@ -18,6 +18,18 @@ export const Skills = () => {
                         <Stars />
                     </div>
                 </div>
+                <div className="skill-card" id='card3'>
+                    <div className="background">
+                        <Clouds />
+                        <Stars />
+                    </div>
+                </div>
+                <div className="skill-card" id='card4'>
+                    <div className="background">
+                        <Clouds />
+                        <Stars />
+                    </div>
+                </div>
             </div>
     </section>
     )

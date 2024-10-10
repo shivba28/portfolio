@@ -11,7 +11,7 @@ export const Clouds = () => {
             <div className="cloud cloud-3"></div>
         </div>
         <div className="sun"><img src={sun} /></div>
-        <img className="light-bg" src={mountain} />
+        <div className="light-bg"/>
         </section>
     )
 }

@@ -48,10 +48,9 @@ function App() {
       <IPadCursorProvider>   
         <NavBar openModal={handleShow} />
         <About show={show} handleClose={handleClose} />
-        {/* <Banner />
+        <Banner />
         <Skills />
-        <Project /> */}
-        <Skills />
+        <Project />
       </IPadCursorProvider>
     </div>
   );

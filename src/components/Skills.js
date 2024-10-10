@@ -10,6 +10,18 @@ import testImg from '../assets/Images/test.png';
 export const Skills = () => {
     return(
        <section className='skills content' id='skill'>
+        <div>
+        <div className="neon" aria-hidden="true" aria-label="my skills">
+                        <span>M</span>
+                        <span>y</span>
+                        <span>S</span>
+                        <span>k</span>
+                        <span>i</span>
+                        <span>l</span>
+                        <span>l</span>
+                        <span>s</span>
+                    </div>
+        </div>
             <div className="card-container">
                 <div className="skill-card" id='card1'>
                     <div className="background">

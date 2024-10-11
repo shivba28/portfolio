@@ -31,7 +31,7 @@ export const Project = () => {
             }
           })
         .to(".image-container img", {
-            scale: 2,
+            scale: 3,
             z: 350,
             transformOrigin: "center center",
             ease: "power1.inOut"

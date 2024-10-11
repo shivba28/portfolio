@@ -32,3 +32,14 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+
+  @media screen and (max-width:900px) {
+    .project .image-container img {
+      object-fit: contain;
+    }
+
+    .project .project-content .section.hero {
+      background-size: contain;
+    }
+  }

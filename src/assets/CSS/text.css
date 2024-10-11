@@ -186,3 +186,15 @@
       filter: blur(0px);
   }
 }
+
+@media screen and (376px <= width <= 900px) {
+  .container-scramble .text {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .container-scramble .text {
+    font-size: 1.5rem;
+  }
+}

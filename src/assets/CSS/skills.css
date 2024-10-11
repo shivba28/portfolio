@@ -134,12 +134,16 @@ border-radius: 20px;
 .skill-card .content img{
     height: auto;
     width: 40%;
+    transition: opacity 0.3s ease-in-out;
     animation: contentShake 3s ease-in-out infinite;
 }
 
 .skill-card:hover .content{
     color: white;
     transform: translateY(-20%);
+}
+.skill-card:hover .content img{
+    opacity: 0;
 }
 
 .skill-card:hover .list-group{
@@ -708,4 +712,105 @@ background: url(../Images/trees-m.webp);
   @keyframes cloudShake{
     0%,100%{transform: translateX(-10px);}
     50%{transform: translateX(10px);}
+  }
+
+
+
+  /* Responsive CSS Below */
+
+  @media screen and (376px <= width <= 900px) {
+    .skills{
+        height: max-content;
+    }
+    .skill-card{
+        height:500px
+    }
+    .light-bg {
+        transform: translateY(30dvh) !important;
+    }
+    .skill-card:hover .light-bg{
+        transform: translateY(50dvh) !important;
+    }
+    .dark-bg{
+        transform: translateY(50dvh) !important;
+    }
+
+    .skill-card:hover .dark-bg {
+        transform: translateY(32dvh) scaleY(2) !important;
+    }
+    .list-group-item{
+        font-size: 15px;
+    }
+    #card2 .light-bg, #card4 .light-bg{
+        transform: translate(2dvw, 30dvh) !important;
+    }
+    #card2:hover .light-bg, #card4:hover .light-bg {
+        transform: translateY(50dvh) !important;
+    }
+    #card2:hover .dark-bg, #card4:hover .dark-bg {
+        transform: translateY(43dvh) !important;
+    }
+    #card2 .dark-bg, #card4 .dark-bg {
+        transform: translateY(63dvh) !important;
+    }
+  }
+
+  @media screen and (901px <= width <=1450px) {
+    .light-bg {
+        transform: translate(-1dvw, 40dvh) !important;
+    }
+    .skill-card:hover .light-bg{
+        transform: translateY(60dvh) !important;
+    }
+    .dark-bg{
+        transform: translateY(60dvh) !important;
+    }
+    .skill-card:hover .dark-bg{
+        transform: translateY(55dvh) !important;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .skills{
+        height: max-content;
+    }
+    .skill-card{
+        height:450px;
+    }
+    .list-group-item{
+        font-size: 10px;
+        padding: 5px 0px !important;
+    }
+    .light-bg {
+        transform: translateY(30dvh) !important;
+    }
+    .skill-card:hover .light-bg{
+        transform: translateY(50dvh) !important;
+    }
+    .dark-bg{
+        transform: translateY(50dvh) !important;
+    }
+
+    .skill-card:hover .content{
+        transform: translateY(-20dvh);
+    }
+
+    .skill-card:hover .dark-bg {
+        transform: translateY(32dvh) scaleY(2) !important;
+    }
+    .list-group-item{
+        font-size: 15px;
+    }
+    #card2 .light-bg, #card4 .light-bg{
+        transform: translate(10dvw, 32dvh) !important;
+    }
+    #card2:hover .light-bg, #card4:hover .light-bg {
+        transform: translateY(50dvh) !important;
+    }
+    #card2:hover .dark-bg, #card4:hover .dark-bg {
+        transform: translateY(43dvh) !important;
+    }
+    #card2 .dark-bg, #card4 .dark-bg {
+        transform: translateY(63dvh) !important;
+    }
   }

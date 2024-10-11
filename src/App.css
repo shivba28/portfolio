@@ -357,7 +357,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .content {
-  height: 100vh; /* Height of the content to allow scrolling */
+  height: 100dvh; /* Height of the content to allow scrolling */
   position: relative;
   z-index: 1;
   width: 100vw;
@@ -402,7 +402,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 
 
-@media (max-width: 872px) {
+@media (376px <= width <= 900px) {
 
   .banner{
     display: block;
@@ -433,7 +433,56 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 
   .video-container video{
-    transform: scaleY(2.5);
+    transform: scale(1.5);
+    border-radius: 5%;
+  }
+
+  @keyframes fade-slide-up {
+    0%{
+      opacity: 0;
+    transform: translateY(200%);
+    }
+
+    100%{
+      opacity: 1;
+      transform: translateY(100%);
+    }
+  }
+
+}
+
+@media (max-width: 375px) {
+
+  .banner{
+    display: block;
+    text-align: center;
+  }
+
+  .right{
+    font-size: 6rem !important;
+  }
+
+  .left{
+    font-size: 3rem !important;
+  }
+  
+  .slogan-left{
+      position: relative;
+      top: 5vh;
+  }
+
+
+  .content{
+    height: 1000px;
+  }
+
+  .video-container{
+    transform: translateY(200%);
+    
+  }
+
+  .video-container video{
+    transform: scale(1.75);
     border-radius: 5%;
   }
 

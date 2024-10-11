@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+
 
 .hidden {
     opacity:0;
@@ -125,13 +127,13 @@
 
 /* Neon Text CSS */
 
+
 .neon {
   z-index: 1000;
-  position: absolute;
-  bottom: -0.625rem;
-  right: 0;
-  visibility: hidden;
-  opacity: 0;
+  position: relative;
+  margin-top: 5dvh;
+  visibility: visible;
+  opacity: 1;
   display: flex;
   font-family: "Yellowtail";
   color: #fff;
@@ -142,14 +144,10 @@
   display: table-cell;
   margin: 0;
   padding: 0;
-  font-family: var(--navNeon);
-  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-family: "Neonderthaw";
+  font-size: clamp(5rem, 1.5vw, 1.5rem);
   color: #646464;
   animation: neonGlow 3s linear infinite;
-}
-
-.neon span:nth-child(5) {
-  padding-right: 3px;
 }
 
 .neon span:nth-child(1), .neon span:nth-child(2), .neon span:nth-child(4) {
@@ -160,8 +158,8 @@
   animation-delay: 1.2s;
 }
 
- .neon span:nth-child(5) {
-  margin-right: 3px !important;
+ .neon span:nth-child(2) {
+  margin-right: 2dvw !important;
   animation-delay: 2s;
 }
 

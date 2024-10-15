@@ -807,6 +807,12 @@ background: url(../Images/trees-m.webp);
     .skills{
         height: max-content;
     }
+    .skill-card .content {
+        transform: translateY(10dvh);
+    }
+    .skill-card:hover .content{
+        transform: translateY(-15dvh);
+    }
     .light-bg {
         transform: translate(-1dvw, 40dvh) !important;
     }

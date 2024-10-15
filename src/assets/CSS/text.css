@@ -140,6 +140,7 @@
   transition: 100ms ease-in;
 }
 
+
 .neon span {
   display: table-cell;
   margin: 0;
@@ -147,6 +148,9 @@
   font-family: "Neonderthaw";
   font-size: clamp(7rem, 1.5vw, 1.5rem);
   color: #646464;
+}
+
+.neon .neon-animate{
   animation: neonGlow 3s linear infinite;
 }
 

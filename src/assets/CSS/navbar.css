@@ -1,0 +1,20 @@
+@media screen and (901px <= width <= 1400px){
+    nav.navbar{
+        padding: 5px 0;
+    }
+    .navbar .navbar-brand{
+        height: 100px;
+        width: auto;
+    }
+
+    .navbar h1{
+        font-size: 2rem;
+    }
+
+    #basic-navbar-nav .navbar-link{
+        font-size: 15px;
+    }
+    .navbar .vvd{
+        font-size: 15px;
+    }
+}

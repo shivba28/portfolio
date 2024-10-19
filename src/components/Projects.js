@@ -5,7 +5,7 @@ import front_img from '../assets/Images/project_front.png';
 import '../assets/CSS/projects.css';
 import Lottie from 'lottie-react';
 import constructionData from '../assets/Lottie/construction1.json';
-import construction2Data from '../assets/Lottie/construction2.json';
+
 
 export const Project = () => {
 
@@ -62,16 +62,16 @@ export const Project = () => {
         
         <section className="project" >
             <div className="spacer" style={{height: "10px"}}></div>
-            <div className="image-container" id="project">
+            <div className="image-container">
                 <img src={front_img}/>
             </div>
 
             <div className="project-content">
                 <section className="section hero"></section>
-                <section className="section">
+                <section className="section" id="project">
                     <div>
                         <Lottie animationData = {constructionData} loop = {true} autoplay = {true} style={{ height: 300, width: 300 }}  />
-                        <Lottie animationData = {construction2Data} loop = {true} autoplay = {true} style={{ height: 500, width: 500 }}  />
+                        {/* <Lottie animationData = {construction2Data} loop = {true} autoplay = {true} style={{ height: 500, width: 500 }}  /> */}
                     </div>
                 </section>
             </div>

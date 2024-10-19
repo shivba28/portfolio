@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-.modal-open .container-fluid, .modal-open  .container {
-  filter: blur(25px);
-}
 
 .modal.fade.show {
-  backdrop-filter: blur(25px);
+  backdrop-filter: blur(10px);
 }
 
 /* Style to prevent body scrolling */
@@ -72,4 +69,35 @@
     transform: translateY(10vh);
     width: 30vh;
     z-index: 1;
+  }
+
+  @media screen and (901px <= width <= 1400px){
+
+    .modal-content {
+      height: 100%;
+      width: 80% !important;
+    }
+
+    .modal-body h2{
+      font-size: 2rem;
+      width: 100%;
+    }
+
+    .modal-body p{
+      font-size: 12px;
+      top: 0dvh;
+      position: relative;
+    }
+
+    .bio-section img{
+      height: 100%;
+      width: auto;
+      transform: translate(-15%, 10%);
+    }
+
+    .bio-section .sign{
+      height: 100px;
+      width: auto;
+      transform: translate(50%,50%);
+    }
   }

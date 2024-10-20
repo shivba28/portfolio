@@ -5,7 +5,7 @@ import front_img from '../assets/Images/project_front.png';
 import '../assets/CSS/projects.css';
 import Lottie from 'lottie-react';
 import constructionData from '../assets/Lottie/CCDP.json';
-import school from '../assets/Lottie/school.json';
+import school from '../assets/Lottie/trimmed_school.json';
 import { useRef, useEffect } from "react";
 
 
@@ -49,29 +49,6 @@ export const Project = () => {
         );
     });
 
-      
-
-    const schoolRef = useRef(null);
-
-    useEffect(() => {
-        if (schoolRef.current) {
-            // Start the animation at 2 seconds
-            schoolRef.current.goToAndStop(2 * 60, true);
-            schoolRef.current.play();
-
-            // Set a timeout to stop the animation at 6 seconds
-            const timeout = setTimeout(() => {
-                if (schoolRef.current) {
-                    // Stop the animation at 6 seconds
-                    schoolRef.current.goToAndStop(6 * 60, true);
-                    schoolRef.current.stop(); // Stop the animation
-                }
-            }, ((6*60) - (2*60)) / 60 * 1000); // Convert frames to milliseconds
-
-            // Clear the timeout on unmount
-            return () => clearTimeout(timeout);
-        }
-    }, []);
 
     return(
         
@@ -93,9 +70,16 @@ export const Project = () => {
                                 <div className="isometric-button-bg"></div>
                             </div>
                         </div>
-                        <div className="project-item" id="project-2">
-                        <Lottie lottieRef={schoolRef} animationData = {school} loop = {true} autoplay = {true} style={{ height: 300, width: 300 }}  />
-                            </div>  
+                        {/* <div className="project-item" id="project-2">
+                            <div className="base"></div>
+                            <div className="lottie-position">
+                                <Lottie animationData = {school} loop = {true} autoplay = {true} style={{ height: 225, width: 225 }}  />
+                            </div>
+                            <div className="isometric-button">
+                                School Website
+                                <div className="isometric-button-bg"></div>
+                            </div>
+                        </div>   */}
                     </div>
                 </section>
             </div>

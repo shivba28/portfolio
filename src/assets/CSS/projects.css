@@ -72,14 +72,22 @@
   }
 
   #project .project-items{
+    display: grid;
+    justify-items: center;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .project-item{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
 
   .isometric-button {
     position: absolute;
-    font-size: 30px; /* Adjust the size as per design */
+    font-size: 26px; /* Adjust the size as per design */
     font-weight: bold;
     color: white; /* Color of the text */
     padding: 0px 10px;
@@ -159,4 +167,8 @@
 .isometric-button:active .isometric-button-bg {
   width: 100%;
   transform: skewY(0deg) translate(0dvw, 0dvh); /* To give a 3D effect */
+}
+
+#project-1{
+  transform: translate(75px, -25px);
 }

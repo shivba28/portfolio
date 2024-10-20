@@ -46,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <IPadCursorProvider>   
-        <NavBar openModal={handleShow} />
+        {/* <NavBar openModal={handleShow} /> */}
         <About show={show} handleClose={handleClose} />
         {/* <Banner />
         <Skills /> */}

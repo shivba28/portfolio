@@ -62,16 +62,21 @@ export const Project = () => {
         
         <section className="project" >
             <div className="spacer" style={{height: "10px"}}></div>
-            <div className="image-container">
+            {/* <div className="image-container">
                 <img src={front_img}/>
-            </div>
+            </div> */}
 
             <div className="project-content">
-                <section className="section hero"></section>
+                {/* <section className="section hero"></section> */}
                 <section className="section" id="project">
-                    <div>
+                    <div className="project-items project-1">
+                        <div className="base"></div>
                         <Lottie animationData = {constructionData} loop = {true} autoplay = {true} style={{ height: 300, width: 300 }}  />
-                        {/* <Lottie animationData = {construction2Data} loop = {true} autoplay = {true} style={{ height: 500, width: 500 }}  /> */}
+                        <div className="isometric-button">
+                            DURATION PREDICTOR
+                        <div className="isometric-button-bg"></div>
+                        </div>
+                        
                     </div>
                 </section>
             </div>

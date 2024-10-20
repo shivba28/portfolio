@@ -1,20 +1,28 @@
-@media screen and (901px <= width <= 1400px){
-    nav.navbar{
-        padding: 5px 0;
+    @media only screen 
+    and (max-width: 1080px)
+    and (-webkit-min-device-pixel-ratio: 2)   {
+  
+      nav.navbar {
+        background-color: #121212;
+      }
+  
+      nav.navbar .navbar-nav .nav-link.navbar-link {
+        letter-spacing: 1.8px;
+        padding: 5px 0px;
+        font-size: 20px;
+        margin-left: 40%
+      }
+  
+      span.navbar-text {
+        display: block;
     }
-    .navbar .navbar-brand{
-        height: 100px;
-        width: auto;
+  
+      .social-icon {
+        margin-left: 38%;
+        margin-bottom: 10px;
     }
-
-    .navbar h1{
-        font-size: 2rem;
-    }
-
-    #basic-navbar-nav .navbar-link{
-        font-size: 15px;
-    }
-    .navbar .vvd{
-        font-size: 15px;
+  
+    .navbar-text button {
+      margin-left: 25%;
     }
 }

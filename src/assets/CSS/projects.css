@@ -43,3 +43,120 @@
       background-size: contain;
     }
   }
+
+  #project .base{
+    background-color:wheat; 
+    width:400px; 
+    height:300px;
+    position: absolute;
+    transform: translate(-4%,12%) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+    transform-origin: center;
+    z-index: -1;
+    border-radius: 30px;
+    border: 2px solid gray;
+    box-shadow:
+    1px 1px 0px wheat,  /* Light grayish-white shadow */
+    2px 2px 0px wheat,
+    3px 3px 0px wheat,
+    4px 4px 0px wheat,
+    5px 5px 0px wheat,
+    6px 6px 0px wheat,
+    7px 7px 0px wheat,
+    8px 8px 0px wheat, 
+    9px 9px 0px wheat, 
+    10px 10px 0px wheat,
+    11px 11px 0px wheat,
+    12px 12px 0px wheat,
+    13px 13px 0px wheat,
+    14px 14px 0px wheat; 
+  }
+
+  #project .project-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .isometric-button {
+    position: absolute;
+    font-size: 30px; /* Adjust the size as per design */
+    font-weight: bold;
+    color: white; /* Color of the text */
+    padding: 0px 10px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    transform: translate(-6dvw, 9.5dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(0);
+    transform-origin: center;
+    perspective: 1000px; /* Adds perspective for 3D effect */
+      /* Creating the 3D effect */
+  text-shadow:
+  1px 1px 0px #ccc,  /* First shadow layer */
+  2px 2px 0px #bbb,  /* Second shadow layer */
+  3px 3px 0px #aaa,  /* Third shadow layer */
+  4px 4px 0px #999,  /* Fourth shadow layer */
+  5px 5px 0px #888,  /* Fifth shadow layer */
+  6px 6px 0px #777,  /* Sixth shadow layer */
+  7px 7px 0px #666;  /* Seventh shadow layer, adds depth */
+  z-index: 1;
+
+  }
+
+  .isometric-button::before{
+    content: '';
+    position: absolute;
+    background-color: #a3a3a3; /* Color for the sides */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 
+    1px 1px 0px grey,  /* Light grayish-white shadow */
+    2px 2px 0px grey,
+    3px 3px 0px grey,
+    4px 4px 0px grey,
+    5px 5px 0px grey,
+    6px 6px 0px grey,
+    7px 7px 0px grey,
+    inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+      width: 100%;
+      height: 100%;
+      top: 0;
+      border: 2px solid white;
+      border-radius: 10px;
+      right: -8px; /* Thickness of side */
+      transform: skewY(0deg) translateZ(5px); /* To give a 3D effect */
+      transform-origin: right;
+      z-index: -1;
+  }
+
+  .isometric-button:active {
+    transform: translate(-6dvw, 10dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(-5px); /* Simulate pressing inward */
+    border-radius: 10px;
+  }
+
+.isometric-button-bg {
+  content: '';
+  position: absolute;
+  background-color: grey; /* Color for the sides */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 
+  1px 1px 0px grey,  /* Light grayish-white shadow */
+  2px 2px 0px grey,
+  3px 3px 0px grey,
+  4px 4px 0px grey,
+  5px 5px 0px grey,
+  6px 6px 0px grey,
+  7px 7px 0px grey,
+  inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+    width: 100.5%;
+    height: 100%;
+    top: 0;
+    border-radius: 10px;
+    right: -8px; /* Thickness of side */
+    transform: skewY(0deg) translate(8px, 1dvh); /* To give a 3D effect */
+    transform-origin: right;
+    z-index: -10; /* Behind the button */
+}
+
+.isometric-button:active .isometric-button-bg {
+  width: 100%;
+  transform: skewY(0deg) translate(0dvw, 0dvh); /* To give a 3D effect */
+}

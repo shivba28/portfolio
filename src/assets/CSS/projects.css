@@ -55,7 +55,7 @@
     transition: all 0.3s ease-in-out;
   }
 
-  #project .base::after{
+  #project .base::before{
     content: '';
     position: absolute;
     display: block;
@@ -64,6 +64,21 @@
     transform: translate(0%,0%) rotateX(0deg) rotateZ(0deg) skewX(0deg);
     transform-origin: center;
     border-radius: 30px;
+  }
+
+  #project .base::after{
+    content: '';
+    position: absolute;
+    display: block;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    border-radius: 30px;
+    right: 0px; /* Thickness of side */
+    transform: skewY(0deg) translate(10px, 1dvh); /* To give a 3D effect */
+    transform-origin: right;
+    z-index: -10; /* Behind the button */
   }
 
   #project .project-items{
@@ -86,20 +101,23 @@
 
   .lottie-figure{
     transition: all 0.3s ease-in-out;
-    height: 300px;
+    height: auto;
     width: 300px;
-    transform: translateY(35px);
+    transform: translateY(-5px);
   }
 
   #project .project-item:active .base{
     transform: translate(-4%,12%) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(-5px);
   }
-  #project .project-item:active .lottie-figure{
-    transform: translateY(40px);
+  #project .project-item:active .base::after{
+    transform: skewY(0deg) translate(0, 0); /* To give a 3D effect */
+  }
+  #project #project-1.project-item:active .lottie-figure{
+    transform: translateY(0px);
   }
 
   #project .project-item:active .isometric-button{
-    transform: translate(-6dvw, 9.5dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(-5px);
+    transform: translate(-4.5dvw, 7.5dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(-5px);
   }
 
 .isometric-button {
@@ -114,9 +132,8 @@
   text-transform: uppercase;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
-  transform: translate(-6dvw, 9.5dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(0);
+  transform: translate(-4.5dvw, 7.5dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(0);
   transform-origin: center;
-  perspective: 1000px; /* Adds perspective for 3D effect */
     /* Creating the 3D effect */
   text-shadow:
   1px 1px 0px #ccc,  /* First shadow layer */
@@ -144,39 +161,32 @@
     transform-origin: right;
     z-index: -1;
   }
-/* 
-  .isometric-button:active {
-    transform: translate(-6dvw, 10dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(-5px);
+
+  .isometric-button::after{
+    content: '';
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    top: 0;
     border-radius: 10px;
-  } */
+    right: 0px; /* Thickness of side */
+    transform: skewY(0deg) translate(17.5px, 1dvh); /* To give a 3D effect */
+    transform-origin: right;
+    z-index: -10; /* Behind the button */
+  }
 
-.isometric-button-bg {
-  content: '';
-  position: absolute;
-  transition: all 0.3s ease-in-out;
-  width: 100.5%;
-  height: 100%;
-  top: 0;
-  border-radius: 10px;
-  right: -8px; /* Thickness of side */
-  transform: skewY(0deg) translate(8px, 1dvh); /* To give a 3D effect */
-  transform-origin: right;
-  z-index: -10; /* Behind the button */
+#project-2 .lottie-figure{
+  width: 30%;
+  transform: translateY(-30px);
 }
-/* 
-.isometric-button:active .isometric-button-bg {
-  width: 100%;
-  transform: skewY(0deg) translate(0dvw, 0dvh);
-} */
-
-#project-2 .lottie-position{
-  transform: translate(0dvw, -4dvh);
+#project-2.project-item:active .lottie-figure{
+  transform: translateY(-25px);
 }
 
 
 /* Base and Button Colors for various projects */
-
-#project-1 .base::after{
+#project-1 .base::before{
   background-color:wheat;
   border: 2px solid gray;
   box-shadow:
@@ -187,6 +197,23 @@
     5px 5px 0px rgb(255, 205, 112),
     6px 6px 0px rgb(255, 205, 112),
     7px 7px 0px rgb(255, 205, 112),
+    inset 0px 0px 0px rgb(255, 205, 112); /* Inner shadow */
+  
+}
+
+#project-1 .base::after{
+  background-color:rgb(255, 205, 112);
+  box-shadow:
+    1px 1px 0px rgb(255, 205, 112),  /* Light grayish-white shadow */
+    2px 2px 0px rgb(255, 205, 112),
+    3px 3px 0px rgb(255, 205, 112),
+    4px 4px 0px rgb(255, 205, 112),
+    5px 5px 0px rgb(255, 205, 112),
+    6px 6px 0px rgb(255, 205, 112),
+    7px 7px 0px rgb(255, 205, 112),
+    8px 8px 0px rgb(255, 205, 112),
+    9px 9px 0px rgb(255, 205, 112),
+    10px 10px 0px rgb(255, 205, 112),
     inset 0px 0px 0px rgb(255, 205, 112); /* Inner shadow */
 }
 
@@ -203,7 +230,7 @@
     inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
 }
 
-#project-1 .isometric-button-bg{
+#project-1 .isometric-button::after{
   background-color: grey; /* Color for the sides */
   box-shadow: 
   1px 1px 0px grey,  /* Light grayish-white shadow */
@@ -216,24 +243,33 @@
   inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
 }
 
-#project-2 .base{
+#project-2 .base::before{
   background-color: lightgrey;
-  border: 2px solid gray;
+  border: 2px solid black;
   box-shadow:
-  1px 1px 0px lightgrey,  /* Light grayish-white shadow */
-  2px 2px 0px lightgrey,
-  3px 3px 0px lightgrey,
-  4px 4px 0px lightgrey,
-  5px 5px 0px lightgrey,
-  6px 6px 0px lightgrey,
-  7px 7px 0px lightgrey,
-  8px 8px 0px lightgrey, 
-  9px 9px 0px lightgrey, 
-  10px 10px 0px lightgrey,
-  11px 11px 0px lightgrey,
-  12px 12px 0px lightgrey,
-  13px 13px 0px lightgrey,
-  14px 14px 0px lightgrey;
+  1px 1px 0px grey,  /* Light grayish-white shadow */
+  2px 2px 0px grey,
+  3px 3px 0px grey,
+  4px 4px 0px grey,
+  5px 5px 0px grey,
+  6px 6px 0px grey,
+  7px 7px 0px grey;
+}
+
+#project-2 .base::after{
+  background-color: grey;
+  box-shadow:
+  1px 1px 0px grey,  /* Light grayish-white shadow */
+  2px 2px 0px grey,
+  3px 3px 0px grey,
+  4px 4px 0px grey,
+  5px 5px 0px grey,
+  6px 6px 0px grey,
+  7px 7px 0px grey,
+  8px 8px 0px grey, 
+  9px 9px 0px grey, 
+  10px 10px 0px grey,
+  inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
 }
 
 #project-2 .isometric-button::before{
@@ -249,8 +285,8 @@
     inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
 }
 
-#project-2 .isometric-button-bg{
-  background-color: rgb(255, 199, 105); /* Color for the sides */
+#project-2 .isometric-button::after{
+  background-color: rgb(255, 175, 45); /* Color for the sides */
   box-shadow: 
   1px 1px 0px rgb(255, 175, 45),  /* Light grayish-white shadow */
   2px 2px 0px rgb(255, 175, 45),

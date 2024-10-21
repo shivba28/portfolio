@@ -67,21 +67,15 @@ export const Project = () => {
                             <div className="lottie-figure">
                                 <Lottie animationData = {constructionData} loop = {true} autoplay = {true}  />
                             </div>
-                            <div className="isometric-button">
-                                DURATION PREDICTOR
-                                <div className="isometric-button-bg"></div>
-                            </div>
+                            <div className="isometric-button">DURATION PREDICTOR</div>
                         </div>
-                        {/* <div className="project-item" id="project-2">
+                        <div className="project-item" id="project-2">
                             <div className="base"></div>
-                            <div className="lottie-position">
-                                <Lottie animationData = {school} loop = {true} autoplay = {true} style={{ height: 225, width: 225 }}  />
+                            <div className="lottie-figure">
+                                <Lottie animationData = {school} loop = {true} autoplay = {true}  />
                             </div>
-                            <div className="isometric-button">
-                                School Website
-                                <div className="isometric-button-bg"></div>
-                            </div>
-                        </div>   */}
+                            <div className="isometric-button">School Website</div>
+                        </div>  
                     </div>
                 </section>
             </div>

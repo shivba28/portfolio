@@ -4,10 +4,11 @@ import { useGSAP } from "@gsap/react";
 import front_img from '../assets/Images/project_front.png';
 import '../assets/CSS/projects.css';
 import Lottie from 'lottie-react';
+import { Row, Col } from "react-bootstrap";
+
 import constructionData from '../assets/Lottie/CCDP.json';
 import school from '../assets/Lottie/trimmed_school.json';
-import { useRef, useEffect } from "react";
-
+import pacman from '../assets/videos/pacman.mp4';
 
 export const Project = () => {
 
@@ -62,20 +63,38 @@ export const Project = () => {
                 {/* <section className="section hero"></section> */}
                 <section className="section" id="project">
                     <div className="project-items">
-                        <div className="project-item" id="project-1">
-                            <div className="base"></div>
-                            <div className="lottie-figure">
-                                <Lottie animationData = {constructionData} loop = {true} autoplay = {true}  />
-                            </div>
-                            <div className="isometric-button">DURATION PREDICTOR</div>
-                        </div>
-                        <div className="project-item" id="project-2">
-                            <div className="base"></div>
-                            <div className="lottie-figure">
-                                <Lottie animationData = {school} loop = {true} autoplay = {true}  />
-                            </div>
-                            <div className="isometric-button">School Website</div>
-                        </div>  
+                        <Row className="align-items-center">
+                            <Col xs={12} md={6} xl={4}>
+                                <div className="project-item" id="project-1">
+                                    <div className="base"></div>
+                                    <div className="lottie-figure">
+                                        <Lottie animationData = {constructionData} loop = {true} autoplay = {true}  />
+                                    </div>
+                                    <div className="isometric-button noselect">DURATION PREDICTOR</div>
+                                </div>
+                            </Col>
+                            <Col xs={12} md={6} xl={4}>
+                                <div className="project-item" id="project-2">
+                                    <div className="base"></div>
+                                    <div className="lottie-figure">
+                                        <Lottie animationData = {school} loop = {true} autoplay = {true}  />
+                                    </div>
+                                    <div className="isometric-button noselect">School Website</div>
+                                </div>
+                            </Col>
+                            <Col xs={12} md={6} xl={4}>
+                                <div className="project-item" id="project-3">
+                                    <div className="base"></div>
+                                    <div className="lottie-figure">
+                                        <video loop muted playsInline autoPlay>
+                                            <source src={pacman} type="video/mp4"/>
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                    <div className="isometric-button noselect">Pacman-3D</div>
+                                </div>
+                            </Col>
+                        </Row>  
                     </div>
                 </section>
             </div>

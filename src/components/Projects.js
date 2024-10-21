@@ -64,7 +64,9 @@ export const Project = () => {
                     <div className="project-items">
                         <div className="project-item" id="project-1">
                             <div className="base"></div>
-                            <Lottie animationData = {constructionData} loop = {true} autoplay = {true} style={{ height: 300, width: 300 }}  />
+                            <div className="lottie-figure">
+                                <Lottie animationData = {constructionData} loop = {true} autoplay = {true}  />
+                            </div>
                             <div className="isometric-button">
                                 DURATION PREDICTOR
                                 <div className="isometric-button-bg"></div>

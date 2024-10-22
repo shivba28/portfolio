@@ -44,7 +44,7 @@
     }
   }
 
-  #project .base{ 
+  .base{ 
     width:400px; 
     height:300px;
     position: absolute;
@@ -55,7 +55,7 @@
     transition: all 0.3s ease-in-out;
   }
 
-  #project .base::before{
+  .base::before{
     content: '';
     position: absolute;
     display: block;
@@ -66,7 +66,7 @@
     border-radius: 30px;
   }
 
-  #project .base::after{
+  .base::after{
     content: '';
     position: absolute;
     display: block;
@@ -86,8 +86,15 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: auto;
     transition: all 0.3s ease-in-out;
+  }
+
+  .project-item-active{
+    content: '';
+    position: absolute;
+    height: 300px;
+    width: 400px;
+    transform: translate(-4%,12%) rotateX(65deg) rotateZ(55deg) skewX(20deg);
     z-index: 1000;
   }
 
@@ -96,19 +103,20 @@
     height: auto;
     width: 300px;
     transform: translateY(-5px);
+    z-index: -1;
   }
 
-  #project .project-item:active .base{
+  .project-item-active:active ~ .base{
     transform: translate(-4%,12%) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(-5px);
   }
-  #project .project-item:active .base::after{
+  .project-item-active:active ~ .base::after{
     transform: skewY(0deg) translate(0, 0); /* To give a 3D effect */
   }
-  #project .project-item:active .lottie-figure{
+  .project-item-active:active ~ .lottie-figure{
     transform: translateY(0px);
   }
 
-  #project .project-item:active .isometric-button{
+  .project-item-active:active ~ .isometric-button{
     transform: translate(-4.5dvw, 7.5dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(-5px);
   }
 
@@ -136,7 +144,7 @@
   5px 5px 0px #888,  /* Fifth shadow layer */
   6px 6px 0px #777,  /* Sixth shadow layer */
   7px 7px 0px #666;  /* Seventh shadow layer, adds depth */
-  z-index: 1;
+  z-index: -1;
 
   }
 
@@ -152,7 +160,7 @@
     right: -8px; /* Thickness of side */
     transform: skewY(0deg) translateZ(5px); /* To give a 3D effect */
     transform-origin: right;
-    z-index: -1;
+    z-index: -10;
   }
 
 #project-2 .lottie-figure{
@@ -165,7 +173,7 @@
   transform: translate(2.5dvw, 2dvh) rotateZ(45deg) skew(220deg, -30deg) scale(0.65);
   border-radius: 50%;
 }
-#project-2.project-item:active .lottie-figure{
+#project-2 .project-item-active:active ~ .lottie-figure{
   transform: translateY(-25px);
 }
 
@@ -175,8 +183,9 @@
   width: 200px;
   background-color: transparent;
   border: 2px solid white;
+  border-radius: 30%;
   z-index: 1;
-  transform: translate(0dvw,-21.5dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+  transform: translate(3.5dvw,-20dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
   box-shadow:
   1px 1px 0px grey,  /* Light grayish-white shadow */
   2px 2px 0px grey,

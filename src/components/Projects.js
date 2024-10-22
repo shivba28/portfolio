@@ -66,6 +66,7 @@ export const Project = () => {
                         <Row className="align-items-center">
                             <Col xs={12} md={6} xl={4}>
                                 <div className="project-item" id="project-1">
+                                    <div className="project-item-active"></div>
                                     <div className="base"></div>
                                     <div className="lottie-figure">
                                         <Lottie animationData = {constructionData} loop = {true} autoplay = {true}  />
@@ -75,6 +76,7 @@ export const Project = () => {
                             </Col>
                             <Col xs={12} md={6} xl={4}>
                                 <div className="project-item" id="project-2">
+                                <div className="project-item-active"></div>
                                     <div className="base"></div>
                                     <div className="lottie-figure">
                                         <Lottie animationData = {school} loop = {true} autoplay = {true}  />
@@ -84,6 +86,7 @@ export const Project = () => {
                             </Col>
                             <Col xs={12} md={6} xl={4}>
                                 <div className="project-item" id="project-3">
+                                    <div className="project-item-active"></div>
                                     <div className="base"></div>
                                     <div className="lottie-figure">
                                         <video loop muted playsInline autoPlay>

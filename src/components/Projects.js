@@ -12,6 +12,9 @@ import pacman from '../assets/videos/pacman.mp4';
 import ans from '../assets/Lottie/ANS.json';
 import valentines from '../assets/Lottie/Valentine.json';
 import chatbot from '../assets/Lottie/Chatbot.json';
+import videoGame from '../assets/Lottie/video-game.json';
+import miniProjects from '../assets/Lottie/Mini-projects.json';
+import portfolio from '../assets/Lottie/Portfolio.json';
 
 export const Project = () => {
 
@@ -74,7 +77,7 @@ export const Project = () => {
                                     <div className="lottie-figure">
                                         <Lottie animationData = {constructionData} loop = {true} autoplay = {true}  />
                                     </div>
-                                    <div className="isometric-button noselect">DURATION PREDICTOR</div>
+                                    <div className="project-title noselect">CCDP</div>
                                 </div>
                             </Col>
                             <Col xs={12}sm={8} md={6} xl={4} className="m-auto">
@@ -84,7 +87,7 @@ export const Project = () => {
                                     <div className="lottie-figure">
                                         <Lottie animationData = {school} loop = {true} autoplay = {true}  />
                                     </div>
-                                    <div className="isometric-button noselect">School Website</div>
+                                    <div className="project-title noselect">School Websites</div>
                                 </div>
                             </Col>
                             <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
@@ -98,7 +101,7 @@ export const Project = () => {
                                         </video>
                                         <div className="video-base"></div>
                                     </div>
-                                    <div className="isometric-button noselect">Pacman-3D</div>
+                                    <div className="project-title noselect">Pacman-3D</div>
                                 </div>
                             </Col>
                         </Row> 
@@ -110,7 +113,7 @@ export const Project = () => {
                                     <div className="lottie-figure">
                                         <Lottie animationData = {ans} loop = {true} autoplay = {true}  />
                                     </div>
-                                    <div className="isometric-button noselect">Adopt Not Shop</div>
+                                    <div className="project-title noselect">Adopt Not Shop</div>
                                 </div>
                             </Col>
                             <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
@@ -120,7 +123,7 @@ export const Project = () => {
                                     <div className="lottie-figure">
                                         <Lottie animationData = {valentines} loop = {true} autoplay = {true}  />
                                     </div>
-                                    <div className="isometric-button noselect">Valentine's Game</div>
+                                    <div className="project-title noselect">Valentine's Game</div>
                                 </div>
                             </Col>
                             <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
@@ -130,7 +133,39 @@ export const Project = () => {
                                     <div className="lottie-figure">
                                         <Lottie animationData = {chatbot} loop = {true} autoplay = {true}  />
                                     </div>
-                                    <div className="isometric-button noselect">Chat-Bot</div>
+                                    <div className="project-title noselect">Chat-Bot</div>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row className="my-5 vh-40">
+                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
+                                <div className="project-item" id="project-7">
+                                    <div className="project-item-active"></div>
+                                    <div className="base"></div>
+                                    <div className="lottie-figure">
+                                        <Lottie animationData = {videoGame} loop = {true} autoplay = {true}  />
+                                    </div>
+                                    <div className="project-title noselect">Video-Game Rental</div>
+                                </div>
+                            </Col>
+                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
+                                <div className="project-item" id="project-8">
+                                    <div className="project-item-active"></div>
+                                    <div className="base"></div>
+                                    <div className="lottie-figure">
+                                        <Lottie animationData = {miniProjects} loop = {true} autoplay = {true}  />
+                                    </div>
+                                    <div className="project-title noselect">Mini Projects</div>
+                                </div>
+                            </Col>
+                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
+                                <div className="project-item" id="project-9">
+                                    <div className="project-item-active"></div>
+                                    <div className="base"></div>
+                                    <div className="lottie-figure">
+                                        <Lottie animationData = {portfolio} loop = {true} autoplay = {true}  />
+                                    </div>
+                                    <div className="project-title noselect">Portfolio</div>
                                 </div>
                             </Col>
                         </Row>

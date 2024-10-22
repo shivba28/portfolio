@@ -105,8 +105,8 @@
   .lottie-figure{
     transition: all 0.3s ease-in-out;
     height: auto;
-    width: 250px;
-    transform: translate(15px, -45px);
+    width: 350px;
+    transform: translate(0px, -30px);
     z-index: -1;
   }
 
@@ -119,43 +119,38 @@
     transform: skewY(0deg) translate(5px, 5px); /* To give a 3D effect */
   }
   .project-item-active:active ~ .lottie-figure{
-    transform: translate(15px, -40px);
+    transform: translate(0px, -25px);
   }
 
-  .project-item-active:active ~ .isometric-button{
-    transform: translate(-5dvw, 4dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(-5px);
-  }
-
-.isometric-button {
+.project-title {
   position: absolute;
-  width: 350px;
+  width: 210px;
+  height: 70px;
   text-align: center;
-  font-size: 22px; /* Adjust the size as per design */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px; /* Adjust the size as per design */
   letter-spacing: .3rem;
   font-family: "Kranky";
   font-weight: bold;
-  color: white; /* Color of the text */
-  padding: 0px 10px 5px 10px;
+  color: black; /* Color of the text */
+  background-color: white;
+  padding: 5px 10px;
   text-transform: uppercase;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
-  transform: translate(-5dvw, 4dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) translateZ(0);
+  transform: translate(1dvw, 130px);
   transform-origin: center;
     /* Creating the 3D effect */
-  text-shadow:
-  1px 1px 0px #ccc,  /* First shadow layer */
-  2px 2px 0px #bbb,  /* Second shadow layer */
-  3px 3px 0px #aaa,  /* Third shadow layer */
-  4px 4px 0px #999,  /* Fourth shadow layer */
-  5px 5px 0px #888,  /* Fifth shadow layer */
-  6px 6px 0px #777,  /* Sixth shadow layer */
-  7px 7px 0px #666;  /* Seventh shadow layer, adds depth */
   z-index: -1;
-
+  }
+  .project-item-active:active ~ .project-title{
+    transform: translate(1dvw, 135px);
   }
 
-  .isometric-button::before{
-    content: '';
+  .project-title::before{
+    content:"";
     position: absolute;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     width: 100%;
@@ -163,341 +158,241 @@
     top: 0;
     border: 2px solid white;
     border-radius: 10px;
-    right: -8px; /* Thickness of side */
-    transform: skewY(0deg) translateZ(5px); /* To give a 3D effect */
-    transform-origin: right;
+    right: 0px; /* Thickness of side */
     z-index: -10;
   }
 
-#project-2 .lottie-figure{
-  width: 40%;
-  transform: translate(20px, -60px);
-}
-#project-2 .project-item-active:active ~ .lottie-figure{
-  transform: translate(20px, -55px);
-}
-
-#project-3 .lottie-figure{
-  transform: translate(-5px, -30px);
-}
-#project-3 .project-item-active:active ~ .lottie-figure{
-  transform: translate(-5px, -25px);
-}
 
 #project-3 video{
   width: 240px;
   height: auto;
-  transform: translate(2.5dvw, 2dvh) rotateZ(45deg) skew(220deg, -30deg) scale(0.65);
-  border-radius: 50%;
+  transform: translate(3dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
+  border-radius: 44%;
 }
-
-
 #project-3 .video-base{
   position: absolute;
-  height: 180px;
-  width: 200px;
+  height: 220px;
+  width: 300px;
   background-color: transparent;
   border: 2px solid white;
-  border-radius: 30%;
+  border-radius: 10%;
   z-index: 1;
-  transform: translate(3.5dvw,-20dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+  transform: translate(20px,-21dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
   box-shadow:
-  1px 1px 0px grey,  /* Light grayish-white shadow */
-  2px 2px 0px grey,
-  3px 3px 0px grey,
-  4px 4px 0px grey,
-  5px 5px 0px grey,
-  6px 6px 0px grey,
-  7px 7px 0px grey,
-  8px 8px 0px grey,
-  9px 9px 0px grey,
-  10px 10px 0px grey,
-  11px 11px 0px grey,
-  12px 12px 0px grey,
-  13px 13px 0px grey,
-  14px 14px 0px grey,
-  inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+  6px 6px 0px lightgrey,
+  12px 12px 0px lightgrey;
+}
+
+/* Figure Sizes */
+
+#project-2 .lottie-figure{
+  width: 45%;
+  transform: translate(5px, -70px);
+}
+#project-2 .project-item-active:active ~ .lottie-figure{
+  transform: translate(5px, -65px);
+}
+
+#project-3 .lottie-figure{
+  transform: translate(0px, 0px);
+}
+#project-3 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, 5px);
 }
 
 #project-4 .lottie-figure{
-  width: 125px;
-  transform: translate(15px, -15px);
+  width: 200px;
+  transform: translate(0px, 0px);
 }
 #project-4 .project-item-active:active ~ .lottie-figure{
-  transform: translate(15px, -10px);
+  transform: translate(0px, 5px);
 }
 
 #project-5 .lottie-figure{
-  width: 150px;
-  transform: translate(20px, -50px);
+  width: 200px;
+  transform: translate(0px, -50px);
 }
 #project-5 .project-item-active:active ~ .lottie-figure{
-  transform: translate(20px, -45px);
+  transform: translate(0px, -45px);
 }
 
 #project-6 .lottie-figure{
-  width: 200px;
-  transform: translate(35px, -70px);
+  width: 250px;
+  transform: translate(0px, -70px);
 }
 #project-6 .project-item-active:active ~ .lottie-figure{
-  transform: translate(35px, -65px);
+  transform: translate(0px, -65px);
+}
+
+#project-7 .lottie-figure{
+  width: 150px;
+  transform: translate(0px, -20px);
+}
+#project-7 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -15px);
+}
+
+#project-8 .lottie-figure{
+  width: 400px;
+  transform: translate(0px, -35px);
+}
+#project-8 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -30px);
+}
+
+#project-9 .lottie-figure{
+  width: 300px;
+  transform: translate(0px, -50px);
+}
+#project-9 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -45px);
+}
+
+#project-10 .lottie-figure{
+  width: 250px;
+  transform: translate(0px, -70px);
+}
+#project-10 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -65px);
 }
 
 
 /* Base and Button Colors for various projects */
 #project-1 .base::before{
   background-color:wheat;
-  border: 4px solid white;
-  box-shadow:
-    1px 1px 0px rgb(255, 205, 112),  /* Light grayish-white shadow */
-    2px 2px 0px rgb(255, 205, 112),
-    3px 3px 0px rgb(255, 205, 112),
-    4px 4px 0px rgb(255, 205, 112),
-    5px 5px 0px rgb(255, 205, 112),
-    6px 6px 0px rgb(255, 205, 112),
-    7px 7px 0px rgb(255, 205, 112),
-    inset 0px 0px 0px rgb(255, 205, 112); /* Inner shadow */
-  
+  border: 4px solid white;  
 }
-
 #project-1 .base::after{
   background-color:rgb(255, 205, 112);
   box-shadow:
-    1px 1px 0px rgb(255, 205, 112),  /* Light grayish-white shadow */
-    2px 2px 0px rgb(255, 205, 112),
-    3px 3px 0px rgb(255, 205, 112),
-    4px 4px 0px rgb(255, 205, 112),
     5px 5px 0px rgb(255, 205, 112),
-    6px 6px 0px rgb(255, 205, 112),
-    7px 7px 0px rgb(255, 205, 112),
-    8px 8px 0px rgb(255, 205, 112),
-    9px 9px 0px rgb(255, 205, 112),
-    10px 10px 0px rgb(255, 205, 112),
-    inset 0px 0px 0px rgb(255, 205, 112); /* Inner shadow */
+    10px 10px 0px rgb(255, 205, 112);
 }
-
-#project-1 .isometric-button::before{
-  background-color: #a3a3a3; /* Color for the sides */
-  box-shadow: 
-    1px 1px 0px grey,  /* Light grayish-white shadow */
-    2px 2px 0px grey,
-    3px 3px 0px grey,
-    4px 4px 0px grey,
-    5px 5px 0px grey,
-    6px 6px 0px grey,
-    7px 7px 0px grey,
-    8px 8px 0px grey,
-    9px 9px 0px grey,
-    10px 10px 0px grey,
-    inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+#project-1 .project-title::before{
+  border: 4px solid rgb(255, 205, 112);
+  box-shadow: 0px -10px 0px rgb(255, 205, 112);
 }
 
 #project-2 .base::before{
   background-color: lightgrey;
   border: 4px solid white;
-  box-shadow:
-  1px 1px 0px grey,  /* Light grayish-white shadow */
-  2px 2px 0px grey,
-  3px 3px 0px grey,
-  4px 4px 0px grey,
-  5px 5px 0px grey,
-  6px 6px 0px grey,
-  7px 7px 0px grey;
 }
-
 #project-2 .base::after{
   background-color: grey;
   box-shadow:
-  1px 1px 0px grey,  /* Light grayish-white shadow */
-  2px 2px 0px grey,
-  3px 3px 0px grey,
-  4px 4px 0px grey,
   5px 5px 0px grey,
-  6px 6px 0px grey,
-  7px 7px 0px grey,
-  8px 8px 0px grey, 
-  9px 9px 0px grey, 
-  10px 10px 0px grey,
-  inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+  10px 10px 0px grey;
 }
-
-#project-2 .isometric-button::before{
-  background-color: rgb(255, 199, 105); /* Color for the sides */
-  box-shadow: 
-    1px 1px 0px rgb(255, 175, 45),  /* Light grayish-white shadow */
-    2px 2px 0px rgb(255, 175, 45),
-    3px 3px 0px rgb(255, 175, 45),
-    4px 4px 0px rgb(255, 175, 45),
-    5px 5px 0px rgb(255, 175, 45),
-    6px 6px 0px rgb(255, 175, 45),
-    7px 7px 0px rgb(255, 175, 45),
-    8px 8px 0px rgb(255, 175, 45),
-    9px 9px 0px rgb(255, 175, 45),
-    10px 10px 0px rgb(255, 175, 45),
-    inset 0px 0px 0px rgba(255, 175, 45, 0.5); /* Inner shadow */
+#project-2 .project-title::before{
+  border: 4px solid gray;
+  box-shadow: 0px -10px 0px gray;
 }
-
 
 #project-3 .base::before{
   background-color: black;
   border: 4px solid white;
-  box-shadow:
-  1px 1px 0px grey,  /* Light grayish-white shadow */
-  2px 2px 0px grey,
-  3px 3px 0px grey,
-  4px 4px 0px grey,
-  5px 5px 0px grey,
-  6px 6px 0px grey,
-  7px 7px 0px grey;
 }
 #project-3 .base::after{
-  background-color: grey;
+  background-color: lightgray;
   box-shadow:
-  1px 1px 0px grey,  /* Light grayish-white shadow */
-  2px 2px 0px grey,
-  3px 3px 0px grey,
-  4px 4px 0px grey,
-  5px 5px 0px grey,
-  6px 6px 0px grey,
-  7px 7px 0px grey,
-  inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+  5px 5px 0px lightgrey,
+  10px 10px 0px lightgrey;
 }
-#project-3 .isometric-button::before{
-  background-color: #5d97e7; /* Color for the sides */
-  border: 2px solid white;
-  box-shadow: 
-    1px 1px 0px grey,  /* Light grayish-white shadow */
-    2px 2px 0px grey,
-    3px 3px 0px grey,
-    4px 4px 0px grey,
-    5px 5px 0px grey,
-    6px 6px 0px grey,
-    7px 7px 0px grey,
-    8px 8px 0px grey,
-    9px 9px 0px grey,
-    10px 10px 0px grey,
-    inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+#project-3 .project-title::before{
+  border: 4px solid darkgray;
+  box-shadow: 0px -10px 0px darkgray;
+    
 }
 
 #project-4 .base::before{
-  background-color: lightseagreen;
+  background-color: rgb(155, 85, 187);
   border: 4px solid white;
-  box-shadow:
-  1px 1px 0px wheat,  /* Light grayish-white shadow */
-  2px 2px 0px wheat,
-  3px 3px 0px wheat,
-  4px 4px 0px wheat,
-  5px 5px 0px wheat,
-  6px 6px 0px wheat,
-  7px 7px 0px wheat;
 }
 #project-4 .base::after{
-  background-color: wheat;
+  background-color: rgb(105, 58, 127);
   box-shadow:
-  1px 1px 0px wheat,  /* Light grayish-white shadow */
-  2px 2px 0px wheat,
-  3px 3px 0px wheat,
-  4px 4px 0px wheat,
-  5px 5px 0px wheat,
-  6px 6px 0px wheat,
-  7px 7px 0px wheat,
-  inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+  5px 5px 0px rgb(105, 58, 127),
+  10px 10px 0px rgb(105, 58, 127);
 }
-#project-4 .isometric-button::before{
-  background-color: lightcoral; /* Color for the sides */
-  border: 2px solid white;
-  box-shadow: 
-    1px 1px 0px #cf524e,  /* Light grayish-white shadow */
-    2px 2px 0px #cf524e,
-    3px 3px 0px #cf524e,
-    4px 4px 0px #cf524e,
-    5px 5px 0px #cf524e,
-    6px 6px 0px #cf524e,
-    7px 7px 0px #cf524e,
-    8px 8px 0px #cf524e,
-    9px 9px 0px #cf524e,
-    10px 10px 0px #cf524e,
-    inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+#project-4 .project-title::before{
+  border: 4px solid rgb(105, 58, 127);
+  box-shadow: 0px -10px 0px rgb(105, 58, 127);
 }
 
 #project-5 .base::before{
   background-color: pink;
   border: 4px solid white;
-  box-shadow:
-  1px 1px 0px rgb(175, 109, 119),  /* Light grayish-white shadow */
-  2px 2px 0px rgb(175, 109, 119),
-  3px 3px 0px rgb(175, 109, 119),
-  4px 4px 0px rgb(175, 109, 119),
-  5px 5px 0px rgb(175, 109, 119),
-  6px 6px 0px rgb(175, 109, 119),
-  7px 7px 0px rgb(175, 109, 119);
 }
 #project-5 .base::after{
   background-color: rgb(175, 109, 119);
   box-shadow:
-  1px 1px 0px rgb(175, 109, 119),  /* Light grayish-white shadow */
-  2px 2px 0px rgb(175, 109, 119),
-  3px 3px 0px rgb(175, 109, 119),
-  4px 4px 0px rgb(175, 109, 119),
   5px 5px 0px rgb(175, 109, 119),
-  6px 6px 0px rgb(175, 109, 119),
-  7px 7px 0px rgb(175, 109, 119),
-  inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+  10px 10px 0px rgb(175, 109, 119);
 }
-#project-5 .isometric-button::before{
-  background-color: rgb(235, 202, 20); /* Color for the sides */
-  border: 2px solid white;
-  box-shadow: 
-    1px 1px 0px rgb(129, 110, 0),  /* Light grayish-white shadow */
-    2px 2px 0px rgb(129, 110, 0),
-    3px 3px 0px rgb(129, 110, 0),
-    4px 4px 0px rgb(129, 110, 0),
-    5px 5px 0px rgb(129, 110, 0),
-    6px 6px 0px rgb(129, 110, 0),
-    7px 7px 0px rgb(129, 110, 0),
-    8px 8px 0px rgb(129, 110, 0),
-    9px 9px 0px rgb(129, 110, 0),
-    10px 10px 0px rgb(129, 110, 0),
-    inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+#project-5 .project-title::before{
+  border: 4px solid rgb(175, 109, 119);
+  box-shadow: 0px -10px 0px rgb(175, 109, 119);
 }
 
 #project-6 .base::before{
-  background-color: #5d97e7;
+  background-color: rgb(180, 143, 95);
   border: 4px solid white;
-  box-shadow:
-  1px 1px 0px #1555ad,  /* Light grayish-white shadow */
-  2px 2px 0px #1555ad,
-  3px 3px 0px #1555ad,
-  4px 4px 0px #1555ad,
-  5px 5px 0px #1555ad,
-  6px 6px 0px #1555ad,
-  7px 7px 0px #1555ad;
 }
 #project-6 .base::after{
+  background-color: rgb(117, 86, 45);
+  box-shadow:
+  5px 5px 0px rgb(117, 86, 45),
+  10px 10px 0px rgb(117, 86, 45);
+}
+#project-6 .project-title::before{
+  border: 4px solid rgb(117, 86, 45);
+  box-shadow: 0px -10px 0px rgb(117, 86, 45);
+}
+
+#project-7 .base::before{
+  background-color: orange;
+  border: 4px solid white;
+}
+#project-7 .base::after{
+  background-color: darkorange;
+  box-shadow:
+  5px 5px 0px darkorange,
+  10px 10px 0px darkorange;
+}
+#project-7 .project-title::before{
+  border: 4px solid darkorange;
+  box-shadow: 0px -10px 0px darkorange;
+}
+
+#project-7 .project-title{
+  font-size: 20px;
+}
+#project-8 .base::before{
+  background-color: #5d97e7;
+  border: 4px solid white;
+}
+#project-8 .base::after{
   background-color: #1555ad;
   box-shadow:
-  1px 1px 0px #1555ad,  /* Light grayish-white shadow */
-  2px 2px 0px #1555ad,
-  3px 3px 0px #1555ad,
-  4px 4px 0px #1555ad,
   5px 5px 0px #1555ad,
-  6px 6px 0px #1555ad,
-  7px 7px 0px #1555ad,
-  inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+  10px 10px 0px #1555ad;
 }
-#project-6 .isometric-button::before{
-  background-color: rgb(198, 112, 230); /* Color for the sides */
-  border: 2px solid white;
-  box-shadow: 
-    1px 1px 0px rgb(169, 12, 226),  /* Light grayish-white shadow */
-    2px 2px 0px rgb(169, 12, 226),
-    3px 3px 0px rgb(169, 12, 226),
-    4px 4px 0px rgb(169, 12, 226),
-    5px 5px 0px rgb(169, 12, 226),
-    6px 6px 0px rgb(169, 12, 226),
-    7px 7px 0px rgb(169, 12, 226),
-    8px 8px 0px rgb(169, 12, 226),
-    9px 9px 0px rgb(169, 12, 226),
-    10px 10px 0px rgb(169, 12, 226),
-    inset 0px 0px 0px rgba(255, 255, 255, 0.3); /* Inner shadow */
+#project-8 .project-title::before{
+  border: 4px solid #1555ad;
+  box-shadow: 0px -10px 0px #1555ad;
+}
+
+#project-9 .base::before{
+  background-color: lightgray;
+  border: 4px solid white;
+}
+#project-9 .base::after{
+  background-color: rgb(71, 147, 142);
+  box-shadow:
+  5px 5px 0px rgb(71, 147, 142),
+  10px 10px 0px rgb(71, 147, 142);
+}
+#project-9 .project-title::before{
+  border: 4px solid rgb(71, 147, 142);
+  box-shadow: 0px -10px 0px rgb(71, 147, 142);
 }

@@ -90,6 +90,7 @@ export const Project = () => {
                                             <source src={pacman} type="video/mp4"/>
                                             Your browser does not support the video tag.
                                         </video>
+                                        <div className="video-base"></div>
                                     </div>
                                     <div className="isometric-button noselect">Pacman-3D</div>
                                 </div>

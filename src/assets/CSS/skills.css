@@ -826,3 +826,24 @@ background: url(../Images/trees-m.webp);
         transform: translateY(55dvh) !important;
     }
   }
+
+  @media screen and (1451px <= width <=1920px) {
+    .skill-card .content {
+        transform: translateY(10dvh);
+    }
+    .skill-card:hover .content{
+        transform: translateY(-15dvh);
+    }
+    .light-bg {
+        transform: translate(-1dvw, 35dvh) !important;
+    }
+    .skill-card:hover .light-bg{
+        transform: translateY(60dvh) !important;
+    }
+    .dark-bg{
+        transform: translateY(60dvh) !important;
+    }
+    .skill-card:hover .dark-bg{
+        transform: translateY(46dvh) !important;
+    }
+}

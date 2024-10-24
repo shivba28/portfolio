@@ -222,13 +222,15 @@ export const Project = () => {
                         <Row className="my-5 vh-40">
                             <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
                                 <div className="project-item" id="project-10">
-                                    <div className="project-item-active"></div>
+                                    <div className="project-item-active">
+                                        <a style={{height:"100%", width:"100%", position:"absolute"}} href="https://github.com/shivba28/PropChain" target="_blank"></a>
+                                    </div>
                                     <div className="base"></div>
                                     <div className="lottie-figure">
                                         <Lottie animationData = {propChain1} loop = {true} autoplay = {true}  />
                                         <Lottie className="part-2" animationData = {propChain2} loop = {true} autoplay = {true} style={{height:75, width:75 }} />
                                     </div>
-                                    <div className="project-title noselect">PropChain</div>
+                                    <div className="project-title noselect">Prop-Chain</div>
                                 </div>
                             </Col>
                         </Row>

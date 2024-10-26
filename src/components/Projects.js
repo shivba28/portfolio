@@ -62,7 +62,7 @@ export const Project = () => {
               } else {
                 // Remove the class when the text leaves the viewport (optional)
                 Array.from(textRef.current.children).forEach(child => {
-                    child.classList.remove('neon-animate');
+                    // child.classList.remove('neon-animate');
                   });
               }
             },
@@ -181,13 +181,15 @@ export const Project = () => {
             {/* Modal to display project info dynamically */}
             {selectedProject && (
                 <Modal show onHide={closeModal} centered size="lg" className="projects-modal fade rounded">
-                    <Modal.Header className="bg-dark justify-content-center">
+                    <Modal.Header className="bg-secondary justify-content-center">
                         <Modal.Title className="text-center fs-1">{selectedProject.title}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="bg-black rounded">
+                    <Modal.Body className="bg-black rounded-bottom">
                         <div className="project-modal-content row">
                             <div className="info-section col-6">
                                 <p>Project details for {selectedProject.title}...</p>
+                                <a className="navbar-link link btn" style={{zIndex:100, position:"relative"}}>Code</a>
+                                <a className="navbar-link link btn" style={{zIndex:100, position:"relative"}}>Demo</a>
                             </div>
                             <div className="media-section col-6" id={"project-"+selectedProject.id}>
                             {(() => {

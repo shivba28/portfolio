@@ -198,6 +198,10 @@
   12px 12px 0px lightgrey;
 }
 
+.modal-header {
+  font-family: "Kranky";
+}
+
 
 /* Figure Sizes */
 .project-modal-content #project-1 .lottie-figure{

@@ -13,6 +13,7 @@ export const About = ({ show, handleClose }) => {
                     centered 
                     size="lg"
                     animation={true}
+                    className='about-modal'
                  >
                     <Modal.Body className="p-0">
                     

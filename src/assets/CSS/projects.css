@@ -8,7 +8,7 @@
     width: 100%;
     z-index: 1;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #262626);
+    background: #030f18;
   }
 
 
@@ -198,7 +198,12 @@
   12px 12px 0px lightgrey;
 }
 
+
 /* Figure Sizes */
+.project-modal-content #project-1 .lottie-figure{
+  width: 100%;
+  transform: translate(0);
+}
 
 #project-2 .lottie-figure{
   width: 45%;
@@ -207,12 +212,19 @@
 #project-2 .project-item-active:active ~ .lottie-figure{
   transform: translate(5px, -65px);
 }
+.project-modal-content #project-2 .lottie-figure{
+  width: 100%;
+  transform: translate(-10px, -50px);
+}
 
 #project-3 .lottie-figure{
   transform: translate(0px, 0px);
 }
 #project-3 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, 5px);
+}
+.project-modal-content #project-3 video{
+  height: 300px;
 }
 
 #project-4 .lottie-figure{

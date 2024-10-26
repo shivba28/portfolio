@@ -3,7 +3,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import front_img from '../assets/Images/project_front.png';
 import '../assets/CSS/projects.css';
-import '../assets/CSS/Modal.css';
 import Lottie from 'lottie-react';
 import { Row, Col, Modal } from "react-bootstrap";
 import { useEffect, useRef, useState } from 'react';
@@ -123,7 +122,6 @@ export const Project = () => {
                 </div>
             </div>
             <div className="project-content">
-                
                 <section className="section" id="project">
                     <div className="neon justify-content-center m-5" aria-hidden="true" aria-label="my skills" ref={textRef}>
                         <span className='neon-animate'>M</span>
@@ -140,7 +138,7 @@ export const Project = () => {
                     <Row className="project-items my-6">
                     {projects.map((project, index) => (
                         <Col key={project.id} xs={12} sm={6} lg={4} className="m-auto">
-                            <div className="project-item my-4" id={"project-"+project.id}>
+                            <div className="project-item my-5" id={"project-"+project.id}>
                                 <div className="project-item-active">
                                 <a style={{height:"100%", width:"100%", position:"absolute"}} onClick={() => openModal(project)}></a>
                                 </div>
@@ -182,22 +180,42 @@ export const Project = () => {
 
             {/* Modal to display project info dynamically */}
             {selectedProject && (
-                <Modal show onHide={closeModal} centered>
-                    <Modal.Header closeButton>
-                        <Modal.Title>{selectedProject.title}</Modal.Title>
+                <Modal show onHide={closeModal} centered size="lg" className="projects-modal fade rounded">
+                    <Modal.Header className="bg-dark justify-content-center">
+                        <Modal.Title className="text-center fs-1">{selectedProject.title}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
-                        <div className="modal-content">
-                            <div className="info-section">
-                                <h5>{selectedProject.title}</h5>
+                    <Modal.Body className="bg-black rounded">
+                        <div className="project-modal-content row">
+                            <div className="info-section col-6">
                                 <p>Project details for {selectedProject.title}...</p>
                             </div>
-                            <div className="media-section">
-                                {selectedProject.type === "lottie" ? (
-                                    <Lottie animationData={selectedProject.media} loop autoplay />
-                                ) : (
-                                    <video src={selectedProject.media} controls />
-                                )}
+                            <div className="media-section col-6" id={"project-"+selectedProject.id}>
+                            {(() => {
+                                switch (selectedProject.type) {
+                                    case "lottie":
+                                        return (
+                                            <div className="lottie-figure">
+                                                <Lottie animationData={selectedProject.animationData} loop autoplay />
+                                            </div>
+                                        );
+                                    case "video" :
+                                        return (
+                                        <video loop muted playsInline autoPlay> 
+                                            <source src={selectedProject.video} type="video/mp4"/>
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        );
+                                    case "lottie-prop" :
+                                        return (
+                                            <div>
+                                            <Lottie animationData={selectedProject.animationData} loop={true} autoplay={true} />
+                                            <Lottie className="part-2" animationData={selectedProject.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
+                                        </div>
+                                    );
+                                    default:
+                                        return null; // Optional: handle unexpected types
+                                        }
+                        })()}
                             </div>
                         </div>
                     </Modal.Body>

@@ -9,32 +9,32 @@
   overflow: hidden;
 }
 
-.bio-section {
+.about-modal .bio-section {
     background-color: black;
     color: lightgrey;
     height: 100%;
   }
 
-  .modal-body p{
+  .about-modal .modal-body p{
     font-family: "Inter", sans-serif;
     width: 65%;
     font-size: 19px;
     transform: translateY(10%);
   }
 
-  .modal-body p span{
+  .about-modal .modal-body p span{
     display: flex;
     width: 82%;
   }
 
-  .modal-body h2{
+  .about-modal .modal-body h2{
     font-family: "Kranky";
     font-size: 3rem;
     transform: translateY(50%);
     width: 30%;
   }
   
-.modal-content {
+  .about-modal .modal-content {
     border: none;
     overflow: hidden;
     height: 75vh;
@@ -42,28 +42,28 @@
     width: 30vw !important;
   }
   
-.modal-body {
+  .about-modal .modal-body {
     padding: 0;
   }
 
-.row{
+  .about-modal .row{
     height: 100%;
   }
 
-  .modal-dialog{
+  .about-modal .modal-dialog{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     
   }
 
-  .bio-section img{
+  .about-modal .bio-section img{
     position: fixed;
     top: -5vh;
     right: -11vw;
   }
 
-  .bio-section .sign{
+  .about-modal .bio-section .sign{
     position: relative;
     left: -2vh;
     transform: translateY(10vh);
@@ -73,29 +73,29 @@
 
   @media screen and (901px <= width <= 1450px){
 
-    .modal-content {
+    .about-modal .modal-content {
       height: 100%;
       width: 80% !important;
     }
 
-    .modal-body h2{
+    .about-modal .modal-body h2{
       font-size: 2rem;
       width: 100%;
     }
 
-    .modal-body p{
+    .about-modal .modal-body p{
       font-size: 12px;
       top: 0dvh;
       position: relative;
     }
 
-    .bio-section img{
+    .about-modal .bio-section img{
       height: 100%;
       width: auto;
       transform: translate(-15%, 10%);
     }
 
-    .bio-section .sign{
+    .about-modal .bio-section .sign{
       height: 100px;
       width: auto;
       transform: translate(50%,50%);

@@ -93,6 +93,11 @@ input:focus, textarea:focus, select:focus {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+.my-6{
+  margin-top: 5rem !important;
+  margin-bottom: 5rem !important;
+}
+
 @media (min-width:1700px) {
 	main .container {
 		max-width: 100%;
@@ -375,7 +380,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .about, .skills, .project{
-  background-color: #121212;
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #262626);
 }
 
 @keyframes slide-in {

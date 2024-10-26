@@ -5,6 +5,7 @@ import { Banner } from './components/Banner';
 import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Project } from './components/Projects';
+import { Contact } from './components/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { IPadCursorProvider, useIPadCursor } from "ipad-cursor/react";
 
@@ -51,6 +52,7 @@ function App() {
         <Banner />
         <Skills />
         <Project />
+        <Contact />
       </IPadCursorProvider>
     </div>
   );

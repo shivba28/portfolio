@@ -3,9 +3,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import front_img from '../assets/Images/project_front.png';
 import '../assets/CSS/projects.css';
+import '../assets/CSS/Modal.css';
 import Lottie from 'lottie-react';
-import { Row, Col } from "react-bootstrap";
-import { useEffect, useRef } from 'react';
+import { Row, Col, Modal } from "react-bootstrap";
+import { useEffect, useRef, useState } from 'react';
 
 import constructionData from '../assets/Lottie/CCDP.json';
 import school from '../assets/Lottie/trimmed_school.json';
@@ -22,29 +23,21 @@ import propChain2 from '../assets/Lottie/PropChain-2.json';
 export const Project = () => {
 
     gsap.registerPlugin(ScrollTrigger);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const textRef = useRef(null);
 
     useGSAP(() => {
         gsap.timeline({
             scrollTrigger: {
-                trigger: '.project',
+                trigger: '.scroll-wrapper',
                 start: 'top top',
                 end: "+=150%",
                 pin: true,
                 scrub: true,
             }
         })
-        .to(".spacer", {
-            scrollTrigger: {
-              trigger: ".spacer",
-              start: "top center", // This will trigger 100px before #project enters the viewport
-              onEnter: () => {
-                // Refresh all ScrollTriggers when the scroll is 100px before #project
-                ScrollTrigger.refresh();
-              }
-            }
-          })
-        .to(".image-container img", {
-            scale: 3,
+        .to(".scroll-wrapper img", {
+            scale: 2,
             z: 350,
             transformOrigin: "center center",
             ease: "power1.inOut"
@@ -58,8 +51,6 @@ export const Project = () => {
             },
         );
     });
-
-    const textRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -95,16 +86,44 @@ export const Project = () => {
         }, []);
 
 
+
+        // Project data array (title, description, media) for simplicity
+        const projects = [
+            { id: 1, title: "CCDP", animationData: constructionData, type: "lottie", },
+            { id: 2, title: "School Websites", animationData: school, type: "lottie" },
+            { id: 3, title: "Pacman-3D", video: pacman, type: "video" },
+            { id: 4, title: "Adopt Not Shop", animationData: ans, type: "lottie" },
+            { id: 5, title: "Valentine's Game", animationData: valentines, type: "lottie" },
+            { id: 6, title: "Chat-Bot", animationData: chatbot, type: "lottie" },
+            { id: 7, title: "Video Game Rental", animationData: videoGame, type: "lottie" },
+            { id: 8, title: "Mini-Projects", animationData: miniProjects, type: "lottie" },
+            { id: 9, title: "Portfolio", animationData: portfolio, type: "lottie" },
+            { id: 10, title: "Prop-Chain", animationData: propChain1, animationData2: propChain2, type: "lottie-prop" }
+            // Add other projects as needed
+        ];
+    
+        // Open modal and set selected project
+        const openModal = (project) => setSelectedProject(project);
+    
+        // Close modal by clearing the selected project
+        const closeModal = () => setSelectedProject(null);
+    
+
+
     return(
         
         <section className="project" >
-            <div className="spacer" style={{height: "10px"}}></div>
-            <div className="image-container">
-                <img src={front_img}/>
+            {/* <div className="spacer" style={{height: "10px"}}></div> */}
+            <div className="scroll-wrapper">
+                <div className="scroll-content">
+                    <section className="section hero"></section>
+                </div>
+                <div class="image-container">
+                    <img src={front_img}/>
+                </div>
             </div>
-
             <div className="project-content">
-                <section className="section hero"></section>
+                
                 <section className="section" id="project">
                     <div className="neon justify-content-center m-5" aria-hidden="true" aria-label="my skills" ref={textRef}>
                         <span className='neon-animate'>M</span>
@@ -118,123 +137,72 @@ export const Project = () => {
                         <span className='neon-animate'>t</span>
                         <span className='neon-animate'>s</span>
                     </div>
-                    <div className="project-items">
-                        <Row className="my-5 vh-40">
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-1">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {constructionData} loop = {true} autoplay = {true}  />
-                                    </div>
-                                    <div className="project-title noselect">CCDP</div>
+                    <Row className="project-items my-6">
+                    {projects.map((project, index) => (
+                        <Col key={project.id} xs={12} sm={6} lg={4} className="m-auto">
+                            <div className="project-item my-4" id={"project-"+project.id}>
+                                <div className="project-item-active">
+                                <a style={{height:"100%", width:"100%", position:"absolute"}} onClick={() => openModal(project)}></a>
                                 </div>
-                            </Col>
-                            <Col xs={12}sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-2">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {school} loop = {true} autoplay = {true}  />
-                                    </div>
-                                    <div className="project-title noselect">School Websites</div>
+                                <div className="base"></div>
+                                <div className="lottie-figure">
+                                    {(() => {
+                                        switch (project.type) {
+                                            case 'lottie':
+                                            return (
+                                                <Lottie animationData={project.animationData} loop={true} autoplay={true} />
+                                            );
+                                            case "video" :
+                                            return (
+                                                <div>
+                                                    <video loop muted playsInline autoPlay>
+                                                        <source src={project.video} type="video/mp4" />
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                    <div className="video-base"></div>
+                                                </div>
+                                            );
+                                            case "lottie-prop" :
+                                                return (
+                                                    <div>
+                                                        <Lottie animationData={project.animationData} loop={true} autoplay={true} />
+                                                        <Lottie className="part-2" animationData={project.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
+                                                    </div>
+                                                );
+                                            default:
+                                                return null; // Optional: handle unexpected types
+                                                }
+                                    })()}
                                 </div>
-                            </Col>
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-3">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <video loop muted playsInline autoPlay>
-                                            <source src={pacman} type="video/mp4"/>
-                                            Your browser does not support the video tag.
-                                        </video>
-                                        <div className="video-base"></div>
-                                    </div>
-                                    <div className="project-title noselect">Pacman-3D</div>
-                                </div>
-                            </Col>
-                        </Row> 
-                        <Row className="my-5 vh-40">
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-4">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {ans} loop = {true} autoplay = {true}  />
-                                    </div>
-                                    <div className="project-title noselect">Adopt Not Shop</div>
-                                </div>
-                            </Col>
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-5">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {valentines} loop = {true} autoplay = {true}  />
-                                    </div>
-                                    <div className="project-title noselect">Valentine's Game</div>
-                                </div>
-                            </Col>
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-6">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {chatbot} loop = {true} autoplay = {true}  />
-                                    </div>
-                                    <div className="project-title noselect">Chat-Bot</div>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row className="my-5 vh-40">
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-7">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {videoGame} loop = {true} autoplay = {true}  />
-                                    </div>
-                                    <div className="project-title noselect">Video-Game Rental</div>
-                                </div>
-                            </Col>
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-8">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {miniProjects} loop = {true} autoplay = {true}  />
-                                    </div>
-                                    <div className="project-title noselect">Mini Projects</div>
-                                </div>
-                            </Col>
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-9">
-                                    <div className="project-item-active"></div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {portfolio} loop = {true} autoplay = {true}  />
-                                    </div>
-                                    <div className="project-title noselect">Portfolio</div>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row className="my-5 vh-40">
-                            <Col xs={12} sm={8} md={6} xl={4} className="m-auto">
-                                <div className="project-item" id="project-10">
-                                    <div className="project-item-active">
-                                        <a style={{height:"100%", width:"100%", position:"absolute"}} href="https://github.com/shivba28/PropChain" target="_blank"></a>
-                                    </div>
-                                    <div className="base"></div>
-                                    <div className="lottie-figure">
-                                        <Lottie animationData = {propChain1} loop = {true} autoplay = {true}  />
-                                        <Lottie className="part-2" animationData = {propChain2} loop = {true} autoplay = {true} style={{height:75, width:75 }} />
-                                    </div>
-                                    <div className="project-title noselect">Prop-Chain</div>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
+                                <div className="project-title noselect">{project.title}</div>
+                            </div>
+                        </Col>
+                    ))}
+                </Row>
+
+            {/* Modal to display project info dynamically */}
+            {selectedProject && (
+                <Modal show onHide={closeModal} centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{selectedProject.title}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="modal-content">
+                            <div className="info-section">
+                                <h5>{selectedProject.title}</h5>
+                                <p>Project details for {selectedProject.title}...</p>
+                            </div>
+                            <div className="media-section">
+                                {selectedProject.type === "lottie" ? (
+                                    <Lottie animationData={selectedProject.media} loop autoplay />
+                                ) : (
+                                    <video src={selectedProject.media} controls />
+                                )}
+                            </div>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            )}
                 </section>
             </div>
         </section>

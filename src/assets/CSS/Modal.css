@@ -71,7 +71,7 @@
     z-index: 1;
   }
 
-  @media screen and (901px <= width <= 1400px){
+  @media screen and (901px <= width <= 1450px){
 
     .modal-content {
       height: 100%;

@@ -820,7 +820,7 @@ background: url(../Images/trees-m.webp);
         transform: translateY(60dvh) !important;
     }
     .dark-bg{
-        transform: translateY(60dvh) !important;
+        transform: translateY(90dvh) !important;
     }
     .skill-card:hover .dark-bg{
         transform: translateY(55dvh) !important;

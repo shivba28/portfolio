@@ -19,6 +19,7 @@ import portfolio from '../assets/Lottie/Portfolio.json';
 import propChain1 from '../assets/Lottie/PropChain-1.json';
 import propChain2 from '../assets/Lottie/PropChain-2.json';
 
+
 export const Project = () => {
 
     gsap.registerPlugin(ScrollTrigger);
@@ -62,7 +63,7 @@ export const Project = () => {
               } else {
                 // Remove the class when the text leaves the viewport (optional)
                 Array.from(textRef.current.children).forEach(child => {
-                    // child.classList.remove('neon-animate');
+                    child.classList.remove('neon-animate');
                   });
               }
             },
@@ -85,19 +86,60 @@ export const Project = () => {
         }, []);
 
 
-
         // Project data array (title, description, media) for simplicity
         const projects = [
-            { id: 1, title: "CCDP", animationData: constructionData, type: "lottie", },
-            { id: 2, title: "School Websites", animationData: school, type: "lottie" },
-            { id: 3, title: "Pacman-3D", video: pacman, type: "video" },
-            { id: 4, title: "Adopt Not Shop", animationData: ans, type: "lottie" },
-            { id: 5, title: "Valentine's Game", animationData: valentines, type: "lottie" },
-            { id: 6, title: "Chat-Bot", animationData: chatbot, type: "lottie" },
-            { id: 7, title: "Video Game Rental", animationData: videoGame, type: "lottie" },
-            { id: 8, title: "Mini-Projects", animationData: miniProjects, type: "lottie" },
-            { id: 9, title: "Portfolio", animationData: portfolio, type: "lottie" },
-            { id: 10, title: "Prop-Chain", animationData: propChain1, animationData2: propChain2, type: "lottie-prop" }
+            { 
+                id: 1, title: "CCDP", animationData: constructionData, type: "lottie",
+                link:"https://github.com/shivba28/CCDP",
+                Desc:"A robust construction project management tool designed to streamline documentation," + " " +
+                "progress tracking, and collaborative workflows," + " " +
+                "facilitating efficient project oversight from inception to completion."
+            },
+            { id: 2, title: "School Websites", animationData: school, type: "lottie",
+                link:"https://github.com/shivba28/GardenCms",
+                Desc:"Developed a comprehensive platform for school websites with responsive design and CMS integration," + " " + 
+                "enabling schools to manage content and showcase information seamlessly for students, parents, and staff."
+            },
+            { id: 3, title: "Pacman-3D", video: pacman, type: "video",
+                link:"https://github.com/shivba28/PacMan3D",
+                Desc:"A 3D twist on the classic Pacman game, this project features enhanced graphics and interactive elements," + " " +
+                "offering players an immersive experience with challenging mazes and power-ups."
+            },
+            { id: 4, title: "Adopt Not Shop", animationData: ans, type: "lottie",
+                link:"https://github.com/shivba28/ANS",
+                Desc:"An application promoting animal adoption by providing resources and profiles of pets," + " " + 
+                "helping users find adoptable pets and raise awareness about shelter animals."
+            },
+            { id: 5, title: "Valentine's Game", animationData: valentines, type: "lottie", 
+                link:"https://github.com/shivba28/v-game-app",
+                Desc:"A lighthearted, interactive game celebrating Valentine's Day," + " " +
+                "designed to engage users with festive mini-games and challenges centered around themes of love and friendship."
+            },
+            { id: 6, title: "Chat-Bot", animationData: chatbot, type: "lottie", 
+                link:"https://github.com/shivba28/chat-bot", 
+                Desc:"An AI-driven chatbot that facilitates seamless user interactions," + " " +
+                "providing assistance and answers to frequently asked questions across various domains, with a focus on natural language processing."
+            },
+            { id: 7, title: "Video Game Rental", animationData: videoGame, type: "lottie", 
+                link:"https://github.com/shivba28/Game_Rentel", 
+                Desc:"A platform for renting video games that allows users to browse," + " " +
+                "select, and rent games easily, while managing inventory and tracking rental history effectively."
+            },
+            { id: 8, title: "Mini-Projects", animationData: miniProjects, type: "lottie", 
+                link:"https://github.com/shivba28/Mini-Projects", 
+                Desc:"A collection of innovative small-scale projects designed to explore new technologies," + " " + 
+                "experiment with creative ideas, and develop unique, functional solutions to common challenges."
+            },
+            { id: 9, title: "Portfolio", animationData: portfolio, type: "lottie", 
+                link:"https://github.com/shivba28/portfolio_2.0", 
+                Desc:"A personal portfolio showcasing development skills, projects," + " " +
+                "and accomplishments in a visually appealing format, serving as an online resume and professional introduction."
+            },
+            { id: 10, title: "Prop-Chain", animationData: propChain1, animationData2: propChain2, type: "lottie-prop", 
+                link:"https://github.com/shivba28/PropChain",
+                Desc:"A blockchain-inspired project aimed at enhancing property management by securely recording transactions," + " " + 
+                "managing ownership records, and ensuring transparent real estate processes."
+            }
             // Add other projects as needed
         ];
     
@@ -106,8 +148,6 @@ export const Project = () => {
     
         // Close modal by clearing the selected project
         const closeModal = () => setSelectedProject(null);
-    
-
 
     return(
         
@@ -181,15 +221,14 @@ export const Project = () => {
             {/* Modal to display project info dynamically */}
             {selectedProject && (
                 <Modal show onHide={closeModal} centered size="lg" className="projects-modal fade rounded">
-                    <Modal.Header className="bg-secondary justify-content-center">
-                        <Modal.Title className="text-center fs-1">{selectedProject.title}</Modal.Title>
+                    <Modal.Header className="bg-black justify-content-center">
+                        <Modal.Title className="text-center fs-1 rounded px-3">{selectedProject.title}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="bg-black rounded-bottom">
-                        <div className="project-modal-content row">
-                            <div className="info-section col-6">
-                                <p>Project details for {selectedProject.title}...</p>
-                                <a className="navbar-link link btn" style={{zIndex:100, position:"relative"}}>Code</a>
-                                <a className="navbar-link link btn" style={{zIndex:100, position:"relative"}}>Demo</a>
+                        <div className="project-modal-content row align-items-center">
+                            <div className="info-section col-6 d-grid">
+                                <p className="text-justify">{selectedProject.Desc}</p>
+                                <a className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>Code</a>
                             </div>
                             <div className="media-section col-6" id={"project-"+selectedProject.id}>
                             {(() => {
@@ -202,14 +241,17 @@ export const Project = () => {
                                         );
                                     case "video" :
                                         return (
-                                        <video loop muted playsInline autoPlay> 
-                                            <source src={selectedProject.video} type="video/mp4"/>
-                                            Your browser does not support the video tag.
-                                        </video>
+                                            <div>
+                                                <video loop muted playsInline autoPlay> 
+                                                    <source src={selectedProject.video} type="video/mp4"/>
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                                <div className="video-base"></div>
+                                            </div>
                                         );
                                     case "lottie-prop" :
                                         return (
-                                            <div>
+                                            <div className="lottie-figure m-auto">
                                             <Lottie animationData={selectedProject.animationData} loop={true} autoplay={true} />
                                             <Lottie className="part-2" animationData={selectedProject.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
                                         </div>

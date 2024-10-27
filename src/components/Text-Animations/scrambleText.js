@@ -101,8 +101,8 @@ export const TextScramble = ({ phrases }) => {
   }, [isVisible, phrases]);
 
   return (
-        <div className='container-scramble'>
-            <div ref={elRef} className="text" data-cursor="text"/>
+        <div className='container-scramble rounded-3'>
+            <div ref={elRef} className="text text-white"/>
         </div>
     );
 };

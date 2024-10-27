@@ -229,6 +229,10 @@
 }
 .project-modal-content #project-3 video{
   height: 300px;
+  transform: translate(5dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
+}
+.project-modal-content #project-3 .video-base{
+  transform: translate(37px,-37dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
 }
 
 #project-4 .lottie-figure{
@@ -238,6 +242,9 @@
 #project-4 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, 5px);
 }
+.project-modal-content #project-4 .lottie-figure{
+  transform: translate(100px, 0px);
+}
 
 #project-5 .lottie-figure{
   width: 200px;
@@ -245,6 +252,9 @@
 }
 #project-5 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, -45px);
+}
+.project-modal-content #project-5 .lottie-figure{
+  transform: translate(100px, 0px);
 }
 
 #project-6 .lottie-figure{
@@ -254,6 +264,9 @@
 #project-6 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, -65px);
 }
+.project-modal-content #project-6 .lottie-figure{
+  transform: translate(50px, 0px);
+}
 
 #project-7 .lottie-figure{
   width: 150px;
@@ -261,6 +274,9 @@
 }
 #project-7 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, -15px);
+}
+.project-modal-content #project-7 .lottie-figure{
+  transform: translate(100px, 0px);
 }
 
 #project-8 .lottie-figure{
@@ -270,6 +286,10 @@
 #project-8 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, -80px);
 }
+.project-modal-content #project-8 .lottie-figure{
+  transform: translate(0px, -50px);
+  height: 300px;
+}
 
 #project-9 .lottie-figure{
   width: 300px;
@@ -277,6 +297,9 @@
 }
 #project-9 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, -45px);
+}
+.project-modal-content #project-9 .lottie-figure{
+  transform: translate(20px, 0px);
 }
 
 #project-10 .lottie-figure{
@@ -288,6 +311,12 @@
 }
 #project-10 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, -15px);
+}
+.project-modal-content #project-10 .lottie-figure{
+  transform: translate(0px, 0px);
+}
+.project-modal-content #project-10 .lottie-figure .part-2{
+  transform: translate(100px, -100px);
 }
 
 

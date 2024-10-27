@@ -93,9 +93,17 @@ input:focus, textarea:focus, select:focus {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+.text-justify{
+  text-align: justify;
+}
+
 .my-6{
   margin-top: 5rem !important;
   margin-bottom: 5rem !important;
+}
+
+.modal.fade.show {
+  backdrop-filter: blur(50px);
 }
 
 @media (min-width:1700px) {
@@ -359,7 +367,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 
 .tagline-section {
-  background-color: transparent;
+  background-color: rgb(0,0,0,0.6);
   backdrop-filter: blur(1rem);
   position: relative;
   z-index: 2;

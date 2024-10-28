@@ -63,6 +63,26 @@
     }
   }
 
+  .project .title{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .project .left, .project .right{
+    font-family: "kranky" !important;
+    font-style: normal;
+}
+
+.project .slogan-left .left {
+    font-size: 5rem;
+}
+
+#project .slogan-right .right{
+    font-size: 5rem !important;
+}
+
   .base{ 
     width:400px; 
     height:300px;
@@ -186,23 +206,24 @@
 }
 #project-3 .video-base{
   position: absolute;
-  height: 220px;
-  width: 300px;
+  height: 180px;
+  width: 250px;
   background-color: transparent;
-  border: 2px solid white;
   border-radius: 10%;
   z-index: 1;
-  transform: translate(20px,-21dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+  transform: translate(47px,-18dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
   box-shadow:
-  6px 6px 0px lightgrey,
-  12px 12px 0px lightgrey;
+  6px 6px 0px #0695dd,
+  12px 12px 0px #0695dd;
 }
 
 .modal-header {
   font-family: "Kranky";
 }
 
-
+.modal-body p{
+  font-family: "Georgia";
+}
 /* Figure Sizes */
 .project-modal-content #project-1 .lottie-figure{
   width: 100%;
@@ -232,7 +253,7 @@
   transform: translate(5dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
 }
 .project-modal-content #project-3 .video-base{
-  transform: translate(37px,-37dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+  transform: translate(85px,-28dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
 }
 
 #project-4 .lottie-figure{
@@ -313,7 +334,8 @@
   transform: translate(0px, -15px);
 }
 .project-modal-content #project-10 .lottie-figure{
-  transform: translate(0px, 0px);
+  transform: translate(0px, -50px);
+  height: 250px;
 }
 .project-modal-content #project-10 .lottie-figure .part-2{
   transform: translate(100px, -100px);
@@ -356,14 +378,14 @@
   border: 4px solid white;
 }
 #project-3 .base::after{
-  background-color: lightgray;
+  background-color: #0695dd;
   box-shadow:
-  5px 5px 0px lightgrey,
-  10px 10px 0px lightgrey;
+  5px 5px 0px #0695dd,
+  10px 10px 0px #0695dd;
 }
 #project-3 .project-title::before{
-  border: 4px solid darkgray;
-  box-shadow: 0px -10px 0px darkgray;
+  border: 4px solid #0695dd;
+  box-shadow: 0px -10px 0px #0695dd;
     
 }
 

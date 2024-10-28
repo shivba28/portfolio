@@ -31,15 +31,28 @@ export const NavBar = ({openModal}) => {
               <Navbar.Brand href="/" data-cursor="block" data-cursor-style="background: transparent">
                 <img src={logo} alt="Logo" style={{width: "80px", height: "80px"}}/>
               </Navbar.Brand>
-              <h1 data-cursor="text" style={{fontFamily: "Kranky"}}>SHI<span style={{color:"#eb667e"}}>VB</span>A <span style={{color:"#eb667e"}}>C</span>ODES</h1>
+              {/* <h1 data-cursor="text" style={{fontFamily: "Kranky"}}>SHI<span style={{color:"#eb667e"}}>VB</span>A <span style={{color:"#eb667e"}}>C</span>ODES</h1> */}
+              <div className="neon" aria-hidden="true" aria-label="my skills" data-cursor="text">
+                <span className='neon-animate'>S</span>
+                <span className='neon-animate'>H</span>
+                <span className='neon-animate'>I</span>
+                <span className='neon-animate'>V</span>
+                <span className='neon-animate'>B</span>
+                <span className='neon-animate'>A</span>
+                <span className='neon-animate'>C</span>
+                <span className='neon-animate'>O</span>
+                <span className='neon-animate'>D</span>
+                <span className='neon-animate'>E</span>
+                <span className='neon-animate'>S</span>
+            </div>
               <Navbar.Toggle aria-controls="basic-navbar-nav">
                 <span className="navbar-toggler-icon"></span>
               </Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
                   <Link data-cursor="block" to="home" spy={true} smooth={true} duration={800} className={'navbar-link link'}>Home</Link>
-                  <Link data-cursor="block" to="skill" spy={true} smooth={true} duration={800} className={'navbar-link link'}>Skills</Link>
-                  <Link data-cursor="block" to="project" spy={true} smooth={true} duration={800} className={'navbar-link link'}>Projects</Link>
+                  <Link data-cursor="block" to="skill" spy={true} smooth={true} offset={-50} duration={800} className={'navbar-link link'}>Skills</Link>
+                  <Link data-cursor="block" to="project" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link link'}>Projects</Link>
                   <Link data-cursor="block" to="/" spy={true} smooth={true} duration={800} onClick={openModal} className={'navbar-link link'}>About</Link>
                 </Nav>
                 

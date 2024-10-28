@@ -97,3 +97,32 @@
       transform: translate(50%,50%);
     }
   }
+
+  @media screen and (width > 1450px){
+
+
+    .about-modal .modal-body h2{
+      font-size: 3rem;
+      width: 100%;
+      position: relative;
+      top: -5dvh;
+    }
+
+    .about-modal .modal-body p{
+      font-size: 15px;
+      top: -5dvh;
+      position: relative;
+    }
+
+    .about-modal .bio-section img{
+      height: 100%;
+      width: auto;
+      transform: translate(-10%, 10%);
+    }
+
+    .about-modal .bio-section .sign{
+      height: 100px;
+      width: auto;
+      transform: translate(10%,50%);
+    }
+  }    

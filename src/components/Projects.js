@@ -24,7 +24,6 @@ export const Project = () => {
 
     gsap.registerPlugin(ScrollTrigger);
     const [selectedProject, setSelectedProject] = useState(null);
-    const textRef = useRef(null);
 
     useGSAP(() => {
         gsap.timeline({
@@ -51,39 +50,6 @@ export const Project = () => {
             },
         );
     });
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-              if (entry.isIntersecting) {
-                // Add the class when the text enters the viewport
-                Array.from(textRef.current.children).forEach(child => {
-                child.classList.add('neon-animate');
-            });
-              } else {
-                // Remove the class when the text leaves the viewport (optional)
-                Array.from(textRef.current.children).forEach(child => {
-                    child.classList.remove('neon-animate');
-                  });
-              }
-            },
-            {
-                rootMargin: '-100px 0px 0px 0px',
-                threshold: 0, // Trigger when 50% of the text is in the viewport
-            }
-          );
-      
-          if (textRef.current) {
-            observer.observe(textRef.current); // Observe the target element
-          }
-      
-          // Cleanup the observer when the component is unmounted
-          return () => {
-            if (textRef.current) {
-              observer.unobserve(textRef.current);
-            }
-          };
-        }, []);
 
 
         // Project data array (title, description, media) for simplicity
@@ -157,25 +123,17 @@ export const Project = () => {
                 <div className="scroll-content">
                     <section className="section hero"></section>
                 </div>
-                <div class="image-container">
+                <div className="image-container">
                     <img src={front_img}/>
                 </div>
             </div>
             <div className="project-content">
                 <section className="section" id="project">
-                    <div className="neon justify-content-center m-5" aria-hidden="true" aria-label="my skills" ref={textRef}>
-                        <span className='neon-animate'>M</span>
-                        <span className='neon-animate'>y</span>
-                        <span className='neon-animate'>P</span>
-                        <span className='neon-animate'>r</span>
-                        <span className='neon-animate'>o</span>
-                        <span className='neon-animate'>j</span>
-                        <span className='neon-animate'>e</span>
-                        <span className='neon-animate'>c</span>
-                        <span className='neon-animate'>t</span>
-                        <span className='neon-animate'>s</span>
+                    <div className="title text-center">
+                        <div className="slogan-left"><h1 className="left">MY</h1></div>
+                        <div className="slogan-right"><h1 className="right">PROJECTS</h1></div>
                     </div>
-                    <Row className="project-items my-6">
+                    <Row className="project-items my-3">
                     {projects.map((project, index) => (
                         <Col key={project.id} xs={12} sm={6} lg={4} className="m-auto">
                             <div className="project-item my-5" id={"project-"+project.id}>

@@ -15,6 +15,19 @@
     width: 100%;
 }
 
+.skills .left, .skills .right{
+    font-family: "kranky" !important;
+    font-style: normal;
+}
+
+.skills .slogan-left .left {
+    font-size: 5rem;
+}
+
+#skill .slogan-right .right{
+    font-size: 5rem !important;
+}
+
 .lightBg, .darkBg {
     width: 100%;
     height: 100%;

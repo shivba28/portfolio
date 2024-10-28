@@ -11,55 +11,11 @@ import { useEffect, useRef } from 'react';
 
 
 export const Skills = () => {
-    
-
-    const textRef = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-              if (entry.isIntersecting) {
-                // Add the class when the text enters the viewport
-                Array.from(textRef.current.children).forEach(child => {
-                child.classList.add('neon-animate');
-            });
-              } else {
-                // Remove the class when the text leaves the viewport (optional)
-                Array.from(textRef.current.children).forEach(child => {
-                    child.classList.remove('neon-animate');
-                  });
-              }
-            },
-            {
-                rootMargin: '-100px 0px 0px 0px',
-                threshold: 0, // Trigger when 50% of the text is in the viewport
-            }
-          );
-      
-          if (textRef.current) {
-            observer.observe(textRef.current); // Observe the target element
-          }
-      
-          // Cleanup the observer when the component is unmounted
-          return () => {
-            if (textRef.current) {
-              observer.unobserve(textRef.current);
-            }
-          };
-        }, []);
 
     return(
-       <section className='skills content' id='skill' >
-            <div className="neon" aria-hidden="true" aria-label="my skills" ref={textRef}>
-                <span className='neon-animate'>M</span>
-                <span className='neon-animate'>y</span>
-                <span className='neon-animate'>S</span>
-                <span className='neon-animate'>k</span>
-                <span className='neon-animate'>i</span>
-                <span className='neon-animate'>l</span>
-                <span className='neon-animate'>l</span>
-                <span className='neon-animate'>s</span>
-            </div>
+       <section className='skills content' id='skill'>
+            <div className="slogan-left"><h1 className="left">MY</h1></div>
+            <div className="slogan-right"><h1 className="right">SKILLS</h1></div>
             <div className="card-container">
                 <div className="skill-card" id='card1'>
                     <div className="background">

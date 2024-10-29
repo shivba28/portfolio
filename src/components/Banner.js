@@ -33,13 +33,12 @@ export const Banner = () => {
                 end: 'bottom top', // Animation ends when the bottom of .banner reaches the top
                 scrub: true,
             },
-            onStart: () => {y:-100},
         })
         .to(videoRef.current, {
             scrollTrigger: {
                 trigger: containerRef.current, // Video animation is linked to .banner
                 start: 'top top',
-                end: '+=100%', // Animation ends when the bottom of .banner reaches the top
+                end: '+=100%',
                 pin: true, // This keeps the video pinned
                 pinSpacing: false,
             }

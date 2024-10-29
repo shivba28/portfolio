@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
-    height: 100dvh;
+    height: 100%;
 }
 
 .skills .card-container{
@@ -133,7 +133,7 @@ width: 90%;
 padding: 20px;
 margin-left: auto;
 margin-right: auto;
-margin-top: 15dvh;
+margin-top: 25%;
 z-index: 10;
 color: black;
 text-align: center;
@@ -156,7 +156,7 @@ border-radius: 20px;
 
 .skill-card:hover .content{
     color: white;
-    transform: translateY(-40%);
+    transform: translateY(0%);
 }
 .skill-card:hover .content img{
     opacity: 0;
@@ -842,21 +842,21 @@ background: url(../Images/trees-m.webp);
 
   @media screen and (1451px <= width <=1920px) {
     .skill-card .content {
-        transform: translateY(10dvh);
+        transform: translateY(20%);
     }
     .skill-card:hover .content{
-        transform: translateY(-15dvh);
+        transform: translateY(-20%);
     }
     .light-bg {
-        transform: translate(-1dvw, 35dvh) !important;
+        transform: translate(-5%, 100%) !important;
     }
     .skill-card:hover .light-bg{
-        transform: translateY(60dvh) !important;
+        transform: translate(-5%, 150%) !important;
     }
     .dark-bg{
-        transform: translateY(60dvh) !important;
+        transform: translateY(300%) !important;
     }
     .skill-card:hover .dark-bg{
-        transform: translateY(46dvh) !important;
+        transform: translateY(225%) !important;
     }
 }

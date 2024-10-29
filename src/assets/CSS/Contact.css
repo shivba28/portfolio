@@ -1,0 +1,12 @@
+.contact .left, .contact .right{
+    font-family: "kranky" !important;
+    font-style: normal;
+}
+
+.contact .slogan-left .left {
+    font-size: 5rem;
+}
+
+#contact .slogan-right .right{
+    font-size: 5rem !important;
+}

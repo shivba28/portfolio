@@ -58,8 +58,12 @@
       object-fit: contain;
     }
 
-    .project .project-content .section.hero {
+    .project .scroll-content .section.hero {
       background-size: contain;
+    }
+
+    .project .scroll-content{
+      background: #030f18;
     }
   }
 

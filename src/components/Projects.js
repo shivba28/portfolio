@@ -36,7 +36,7 @@ export const Project = () => {
             }
         })
         .to(".scroll-wrapper img", {
-            scale: 2,
+            scale: 5,
             z: 350,
             transformOrigin: "center center",
             ease: "power1.inOut"
@@ -129,7 +129,7 @@ export const Project = () => {
             </div>
             <div className="project-content">
                 <section className="section" id="project">
-                    <div className="title text-center">
+                    <div className="title text-center pt-4 bg-gradient">
                         <div className="slogan-left"><h1 className="left">MY</h1></div>
                         <div className="slogan-right"><h1 className="right">PROJECTS</h1></div>
                     </div>

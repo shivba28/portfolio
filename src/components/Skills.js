@@ -14,8 +14,10 @@ export const Skills = () => {
 
     return(
        <section className='skills content' id='skill'>
-            <div className="slogan-left"><h1 className="left">MY</h1></div>
-            <div className="slogan-right"><h1 className="right">SKILLS</h1></div>
+            <div className="title text-center d-flex flex-wrap pt-4 bg-gradient w-100">
+                <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
+                <div className="slogan-right me-auto"><h1 className="right">SKILLS</h1></div>
+            </div>
             <div className="card-container">
                 <div className="skill-card" id='card1'>
                     <div className="background">

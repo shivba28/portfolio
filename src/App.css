@@ -371,8 +371,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   backdrop-filter: blur(1rem);
   position: relative;
   z-index: 2;
-  min-height: 100vh; /* Ensure it covers the viewport */
-  width: 100vw;
+  min-height: 100dvh; /* Ensure it covers the viewport */
+  width: 100%;
   padding: 2%;
   text-align: center;
   display: flex;
@@ -383,13 +383,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   height: 100dvh; /* Height of the content to allow scrolling */
   position: relative;
   z-index: 1;
-  width: 100vw;
+  width: 100dvw;
   justify-content: center;
 }
 
 .about, .skills, .project, .contact{
   background: #030f18;
-  background-attachment: fixed;
 }
 
 

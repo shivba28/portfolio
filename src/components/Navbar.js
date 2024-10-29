@@ -61,7 +61,7 @@ export const NavBar = ({openModal}) => {
                     <a data-cursor="block" data-cursor-style="background: transparent" href="https://www.linkedin.com/in/shivba-pawar/" target="_blank" rel="noreferrer"><img src={navIcon1} alt="" /></a>
                     <a data-cursor="block" data-cursor-style="background: transparent" href="https://github.com/shivba28" target="_blank" rel="noreferrer"><img src={navIcon2} alt="" /></a>
                   </div>
-                    <Link data-cursor="block" data-cursor-style="background: transparent" href="#contact" to="contact" spy={true} smooth={true} duration={800} className={'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
+                    <Link data-cursor="block" data-cursor-style="background: transparent" href="#contact" to="contact" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
                 </span>
               </Navbar.Collapse>
             </Container>

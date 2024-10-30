@@ -1,6 +1,6 @@
-import { Col, Row } from 'react-bootstrap'
-import '../assets/CSS/Contact.css'
-import img from '../assets/Images/contact.png'
+import { Col, Row } from 'react-bootstrap';
+import '../assets/CSS/Contact.css';
+import img from '../assets/Images/contact.png';
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 

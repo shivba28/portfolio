@@ -1,3 +1,11 @@
+.contact.contact{
+    height: min-content;
+}
+
+.contact.content .col{
+   height: 700px;
+}
+
 .contact .left, .contact .right{
     font-family: "kranky" !important;
     font-style: normal;
@@ -9,4 +17,48 @@
 
 #contact .slogan-right .right{
     font-size: 5rem !important;
+}
+
+#contact .col-6 img{
+    height: 40%;
+    width: auto;
+    animation: imgFloat 6s ease-out infinite;
+}
+
+@keyframes imgFloat {
+    0%, 100% {transform: translateY(80px);}
+    50% {transform: translateY(40px);}
+}
+
+/* form CSS */
+
+#form-content {
+    height: 75%;
+    width: 75%;
+    -webkit-box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+}
+#form-content::after {
+    clear: both;
+    display: block;
+    content: '';
+}
+#form-content header {
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-family: 'Kranky', sans-serif;
+}
+#form-content form {
+    margin: 30px 0;
+    color: #000;
+}
+
+#form-content #resetBtn {
+    float: right;
+}
+
+#form-content form input{
+    margin-bottom: 10%;
 }

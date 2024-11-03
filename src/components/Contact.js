@@ -1,4 +1,4 @@
-import { Col, Row } from 'react-bootstrap';
+import { Col, NavLink, Row } from 'react-bootstrap';
 import '../assets/CSS/Contact.css';
 import img from '../assets/Images/contact.png';
 import React, { useRef } from 'react';
@@ -39,10 +39,19 @@ export const Contact = () => {
                 <div id="form-content" className='mx-auto rounded-4 bg-light bg-gradient'>
                 <header id="header" className="bg-dark rounded-top-4">Send new Email</header>
                     <form className='form d-grid mx-5' ref={form} onSubmit={sendEmail}>
-                        <input data-cursor="text" type="text" name="user_name" placeholder='Name' />
-                        <input data-cursor="text" type="email" name="user_email" placeholder='Email' />
-                        <textarea data-cursor="text" name="message" placeholder='Message' />
-                        <input data-cursor="block" className='mt-5' type="submit" value="Send" />
+                      <div class="form__group field">
+                        <label for="user_name" class="form__label">Name</label>
+                        <input data-cursor="text" className='form__field' type="text" name="user_name" placeholder='Name' id='name' />
+                      </div>
+                      <div class="form__group field">
+                        <label for="user_email" class="form__label">Email</label>
+                        <input data-cursor="text" className='form__field' type="email" name="user_email" placeholder='Email' id='email' />
+                      </div>
+                      <div class="form__group field">
+                        <label for="message" class="form__label">Message</label>
+                        <textarea data-cursor="text" className='form__field' name="message" placeholder='Message' id='message' />
+                      </div>
+                        <input data-cursor="block" className='bg-secondary bg-gradient mt-5 btn' type="submit" value="Send" />
                     </form>
                 </div>
                 </Col>

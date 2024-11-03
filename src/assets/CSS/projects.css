@@ -329,14 +329,14 @@
   transform: translate(50px, 0px);
 }
 
-#project-7 .lottie-figure{
+#project-9 .lottie-figure{
   width: 150px;
   transform: translate(0px, -20px);
 }
-#project-7 .project-item-active:active ~ .lottie-figure{
+#project-9 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, -15px);
 }
-.project-modal-content #project-7 .lottie-figure{
+.project-modal-content #project-9 .lottie-figure{
   transform: translate(100px, 0px);
 }
 
@@ -352,14 +352,14 @@
   height: 300px;
 }
 
-#project-9 .lottie-figure{
+#project-7 .lottie-figure{
   width: 300px;
   transform: translate(0px, -50px);
 }
-#project-9 .project-item-active:active ~ .lottie-figure{
+#project-7 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, -45px);
 }
-.project-modal-content #project-9 .lottie-figure{
+.project-modal-content #project-7 .lottie-figure{
   transform: translate(20px, 0px);
 }
 
@@ -474,22 +474,22 @@
   box-shadow: 0px -10px 0px rgb(117, 86, 45);
 }
 
-#project-7 .base::before{
+#project-9 .base::before{
   background-color: orange;
   border: 4px solid white;
 }
-#project-7 .base::after{
+#project-9 .base::after{
   background-color: darkorange;
   box-shadow:
   5px 5px 0px darkorange,
   10px 10px 0px darkorange;
 }
-#project-7 .project-title::before{
+#project-9 .project-title::before{
   border: 4px solid darkorange;
   box-shadow: 0px -10px 0px darkorange;
 }
 
-#project-7 .project-title{
+#project-9 .project-title{
   font-size: 20px;
 }
 #project-8 .base::before{
@@ -507,17 +507,17 @@
   box-shadow: 0px -10px 0px #1555ad;
 }
 
-#project-9 .base::before{
+#project-7 .base::before{
   background-color: lightgray;
   border: 4px solid white;
 }
-#project-9 .base::after{
+#project-7 .base::after{
   background-color: rgb(71, 147, 142);
   box-shadow:
   5px 5px 0px rgb(71, 147, 142),
   10px 10px 0px rgb(71, 147, 142);
 }
-#project-9 .project-title::before{
+#project-7 .project-title::before{
   border: 4px solid rgb(71, 147, 142);
   box-shadow: 0px -10px 0px rgb(71, 147, 142);
 }

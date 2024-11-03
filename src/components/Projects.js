@@ -86,20 +86,20 @@ export const Project = () => {
                 Desc:"An AI-driven chatbot that facilitates seamless user interactions," + " " +
                 "providing assistance and answers to frequently asked questions across various domains, with a focus on natural language processing."
             },
-            { id: 7, title: "Video Game Rental", animationData: videoGame, type: "lottie", 
-                link:"https://github.com/shivba28/Game_Rentel", 
-                Desc:"A platform for renting video games that allows users to browse," + " " +
-                "select, and rent games easily, while managing inventory and tracking rental history effectively."
+            { id: 7, title: "Portfolio", animationData: portfolio, type: "lottie", 
+                link:"https://github.com/shivba28/portfolio_2.0", 
+                Desc:"A personal portfolio showcasing development skills, projects," + " " +
+                "and accomplishments in a visually appealing format, serving as an online resume and professional introduction."
             },
-            { id: 8, title: "Mini-Projects", animationData: miniProjects, type: "lottie", 
+            { id: 8, title: "Mini Projects", animationData: miniProjects, type: "lottie", 
                 link:"https://github.com/shivba28/Mini-Projects", 
                 Desc:"A collection of innovative small-scale projects designed to explore new technologies," + " " + 
                 "experiment with creative ideas, and develop unique, functional solutions to common challenges."
             },
-            { id: 9, title: "Portfolio", animationData: portfolio, type: "lottie", 
-                link:"https://github.com/shivba28/portfolio_2.0", 
-                Desc:"A personal portfolio showcasing development skills, projects," + " " +
-                "and accomplishments in a visually appealing format, serving as an online resume and professional introduction."
+            { id: 9, title: "Video Game Rental", animationData: videoGame, type: "lottie", 
+                link:"https://github.com/shivba28/Game_Rentel", 
+                Desc:"A platform for renting video games that allows users to browse," + " " +
+                "select, and rent games easily, while managing inventory and tracking rental history effectively."
             },
             { id: 10, title: "Prop-Chain", animationData: propChain1, animationData2: propChain2, type: "lottie-prop", 
                 link:"https://github.com/shivba28/PropChain",

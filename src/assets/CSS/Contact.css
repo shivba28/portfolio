@@ -22,12 +22,14 @@
 #contact .col-6 img{
     height: 40%;
     width: auto;
+    top: 10%;
+    position: relative;
     animation: imgFloat 6s ease-out infinite;
 }
 
 @keyframes imgFloat {
-    0%, 100% {transform: translateY(150px);}
-    50% {transform: translateY(75px);}
+    0%, 100% {transform: translateY(25px);}
+    50% {transform: translateY(-25px);}
 }
 
 /* form CSS */
@@ -84,7 +86,8 @@
     color: var(--white-color);
     padding: 7px 0;
     background: transparent;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.5s ease;
+    resize: none;
   }
   
   .form__field::placeholder {

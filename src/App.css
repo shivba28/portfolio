@@ -304,8 +304,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   flex-wrap: wrap;
   animation: slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
-  transform: translateY(100%);
-  margin-bottom: 15%;
+  transform: translateY(75%);
+  margin-bottom: 7%;
 }
 
 .banner h1{
@@ -447,11 +447,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @keyframes slide-up {
   from{
-    transform: translateY(100%);
+    transform: translateY(75%);
   }
 
   to{
-    transform: translateY(70%);
+    transform: translateY(50%);
   }
 }
 
@@ -467,9 +467,132 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 }
 
+/* Responsive CSS */
 
+@media (width >= 1921px) {
+  .right{
+    font-size: 17rem !important;
+  }
 
-@media (376px <= width <= 900px) {
+  .left{
+    font-size: 10rem !important;
+  }
+  .video-container{
+    height: 100%;
+  }
+  .photo{
+    top: 9%;
+  }
+  .photo img{
+    height: 350px;
+    width: 350px;
+  }
+  #left-img-2, #right-img-2{
+    top: 135%;
+  }
+  #left-img-3, #right-img-3{
+    top: 30%;
+    height: 500px;
+  }
+  #left-img-3{
+    left: -150%;
+  }
+  #right-img-3{
+    right: -150%;
+  }
+  .collage-left{
+    left: 15%;
+    transform: translate(-250%, 50%);
+  }
+  .collage-right{
+    right: 15%;
+    transform: translate(250%, 50%);
+  }
+  @keyframes fade-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(150%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(40%);
+    }
+  }
+}
+
+@media (1025px <= width <= 1440px) {
+  .right{
+    font-size: 11rem !important;
+  }
+
+  .left{
+    font-size: 6rem !important;
+  }
+  .video-container{
+    height: 120%;
+  }
+  @keyframes fade-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(150%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(40%);
+    }
+  }
+
+}
+
+@media (769px <= width <= 1024px) {
+  .right{
+    font-size: 9rem !important;
+  }
+
+  .left{
+    font-size: 5rem !important;
+  }
+  .video-container{
+    height: 120%;
+  }
+  .photo{
+    top: 7.5%;
+  }
+  .photo img{
+    height: 200px;
+    width: 200px;
+  }
+  #left-img-2, #right-img-2{
+    top: 105%;
+  }
+  #left-img-3, #right-img-3{
+    top: 30%;
+    height: 500px;
+  }
+  #left-img-3, #right-img-3{
+    display: none;
+  }
+  .collage-left{
+    left: 0%;
+    transform: translate(-250%, 50%);
+  }
+  .collage-right{
+    right: 0%;
+    transform: translate(250%, 50%);
+  }
+  @keyframes fade-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(150%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(90%);
+    }
+  }
+}
+
+@media (320px <= width <= 768px) {
 
   .banner{
     display: block;
@@ -488,6 +611,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
       position: relative;
       top: 5vh;
   }
+  .photo img{
+    display: none;
+  }
 
 
   .content{
@@ -495,8 +621,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 
   .video-container{
-    transform: translateY(200%);
-    
+    height: 130%;
   }
 
   .video-container video{
@@ -512,18 +637,31 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
     100%{
       opacity: 1;
-      transform: translateY(100%);
+      transform: translateY(120%);
     }
   }
 
 }
 
-@media (max-width: 375px) {
-
-  .banner{
-    display: block;
-    text-align: center;
+@media (325px <= width <= 425px) {
+  .video-container video{
+    transform: scale(2);
+    border-radius: 5%;
   }
+  @keyframes fade-slide-up {
+    0%{
+      opacity: 0;
+    transform: translateY(300%);
+    }
+
+    100%{
+      opacity: 1;
+      transform: translateY(250%);
+    }
+  }
+}
+
+@media (max-width: 375px) {
 
   .right{
     font-size: 6rem !important;
@@ -545,7 +683,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
   .video-container{
     transform: translateY(200%);
-    
   }
 
   .video-container video{
@@ -556,12 +693,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   @keyframes fade-slide-up {
     0%{
       opacity: 0;
-    transform: translateY(200%);
+    transform: translateY(500%);
     }
 
     100%{
       opacity: 1;
-      transform: translateY(100%);
+      transform: translateY(350%);
     }
   }
 

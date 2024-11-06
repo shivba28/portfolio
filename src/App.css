@@ -304,8 +304,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   flex-wrap: wrap;
   animation: slide-up 1s ease-in-out forwards;
   animation-delay: 2s;
-  transform: translateY(75%);
-  margin-bottom: 15vh;
+  transform: translateY(100%);
+  margin-bottom: 15%;
 }
 
 .banner h1{
@@ -341,6 +341,48 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   transform: translate(100%);
 }
 
+.photo{
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  top: 7.5%;
+  justify-content: center;
+  align-items: center;
+  animation: slide-in 1.5s ease-in-out forwards;
+}
+.photo img{
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.collage-left{
+  animation-delay: 2s;
+  transform: translate(-150%, 50%);
+  justify-self: flex-start;
+  left: 10%;
+}
+.collage-right{
+  animation-delay: 2s;
+  transform: translate(150%, 50%);
+  justify-self: flex-end;
+  right: 10%;
+}
+#left-img-2, #right-img-2{
+  top: 95%;
+}
+#left-img-3, #right-img-3{
+  top: 30%;
+  height: 300px;
+}
+#left-img-3{
+  left: -70%;
+}
+#right-img-3{
+  right: -70%;
+}
+
 
 .video-container {
   position: relative;
@@ -354,7 +396,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .video-container video {
   width: 100%;
-  height: auto;
+  height: 130%;
+  object-fit: cover;
   border-radius: 20px;
 }
 
@@ -404,11 +447,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @keyframes slide-up {
   from{
-    transform: translateY(75%);
+    transform: translateY(100%);
   }
 
   to{
-    transform: translateY(50%);
+    transform: translateY(70%);
   }
 }
 

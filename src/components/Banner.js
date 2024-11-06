@@ -17,7 +17,7 @@ export const Banner = () => {
             scrollTrigger: {
                 trigger: '.banner', // Element that triggers the animation
                 start: 'top top', // Start when the top of .banner hits the top of the viewport
-                end: '+=1000%', // Keep it pinned until we scroll further down
+                end: '+=500%', // Keep it pinned until we scroll further down
                 scrub: true, // Smooth scrolling effect
                 pin: containerRef.current, // Pin the video container
                 anticipatePin: 1, // Prevent snapping when pinning/unpinning
@@ -25,8 +25,10 @@ export const Banner = () => {
         })
         .to(videoRef.current, {
             scale: 2.6,
-            transformOrigin: "center center",
+            transformOrigin: "top center",
             ease: "power1.inOut",
+            y:-300,
+            height:"100%",
             scrollTrigger: {
                 trigger: '.banner', // Video animation is linked to .banner
                 start: 'top top',
@@ -41,6 +43,26 @@ export const Banner = () => {
                 end: '+=100%',
                 pin: true, // This keeps the video pinned
                 pinSpacing: false,
+            }
+        })
+        .to(".collage-left",{
+            left: -400,
+            ease: "power1.inOut",
+            scrollTrigger: {
+                trigger: '.banner', // Element that triggers the animation
+                start: 'top top', // Start when the top of .banner hits the top of the viewport
+                end: 'bottom top',
+                scrub: true,
+            }
+        })
+        .to(".collage-right",{
+            right: -400,
+            ease: "power1.inOut",
+            scrollTrigger: {
+                trigger: '.banner', // Element that triggers the animation
+                start: 'top top', // Start when the top of .banner hits the top of the viewport
+                end: 'bottom top',
+                scrub: true,
             }
         })
     })
@@ -80,6 +102,16 @@ export const Banner = () => {
                 allowfullscreen></iframe>
             </div>
             )} */}
+            <div className='photo collage-left d-flex flex-column'>
+                <img id='left-img-1' style={{backgroundColor: "white"}}/>
+                <img id='left-img-2' style={{backgroundColor: "white"}}/>
+                <img id='left-img-3' style={{backgroundColor: "white"}}/>
+            </div>
+            <div className='photo collage-right d-flex flex-column'>
+                <img id='right-img-1' style={{backgroundColor: "white"}}/>
+                <img id='right-img-2' style={{backgroundColor: "white"}}/>
+                <img id='right-img-3' style={{backgroundColor: "white"}}/>
+            </div>
             <div className={`video-container`} ref={containerRef}>
                 <video ref={videoRef} loop muted playsInline className='video'>
                     <source src={video} type="video/mp4" />

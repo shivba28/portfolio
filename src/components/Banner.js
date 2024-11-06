@@ -11,7 +11,7 @@ export const Banner = () => {
 
     useGSAP(() => {
         gsap.registerPlugin(ScrollTrigger);
-
+        const mm = gsap.matchMedia();
          // Pin the video container when scrolling and scale video
         gsap.timeline({
             scrollTrigger: {
@@ -21,19 +21,20 @@ export const Banner = () => {
                 scrub: true, // Smooth scrolling effect
                 pin: containerRef.current, // Pin the video container
                 anticipatePin: 1, // Prevent snapping when pinning/unpinning
+                invalidateOnRefresh: true // Recalculate on refresh or resize
             }
         })
         .to(videoRef.current, {
             scale: 2.6,
-            transformOrigin: "top center",
+            transformOrigin: "center center",
             ease: "power1.inOut",
-            y:-300,
             height:"100%",
             scrollTrigger: {
                 trigger: '.banner', // Video animation is linked to .banner
                 start: 'top top',
                 end: 'bottom top', // Animation ends when the bottom of .banner reaches the top
                 scrub: true,
+                invalidateOnRefresh: true // Recalculate on refresh or resize
             },
         })
         .to(videoRef.current, {
@@ -43,6 +44,7 @@ export const Banner = () => {
                 end: '+=100%',
                 pin: true, // This keeps the video pinned
                 pinSpacing: false,
+                invalidateOnRefresh: true // Recalculate on refresh or resize
             }
         })
         .to(".collage-left",{
@@ -53,6 +55,7 @@ export const Banner = () => {
                 start: 'top top', // Start when the top of .banner hits the top of the viewport
                 end: 'bottom top',
                 scrub: true,
+                invalidateOnRefresh: true // Recalculate on refresh or resize
             }
         })
         .to(".collage-right",{
@@ -63,8 +66,25 @@ export const Banner = () => {
                 start: 'top top', // Start when the top of .banner hits the top of the viewport
                 end: 'bottom top',
                 scrub: true,
+                invalidateOnRefresh: true // Recalculate on refresh or resize
             }
         })
+
+        mm.add("(max-width: 767px)", () => {
+            gsap.set(videoRef.current, { height: "200%" });
+            gsap.to(videoRef.current, {
+              height: "100%",
+              borderRadius: 0,
+              ease: "power1.inOut",
+              scrollTrigger: {
+                trigger: '.banner', // Video animation is linked to .banner
+                start: 'top top',
+                end: 'bottom top', // Animation ends when the bottom of .banner reaches the top
+                scrub: true,
+                invalidateOnRefresh: true // Recalculate on refresh or resize
+            },
+            });
+          });
     })
 
   useEffect(() => {

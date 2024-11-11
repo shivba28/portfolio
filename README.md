@@ -48,4 +48,4 @@ Remaining:
 
 2. Deploying on Github Pages
 
-Nothing Changed - git push
+Nothing Changed - Sunday

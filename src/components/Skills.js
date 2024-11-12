@@ -18,7 +18,7 @@ export const Skills = () => {
                 <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                 <div className="slogan-right me-auto"><h1 className="right">SKILLS</h1></div>
             </div>
-            <div className="card-container">
+            <div className="card-container mb-5">
                 <div className="skill-card" id='card1'>
                     <div className="background">
                         <Clouds />

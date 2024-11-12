@@ -741,41 +741,46 @@ background: url(../Images/trees-m.webp);
     .skill-card{
         height:450px;
     }
-    .list-group-item{
-        font-size: 10px;
-        padding: 5px 0px !important;
+    #skill .slogan-left {
+        top: 0;
+        margin-right: 20px;
     }
-    .light-bg {
-        transform: translateY(30dvh) !important;
+    #skill .slogan-right .right {
+        font-size: 3rem !important;
     }
-    .skill-card:hover .light-bg{
-        transform: translateY(50dvh) !important;
+    .skill-card .content {
+        transform: translateY(10%);
     }
-    .dark-bg{
-        transform: translateY(50dvh) !important;
-    }
-
     .skill-card:hover .content{
-        transform: translateY(-20dvh);
-    }
-
-    .skill-card:hover .dark-bg {
-        transform: translateY(32dvh) scaleY(2) !important;
+        transform: translateY(-30%);
     }
     .list-group-item{
         font-size: 15px;
+        padding: 5px 0px !important;
+    }
+    .light-bg {
+        transform: translate(-1dvw, 80%) !important;
+    }
+    .skill-card:hover .light-bg{
+        transform: translateY(100dvh) !important;
+    }
+    .dark-bg{
+        transform: translateY(100dvh) !important;
+    }
+    .skill-card:hover .dark-bg {
+        transform: translateY(150%) scaleY(2) !important;
     }
     #card2 .light-bg, #card4 .light-bg{
-        transform: translate(10dvw, 32dvh) !important;
+        transform: translate(10dvw, 100%) !important;
     }
     #card2:hover .light-bg, #card4:hover .light-bg {
-        transform: translateY(50dvh) !important;
+        transform: translateY(100dvh) !important;
     }
     #card2:hover .dark-bg, #card4:hover .dark-bg {
-        transform: translateY(43dvh) !important;
+        transform: translateY(200%) !important;
     }
     #card2 .dark-bg, #card4 .dark-bg {
-        transform: translateY(63dvh) !important;
+        transform: translateY(100dvh) !important;
     }
   }
 
@@ -786,33 +791,46 @@ background: url(../Images/trees-m.webp);
     .skill-card{
         height:500px
     }
+    #skill .slogan-left {
+        top: 0;
+        margin-right: 20px;
+    }
+    #skill .slogan-right .right {
+        font-size: 3.5rem !important;
+    }
+    .skill-card .content {
+        transform: translateY(10%);
+    }
+    .skill-card:hover .content{
+        transform: translateY(-25%);
+    }
     .light-bg {
-        transform: translateY(30dvh) !important;
+        transform: translate(-1dvw, 80%) !important;
     }
     .skill-card:hover .light-bg{
-        transform: translateY(50dvh) !important;
+        transform: translateY(100dvh) !important;
     }
     .dark-bg{
-        transform: translateY(50dvh) !important;
+        transform: translateY(100dvh) !important;
     }
 
     .skill-card:hover .dark-bg {
-        transform: translateY(32dvh) scaleY(2) !important;
+        transform: translateY(150%) scaleY(2) !important;
     }
     .list-group-item{
         font-size: 15px;
     }
     #card2 .light-bg, #card4 .light-bg{
-        transform: translate(2dvw, 30dvh) !important;
+        transform: translate(2dvw, 90%) !important;
     }
     #card2:hover .light-bg, #card4:hover .light-bg {
-        transform: translateY(50dvh) !important;
+        transform: translateY(70dvh) !important;
     }
     #card2:hover .dark-bg, #card4:hover .dark-bg {
-        transform: translateY(43dvh) !important;
+        transform: translateY(200%) !important;
     }
     #card2 .dark-bg, #card4 .dark-bg {
-        transform: translateY(63dvh) !important;
+        transform: translateY(70dvh) !important;
     }
   }
 
@@ -821,22 +839,22 @@ background: url(../Images/trees-m.webp);
         height: max-content;
     }
     .skill-card .content {
-        transform: translateY(10dvh);
+        transform: translateY(20%);
     }
     .skill-card:hover .content{
-        transform: translateY(-15dvh);
+        transform: translateY(-20%);
     }
     .light-bg {
-        transform: translate(-1dvw, 40dvh) !important;
+        transform: translate(-1dvw, 100%) !important;
     }
     .skill-card:hover .light-bg{
         transform: translateY(60dvh) !important;
     }
     .dark-bg{
-        transform: translateY(90dvh) !important;
+        transform: translateY(60dvh) !important;
     }
     .skill-card:hover .dark-bg{
-        transform: translateY(55dvh) !important;
+        transform: translateY(215%) !important;
     }
   }
 
@@ -857,6 +875,33 @@ background: url(../Images/trees-m.webp);
         transform: translateY(300%) !important;
     }
     .skill-card:hover .dark-bg{
+        transform: translateY(225%) !important;
+    }
+}
+
+@media screen and (width > 1920px) {
+    #skill .slogan-left .left, #skill .slogan-right .right{
+        font-size: 7rem !important;
+    }
+    .skill-card .content {
+        transform: translateY(20%);
+    }
+    .skill-card:hover .content{
+        transform: translateY(-20%);
+    }
+    .light-bg {
+        transform: translate(-5%, 100%) !important;
+    }
+    .skill-card:hover .light-bg{
+        transform: translate(-5%, 150%) !important;
+    }
+    .dark-bg{
+        transform: translateY(300%) !important;
+    }
+    .skill-card:hover .dark-bg{
+        transform: translateY(205%) !important;
+    }
+    #card2 .dark-bg, #card4 .dark-bg{
         transform: translateY(225%) !important;
     }
 }

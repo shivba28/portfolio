@@ -67,6 +67,89 @@
     z-index: 1;
   }
 
+  @media screen and (width <= 375px){
+    .about-modal .modal-content {
+      height: 50dvh !important;
+      width: 60dvh !important;
+    }
+    .about-modal .modal-body h2{
+      font-size: 2rem;
+      text-align: center;
+      width: 100%;
+      transform: translateY(-15px);
+    }
+    .about-modal .modal-body p{
+      font-size: 11px;
+      top: -10%;
+      position: relative;
+      margin: auto;
+      text-align: justify;
+      width: 80%;
+    }
+    .about-modal .modal-body p span{
+      width: 100%;
+    }
+    .about-modal .bio-section img{
+      display: none;
+    }
+    .about-modal .bio-section .sign{
+     display: none;
+    }
+  }
+
+  @media screen and (426px > width > 375px){
+    .about-modal .modal-content {
+      height: 50dvh !important;
+      width: 60dvh !important;
+    }
+    .about-modal .modal-body h2{
+      font-size: 2rem;
+      width: 100%;
+      transform: translateY(-15px);
+    }
+    .about-modal .modal-body p{
+      font-size: 12px;
+      top: -10%;
+      position: relative;
+    }
+    .about-modal .bio-section img{
+      height: 100%;
+      width: auto;
+      transform: translate(25%, 10%);
+    }
+    .about-modal .bio-section .sign{
+     display: none;
+    }
+  }
+
+  @media screen and (426px <= width <= 770px){
+    .about-modal .modal-content {
+      height: 50dvh !important;
+      width: 60dvh !important;
+    }
+    .about-modal .modal-body h2{
+      font-size: 2rem;
+      width: 100%;
+      transform: translateY(-15px);
+    }
+    .about-modal .modal-body p{
+      font-size: 10px;
+      top: -10%;
+      position: relative;
+    }
+    .about-modal .bio-section img{
+      height: 100%;
+      width: auto;
+      transform: translate(5%, 15%);
+    }
+    .about-modal .bio-section .sign{
+      height: 100px;
+      width: auto;
+      margin-top: 10%;
+      transform: translate(0%,20%);
+    }
+  }
+
   @media screen and (901px <= width <= 1450px){
 
     .about-modal .modal-content {
@@ -88,18 +171,20 @@
     .about-modal .bio-section img{
       height: 100%;
       width: auto;
-      transform: translate(-15%, 10%);
+      transform: translate(-15%, 15%);
     }
 
     .about-modal .bio-section .sign{
       height: 100px;
       width: auto;
-      transform: translate(50%,50%);
+      transform: translate(50%,70%);
     }
   }
 
-  @media screen and (width > 1450px){
-
+  @media screen and (1921px > width > 1450px){
+    .modal-content{
+      height: 80% !important;
+    }
 
     .about-modal .modal-body h2{
       font-size: 3rem;
@@ -125,4 +210,32 @@
       width: auto;
       transform: translate(10%,50%);
     }
-  }    
+  } 
+
+  @media screen and (1921px <= width){
+    .about-modal .modal-body h2{
+      font-size: 3rem;
+      width: 100%;
+      position: relative;
+      top: -5dvh;
+    }
+
+    .about-modal .modal-body p{
+      font-size: 18px;
+      top: -5dvh;
+      position: relative;
+    }
+
+    .about-modal .bio-section img{
+      height: 100%;
+      width: auto;
+      transform: translate(-20%, 10%);
+    }
+
+    .about-modal .bio-section .sign{
+      height: 100px;
+      width: auto;
+      transform: translate(10%,50%);
+  
+    }
+  }

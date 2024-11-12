@@ -2,7 +2,7 @@ Completed sections:
 
 1. Navbar
 
-    a. Responsive design complete.
+    a. Responsive design not-complete.
 
     b. Animations complete
 
@@ -22,7 +22,13 @@ Completed sections:
 
     b. Info added
 
+    c. Responsive design completed
+
 6. About Modal
+
+    a. Responsive design completed
+
+    b. Info and Images added
 
 7. Project section
 

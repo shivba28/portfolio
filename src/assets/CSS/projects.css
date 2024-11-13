@@ -635,32 +635,35 @@
 @media screen and (1024px < width <= 1440px) {
   #project-3 video{
     width: 200px;
-    transform: translate(6dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
+    transform: translate(5.5dvw, -1.5dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
   }#project-3 .video-base{
     transform: translate(50px, -20dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
   }
   .modal-content .project-modal-content video{
-    transform: translate(7dvw, 5dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9) !important;
+    transform: translate(7dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9) !important;
   }
   .modal-content .project-modal-content .video-base{
     transform: translate(70px, -30dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) !important;
   }
 }
-@media screen and (1440px < width){
+@media screen and (1920px < width){
   .prj-col{
     width: 25% !important;
+  }
+  .title .slogan-left .left{
+    font-size: 5rem !important;
   }
   #project-3 video{
     width: 170px;
     transform: translate(4dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
   }#project-3 .video-base{
-    transform: translate(50px, -20dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+    transform: translate(50px, -13dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
   }
   .modal-content .project-modal-content video{
-    transform: translate(4.5dvw, 5dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9) !important;
+    transform: translate(4.5dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9) !important;
   }
   .modal-content .project-modal-content .video-base{
-    transform: translate(70px, -30dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) !important;
+    transform: translate(65px, -22dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) !important;
   }
   
 }

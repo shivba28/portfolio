@@ -49,7 +49,7 @@ export const NavBar = ({openModal}) => {
                 <span className="navbar-toggler-icon"></span>
               </Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ms-auto">
+                <Nav className="mx-auto text-center mt-1">
                   <Link data-cursor="block" to="home" spy={true} smooth={true} duration={800} className={'navbar-link link'}>Home</Link>
                   <Link data-cursor="block" to="skill" spy={true} smooth={true} offset={-50} duration={800} className={'navbar-link link'}>Skills</Link>
                   <Link data-cursor="block" to="project" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link link'}>Projects</Link>
@@ -61,7 +61,7 @@ export const NavBar = ({openModal}) => {
                     <a data-cursor="block" data-cursor-style="background: transparent" href="https://www.linkedin.com/in/shivba-pawar/" target="_blank" rel="noreferrer"><img src={navIcon1} alt="" /></a>
                     <a data-cursor="block" data-cursor-style="background: transparent" href="https://github.com/shivba28" target="_blank" rel="noreferrer"><img src={navIcon2} alt="" /></a>
                   </div>
-                    <Link data-cursor="block" data-cursor-style="background: transparent" href="#contact" to="contact" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
+                    <Link data-cursor="block" data-cursor-style="background: transparent; border-color:transparent;" href="#contact" to="contact" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
                 </span>
               </Navbar.Collapse>
             </Container>

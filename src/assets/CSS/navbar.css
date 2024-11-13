@@ -14,7 +14,7 @@
       }
   
       span.navbar-text {
-        display: block;
+        display: grid;
     }
   
       .social-icon {
@@ -25,4 +25,34 @@
     .navbar-text button {
       margin-left: 25%;
     }
+}
+
+@media only screen and (width <=425px) {
+  .navbar-brand{
+    display: none;
+  }
+  .navbar .navbar-nav{
+    width: 100%;
+    align-items: center;
+  }
+  .navbar .navbar-nav .navbar-link{
+    font-size: 15px !important;
+  }
+  .social-icon {
+    margin-left: 0%;
+    margin-bottom: 10px;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+  }
+  .social-icon a{
+    margin-bottom: 10px;
+  }
+  .navbar-text .navbar-link{
+    display: grid;
+    justify-items: center;
+  }
+  .navbar-text button {
+    margin-left: 0%;
+  }
 }

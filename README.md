@@ -2,7 +2,7 @@ Completed sections:
 
 1. Navbar
 
-    a. Responsive design not-complete.
+    a. Responsive design completed.
 
     b. Animations complete
 
@@ -52,10 +52,8 @@ Completed sections:
 
     c. use my Richard Nixon library telephone image - added
 
+    d. Responsive design completed
+
 Remaining:
-   
-1. Responsive design using media queries
 
 2. Deploying on Github Pages
-
-Nothing Changed - Sunday

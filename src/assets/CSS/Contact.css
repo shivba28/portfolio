@@ -19,7 +19,7 @@
     font-size: 5rem !important;
 }
 
-#contact .col-6 img{
+#contact img{
     height: 40%;
     width: auto;
     top: 10%;
@@ -142,4 +142,37 @@
     border-radius: 5px;
     width: 40%;
     z-index: 1000;
+  }
+
+  /* Responsive CSS */
+
+  @media screen and (width <= 768px) {
+    .navbar-brand{
+      display: none;
+    }
+    .title .slogan-left {
+      top: 0;
+    }
+    #contact .title .slogan-right .right{
+      font-size: 4rem !important;
+    }
+    #contact .col{
+      height: 620px;
+    }
+  }
+
+  @media screen and (width <= 375px) {
+    .neon{
+      margin-top: 10px;
+    }
+    .navbar .container{
+      justify-content: center;
+      flex-direction: column;
+    }
+    #contact img{
+      height: 200px;
+    }
+    #form-content button {
+      font-size: 10px;
+    }
   }

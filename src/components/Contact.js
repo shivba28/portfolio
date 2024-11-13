@@ -32,10 +32,10 @@ export const Contact = () => {
                 <div className="slogan-right me-auto"><h1 className="right">Me</h1></div>
             </div>
             <Row>
-                <Col className='col-6 col-xs-12 d-grid mt-5'>
+                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
                     <img className='img mx-auto' src={img} />
                 </Col>
-                <Col className='col-6 col-xs-12 d-grid mt-5'>
+                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
                 <div id="form-content" className='mx-auto rounded-4 bg-light bg-gradient'>
                 <header id="header" className="bg-black bg-gradient rounded-top-4">Send new Email</header>
                     <form className='form d-grid mx-5' ref={form} onSubmit={sendEmail}>

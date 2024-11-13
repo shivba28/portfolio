@@ -536,3 +536,131 @@
   border: 4px solid olivedrab;
   box-shadow: 0px -10px 0px olivedrab;
 }
+
+@media screen and (width <= 768px){
+  .scroll-content .section{
+    height: 101dvh;
+  }
+  .project-modal-content{
+    flex-direction: column;
+  }
+  .project-modal-content .lottie-figure, .project-modal-content video, .project-modal-content .video-base{
+    display: none;
+  }
+  
+}
+
+@media screen and (width <= 768px){
+  #project .title .slogan-right .right, #project .title .slogan-left .left{
+    font-size: 2rem !important;
+  }
+  #project .title .slogan-left{
+    top: 0;
+    margin-right: 20px;
+  }
+  .project-item .base{
+    height: 200px;
+    width: 250px;
+  }.base::before{
+    content: '';
+    width: 250px;
+    height: 200px;
+  }
+  .lottie-figure{
+    width: 200px; 
+    transform: translate(0px, -20px);
+  }
+  #project-2 .lottie-figure{
+    width: 200px;
+    transform: translate(0px, -50px);
+  }
+  #project-3 video{
+    width: 140px;
+    transform: translate(10dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
+  }
+  #project-3 .video-base{
+    width: 160px;
+    height: 130px;
+    transform: translate(27px, -15dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+  }
+  #project-4 .lottie-figure, #project-5 .lottie-figure{
+    width: 150px;
+  }
+  #project-6 .lottie-figure{
+    width: 200px;
+  }
+  #project-7 .lottie-figure{
+    width: 200px;
+    transform: translateY(-35px);
+  }
+  #project-8 .lottie-figure{
+    width: 250px;
+    transform: translateY(-20px);
+  }
+  #project-9 .lottie-figure{
+    width: 100px;
+  }
+  #project-10 .lottie-figure{
+    width: 200px;
+    transform: translateY(10px);
+  } #project-10 .lottie-figure .part-2{
+    transform: translate(60px, -80px);
+  }
+}
+
+@media screen and (width <= 375px) {
+  #project-3 video{
+    width: 140px;
+  }
+}
+@media screen and (425px < width <= 768px) {
+  #project-3 video{
+    transform: translate(5dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
+  }
+}
+@media screen and (768px < width <= 1024px) {
+  #project-3 video{
+    width: 190px;
+    transform: translate(8dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
+  }#project-3 .video-base{
+    transform: translate(50px, -20dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+  }
+  .modal-content .project-modal-content video{
+    transform: translate(10dvw, 5dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9) !important;
+  }
+  .modal-content .project-modal-content .video-base{
+    transform: translate(70px, -30dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) !important;
+  }
+}
+@media screen and (1024px < width <= 1440px) {
+  #project-3 video{
+    width: 200px;
+    transform: translate(6dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
+  }#project-3 .video-base{
+    transform: translate(50px, -20dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+  }
+  .modal-content .project-modal-content video{
+    transform: translate(7dvw, 5dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9) !important;
+  }
+  .modal-content .project-modal-content .video-base{
+    transform: translate(70px, -30dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) !important;
+  }
+}
+@media screen and (1440px < width){
+  .prj-col{
+    width: 25% !important;
+  }
+  #project-3 video{
+    width: 170px;
+    transform: translate(4dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
+  }#project-3 .video-base{
+    transform: translate(50px, -20dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
+  }
+  .modal-content .project-modal-content video{
+    transform: translate(4.5dvw, 5dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9) !important;
+  }
+  .modal-content .project-modal-content .video-base{
+    transform: translate(70px, -30dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) !important;
+  }
+  
+}

@@ -18,6 +18,7 @@ import miniProjects from '../assets/Lottie/Mini-projects.json';
 import portfolio from '../assets/Lottie/Portfolio.json';
 import propChain1 from '../assets/Lottie/PropChain-1.json';
 import propChain2 from '../assets/Lottie/PropChain-2.json';
+import { ColorUniform } from "three/src/renderers/common/Uniform.js";
 
 
 export const Project = () => {
@@ -135,7 +136,7 @@ export const Project = () => {
                     </div>
                     <Row className="project-items my-3">
                     {projects.map((project, index) => (
-                        <Col key={project.id} xs={12} sm={6} lg={4} className="m-auto">
+                        <Col key={project.id} xs={12} md={6} xl={4} className="m-auto prj-col">
                             <div className="project-item my-5" id={"project-"+project.id}>
                                 <div className="project-item-active">
                                 <a style={{height:"100%", width:"100%", position:"absolute"}} onClick={() => openModal(project)}></a>
@@ -184,7 +185,7 @@ export const Project = () => {
                     </Modal.Header>
                     <Modal.Body className="bg-black rounded-bottom">
                         <div className="project-modal-content row align-items-center">
-                            <div className="info-section col-6 d-grid">
+                            <div className="info-section col d-grid">
                                 <p className="text-justify">{selectedProject.Desc}</p>
                                 <a className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>Code</a>
                             </div>

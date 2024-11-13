@@ -145,9 +145,6 @@ nav.navbar a.navbar-brand {
     margin-right: 3%;
     transition: all 0.3s ease-in-out;
 }
-nav.navbar a.navbar-brand:hover {
-  transform: scale(1.1);
-}
 nav.navbar .navbar-nav .nav-link.navbar-link, .link {
   font-weight: 400;
   color: #fff !important;
@@ -593,7 +590,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (320px <= width <= 768px) {
-
+  .navbar-brand{
+    display: none;
+  }
   .banner{
     display: block;
     text-align: center;
@@ -644,6 +643,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (325px <= width <= 425px) {
+  .navbar-brand{
+    display: none;
+  }
   .video-container video{
     transform: scale(2);
     border-radius: 5%;
@@ -663,6 +665,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @media (max-width: 375px) {
 
+  .navbar-brand{
+    display: none;
+  }
   .right{
     font-size: 6rem !important;
   }

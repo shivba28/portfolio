@@ -30,6 +30,8 @@ Completed sections:
 
     b. Info and Images added
 
+    c. c. Responsive design completed
+
 7. Project section
 
     a. Created base for each project
@@ -39,6 +41,8 @@ Completed sections:
     c. Added Modal for each project and linked to repository
 
     d. completed styling for each project button
+
+    e. Responsive design completed
 
 8. Contact section
 

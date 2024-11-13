@@ -37,7 +37,7 @@ export const Contact = () => {
                 </Col>
                 <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
                 <div id="form-content" className='mx-auto rounded-4 bg-light bg-gradient'>
-                <header id="header" className="bg-black bg-gradient rounded-top-4">Send new Email</header>
+                <header id="header" className="bg-black bg-gradient rounded-top-4">Let's Connect</header>
                     <form className='form d-grid mx-5' ref={form} onSubmit={sendEmail}>
                       <div className="form__group field">
                         <span className="form__label">Name</span>

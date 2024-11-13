@@ -45,7 +45,7 @@ body{
   position: relative;
   background-color: #121212 !important;
   color: #fff !important;
-  font-family: 'Centra', sans-serif !important;
+  font-family: 'Kranky', sans-serif !important;
 }
 
 html::-webkit-scrollbar {
@@ -150,7 +150,7 @@ nav.navbar .navbar-nav .nav-link.navbar-link, .link {
   color: #fff !important;
   letter-spacing: 0.8px;
   padding: 0 25px;
-  font-size: 18px;
+  font-size: 20px;
   opacity: 0.75;
   transition: all 0.2s ease-in-out;
 }
@@ -161,6 +161,7 @@ nav.navbar .navbar-nav a.nav-link.navbar-link.active {
   }
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover, .link.active{
   opacity: 1;
+  text-shadow: 0 0 10px #43b7ff, 0 0 20px #43b7ff, 0 0 40px #43b7ff, 0 0 50px #43b7ff, 0 0 60px #43b7ff;
 }
 span.navbar-text {
     display: flex;
@@ -591,6 +592,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (320px <= width <= 768px) {
+  .ipad-cursor{
+    display: none;
+  }
   .banner{
     display: block;
     text-align: center;
@@ -641,6 +645,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (325px <= width <= 425px) {
+  .ipad-cursor{
+    display: none;
+  }
   .video-container video{
     transform: scale(2);
     border-radius: 5%;
@@ -659,6 +666,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (max-width: 375px) {
+  .ipad-cursor{
+    display: none;
+  }
   .right{
     font-size: 6rem !important;
   }

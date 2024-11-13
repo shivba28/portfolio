@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+
+:root{
+  --navNeon: "Yellowtail", "Adjusted Verdana Fallback", "Verdana", sans-serif;
+}
 
 
 .hidden {
@@ -144,7 +149,7 @@
   display: table-cell;
   margin: 0;
   padding: 0;
-  font-family: "Kranky";
+  font-family: var(--navNeon);
   font-size: clamp(2.5rem, 1.5vw, 1.5rem);
   color: #646464;
 }

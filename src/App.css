@@ -352,6 +352,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 200px;
   position: absolute;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .collage-left{

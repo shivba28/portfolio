@@ -5,6 +5,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { TextScramble } from '../components/Text-Animations/scrambleText';
 
+import leftImg1 from "../assets/Images/banner_images/img1.HEIC";
+import leftImg2 from "../assets/Images/banner_images/img2.HEIC";
+import leftImg3 from "../assets/Images/banner_images/img3.JPG";
+import rightImg1 from "../assets/Images/banner_images/img4.JPG";
+import rightImg2 from "../assets/Images/banner_images/img5.JPG";
+import rightImg3 from "../assets/Images/banner_images/img6.JPG";
+
 export const Banner = () => {
     const videoRef = useRef(null);
     const containerRef = useRef(null);
@@ -123,14 +130,14 @@ export const Banner = () => {
             </div>
             )} */}
             <div className='photo collage-left d-flex flex-column'>
-                <img id='left-img-1' style={{backgroundColor: "white"}}/>
-                <img id='left-img-2' style={{backgroundColor: "white"}}/>
-                <img id='left-img-3' style={{backgroundColor: "white"}}/>
+                <img id='left-img-1' src={leftImg1} style={{backgroundColor: "white"}}/>
+                <img id='left-img-2' src={leftImg2} style={{backgroundColor: "white"}}/>
+                <img id='left-img-3' src={leftImg3} style={{backgroundColor: "white"}}/>
             </div>
             <div className='photo collage-right d-flex flex-column'>
-                <img id='right-img-1' style={{backgroundColor: "white"}}/>
-                <img id='right-img-2' style={{backgroundColor: "white"}}/>
-                <img id='right-img-3' style={{backgroundColor: "white"}}/>
+                <img id='right-img-1' src={rightImg1} style={{backgroundColor: "white"}}/>
+                <img id='right-img-2' src={rightImg2} style={{backgroundColor: "white"}}/>
+                <img id='right-img-3' src={rightImg3} style={{backgroundColor: "white"}}/>
             </div>
             <div className={`video-container`} ref={containerRef}>
                 <video ref={videoRef} loop muted playsInline className='video'>

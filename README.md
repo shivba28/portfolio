@@ -1,3 +1,5 @@
+A personal portfolio showcasing development skills, projects, and accomplishments in a visually appealing format, serving as an online resume and professional introduction.
+
 Completed sections:
 
 1. Navbar
@@ -54,6 +56,4 @@ Completed sections:
 
     d. Responsive design completed
 
-Remaining:
-
-2. Deploying on Github Pages
+9. Deployed on Github Pages

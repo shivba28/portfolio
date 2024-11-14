@@ -187,7 +187,7 @@ export const Project = () => {
                         <div className="project-modal-content row align-items-center">
                             <div className="info-section col d-grid">
                                 <p className="text-justify">{selectedProject.Desc}</p>
-                                <a className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>Code</a>
+                                <a className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>CODE</a>
                             </div>
                             <div className="media-section col-6" id={"project-"+selectedProject.id}>
                             {(() => {

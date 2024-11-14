@@ -75,7 +75,7 @@
   }
 
   .project .left, .project .right{
-    font-family: "kranky" !important;
+    font-family: "Georgia" !important;
     font-style: normal;
 }
 
@@ -222,7 +222,7 @@
 }
 
 .modal-header {
-  font-family: "Kranky";
+  font-family: "Georgia";
 }
 
 .modal-body p{
@@ -231,6 +231,7 @@
 
 .project-modal-content a {
   font-weight: 700;
+  font-family: 'Times New Roman', Times, serif;
   color: #fff;
   border: 1px solid #fff;
   padding: 10px;

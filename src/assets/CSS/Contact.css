@@ -7,7 +7,7 @@
 }
 
 .contact .left, .contact .right{
-    font-family: "kranky" !important;
+    font-family: "Georgia" !important;
     font-style: normal;
 }
 
@@ -48,7 +48,7 @@
     text-align: center;
     color: white;
     font-size: 30px;
-    font-family: 'Kranky', sans-serif;
+    font-family: 'Georgia', sans-serif;
 }
 #form-content form {
     margin: 30px 0;
@@ -77,7 +77,7 @@
   
   /* Form Field */
   .form__field {
-    font-family: 'Kranky', sans-serif;
+    font-family: 'Georgia', sans-serif;
     width: 100%;
     border: 0;
     border-bottom: 2px solid var(--gray-color);
@@ -97,7 +97,7 @@
   /* Form Label */
   .form__label {
     position: absolute;
-    font-family: 'Kranky', sans-serif;
+    font-family: 'Georgia', sans-serif;
     top: -10px;
     display: block;
     transition: all 0.2s ease;

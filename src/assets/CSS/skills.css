@@ -16,7 +16,7 @@
 }
 
 .skills .left, .skills .right{
-    font-family: "kranky" !important;
+    font-family: "Georgia" !important;
     font-style: normal;
 }
 
@@ -170,7 +170,7 @@ border-radius: 20px;
 .list-group{
     font-family: 'Kranky';
     font-weight: 900;
-    font-size: 20px;
+    font-size: 22px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
     align-items: center;

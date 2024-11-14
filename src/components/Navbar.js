@@ -50,7 +50,7 @@ export const NavBar = ({openModal}) => {
               </Navbar.Toggle>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mx-auto text-center mt-1">
-                  <Link data-cursor="block" to="home" spy={true} smooth={true} duration={800} className={'navbar-link link'}>HOME</Link>
+                  <Link data-cursor="block" to="home" spy={true} smooth={true} offset={-50} duration={800} className={'navbar-link link'}>HOME</Link>
                   <Link data-cursor="block" to="skill" spy={true} smooth={true} offset={-50} duration={800} className={'navbar-link link'}>SKILLS</Link>
                   <Link data-cursor="block" to="project" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link link'}>PROJECTS</Link>
                   <Link data-cursor="block" to="/" spy={true} smooth={true} duration={800} onClick={openModal} className={'navbar-link link'}>ABOUT</Link>

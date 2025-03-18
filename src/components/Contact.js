@@ -9,7 +9,6 @@ import AOS from 'aos';
 
 export const Contact = () => {
   useEffect(() => {
-    AOS.refreshHard();
     AOS.init();
   }, [])
     const form = useRef();

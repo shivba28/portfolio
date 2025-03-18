@@ -25,7 +25,6 @@ import AOS from 'aos';
 
 export const Project = () => {
     useEffect(() => {
-        AOS.refreshHard();
         AOS.init();
       }, [])
     gsap.registerPlugin(ScrollTrigger);

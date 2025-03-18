@@ -1,10 +1,17 @@
 import { Col, NavLink, Row } from 'react-bootstrap';
 import '../assets/CSS/Contact.css';
 import img from '../assets/Images/contact.png';
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+
 export const Contact = () => {
+  useEffect(() => {
+    AOS.refreshHard();
+    AOS.init();
+  }, [])
     const form = useRef();
 
     const sendEmail = (e) => {
@@ -27,9 +34,9 @@ export const Contact = () => {
 
     return(
         <section className="contact content" id='contact'>
-            <div className="title text-center d-flex flex-wrap pt-4 bg-gradient">
-                <div className="slogan-left ms-auto"><h1 className="left">Contact</h1></div>
-                <div className="slogan-right me-auto"><h1 className="right">Me</h1></div>
+            <div className="title text-center d-flex flex-wrap pt-4 bg-gradient" data-aos="fade-down" data-aos-offset="500">
+                <div className="slogan-left ms-auto"><h1 className="left">CONTACT</h1></div>
+                <div className="slogan-right me-auto"><h1 className="right">ME</h1></div>
             </div>
             <Row>
                 <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>

@@ -18,11 +18,16 @@ import miniProjects from '../assets/Lottie/Mini-projects.json';
 import portfolio from '../assets/Lottie/Portfolio.json';
 import propChain1 from '../assets/Lottie/PropChain-1.json';
 import propChain2 from '../assets/Lottie/PropChain-2.json';
-import { ColorUniform } from "three/src/renderers/common/Uniform.js";
+
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
 
 export const Project = () => {
-
+    useEffect(() => {
+        AOS.refreshHard();
+        AOS.init();
+      }, [])
     gsap.registerPlugin(ScrollTrigger);
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -130,9 +135,9 @@ export const Project = () => {
             </div>
             <div className="project-content">
                 <section className="section" id="project">
-                    <div className="title text-center pt-4 bg-gradient">
-                        <div className="slogan-left"><h1 className="left">MY</h1></div>
-                        <div className="slogan-right"><h1 className="right">PROJECTS</h1></div>
+                    <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100" data-aos="fade-down" data-aos-offset="500">
+                        <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
+                        <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
                     </div>
                     <Row className="project-items my-3">
                     {projects.map((project, index) => (

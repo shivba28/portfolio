@@ -342,16 +342,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .photo{
   position: absolute;
-  height: 300px;
-  width: 300px;
-  top: 7.5%;
+  height: 350px;
+  width: 350px;
+  top: 7%;
   justify-content: center;
   align-items: center;
   animation: slide-in 1.5s ease-in-out forwards;
 }
 .photo img{
-  height: 200px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
   position: absolute;
   border-radius: 10px;
   object-fit: cover;
@@ -373,8 +373,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   top: 95%;
 }
 #left-img-3, #right-img-3{
-  top: 30%;
-  height: 300px;
+  top: 45%;
+  height: 350px;
 }
 #left-img-3{
   left: -70%;

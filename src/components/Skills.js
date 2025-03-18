@@ -6,20 +6,23 @@ import progImg from '../assets/Images/lang.png';
 import frameImg from '../assets/Images/framework.png';
 import techImg from '../assets/Images/tech.png';
 import testImg from '../assets/Images/test.png';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
 export const Skills = () => {
-
+    useEffect(() => {
+        AOS.init();
+      }, [])
     return(
        <section className='skills content' id='skill'>
-            <div className="title text-center d-flex flex-wrap pt-4 bg-gradient w-100">
+            <div className="title text-center d-flex flex-wrap pt-4 bg-gradient w-100" data-aos="fade-down" data-aos-offset="500">
                 <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                 <div className="slogan-right me-auto"><h1 className="right">SKILLS</h1></div>
             </div>
             <div className="card-container mb-5">
-                <div className="skill-card" id='card1'>
+                <div className="skill-card" id='card1' data-aos="fade-right" data-aos-once="false" data-aos-offset="500">
                     <div className="background">
                         <Clouds />
                         <Stars />
@@ -40,7 +43,7 @@ export const Skills = () => {
                                 </div>
                     </div>
                 </div>
-                <div className="skill-card" id='card2'>
+                <div className="skill-card" id='card2' data-aos="fade-right" data-aos-once="false" data-aos-offset="500" data-aos-delay="500">
                     <div className="background">
                         <Clouds />
                         <Stars />
@@ -60,7 +63,7 @@ export const Skills = () => {
                                 </div>
                     </div>
                 </div>
-                <div className="skill-card" id='card3'>
+                <div className="skill-card" id='card3' data-aos="fade-right" data-aos-once="false" data-aos-offset="500" data-aos-delay="1000">
                     <div className="background">
                         <Clouds />
                         <Stars />
@@ -81,7 +84,7 @@ export const Skills = () => {
                                 </div>
                     </div>
                 </div>
-                <div className="skill-card" id='card4'>
+                <div className="skill-card" id='card4' data-aos="fade-right" data-aos-once="false" data-aos-offset="500" data-aos-delay="1500">
                     <div className="background">
                         <Clouds />
                         <Stars />

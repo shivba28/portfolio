@@ -24,9 +24,6 @@ import AOS from 'aos';
 
 
 export const Project = () => {
-    useEffect(() => {
-        AOS.init();
-      }, [])
     gsap.registerPlugin(ScrollTrigger);
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -120,10 +117,14 @@ export const Project = () => {
         // Close modal by clearing the selected project
         const closeModal = () => setSelectedProject(null);
 
+        useEffect(() => {
+            AOS.init();
+            AOS.refresh();
+          }, [])
+
     return(
         
         <section className="project" >
-            {/* <div className="spacer" style={{height: "10px"}}></div> */}
             <div className="scroll-wrapper">
                 <div className="scroll-content">
                     <section className="section hero"></section>
@@ -132,8 +133,7 @@ export const Project = () => {
                     <img src={front_img}/>
                 </div>
             </div>
-            <div className="project-content">
-                <section className="section" id="project">
+            <section className="project-content section" id="project">
                     <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100" data-aos="fade-down" data-aos-offset="500">
                         <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                         <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
@@ -229,7 +229,6 @@ export const Project = () => {
                 </Modal>
             )}
                 </section>
-            </div>
-        </section>
+            </section>
     )
 }

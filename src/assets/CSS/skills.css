@@ -213,7 +213,6 @@ background: url(../Images/trees-m.webp);
     
 #card1:hover .light-bg, #card3:hover .light-bg{
     opacity: 0;
-    height: 0%;
     transform: translateY(50dvh);
 }
 
@@ -869,7 +868,7 @@ background: url(../Images/trees-m.webp);
         transform: translate(-5%, 100%) !important;
     }
     .skill-card:hover .light-bg{
-        transform: translate(-5%, 150%) !important;
+        transform: translate(-5%, 200%) !important;
     }
     .dark-bg{
         transform: translateY(300%) !important;

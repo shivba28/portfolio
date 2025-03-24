@@ -1,165 +1,119 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
-const LoadingScreen = () => {
+export const LoadingScreen = () => {
   const canvasRef = useRef(null);
-  const [isScreenClear, setIsScreenClear] = useState(false);
-  const [loadingTextOpacity, setLoadingTextOpacity] = useState(0);
+  const dots = useRef([]);
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const dotCount = width > 640 ? 150 : 80; // Adjust count for mobile
+  let isVacuumActive = false;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let mousePos = [-500, -500];
-    let dots = [];
-    let startDotCount = width > 640 ? 300 : 200;
-    let currentDotCount = 0;
-    let amplitude = 400;
-    let frequency = 0.075;
-    let visibleDuration = 6000;
-    let invisibleDuration = 3000;
-
     canvas.width = width;
     canvas.height = height;
 
     if (window.devicePixelRatio > 1) {
-      canvas.width = width * window.devicePixelRatio;
-      canvas.height = height * window.devicePixelRatio;
+      const scale = window.devicePixelRatio;
+      canvas.width = width * scale;
+      canvas.height = height * scale;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      ctx.scale(scale, scale);
     }
 
-    class Dot {
-      constructor(opts) {
-        this.ctx = opts.ctx;
-        this.startTime = opts.startTime;
-        this.frequency = opts.frequency || 5;
-        this.amplitude = opts.amplitude || 400;
-        this.fill = opts.fill;
-        this.color = opts.color || [0, 0, 0];
-        this.size = Math.random() * 3; // Random size
-        this.speed = Math.random() * 0.4;
-        this.section = opts.section;
-        this.opacity = 0;
-        this.maxSize = opts.maxSize || 20;
-        this.maxSpeed = opts.maxSpeed || 1;
-        this.x = opts.x || Math.random() * width;
-        this.endFunc = opts.endFunc ? opts.endFunc.bind(this) : undefined;
-        this.removeFunc = opts.removeFunc ? opts.removeFunc.bind(this) : undefined;
-      }
+    // Add transition for background color change
+    canvas.style.transition = "background-color 1s ease"; // Smooth transition for background color
 
-      draw() {
-        let x = this.x,
-          y = this._getYPos(),
-          isOffScreenX = x >= width + this.size / 2,
-          isOffScreenY = y <= 0 + this.size / 2;
+    // Create a single dot with shooting star reverse movement
+    const createDot = () => ({
+      x: Math.random() * width, // Start randomly along the width
+      y: (Math.random() * height) + height, // Start slightly below the screen
+      size: Math.random() * 7 + 1, // Varying sizes
+      speed: Math.random() * 5 + 1, // Varying speeds
+      angle: Math.random() * 20 - 1, // Slightly different angles
+      opacity: 1,
+      color: Math.random() > 0.7 ? "yellow" : "black",
+      vacuumSpeed: 0, // For vacuum effect later
+      driftSpeedX: (Math.random() - 0.5) * 0.5, // Random drift speed in X direction
+    });
 
-        if (isOffScreenY && isScreenClear && this.removeFunc) {
-          this.removeFunc();
-        } else if (isOffScreenX && this.endFunc) {
-          this.endFunc();
+    // Generate dots
+    dots.current = Array.from({ length: dotCount }, createDot);
+
+    // Draw function
+    const drawDots = () => {
+      ctx.clearRect(0, 0, width, height);
+      dots.current.forEach((dot) => {
+        ctx.globalAlpha = dot.opacity;
+        ctx.fillStyle = dot.color;
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    };
+
+    const loadText = () => {
+      // Draw "Welcome" text at the center of the screen
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.font = "60px Kranky";
+      ctx.fillStyle = "white";
+    };
+
+    // Animate dots
+    const updateDots = () => {
+      dots.current.forEach((dot) => {
+        if (isVacuumActive) {
+          dot.vacuumSpeed += 0.9; // Increase speed upwards
+          dot.x += Math.sin(Math.PI / 1) * dot.vacuumSpeed; // Move towards right at 30 degrees
+          dot.y -= Math.cos(Math.PI / 6) * dot.vacuumSpeed; // Move upwards at 30 degrees
+          dot.opacity -= 0.02; // Fade out faster
+        } else {
+          dot.y -= Math.cos(Math.PI / 6) * dot.speed; // Move upwards at 30 degrees
+          dot.x += dot.driftSpeedX; // Drift slightly left or right
         }
 
-        if (isScreenClear) this.speed += 0.005;
-        if (this.speed < this.maxSpeed) this.speed += 0.01;
-        if (this.opacity < 1) this.opacity += 0.025;
-
-        this.x += this.speed;
-
-        ctx.fillStyle = `rgba(${this.color.join(",")}, ${this.opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, y, this.size, 0, 2 * Math.PI);
-        ctx.closePath();
-        this.fill ? ctx.fill() : ctx.stroke();
-      }
-
-      _getYPos() {
-        return (
-          this.amplitude * Math.tan((Math.PI * (this.x / width)) * this.frequency - this.x / 10) +
-          height / 2
-        );
-      }
-    }
-
-    const createDots = () => {
-      for (let i = 0; i <= startDotCount; i++) {
-        let dot = new Dot({
-          ctx: ctx,
-          color: Math.random() > 0.75 ? [255, 255, 0] : [0, 0, 0], // Some yellow dots
-          startTime: performance.now(),
-          frequency: frequency,
-          maxAmplitude: amplitude,
-          maxSize: Math.random() * 30, // Varied sizes
-          maxSpeed: Math.random() * 0.45 / (width > 640 ? 3 : 4),
-          section: Math.random() * 5 / 2 + 1,
-          fill: true,
-          endFunc: function () {
-            this.x = Math.random() * this.size - this.size * 2;
-          },
-          removeFunc: function () {
-            dots.splice(dots.indexOf(this), 1);
-            currentDotCount--;
-          },
-        });
-
-        dots.push(dot);
-        currentDotCount++;
-      }
+        if(!isVacuumActive)
+        {
+          // Reset dot when it moves off screen
+          if (dot.y < -dot.size || dot.opacity <= 0) {
+            Object.assign(dot, createDot());
+          }
+        }
+      });
+      drawDots();
+      loadText();
     };
 
-    const draw = () => {
-      requestAnimationFrame(draw);
-      ctx.clearRect(0, 0, width, height);
-      dots.forEach((dot) => dot.draw());
+    gsap.ticker.add(updateDots); // Smooth GSAP ticker loop
 
-      ctx.textAlign = "center";
-      ctx.font = "24px Roboto Mono"; // Bigger text
-      ctx.fillStyle = `rgba(230, 230, 230, ${loadingTextOpacity})`;
-      ctx.fillText(isScreenClear ? "Finished" : "Loading...", width / 2, height / 2);
-    };
+    // Activate the vacuum effect after 5 seconds
+    setTimeout(() => {
+      isVacuumActive = true;
+      gsap.to(".loading-text", { opacity: 0, duration: 1 }); // Fade out text when vacuum starts
+      setTimeout(() => {
+        dots.current = []; // Clear all dots
+        canvas.style.backgroundColor = "#121212";
+      }, 1000); // Give time for vacuum effect before clearing screen
+    }, 5000);
 
-    const toggleScreenClear = () => {
-      setIsScreenClear((prev) => !prev);
-      setTimeout(toggleScreenClear, isScreenClear ? invisibleDuration : visibleDuration);
-    };
-
-    const resizeCanvas = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    };
-
-    const updateMousePos = (e) => {
-      mousePos = [e.pageX, e.pageY];
-    };
-
-    const clearMousePos = () => {
-      mousePos = [-5000, -5000];
-    };
-
-    window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("mousemove", updateMousePos);
-    window.addEventListener("mouseleave", clearMousePos);
-    window.addEventListener("touchmove", updateMousePos);
-    window.addEventListener("touchend", clearMousePos);
-
-    createDots();
-    draw();
-    setTimeout(toggleScreenClear, visibleDuration);
+    setTimeout(() => {
+      gsap.to(".loading-text", { opacity: 1, duration: 1 }); // Fade in the text after 1 second
+    }, 1000);
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
-      window.removeEventListener("mousemove", updateMousePos);
-      window.removeEventListener("mouseleave", clearMousePos);
-      window.removeEventListener("touchmove", updateMousePos);
-      window.removeEventListener("touchend", clearMousePos);
+      gsap.ticker.remove(updateDots);
     };
-  }, [isScreenClear, loadingTextOpacity]);
+  }, [isVacuumActive]);
 
-  return <canvas ref={canvasRef} style={{ position: "fixed", width: "100%", height: "100vh", zIndex: 9999 }} />;
+  return (<>
+            <canvas ref={canvasRef} className="position-fixed top-0 left-0 w-full h-full"></canvas>
+            <div className="loading-text" style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "60px", color: "white", opacity: 0, zIndex:9999 }}>
+              Welcome
+            </div>
+          </>);
 };
-
-export default LoadingScreen;

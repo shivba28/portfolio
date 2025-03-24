@@ -39,18 +39,10 @@ export const Project = () => {
         })
         .to(".scroll-wrapper img", {
             scale: 5,
-            z: 350,
+            z: 50,
             transformOrigin: "center center",
             ease: "power1.inOut"
           })
-        .to(
-            '.section.hero',
-            {
-                scale:1.1,
-                transformOrigin: 'center center',
-                ease: 'power1.inOut'
-            },
-        );
     });
 
 

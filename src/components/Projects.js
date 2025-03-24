@@ -39,10 +39,12 @@ export const Project = () => {
         })
         .to(".scroll-wrapper img", {
             scale: 5,
-            z: 50,
+            z: 350,
             transformOrigin: "center center",
             ease: "power1.inOut"
           })
+
+        gsap.set(".scroll-wrapper img", { scale: 1.1 });
     });
 
 

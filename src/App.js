@@ -6,6 +6,7 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Project } from './components/Projects';
 import { Contact } from './components/Contact';
+import LoadingScreen from './components/LoadingScreen';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { IPadCursorProvider, useIPadCursor } from "ipad-cursor/react";
 
@@ -13,6 +14,11 @@ import { IPadCursorProvider, useIPadCursor } from "ipad-cursor/react";
 function App() {
 
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 5000); // Adjust based on actual loading
+  }, []);
 
   const handleShow = () => {
     setShow(true);
@@ -45,15 +51,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <IPadCursorProvider>   
-        <NavBar openModal={handleShow} />
-        <About show={show} handleClose={handleClose} />
-        <Banner />
-        <Skills />
-        <Project />
-        <Contact />
-      </IPadCursorProvider>
+    <div className='App'>
+      
+      {
+        loading ? <LoadingScreen /> :
+        <IPadCursorProvider>
+          <NavBar openModal={handleShow} />
+          <About show={show} handleClose={handleClose} />
+          <Banner />
+          <Skills />
+          <Project />
+          <Contact />
+        </IPadCursorProvider>
+      }
     </div>
   );
 }

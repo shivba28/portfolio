@@ -1,15 +1,46 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+// import soundOnGif from '../assets/Images/soundOn.gif';
+import waterEntry from '../assets/Audios/waterEntryShort.mp3';
+import waterExit from '../assets/Audios/short.mp3';
 
-export const LoadingScreen = () => {
+export const LoadingScreen = ({ setLoading }) => {
   const canvasRef = useRef(null);
   const dots = useRef([]);
   const width = window.innerWidth;
   const height = window.innerHeight;
   const dotCount = width > 640 ? 150 : 80; // Adjust count for mobile
   let isVacuumActive = false;
+  const gifRef = useRef(null); // Reference to the GIF
 
+  const [animationStarted, setAnimationStarted] = useState(false);
+  const [audioEnabled, setAudioEnabled] = useState(false);
+
+  const loadStartRef = useRef(new Audio(waterEntry));
+  const loadEndRef = useRef(new Audio(waterExit));
+
+  // Set initial volume based on state
   useEffect(() => {
+    loadStartRef.current.volume = audioEnabled ? 1 : 0;
+    loadEndRef.current.volume = audioEnabled ? 1 : 0;
+  }, [audioEnabled]);
+
+  // Function to play sound if enabled (only called once)
+  const playSound = (sound) => {
+    sound.current.volume = audioEnabled ? 1 : 0; // Adjust volume instead of stopping
+    sound.current.play();
+  };
+
+
+  const startAnimation = () => {
+    setAnimationStarted(true);
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false); // Hides the loading screen after 12 seconds
+    }, 10000);
+
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
@@ -36,7 +67,7 @@ export const LoadingScreen = () => {
       speed: Math.random() * 5 + 1, // Varying speeds
       angle: Math.random() * 20 - 1, // Slightly different angles
       opacity: 1,
-      color: Math.random() > 0.7 ? "yellow" : "black",
+      color: Math.random() > 0.7 ? "#42edff" : "#2d9fcc",
       vacuumSpeed: 0, // For vacuum effect later
       driftSpeedX: (Math.random() - 0.5) * 0.5, // Random drift speed in X direction
     });
@@ -54,14 +85,6 @@ export const LoadingScreen = () => {
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
         ctx.fill();
       });
-    };
-
-    const loadText = () => {
-      // Draw "Welcome" text at the center of the screen
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.font = "60px Kranky";
-      ctx.fillStyle = "white";
     };
 
     // Animate dots
@@ -86,34 +109,80 @@ export const LoadingScreen = () => {
         }
       });
       drawDots();
-      loadText();
     };
+
+    // Start the loading sound when animation begins
+    playSound(loadStartRef);
 
     gsap.ticker.add(updateDots); // Smooth GSAP ticker loop
 
-    // Activate the vacuum effect after 5 seconds
+    // Activate the vacuum effect after 9 seconds
     setTimeout(() => {
       isVacuumActive = true;
       gsap.to(".loading-text", { opacity: 0, duration: 1 }); // Fade out text when vacuum starts
+
+      // Stop previous sound and play vacuum exit sound
+      loadStartRef.current.pause();
+      loadEndRef.current.volume = 1;
+      loadEndRef.current.play();
+
       setTimeout(() => {
         dots.current = []; // Clear all dots
         canvas.style.backgroundColor = "#121212";
       }, 1000); // Give time for vacuum effect before clearing screen
-    }, 5000);
+    }, 7000);
 
     setTimeout(() => {
-      gsap.to(".loading-text", { opacity: 1, duration: 1 }); // Fade in the text after 1 second
-    }, 1000);
+      gsap.to(".loading-text", { opacity: 1, duration: 1 }); // Fade in the text after 3 second
+    }, 3000);
 
-    return () => {
-      gsap.ticker.remove(updateDots);
-    };
-  }, [isVacuumActive]);
+  //   return () => {
+  //     gsap.ticker.remove(updateDots);
+  //   };
+  };
 
-  return (<>
-            <canvas ref={canvasRef} className="position-fixed top-0 left-0 w-full h-full"></canvas>
-            <div className="loading-text" style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "60px", color: "white", opacity: 0, zIndex:9999 }}>
-              Welcome
-            </div>
-          </>);
+  return (
+            <>
+              <canvas ref={canvasRef} className="position-fixed top-0 left-0 w-full h-full" style={{backgroundColor: '#163954'}}></canvas>
+
+              {!animationStarted && (
+                <button
+                  onClick={startAnimation}
+                  className="enterButton"
+                  style={{
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    padding: "20px 40px",
+                    fontSize: "20px",
+                    background: "#007bff",
+                  }}
+                >
+                  Enter
+                </button>
+              )}
+
+              {animationStarted && (
+                <>
+                  {/* Sound Toggle Button */}
+                  <button
+                    onClick={() => setAudioEnabled(prev => !prev)}
+                    className="soundButton"
+                    style={{
+                      top: "20px",
+                      right: "20px",
+                      padding: "10px 20px",
+                      fontSize: "16px",
+                      background: audioEnabled ? "#28a745" : "#dc3545"
+                    }}
+                  >
+                    {audioEnabled ? "🔊 Sound On" : "🔇 Sound Off"}
+                  </button>
+                  <div className="loading-text" style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "60px", color: "white", opacity: 0, zIndex:9999, fontFamily:"Kranky" }}>
+                    Welcome
+                  </div>
+                </>
+                )}
+            </>
+          );
 };

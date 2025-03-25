@@ -16,10 +16,6 @@ function App() {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 7000); // Adjust based on actual loading
-  }, []);
-
   const handleShow = () => {
     setShow(true);
   };
@@ -53,7 +49,7 @@ function App() {
   return (
     <div className='App'>
       {
-        loading ? <LoadingScreen /> :
+        loading ? <LoadingScreen setLoading={setLoading} /> :
         <IPadCursorProvider>
           <NavBar openModal={handleShow} />
           <About show={show} handleClose={handleClose} />

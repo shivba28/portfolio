@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio_2.0/static/css/main.792cc842.css",
-    "main.js": "/portfolio_2.0/static/js/main.dccaa398.js",
+    "main.css": "/portfolio_2.0/static/css/main.2ace314c.css",
+    "main.js": "/portfolio_2.0/static/js/main.09b1a21d.js",
     "static/js/453.e54b6f3b.chunk.js": "/portfolio_2.0/static/js/453.e54b6f3b.chunk.js",
     "static/media/2_edited.jpg": "/portfolio_2.0/static/media/2_edited.ba94f37e26503c9fe158.jpg",
     "static/media/intro.mp4": "/portfolio_2.0/static/media/intro.30cfa01e681f892c3dc7.mp4",
@@ -17,6 +17,7 @@
     "static/media/about1.png": "/portfolio_2.0/static/media/about1.fafcf78c51836d281cb1.png",
     "static/media/img6.JPG": "/portfolio_2.0/static/media/img6.72883220e18c10ec89df.JPG",
     "static/media/sun.png": "/portfolio_2.0/static/media/sun.ffa8d3212102864ed37a.png",
+    "static/media/waterEntryShort.mp3": "/portfolio_2.0/static/media/waterEntryShort.8b4ebc3e163f4c97b1dc.mp3",
     "static/media/bitmoji.ico": "/portfolio_2.0/static/media/bitmoji.19280cb9443cb1f046e7.ico",
     "static/media/CentraNo2-Bold.ttf": "/portfolio_2.0/static/media/CentraNo2-Bold.2faff7f7d3fc92a2fcd9.ttf",
     "static/media/CentraNo2-Book.ttf": "/portfolio_2.0/static/media/CentraNo2-Book.2b143fa4b734a3584043.ttf",
@@ -25,6 +26,7 @@
     "static/media/city.png": "/portfolio_2.0/static/media/city.4c51aa106b90234ab9fb.png",
     "static/media/tech.png": "/portfolio_2.0/static/media/tech.14790aad21a2b61e464b.png",
     "static/media/lang.png": "/portfolio_2.0/static/media/lang.793696e72ddb745f9081.png",
+    "static/media/short.mp3": "/portfolio_2.0/static/media/short.a65b47f0a692489e92d8.mp3",
     "static/media/moon.png": "/portfolio_2.0/static/media/moon.68a87e6ee4ed4ff432af.png",
     "static/media/test.png": "/portfolio_2.0/static/media/test.3a721cb073ec520ca3c9.png",
     "static/media/framework.png": "/portfolio_2.0/static/media/framework.66d6dfcdaf446f01c6c3.png",
@@ -32,12 +34,12 @@
     "static/media/github-mark-white.svg": "/portfolio_2.0/static/media/github-mark-white.97ed8e7eef60d61ca469881dd6f34511.svg",
     "index.html": "/portfolio_2.0/index.html",
     "static/media/nav-icon1.svg": "/portfolio_2.0/static/media/nav-icon1.721d5414c26365f117e71d46b6641cb2.svg",
-    "main.792cc842.css.map": "/portfolio_2.0/static/css/main.792cc842.css.map",
-    "main.dccaa398.js.map": "/portfolio_2.0/static/js/main.dccaa398.js.map",
+    "main.2ace314c.css.map": "/portfolio_2.0/static/css/main.2ace314c.css.map",
+    "main.09b1a21d.js.map": "/portfolio_2.0/static/js/main.09b1a21d.js.map",
     "453.e54b6f3b.chunk.js.map": "/portfolio_2.0/static/js/453.e54b6f3b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.792cc842.css",
-    "static/js/main.dccaa398.js"
+    "static/css/main.2ace314c.css",
+    "static/js/main.09b1a21d.js"
   ]
 }

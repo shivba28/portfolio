@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import '../assets/CSS/LoadingScreen.css';
 // import soundOnGif from '../assets/Images/soundOn.gif';
 import waterEntry from '../assets/Audios/waterEntryShort.mp3';
 import waterExit from '../assets/Audios/short.mp3';
@@ -13,11 +14,13 @@ export const LoadingScreen = ({ setLoading }) => {
   let isVacuumActive = false;
   const gifRef = useRef(null); // Reference to the GIF
 
+  const loadStartRef = useRef(new Audio(waterEntry));
+  const loadEndRef = useRef(new Audio(waterExit));
+
   const [animationStarted, setAnimationStarted] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(false);
 
-  const loadStartRef = useRef(new Audio(waterEntry));
-  const loadEndRef = useRef(new Audio(waterExit));
+  
 
   // Set initial volume based on state
   useEffect(() => {
@@ -25,11 +28,13 @@ export const LoadingScreen = ({ setLoading }) => {
     loadEndRef.current.volume = audioEnabled ? 1 : 0;
   }, [audioEnabled]);
 
+
   // Function to play sound if enabled (only called once)
   const playSound = (sound) => {
-    sound.current.volume = audioEnabled ? 1 : 0; // Adjust volume instead of stopping
     sound.current.play();
   };
+
+  
 
 
   const startAnimation = () => {
@@ -91,12 +96,12 @@ export const LoadingScreen = ({ setLoading }) => {
     const updateDots = () => {
       dots.current.forEach((dot) => {
         if (isVacuumActive) {
-          dot.vacuumSpeed += 0.9; // Increase speed upwards
+          dot.vacuumSpeed += 0.99; // Increase speed upwards
           dot.x += Math.sin(Math.PI / 1) * dot.vacuumSpeed; // Move towards right at 30 degrees
           dot.y -= Math.cos(Math.PI / 6) * dot.vacuumSpeed; // Move upwards at 30 degrees
           dot.opacity -= 0.02; // Fade out faster
         } else {
-          dot.y -= Math.cos(Math.PI / 6) * dot.speed; // Move upwards at 30 degrees
+          dot.y -= Math.cos(Math.PI / 8) * dot.speed; // Move upwards at 30 degrees
           dot.x += dot.driftSpeedX; // Drift slightly left or right
         }
 
@@ -115,16 +120,18 @@ export const LoadingScreen = ({ setLoading }) => {
     playSound(loadStartRef);
 
     gsap.ticker.add(updateDots); // Smooth GSAP ticker loop
+    
 
-    // Activate the vacuum effect after 9 seconds
+    // Activate the vacuum effect after 7 seconds
     setTimeout(() => {
       isVacuumActive = true;
       gsap.to(".loading-text", { opacity: 0, duration: 1 }); // Fade out text when vacuum starts
+      gsap.to(".volume", { opacity: 0, duration: 1 }); 
 
       // Stop previous sound and play vacuum exit sound
       loadStartRef.current.pause();
-      loadEndRef.current.volume = 1;
-      loadEndRef.current.play();
+      
+      playSound(loadEndRef);
 
       setTimeout(() => {
         dots.current = []; // Clear all dots
@@ -136,9 +143,6 @@ export const LoadingScreen = ({ setLoading }) => {
       gsap.to(".loading-text", { opacity: 1, duration: 1 }); // Fade in the text after 3 second
     }, 3000);
 
-  //   return () => {
-  //     gsap.ticker.remove(updateDots);
-  //   };
   };
 
   return (
@@ -146,38 +150,42 @@ export const LoadingScreen = ({ setLoading }) => {
               <canvas ref={canvasRef} className="position-fixed top-0 left-0 w-full h-full" style={{backgroundColor: '#163954'}}></canvas>
 
               {!animationStarted && (
-                <button
-                  onClick={startAnimation}
-                  className="enterButton"
-                  style={{
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    padding: "20px 40px",
-                    fontSize: "20px",
-                    background: "#007bff",
-                  }}
-                >
-                  Enter
-                </button>
+                <div className="enterButton" style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)"
+                }}>
+                  <button onClick={startAnimation}
+                  className=" button-82-pushable" role="button">
+                    <span className="button-82-shadow"></span>
+                    <span className="button-82-edge"></span>
+                    <span className="button-82-front text">
+                      Enter
+                    </span>
+                  </button>
+                </div>
               )}
 
               {animationStarted && (
                 <>
                   {/* Sound Toggle Button */}
-                  <button
-                    onClick={() => setAudioEnabled(prev => !prev)}
-                    className="soundButton"
-                    style={{
-                      top: "20px",
-                      right: "20px",
-                      padding: "10px 20px",
-                      fontSize: "16px",
-                      background: audioEnabled ? "#28a745" : "#dc3545"
-                    }}
-                  >
-                    {audioEnabled ? "🔊 Sound On" : "🔇 Sound Off"}
-                  </button>
+                    <label 
+                      className="volume"
+                      style={{
+                        position: "fixed",
+                        top: "20px",
+                        right: "20px",
+                        cursor: "pointer",
+                        zIndex: 10002,
+                      }}
+                    >
+                      <input type="checkbox" checked={!audioEnabled} onChange={() => setAudioEnabled(!audioEnabled)}/>
+                      <svg viewBox="0 0 108 96">
+                          <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
+                          <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
+                          <path d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
+                      </svg>
+                  </label>
                   <div className="loading-text" style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "60px", color: "white", opacity: 0, zIndex:9999, fontFamily:"Kranky" }}>
                     Welcome
                   </div>

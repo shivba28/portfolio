@@ -27,7 +27,8 @@ export const LoadingScreen = ({ setLoading }) => {
   // Set initial volume based on state
   useEffect(() => {
     loadStartRef.current.volume = audioEnabled ? 1 : 0;
-    loadEndRef.current.volume = audioEnabled ? 1 : 0;
+    loadEndRef.current.volume = audioEnabled ? 0.1 : 0;
+    bb8ExitRef.current.volume = audioEnabled ? 1 : 0;
   }, [audioEnabled]);
 
 
@@ -44,12 +45,10 @@ export const LoadingScreen = ({ setLoading }) => {
         ease: "power1.inOut",
         onStart: () => {
           gsap.to(".enterButton", { opacity: 0, duration: 2 });
-          if(audioEnabled){
-            bb8ExitRef.current.play().catch((err) => console.error("Audio play failed", err));
-          }
+          playSound(bb8ExitRef);
         },
         onComplete: () => {
-            if(audioEnabled) bb8ExitRef.current.pause();
+            bb8ExitRef.current.pause();
             startAnimation(); // Call parent function to switch screens
         },
         });

@@ -49,7 +49,11 @@ function App() {
   return (
     <div className='App'>
       {
-        loading ? <LoadingScreen setLoading={setLoading} /> :
+        loading ? 
+        <div>
+          <LoadingScreen setLoading={setLoading} />
+        </div>
+         :
         <IPadCursorProvider>
           <NavBar openModal={handleShow} />
           <About show={show} handleClose={handleClose} />

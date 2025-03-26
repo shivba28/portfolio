@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import '../assets/CSS/LoadingScreen.css';
-// import soundOnGif from '../assets/Images/soundOn.gif';
 import waterEntry from '../assets/Audios/waterEntryShort.mp3';
 import waterExit from '../assets/Audios/short.mp3';
+import { BB8animation } from './BB8animation';
 
 export const LoadingScreen = ({ setLoading }) => {
   const canvasRef = useRef(null);
@@ -127,7 +127,7 @@ export const LoadingScreen = ({ setLoading }) => {
       isVacuumActive = true;
       gsap.to(".loading-text", { opacity: 0, duration: 1 }); // Fade out text when vacuum starts
       gsap.to(".volume", { opacity: 0, duration: 1 }); 
-
+      gsap.to(".volume", { display: "none", delay: 1 });
       // Stop previous sound and play vacuum exit sound
       loadStartRef.current.pause();
       
@@ -148,48 +148,48 @@ export const LoadingScreen = ({ setLoading }) => {
   return (
             <>
               <canvas ref={canvasRef} className="position-fixed top-0 left-0 w-full h-full" style={{backgroundColor: '#163954'}}></canvas>
-
+                {/* Sound Toggle Button */}
+                <label 
+                  className="volume"
+                  style={{
+                    position: "fixed",
+                    top: "20px",
+                    right: "20px",
+                    cursor: "pointer",
+                    zIndex: 10002,
+                  }}
+                >
+                  <input type="checkbox" checked={!audioEnabled} onChange={() => setAudioEnabled(!audioEnabled)}/>
+                  <svg viewBox="0 0 108 96">
+                      <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
+                      <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
+                      <path d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
+                  </svg>
+                </label>
               {!animationStarted && (
-                <div className="enterButton" style={{
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)"
-                }}>
-                  <button onClick={startAnimation}
-                  className=" button-82-pushable" role="button">
-                    <span className="button-82-shadow"></span>
-                    <span className="button-82-edge"></span>
-                    <span className="button-82-front text">
-                      Enter
-                    </span>
-                  </button>
+                <div>
+                  <BB8animation audioEnabled={audioEnabled} />
+                  <div className="enterButton" style={{
+                    top: "70%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                  }}>
+                    {/* <button onClick={startAnimation} className=" button-82-pushable" role="button">
+                      <span className="button-82-shadow"></span>
+                      <span className="button-82-edge"></span>
+                      <span className="button-82-front text">
+                        Enter
+                      </span>
+                    </button> */}
+                    <button onClick={startAnimation} className="button-49" role="button">Enter</button>
+                  </div>
                 </div>
               )}
 
               {animationStarted && (
-                <>
-                  {/* Sound Toggle Button */}
-                    <label 
-                      className="volume"
-                      style={{
-                        position: "fixed",
-                        top: "20px",
-                        right: "20px",
-                        cursor: "pointer",
-                        zIndex: 10002,
-                      }}
-                    >
-                      <input type="checkbox" checked={!audioEnabled} onChange={() => setAudioEnabled(!audioEnabled)}/>
-                      <svg viewBox="0 0 108 96">
-                          <path d="M7,28 L35,28 L35,28 L59,8 L59,88 L35,68 L7,68 C4.790861,68 3,66.209139 3,64 L3,32 C3,29.790861 4.790861,28 7,28 Z"></path>
-                          <path d="M79,62 C83,57.3333333 85,52.6666667 85,48 C85,43.3333333 83,38.6666667 79,34 L49,3"></path>
-                          <path d="M95,69 C101.666667,61.6666667 105,54.3333333 105,47 C105,39.6666667 101.666667,32.3333333 95,25 L75.5,6 L49,33"></path>
-                      </svg>
-                  </label>
                   <div className="loading-text" style={{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "60px", color: "white", opacity: 0, zIndex:9999, fontFamily:"Kranky" }}>
                     Welcome
                   </div>
-                </>
                 )}
             </>
           );

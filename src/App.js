@@ -88,7 +88,7 @@ function App() {
             <IPadCursorProvider>
               <NavBar openModal={handleShow} />
               <About show={show} handleClose={handleClose} />
-              {/* <VolumeSlider /> */}
+              <VolumeSlider />
               <Banner />
               <Skills />
               <Project />

@@ -37,7 +37,7 @@ html{
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
   overflow-x: hidden;
-  background: #222;
+  background: #121212;
 }
 
 body{
@@ -47,7 +47,15 @@ body{
   background-color: #121212 !important;
   color: #fff !important;
   font-family: 'Kranky', sans-serif !important;
-  background: #222;
+  background: #121212;
+}
+
+.gif-container{
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
 }
 
 html::-webkit-scrollbar {

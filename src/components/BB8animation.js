@@ -5,6 +5,7 @@ import bb8Sound from '../assets/Audios/bb8.mp3';
 import bb8Sound2 from '../assets/Audios/bb8-2.mp3';
 import bb8Sound3 from '../assets/Audios/bb8-3.mp3';
 import bb8Sound4 from '../assets/Audios/bb8-4.mp3';
+import bb8Exit from '../assets/Audios/bb8-exit.mp3';
 
 export const BB8animation = ({ audioEnabled, onExit }) => {
     const [droidX, setDroidX] = useState(0);
@@ -16,6 +17,7 @@ export const BB8animation = ({ audioEnabled, onExit }) => {
 
     const sounds = [bb8Sound, bb8Sound2, bb8Sound3, bb8Sound4];
     const audioRef = useRef(new Audio());
+    const bb8ExitRef = useRef(new Audio(bb8Exit));
 
     const playRandomSound = () => {
         if (audioRef.current.paused) {
@@ -50,7 +52,14 @@ export const BB8animation = ({ audioEnabled, onExit }) => {
             rotation: 360 * 3, // Make BB-8 roll while exiting
             duration: 3, // Animation duration
             ease: "power1.inOut",
+            onStart: () => {
+                gsap.to(".enterButton", { opacity: 0, duration: 2 });
+                if(audioEnabled){
+                  bb8ExitRef.current.play().catch((err) => console.error("Audio play failed", err));
+                }
+            },
             onComplete: () => {
+                if(audioEnabled) bb8ExitRef.current.pause();
                 onExit(); // Call parent function to switch screens
             },
             });

@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import '../assets/CSS/LoadingScreen.css';
 import waterEntry from '../assets/Audios/waterEntryShort.mp3';
 import waterExit from '../assets/Audios/short.mp3';
+import bb8Exit from '../assets/Audios/bb8-exit.mp3';
 import { BB8animation } from './BB8animation';
 
 export const LoadingScreen = ({ setLoading }) => {
@@ -16,6 +17,7 @@ export const LoadingScreen = ({ setLoading }) => {
 
   const loadStartRef = useRef(new Audio(waterEntry));
   const loadEndRef = useRef(new Audio(waterExit));
+  const bb8ExitRef = useRef(new Audio(bb8Exit));
 
   const [animationStarted, setAnimationStarted] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(false);
@@ -33,6 +35,46 @@ export const LoadingScreen = ({ setLoading }) => {
   const playSound = (sound) => {
     sound.current.play();
   };
+
+  const exitBB8 = () => {
+      gsap.to(".bb8 .ball", {
+        x: window.innerWidth, // Move BB-8 out of the screen
+        rotation: 360 * 3, // Make BB-8 roll while exiting
+        duration: 3, // Animation duration
+        ease: "power1.inOut",
+        onStart: () => {
+          gsap.to(".enterButton", { opacity: 0, duration: 2 });
+          if(audioEnabled){
+            bb8ExitRef.current.play().catch((err) => console.error("Audio play failed", err));
+          }
+        },
+        onComplete: () => {
+            if(audioEnabled) bb8ExitRef.current.pause();
+            startAnimation(); // Call parent function to switch screens
+        },
+        });
+
+        // Animate BB-8 head (but don't rotate it)
+        gsap.to(".bb8 .head", {
+        x: window.innerWidth, // Move the whole BB-8 out of the screen
+        duration: 3,
+        ease: "power1.inOut",
+        });
+
+        // Animate BB-8 antennas (but don't rotate it)
+        gsap.to(".bb8 .antennas", {
+            x: window.innerWidth, // Move the whole BB-8 out of the screen
+            duration: 3,
+            ease: "power1.inOut",
+        });
+
+        // Animate BB-8 shadow (but don't rotate it)
+        gsap.to(".bb8 .shadow", {
+            x: window.innerWidth, // Move the whole BB-8 out of the screen
+            duration: 3,
+            ease: "power1.inOut",
+        });
+  }
 
   
 
@@ -168,7 +210,7 @@ export const LoadingScreen = ({ setLoading }) => {
                 </label>
               {!animationStarted && (
                 <div>
-                  <BB8animation audioEnabled={audioEnabled} />
+                  <BB8animation audioEnabled={audioEnabled} onExit={startAnimation} />
                   <div className="enterButton" style={{
                     top: "70%",
                     left: "50%",
@@ -181,7 +223,7 @@ export const LoadingScreen = ({ setLoading }) => {
                         Enter
                       </span>
                     </button> */}
-                    <button onClick={startAnimation} className="button-49" role="button">Enter</button>
+                    <button onClick={exitBB8} className="button-49" role="button">Enter</button>
                   </div>
                 </div>
               )}

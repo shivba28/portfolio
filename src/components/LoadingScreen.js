@@ -194,7 +194,7 @@ export const LoadingScreen = ({ setLoading }) => {
                   className="volume"
                   style={{
                     position: "fixed",
-                    top: "20px",
+                    top: "0px",
                     right: "20px",
                     cursor: "pointer",
                     zIndex: 10002,

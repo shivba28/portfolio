@@ -80,7 +80,7 @@
 }
 
 .project .slogan-left .left {
-    font-size: 5rem;
+    font-size: 5rem !important;
 }
 
 #project .slogan-right .right{

@@ -1,82 +1,285 @@
-import React, { useState, useEffect, useRef } from "react";
-import '../assets/CSS/VolumeSlider.css';
-import { gsap } from 'gsap';
+import "../assets/CSS/VolumeSlider.css";
+import p5 from "p5";
+
+import React, { useRef, useEffect, useState } from 'react';
+
 
 export const VolumeSlider = () => {
+  const sketchRef = useRef(null);
+  const [p5Instance, setP5Instance] = useState(null);
 
-const [volume, setVolume] = useState(0);
-  const volumeIconRef = useRef(null);
-  const startTimeRef = useRef(null);
-  const indicatorRef = useRef(null);
+  useEffect(() => {
+    // Sketch configuration
+    const Sketch = (p) => {
+      let colorBG, colorFG, colorSlider, colorSliderFill;
+      let sliderY, sliderX1, sliderX2, sliderLength;
+      let knobX, knobSize;
+      let volume;
+      let dragging, animating;
+      let iconFont, iconGlyph, iconSize;
+      let force, ease;
+      let dest, step, distance, bounce;
+      let canvas;
 
-  const maxRotation = -75; // Max rotation angle
-  const trackWidth = 200; // Adjust according to your design
+      p.preload = () => {
+        iconFont = p.loadFont('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/webfonts/fa-solid-900.ttf');
+      };
 
-  const handleMouseDown = () => {
-    startTimeRef.current = Date.now();
+      p.setup = () => {
+        canvas = p.createCanvas(350,50);
+        p.fill(0);
+        
+        colorBG = "#121212";
+        colorFG = "#fff";
+        colorSlider = "rgba(70, 130, 78, 0.3)";
+        colorSliderFill = "#bae6c1";
 
-    // Animate rotation using GSAP
-    gsap.to(volumeIconRef.current, {
-      rotation: maxRotation,
-      duration: 1.5, // Slow rotation
-      ease: "power1.out",
-    });
-  };
+        sliderY = p.height/2;
+        sliderX1 = p.width/3;
+        sliderX2 = p.width - p.width/3;
+        sliderLength = sliderX2 - sliderX1;
+        knobX = sliderX1;
+        knobSize = 16;
+        volume = 0;
+        dragging = false;
+        animating = false;
+        iconGlyph = "\u{F028}";
+        iconSize = 20;
+        ease = 0.1;
+        p.angleMode(p.DEGREES);
+      };
 
-  const handleMouseUp = () => {
-    if (!startTimeRef.current) return;
+      p.draw = () => {
+        p.background(colorBG);
+        drawSlider();
+        drawFlag(sliderX2, sliderY);
+        drawIcon();
+        drawKnob();
+        
+        if (dragging)
+          drawForce();
+        if (animating)
+          moveKnob();
+        
+      };
 
-    const holdTime = Date.now() - startTimeRef.current;
+      p.mousePressed = () => {
+        let knobTarget = p.dist(p.mouseX, p.mouseY, knobX, sliderY);
+        let muteTarget = p.dist(p.mouseX, p.mouseY, sliderX1-iconSize-20, sliderY-3);
+        if (animating === false) {
+          if (knobTarget < knobSize/2 + 5)
+            dragging = true;
+          if (muteTarget < iconSize)
+            p.setup();
+        }
+      };
 
-    // Map hold time to volume (0-100)
-    const newVolume = Math.min(100, (holdTime / 1000) * 100);
-    setVolume(Math.round(newVolume));
+      p.mouseReleased = () => {
+        if (dragging === true) {
+          console.log("Release");
+          animating = true;
+        }
+        dragging = false;
+      };
 
-    // Reset rotation of the icon
-    gsap.to(volumeIconRef.current, {
-      rotation: 0,
-      duration: 0.8,
-      ease: "elastic.out(1, 0.3)",
-    });
+      function drawForce() {
+        let f1 = p.createVector(knobX, sliderY);
+        let f2 = p.createVector(p.mouseX, p.mouseY);  
+        let max = sliderLength/2;
+        let min = p.dist(f1.x, f1.y, f2.x, f2.y) - knobSize/3;
+        let factor = 5;
+        let f = p.constrain(p.map(p.abs(f1.x - f2.x), 0, max, 0.5, factor), 0, factor);
+        let weight = 3;  
+        let s = p.constrain(p.map(min, 0, knobSize*2, 0, 1), 0, 1);
+        
+        force = p.constrain(f * p.round(knobX - p.mouseX), -max*f, max*f);
+        dest = knobX + force;  
+        step = force * ease;
+        
+        let r = mapColor(78, 241, knobSize, max);
+        let g = mapColor(170, 45, knobSize, max);
+        let b = mapColor(255, 45, knobSize, max);
+        let c = `rgb(${r},${g},${b})`;
+        p.stroke(c);
+        p.fill(c);
+        
+        p.push();
+        p.strokeJoin(p.ROUND);
+        p.translate(f1.x, f1.y);  
+        p.rotate(f2.sub(f1).heading() - 90);  
+        p.translate(0, (knobSize/2 + weight));
+        p.strokeWeight(weight*s);
+        let l = p.abs(p.dist(p.mouseX, p.mouseY, knobX, sliderY)-knobSize/1.5);
+        if (l > max)
+          l = max;
+        p.line(0, knobSize*s, 0, l);
+        p.scale(s);
+        p.strokeWeight(weight*s);
+        p.triangle(0, weight, knobSize/8 + weight, knobSize - weight, -knobSize/8 - weight, knobSize - weight);
+        p.pop();
+      }
 
-    // Calculate indicator final position
-    const finalPosition = (newVolume / 100) * trackWidth; 
+      function moveCheck() {
+        distance = dest - knobX;
+        step = distance * ease;
 
-    // Animate indicator "throwing" effect
-    gsap.fromTo(
-      indicatorRef.current,
-      { x: -30, y: -50, opacity: 0, scale: 0.5 }, // Start from the icon position
-      { x: finalPosition, y: 0, opacity: 1, scale: 1, duration: 1, ease: "power2.out" } // Land smoothly
-    );
-  };
+        let stepCheck = p.round(step);
+        let ahead = knobX + stepCheck;
+        
+        if (ahead >= sliderX2) {
+          knobX = sliderX2;
+          bounce = true;
+        } else if (ahead <= sliderX1) {
+          knobX = sliderX1;
+          bounce = true;
+        }
+        
+        if (bounce) {
+          force = -distance;
+          dest = knobX + force;
+          distance = dest - knobX;
+          step = distance * ease;
+          bounce = false;
+        }
+        
+        animating = true; 
+      }
+
+      function moveKnob() {
+        if(force !== 0){
+          moveCheck();
+          knobX += step;
+          
+          if (around(knobX, dest, p.ceil(p.abs(step)))) {
+            knobX = dest;
+            animating = false;
+          }
+        }
+        
+        getVolume();
+      }
+
+      function drawKnob() {
+        let shadow = "rgba(0,0,0,0.2)";
+        p.noStroke();
+        p.fill(shadow);
+        p.circle(knobX, sliderY+2, knobSize);
+        
+        p.fill(255);
+        p.circle(knobX, sliderY, knobSize);
+      }
+
+      function drawSlider() {  
+        p.stroke(colorSlider);
+        p.strokeCap(p.ROUND);
+        p.strokeWeight(3);
+        p.line(sliderX1, sliderY, sliderX2, sliderY);
+        
+        p.stroke(colorSliderFill);  
+        p.line(sliderX1, sliderY, knobX, sliderY);
+      }
+
+      function drawIcon() {  
+        p.fill(colorFG);
+        p.textFont(iconFont, iconSize);
+        p.textAlign(p.LEFT, p.CENTER);
+
+        if (volume === 0)
+          iconGlyph = "\u{F6A9}";
+        else if (volume < 50)
+          iconGlyph = "\u{F027}";
+        else if (volume >= 50)
+          iconGlyph = "\u{F028}";
+
+        p.text(iconGlyph, sliderX1-iconSize-20, sliderY-3);
+      }
+
+      function getVolume() {
+        let val = p.round(knobX);
+        let vol = p.map(p.round(val), sliderX1, sliderX2, 0, 100);
+        volume = p.round(vol);
+      }
+
+      function writeVolume() {
+        let color = colorFG;
+        let val = 100 - volume;
+        let unit = "yard";
+        let message;
+        p.fill(color);
+        p.noStroke();
+        p.textSize(18);
+        p.textFont('Helvetica');
+        p.textAlign(p.CENTER, p.CENTER);
+        
+        if (val !== 1) {
+          unit += 's';
+        }
+        message = `${val} ${unit} from the hole`;
+        if (val === 0 && animating === false) {    
+          p.textSize(22);
+          message = "Max Golfume!";
+        }
+        
+        p.text(message, p.width/2, sliderY - 50);
+      }
+
+      function drawFlag(x, y) {
+        let height = 25;
+        let top = y - height;
+        let flagH = 10;
+        let flagW = 10;
+        
+        p.noStroke();
+        p.fill("#e83838");
+        p.triangle(x, top, x + flagW, top + flagH/2, x, top + flagH);  
+        
+        p.stroke(0);
+        p.strokeWeight(2);
+        p.fill("#e83838");
+        p.line(x, y, x, top);
+        
+        p.noStroke();
+        p.fill("rgba(255, 255, 255, 0.8)");
+        p.ellipse(x, y, 15, 7); 
+      }
+
+      function around(value, base, buffer) {
+        return value > base - buffer && value < base + buffer;
+      }
+
+      function mapColor(c1, c2, m1, m2) {
+        return p.constrain(p.round(p.map(p.abs(knobX - p.mouseX), m1, m2, c1, c2)), 
+          Math.min(c1, c2), 
+          Math.max(c1, c2)
+        );
+      }
+
+      p.touchStarted = () => {
+        p.mousePressed();
+      };
+
+      p.centerCanvas = () => {
+        let x = (p.windowWidth - p.width) / 2;
+        let y = (p.windowHeight - p.height) / 2;
+        canvas.position(x, y);
+      };
+    };
+
+
+    // Create p5 instance
+    const p5Sketch = new p5(Sketch, sketchRef.current);
+    setP5Instance(p5Sketch);
+
+    // Cleanup function
+    return () => {
+      p5Sketch.remove();
+    };
+  }, []);
 
   return (
-    <div id="volume-slider">
-    <svg ref={volumeIconRef} id="volume-icon" class="volume-icon" viewBox="-1 0 33 32" onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
-        <defs>
-        <mask id="circle-mask" x="-1" y="0" width="33" height="32">
-            <circle cx="-1" cy="16" r="33" fill="white" id="circle-mask-shape" />
-        </mask>
-
-        <mask id="volume-mask" x="-1" y="0" width="33" height="32">
-            <path d="M22.485 25.985c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 4.094-4.094 4.094-10.755 0-14.849-0.586-0.586-0.586-1.536 0-2.121s1.536-0.586 2.121 0c2.55 2.55 3.954 5.94 3.954 9.546s-1.404 6.996-3.954 9.546c-0.293 0.293-0.677 0.439-1.061 0.439v0zM17.157 23.157c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 2.534-2.534 2.534-6.658 0-9.192-0.586-0.586-0.586-1.536 0-2.121s1.535-0.586 2.121 0c3.704 3.704 3.704 9.731 0 13.435-0.293 0.293-0.677 0.439-1.061 0.439zM13 30c-0.26 0-0.516-0.102-0.707-0.293l-7.707-7.707h-3.586c-0.552 0-1-0.448-1-1v-10c0-0.552 0.448-1 1-1h3.586l7.707-7.707c0.286-0.286 0.716-0.372 1.090-0.217s0.617 0.519 0.617 0.924v26c0 0.404-0.244 0.769-0.617 0.924-0.124 0.051-0.254 0.076-0.383 0.076z" fill="white" mask="url(#circle-mask)"></path>
-        </mask>
-
-        <linearGradient id="grad-1" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="20%" stop-color="#9a88aa" />
-            <stop offset="100%" stop-color="#6e33a5" />
-        </linearGradient>
-        </defs>
-
-        <path class="volume-icon-bg" fill="#cbc8ce" d="M22.485 25.985c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 4.094-4.094 4.094-10.755 0-14.849-0.586-0.586-0.586-1.536 0-2.121s1.536-0.586 2.121 0c2.55 2.55 3.954 5.94 3.954 9.546s-1.404 6.996-3.954 9.546c-0.293 0.293-0.677 0.439-1.061 0.439v0zM17.157 23.157c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 2.534-2.534 2.534-6.658 0-9.192-0.586-0.586-0.586-1.536 0-2.121s1.535-0.586 2.121 0c3.704 3.704 3.704 9.731 0 13.435-0.293 0.293-0.677 0.439-1.061 0.439zM13 30c-0.26 0-0.516-0.102-0.707-0.293l-7.707-7.707h-3.586c-0.552 0-1-0.448-1-1v-10c0-0.552 0.448-1 1-1h3.586l7.707-7.707c0.286-0.286 0.716-0.372 1.090-0.217s0.617 0.519 0.617 0.924v26c0 0.404-0.244 0.769-0.617 0.924-0.124 0.051-0.254 0.076-0.383 0.076z"></path>
-
-        <rect x="-1" y="0" width="33" height="32" mask="url(#volume-mask)" fill="url(#grad-1)" />
-    </svg>
-
-    <div class="volume-track">
-        <span id="volume-indicator" class="volume-indicator" ref={indicatorRef}></span>
-        <input type="hidden" name="volume" id="volume-input" value={volume} />
-    </div>
-    </div>
+    <div 
+      ref={sketchRef} 
+      className="volumeSliderContainer"
+    />
   );
-}
+};

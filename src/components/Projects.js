@@ -121,8 +121,7 @@ export const Project = () => {
           }, [])
 
     return(
-        
-        <section className="project" >
+        <section className="project">
             <div className="scroll-wrapper">
                 <div className="scroll-content">
                     <section className="section hero"></section>

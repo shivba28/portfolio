@@ -26,7 +26,7 @@ export const NavBar = ({openModal}) => {
     }, []);
 
     return (
-          <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
+          <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
             <Container>
               <Navbar.Brand href="/portfolio_2.0" data-cursor="block" data-cursor-style="background: transparent">
                 <img src={logo} alt="Logo" style={{width: "80px", height: "80px"}}/>
@@ -64,7 +64,7 @@ export const NavBar = ({openModal}) => {
                     <Link data-cursor="block" data-cursor-style="background: transparent; border-color:transparent;" href="#contact" to="contact" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
                 </span>
               </Navbar.Collapse>
-            </Container>
+            </Container>       
           </Navbar>
       )
 }

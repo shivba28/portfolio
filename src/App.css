@@ -58,6 +58,21 @@ body{
   width: 300px;
 }
 
+#mainVolumeButton, #mainVolumeButton svg{
+  cursor: none !important;
+}
+
+#mainVolumeButton{
+  background-color: #00a2b2;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+#mainVolumeButton input + svg {
+  height: 30px;
+  width: 30px;
+}
+
 html::-webkit-scrollbar {
   display: none;
 }
@@ -513,14 +528,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   #right-img-3{
     right: -150%;
   }
-  .collage-left{
-    left: 15%;
-    transform: translate(-250%, 50%);
-  }
-  .collage-right{
-    right: 15%;
-    transform: translate(250%, 50%);
-  }
+  
   @keyframes fade-slide-up {
     from {
       opacity: 0;
@@ -569,14 +577,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     height: 120%;
   }
   .photo{
-    top: 7.5%;
+    top: 6%;
   }
   .photo img{
     height: 200px;
     width: 200px;
   }
   #left-img-2, #right-img-2{
-    top: 105%;
+    top: 100%;
   }
   #left-img-3, #right-img-3{
     top: 30%;
@@ -585,14 +593,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   #left-img-3, #right-img-3{
     display: none;
   }
-  .collage-left{
-    left: 0%;
-    transform: translate(-250%, 50%);
-  }
-  .collage-right{
-    right: 0%;
-    transform: translate(250%, 50%);
-  }
+
   @keyframes fade-slide-up {
     from {
       opacity: 0;

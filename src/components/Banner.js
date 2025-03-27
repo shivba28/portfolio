@@ -42,7 +42,7 @@ export const Banner = () => {
                 end: 'bottom top', // Animation ends when the bottom of .banner reaches the top
                 scrub: true,
                 invalidateOnRefresh: true // Recalculate on refresh or resize
-            },
+            }
         })
         .to(videoRef.current, {
             scrollTrigger: {
@@ -91,6 +91,16 @@ export const Banner = () => {
                 invalidateOnRefresh: true // Recalculate on refresh or resize
             },
             });
+          });
+
+          mm.add("(max-width: 900px)", () => {
+            gsap.set(".collage-left", {left:-50});
+            gsap.set(".collage-right", {right:-50});
+          });
+
+          mm.add("(max-width: 1200px)", () => {
+            gsap.set(".collage-left", {left:30});
+            gsap.set(".collage-right", {right:30});
           });
     })
 

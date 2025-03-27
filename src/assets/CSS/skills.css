@@ -20,8 +20,8 @@
     font-style: normal;
 }
 
-.skills .slogan-left .left {
-    font-size: 5rem;
+#skill .slogan-left .left {
+    font-size: 5rem !important;
 }
 
 #skill .slogan-right .right{
@@ -744,7 +744,7 @@ background: url(../Images/trees-m.webp);
         top: 0;
         margin-right: 20px;
     }
-    #skill .slogan-right .right {
+    #skill .slogan-left .left, #skill .slogan-right .right {
         font-size: 3rem !important;
     }
     .skill-card .content {
@@ -794,7 +794,7 @@ background: url(../Images/trees-m.webp);
         top: 0;
         margin-right: 20px;
     }
-    #skill .slogan-right .right {
+    #skill .slogan-left .left, #skill .slogan-right .right {
         font-size: 3.5rem !important;
     }
     .skill-card .content {

@@ -12,7 +12,7 @@
 }
 
 .contact .slogan-left .left {
-    font-size: 5rem;
+    font-size: 5rem !important;
 }
 
 #contact .slogan-right .right{

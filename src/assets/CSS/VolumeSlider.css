@@ -1,56 +1,35 @@
-#volume-slider{
-    position: absolute;
-    align-items: center;
-    display    : flex;
-    margin     : 10em auto;
-    padding    : 30px 0;
-    width      : 265px;
-    z-index: 9999;
+.volumeSliderContainer {
+  width: auto;
+  height: 100%;
+  position: relative;
+  z-index: 10001;
+  margin-left: 0px;
+  right: -50px;
+}
+
+.p5Canvas{
+  position: relative;
+  z-index: 10001;
+  cursor: none !important;
+  top: 0;
+}
+
+@media (max-width:1200px) {
+  .volumeSliderContainer {
+    right: 50px;
+    text-align: center;
   }
-  
-  
-  .volume-icon{
-    cursor          : pointer;
-    height          : 60px;
-    transform       : rotate(-0deg);
-    transform-origin: center left;
-    width           : 60px;
-  
-    .volume-icon-bg{
-      fill      : #100100;
-      transition: fill 300ms;
-    }
-  
-    &:hover .volume-icon-bg{
-      fill: #b6aebf;
-    }
-  
+}
+
+@media (max-width:900px) {
+  .volumeSliderContainer {
+    right: -15px;
+    margin-top: 10px;
+    text-align: center;
   }
-  
-  
-  #circle-mask-shape{
-    transform       : scale(0);
-    transform-origin: center center;
+
+  .p5Canvas{
+    width: 500px !important;
+    height: 75px !important;
   }
-  
-  
-  .volume-track{
-    background-color: #e1dee5;
-    border-radius   : 3px;
-    flex            : 1;
-    height          : 4px;
-    margin-left     : 5px;
-    position        : relative;
-  }
-  
-  
-  .volume-indicator{
-    background-color: #6eaa35;
-    border-radius   : 50%;
-    height          : 12px;
-    left            : 0;
-    position        : absolute;
-    top             : -4px;
-    transition      : visibility 100ms, opacity 100ms;
-    width           : 12px;
-  }
+}

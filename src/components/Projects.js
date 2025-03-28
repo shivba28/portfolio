@@ -6,6 +6,8 @@ import '../assets/CSS/projects.css';
 import Lottie from 'lottie-react';
 import { Row, Col, Modal } from "react-bootstrap";
 import { useEffect, useRef, useState } from 'react';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 import constructionData from '../assets/Lottie/CCDP.json';
 import school from '../assets/Lottie/trimmed_school.json';
@@ -120,6 +122,26 @@ export const Project = () => {
             AOS.refresh();
           }, [])
 
+          const responsive = {
+            superLargeDesktop: {
+              // the naming can be any, depends on you.
+              breakpoint: { max: 4000, min: 3000 },
+              items: 5
+            },
+            desktop: {
+              breakpoint: { max: 3000, min: 1024 },
+              items: 4
+            },
+            tablet: {
+              breakpoint: { max: 1024, min: 464 },
+              items: 2
+            },
+            mobile: {
+              breakpoint: { max: 464, min: 0 },
+              items: 1
+            }
+          };
+
     return(
         <section className="project">
             <div className="scroll-wrapper">
@@ -130,102 +152,143 @@ export const Project = () => {
                     <img src={front_img} ref={imageRef}/>
                 </div>
             </div>
-            <section className="project-content section" id="project">
-                    <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100" data-aos="fade-down" data-aos-offset="500">
-                        <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
-                        <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
-                    </div>
-                    <Row className="project-items my-3">
+            <section className="project-content section mb-5 pb-5" id="project">
+                <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100 mb-4" data-aos="fade-down" data-aos-offset="500">
+                    <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
+                    <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
+                </div>
+                <Carousel responsive={responsive} infinite={true}>
                     {projects.map((project, index) => (
-                        <Col key={project.id} xs={12} md={6} xl={4} className="m-auto prj-col">
-                            <div className="project-item my-5" id={"project-"+project.id}>
-                                <div className="project-item-active">
-                                <a style={{height:"100%", width:"100%", position:"absolute"}} onClick={() => openModal(project)}></a>
-                                </div>
-                                <div className="base"></div>
-                                <div className="lottie-figure">
-                                    {(() => {
-                                        switch (project.type) {
-                                            case 'lottie':
-                                            return (
-                                                <Lottie animationData={project.animationData} loop={true} autoplay={true} />
-                                            );
-                                            case "video" :
-                                            return (
-                                                <div>
-                                                    <video loop muted playsInline autoPlay>
-                                                        <source src={project.video} type="video/mp4" />
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                    <div className="video-base"></div>
-                                                </div>
-                                            );
-                                            case "lottie-prop" :
-                                                return (
-                                                    <div>
-                                                        <Lottie animationData={project.animationData} loop={true} autoplay={true} />
-                                                        <Lottie className="part-2" animationData={project.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
-                                                    </div>
-                                                );
-                                            default:
-                                                return null; // Optional: handle unexpected types
-                                                }
-                                    })()}
-                                </div>
-                                <div className="project-title noselect">{project.title}</div>
+                        <div className="project-item my-5" id={"project-"+project.id}>
+                            <div className="project-item-active">
+                            <a style={{height:"100%", width:"100%", position:"absolute"}} onClick={() => openModal(project)}></a>
                             </div>
-                        </Col>
-                    ))}
-                </Row>
-
-            {/* Modal to display project info dynamically */}
-            {selectedProject && (
-                <Modal show onHide={closeModal} centered size="lg" className="projects-modal fade rounded">
-                    <Modal.Header className="bg-black justify-content-center">
-                        <Modal.Title className="text-center fs-1 rounded px-3">{selectedProject.title}</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="bg-black rounded-bottom">
-                        <div className="project-modal-content row align-items-center">
-                            <div className="info-section col d-grid">
-                                <p className="text-justify">{selectedProject.Desc}</p>
-                                <a className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>CODE</a>
-                            </div>
-                            <div className="media-section col-6" id={"project-"+selectedProject.id}>
-                            {(() => {
-                                switch (selectedProject.type) {
-                                    case "lottie":
+                            <div className="base"></div>
+                            <div className="lottie-figure">
+                                {(() => {
+                                    switch (project.type) {
+                                        case 'lottie':
                                         return (
-                                            <div className="lottie-figure">
-                                                <Lottie animationData={selectedProject.animationData} loop autoplay />
-                                            </div>
+                                            <Lottie animationData={project.animationData} loop={true} autoplay={true} />
                                         );
-                                    case "video" :
+                                        case "video" :
                                         return (
                                             <div>
-                                                <video loop muted playsInline autoPlay> 
-                                                    <source src={selectedProject.video} type="video/mp4"/>
+                                                <video loop muted playsInline autoPlay>
+                                                    <source src={project.video} type="video/mp4" />
                                                     Your browser does not support the video tag.
                                                 </video>
                                                 <div className="video-base"></div>
                                             </div>
                                         );
-                                    case "lottie-prop" :
-                                        return (
-                                            <div className="lottie-figure m-auto">
-                                            <Lottie animationData={selectedProject.animationData} loop={true} autoplay={true} />
-                                            <Lottie className="part-2" animationData={selectedProject.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
-                                        </div>
-                                    );
-                                    default:
-                                        return null; // Optional: handle unexpected types
-                                        }
-                        })()}
+                                        case "lottie-prop" :
+                                            return (
+                                                <div>
+                                                    <Lottie animationData={project.animationData} loop={true} autoplay={true} />
+                                                    <Lottie className="part-2" animationData={project.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
+                                                </div>
+                                            );
+                                        default:
+                                            return null; // Optional: handle unexpected types
+                                            }
+                                })()}
                             </div>
+                            <div className="project-title noselect">{project.title}</div>
                         </div>
-                    </Modal.Body>
-                </Modal>
-            )}
-                </section>
+                    ))}
+                </Carousel>
+
+                {/* Modal to display project info dynamically */}
+                {selectedProject && (
+                    <Modal show onHide={closeModal} centered size="lg" className="projects-modal fade rounded">
+                        <Modal.Header className="bg-black justify-content-center">
+                            <Modal.Title className="text-center fs-1 rounded px-3">{selectedProject.title}</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body className="bg-black rounded-bottom">
+                            <div className="project-modal-content row align-items-center">
+                                <div className="info-section col d-grid">
+                                    <p className="text-justify">{selectedProject.Desc}</p>
+                                    <a className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>CODE</a>
+                                </div>
+                                <div className="media-section col-6" id={"project-"+selectedProject.id}>
+                                {(() => {
+                                    switch (selectedProject.type) {
+                                        case "lottie":
+                                            return (
+                                                <div className="lottie-figure">
+                                                    <Lottie animationData={selectedProject.animationData} loop autoplay />
+                                                </div>
+                                            );
+                                        case "video" :
+                                            return (
+                                                <div>
+                                                    <video loop muted playsInline autoPlay> 
+                                                        <source src={selectedProject.video} type="video/mp4"/>
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                    <div className="video-base"></div>
+                                                </div>
+                                            );
+                                        case "lottie-prop" :
+                                            return (
+                                                <div className="lottie-figure m-auto">
+                                                <Lottie animationData={selectedProject.animationData} loop={true} autoplay={true} />
+                                                <Lottie className="part-2" animationData={selectedProject.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
+                                            </div>
+                                        );
+                                        default:
+                                            return null; // Optional: handle unexpected types
+                                            }
+                            })()}
+                                </div>
+                            </div>
+                        </Modal.Body>
+                    </Modal>
+                )}
             </section>
+        </section>
     )
 }
+
+{/* <Row className="project-items my-3">
+    {projects.map((project, index) => (
+        <Col key={project.id} xs={12} md={6} xl={4} className="m-auto prj-col">
+            <div className="project-item my-5" id={"project-"+project.id}>
+                <div className="project-item-active">
+                <a style={{height:"100%", width:"100%", position:"absolute"}} onClick={() => openModal(project)}></a>
+                </div>
+                <div className="base"></div>
+                <div className="lottie-figure">
+                    {(() => {
+                        switch (project.type) {
+                            case 'lottie':
+                            return (
+                                <Lottie animationData={project.animationData} loop={true} autoplay={true} />
+                            );
+                            case "video" :
+                            return (
+                                <div>
+                                    <video loop muted playsInline autoPlay>
+                                        <source src={project.video} type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div className="video-base"></div>
+                                </div>
+                            );
+                            case "lottie-prop" :
+                                return (
+                                    <div>
+                                        <Lottie animationData={project.animationData} loop={true} autoplay={true} />
+                                        <Lottie className="part-2" animationData={project.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
+                                    </div>
+                                );
+                            default:
+                                return null; // Optional: handle unexpected types
+                                }
+                    })()}
+                </div>
+                <div className="project-title noselect">{project.title}</div>
+            </div>
+        </Col>
+    ))}
+</Row> */}

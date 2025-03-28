@@ -566,6 +566,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (769px <= width <= 1024px) {
+  #mainVolumeButton{
+    top: 100px !important;
+  }
   .right{
     font-size: 9rem !important;
   }
@@ -607,6 +610,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (320px <= width <= 768px) {
+  #mainVolumeButton{
+    top: 100px !important;
+  }
   .ipad-cursor{
     display: none;
   }
@@ -660,6 +666,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (325px <= width <= 425px) {
+  #mainVolumeButton{
+    top: 100px !important;
+  }
   .ipad-cursor{
     display: none;
   }
@@ -681,6 +690,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (max-width: 375px) {
+  #mainVolumeButton{
+    top: 100px !important;
+  }
   .ipad-cursor{
     display: none;
   }

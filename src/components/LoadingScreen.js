@@ -27,7 +27,7 @@ export const LoadingScreen = ({ setLoading }) => {
   // Set initial volume based on state
   useEffect(() => {
     loadStartRef.current.volume = audioEnabled ? 1 : 0;
-    loadEndRef.current.volume = audioEnabled ? 0.1 : 0;
+    loadEndRef.current.volume = audioEnabled ? 0.3 : 0;
     bb8ExitRef.current.volume = audioEnabled ? 1 : 0;
   }, [audioEnabled]);
 

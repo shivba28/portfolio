@@ -88,7 +88,7 @@ function App() {
             className="volume" id='mainVolumeButton'
             style={{
               position: "fixed",
-              top: "100px",
+              top: "20px",
               right: "20px",
               cursor: "none",
               zIndex: 10002,

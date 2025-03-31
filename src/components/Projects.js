@@ -117,6 +117,24 @@ export const Project = () => {
         // Close modal by clearing the selected project
         const closeModal = () => setSelectedProject(null);
 
+        const CustomLeftArrow = ({ onClick, ...rest }) => {
+            const {
+              onMove,
+              carouselState: { currentSlide, deviceType }
+            } = rest;
+            // onMove means if dragging or swiping in progress.
+            return <button data-cursor="block" className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left" onClick={() => onClick()} />;
+          };
+
+        const CustomRightArrow = ({ onClick, ...rest }) => {
+            const {
+              onMove,
+              carouselState: { currentSlide, deviceType }
+            } = rest;
+            // onMove means if dragging or swiping in progress.
+            return <button data-cursor="block" className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right" onClick={() => onClick()} />;
+          };
+
         useEffect(() => {
             AOS.init();
             AOS.refresh();
@@ -157,7 +175,7 @@ export const Project = () => {
                     <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                     <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
                 </div>
-                <Carousel responsive={responsive} infinite={true}>
+                <Carousel responsive={responsive} infinite={true} draggable={false} customLeftArrow={<CustomLeftArrow />} customRightArrow={<CustomRightArrow />} >
                     {projects.map((project, index) => (
                         <div className="project-item my-5" id={"project-"+project.id}>
                             <div className="project-item-active">

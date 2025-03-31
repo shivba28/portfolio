@@ -27,6 +27,7 @@
   height: 100vh;
 }
 
+
   .scroll-content .section.hero {
     background-image: url(../Images/2_edited.jpg);
     background-position: center center;
@@ -667,4 +668,25 @@
     transform: translate(65px, -22dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg) !important;
   }
   
+}
+
+
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.custom-arrow.left {
+  left: 10px;
+}
+
+.custom-arrow.right {
+  right: 10px;
 }

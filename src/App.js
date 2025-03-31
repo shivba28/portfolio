@@ -84,14 +84,14 @@ function App() {
       {
         loading ? <LoadingScreen setLoading={setLoading} /> :
         <div>
-          <label 
+          <label data-cursor="block" data-cursor-style="background: transparent"
             className="volume" id='mainVolumeButton'
             style={{
               position: "fixed",
               top: "20px",
               right: "20px",
               cursor: "none",
-              zIndex: 10002,
+              zIndex: 10002
             }}
           >
             <input type="checkbox" checked={!audioEnabled} onChange={() => setAudioEnabled(!audioEnabled)}/>

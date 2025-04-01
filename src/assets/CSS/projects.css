@@ -670,23 +670,18 @@
   
 }
 
-
-.custom-arrow {
+.custom-arrow{
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
   color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
+  background-color: rgba(27, 159, 150, 0.75);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  backdrop-filter: blur(2px);
 }
-
-.custom-arrow.left {
-  left: 10px;
+.arrow-left{
+  left: 15px;
 }
-
-.custom-arrow.right {
-  right: 10px;
+.arrow-right{
+  right: 15px;
 }

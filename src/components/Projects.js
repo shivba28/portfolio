@@ -4,10 +4,11 @@ import { useGSAP } from "@gsap/react";
 import front_img from '../assets/Images/project_front.png';
 import '../assets/CSS/projects.css';
 import Lottie from 'lottie-react';
-import { Row, Col, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { useEffect, useRef, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { IPadCursorProvider } from 'ipad-cursor/react';
 
 import constructionData from '../assets/Lottie/CCDP.json';
 import school from '../assets/Lottie/trimmed_school.json';
@@ -123,7 +124,7 @@ export const Project = () => {
               carouselState: { currentSlide, deviceType }
             } = rest;
             // onMove means if dragging or swiping in progress.
-            return <button data-cursor="block" className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left" onClick={() => onClick()} />;
+            return <IPadCursorProvider><button data-cursor="block" data-cursor-style="background: transparent;" className="custom-arrow arrow-left" onClick={() => onClick()}>◀</button></IPadCursorProvider>;
           };
 
         const CustomRightArrow = ({ onClick, ...rest }) => {
@@ -132,13 +133,8 @@ export const Project = () => {
               carouselState: { currentSlide, deviceType }
             } = rest;
             // onMove means if dragging or swiping in progress.
-            return <button data-cursor="block" className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right" onClick={() => onClick()} />;
+            return <button data-cursor="block" data-cursor-style="background: transparent;" className="custom-arrow arrow-right" onClick={() => onClick()}>▶</button>;
           };
-
-        useEffect(() => {
-            AOS.init();
-            AOS.refresh();
-          }, [])
 
           const responsive = {
             superLargeDesktop: {

@@ -30,6 +30,8 @@ function App() {
 
   const handleClose = () => {setShow(false);};
 
+  const config = {};
+
   const playBgMusic = () => {
     bgAudioRef.current.volume = 0.3;
     bgAudioRef.current.loop = true;
@@ -107,7 +109,7 @@ function App() {
               <img src={gifImage} alt="Loading animation" />
             </div>
             :
-            <IPadCursorProvider>
+            <IPadCursorProvider config={config}>
               <NavBar openModal={handleShow} />
               <About show={show} handleClose={handleClose} />
               <Banner />

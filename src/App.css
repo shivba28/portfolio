@@ -542,6 +542,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (1025px <= width <= 1440px) {
+  #mainVolumeButton{
+    top: 150px !important;
+  }
   .right{
     font-size: 11rem !important;
   }

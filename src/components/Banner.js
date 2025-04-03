@@ -102,6 +102,12 @@ export const Banner = () => {
             gsap.set(".collage-left", {left:30});
             gsap.set(".collage-right", {right:30});
           });
+
+          mm.add("(max-width: 1500px)", () => {
+            gsap.set(".video-container", { height: "120% !important", top:"-100px !important" });
+            gsap.set(".collage-left", {left:50});
+            gsap.set(".collage-right", {right:50});
+          });
     })
 
   useEffect(() => {
@@ -149,7 +155,7 @@ export const Banner = () => {
                 <img id='right-img-2' src={rightImg2} style={{backgroundColor: "white"}}/>
                 <img id='right-img-3' src={rightImg3} style={{backgroundColor: "white"}}/>
             </div>
-            <div className={`video-container`} ref={containerRef}>
+            <div ref={containerRef} className="video-container">
                 <video ref={videoRef} loop muted playsInline className='video'>
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.

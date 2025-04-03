@@ -22,9 +22,6 @@ import portfolio from '../assets/Lottie/Portfolio.json';
 import propChain1 from '../assets/Lottie/PropChain-1.json';
 import propChain2 from '../assets/Lottie/PropChain-2.json';
 
-import 'aos/dist/aos.css';
-import AOS from 'aos';
-
 
 export const Project = () => {
     const imageRef = useRef(null);
@@ -142,9 +139,13 @@ export const Project = () => {
               breakpoint: { max: 4000, min: 3000 },
               items: 5
             },
-            desktop: {
-              breakpoint: { max: 3000, min: 1024 },
+            largeDesktop: {
+              breakpoint: { max: 3000, min: 1500 },
               items: 4
+            },
+            laptop: {
+                breakpoint: { max: 1500, min: 1024 },
+                items: 3
             },
             tablet: {
               breakpoint: { max: 1024, min: 464 },
@@ -171,7 +172,9 @@ export const Project = () => {
                     <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                     <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
                 </div>
-                <Carousel responsive={responsive} infinite={true} draggable={false} customLeftArrow={<CustomLeftArrow />} customRightArrow={<CustomRightArrow />} >
+                <Carousel responsive={responsive} infinite={true} draggable={false} customLeftArrow={<CustomLeftArrow />} customRightArrow={<CustomRightArrow />} 
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                >
                     {projects.map((project, index) => (
                         <div className="project-item my-5" id={"project-"+project.id}>
                             <div className="project-item-active">
@@ -222,7 +225,7 @@ export const Project = () => {
                             <div className="project-modal-content row align-items-center">
                                 <div className="info-section col d-grid">
                                     <p className="text-justify">{selectedProject.Desc}</p>
-                                    <a className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>CODE</a>
+                                    <a data-cursor="block" data-cursor-style="background:transparent" className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>CODE</a>
                                 </div>
                                 <div className="media-section col-6" id={"project-"+selectedProject.id}>
                                 {(() => {

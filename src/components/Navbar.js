@@ -28,7 +28,7 @@ export const NavBar = ({openModal}) => {
     return (
           <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
             <Container>
-              <Navbar.Brand href="/portfolio_2.0" data-cursor="block" data-cursor-style="background: transparent">
+              <Navbar.Brand href="/portfolio" data-cursor="block" data-cursor-style="background: transparent">
                 <img src={logo} alt="Logo" style={{width: "80px", height: "80px"}}/>
               </Navbar.Brand>
               {/* <h1 data-cursor="text" style={{fontFamily: "Kranky"}}>SHI<span style={{color:"#eb667e"}}>VB</span>A <span style={{color:"#eb667e"}}>C</span>ODES</h1> */}

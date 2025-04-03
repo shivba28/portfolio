@@ -4,9 +4,6 @@ import img from '../assets/Images/contact.png';
 import React, { useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
-import 'aos/dist/aos.css';
-import AOS from 'aos';
-
 export const Contact = () => {
   const form = useRef();
   const userName = useRef(null);
@@ -58,16 +55,14 @@ export const Contact = () => {
       e.preventDefault();
       if(validateForm()) {
         console.log('Validated')
-      }  else {
-        console.log('Validation Failed')
-      }
+      
 
         emailjs.send('service_x2gf7d5', 'template_826fsnl', {
           to_name: "Shivba",
           from_name: userName.current.value,
           message: userMessage.current.value,
           reply_to: userEmail.current.value
-      })
+        })
           .then( (response) => {
               console.log('SUCCESS!', response.status, response.text);
               document.getElementById("contact-form").reset();
@@ -76,12 +71,11 @@ export const Contact = () => {
               console.log('FAILED...', error);
               alert("Form Submission Failed! Try Again");
           });
-    };
 
-    useEffect(() => {
-      AOS.refreshHard();
-      AOS.init();
-    }, [])
+      }  else {
+        console.log('Validation Failed')
+      }
+    };
 
     return(
         <section className="contact content" id='contact'>

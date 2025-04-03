@@ -104,7 +104,6 @@ export const Banner = () => {
           });
 
           mm.add("(max-width: 1500px)", () => {
-            gsap.set(".video-container", { height: "120% !important", top:"-100px !important" });
             gsap.set(".collage-left", {left:50});
             gsap.set(".collage-right", {right:50});
           });

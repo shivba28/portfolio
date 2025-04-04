@@ -176,7 +176,7 @@ export const LoadingScreen = ({ setLoading }) => {
 
       setTimeout(() => {
         dots.current = []; // Clear all dots
-        canvas.style.backgroundColor = "#121212";
+        canvas.style.backgroundColor = "#030f18";
       }, 1000); // Give time for vacuum effect before clearing screen
     }, 7000);
 

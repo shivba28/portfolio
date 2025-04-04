@@ -83,7 +83,7 @@ function App() {
 
   return (
     <div className='App'>
-      {
+      {/* {
         loading ? <LoadingScreen setLoading={setLoading} /> :
         <div>
           <label data-cursor="block" data-cursor-style="background: transparent"
@@ -119,7 +119,8 @@ function App() {
             </IPadCursorProvider>
           }
         </div>
-      }
+      } */}
+      <Skills />
     </div>
   );
 }

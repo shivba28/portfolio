@@ -167,11 +167,11 @@ export const Project = () => {
                     <img src={front_img} ref={imageRef}/>
                 </div>
             </div>
-            <section className="project-content section mb-5 pb-5" id="project">
-                <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100 mb-4" data-aos="fade-down" data-aos-offset="500">
+            <section className="project-content section my-5 py-5" id="project">
+                {/* <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100 mb-4" data-aos="fade-down" data-aos-offset="500">
                     <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                     <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
-                </div>
+                </div> */}
                 <Carousel responsive={responsive} infinite={true} draggable={false} customLeftArrow={<CustomLeftArrow />} customRightArrow={<CustomRightArrow />} 
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 >

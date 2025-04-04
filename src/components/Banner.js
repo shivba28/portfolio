@@ -18,6 +18,7 @@ export const Banner = () => {
 
     useGSAP(() => {
         gsap.registerPlugin(ScrollTrigger);
+        gsap.set(videoRef.current, {height:"140%"});
         const mm = gsap.matchMedia();
          // Pin the video container when scrolling and scale video
         gsap.timeline({

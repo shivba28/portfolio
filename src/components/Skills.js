@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import { SkillsScroll } from './SkillsScroll';
 
 export const Skills = () => {
     useEffect(() => {
@@ -17,11 +18,12 @@ export const Skills = () => {
       }, [])
     return(
        <section className='skills content' id='skill'>
-            <div className="title text-center d-flex flex-wrap pt-4 bg-gradient w-100" data-aos="fade-down" data-aos-offset="500">
+            {/* <div className="title text-center d-flex flex-wrap pt-4 bg-gradient w-100" data-aos="fade-down" data-aos-offset="500">
                 <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                 <div className="slogan-right me-auto"><h1 className="right">SKILLS</h1></div>
-            </div>
-            <div className="card-container mb-5">
+            </div> */}
+            <SkillsScroll />
+            <div className="card-container my-5">
                 <div className="skill-card" id='card1' data-aos="fade-right" data-aos-once="false" data-aos-offset="500">
                     <div className="background">
                         <Clouds />

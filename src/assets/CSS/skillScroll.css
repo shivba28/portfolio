@@ -51,11 +51,12 @@ change animation {
 
 .skillscroll-container{
   display: grid;
-  place-items: center;
+  place-items: start;
   background: light-dark(white, black);
   min-height: 100vh;
   font-family: 'Geist', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
   width: 100%;
+  
 
   & main{
     width: 100%;
@@ -72,6 +73,7 @@ change animation {
     height: 100vh;
     scrollbar-width: none;
     /* scroll-snap-type: y proximity; */
+    align-items: flex-start;
 
     &::-webkit-scrollbar {
       display: none; /* Hides the scrollbar in Webkit browsers (Chrome, Safari) */
@@ -79,7 +81,7 @@ change animation {
 
   h2 {
     position: sticky;
-    top: calc(50% - 0.5lh);
+    top: 0;
     font-size: inherit;
     margin: 0;
     display: inline-block;
@@ -101,8 +103,7 @@ change animation {
     padding-inline: 0;
     margin: 0;
     list-style-type: none;
-    /* top: calc(50% - 0.5lh);
-    position: relative; */
+    position: relative;
 
       & li:first-of-type {
         --start-opacity: 1;
@@ -113,7 +114,7 @@ change animation {
         animation-fill-mode: both;
         -webkit-animation-timing-function: linear;
         animation-timing-function: linear;
-        animation-range: cover calc(50% - 1lh) calc(50% + 1lh);
+        animation-range: cover calc(80% - 1lh) calc(100% + 1lh);
         animation-timeline: view();
         animation-name: brighten;
         /* scroll-snap-align: center; */
@@ -131,17 +132,6 @@ change animation {
         background-clip: text;
         color: #0000;
       }
-    }
-  }
-  section:last-of-type {
-    min-height: 100vh;
-    display: flex;
-    place-items: center;
-    width: 100%;
-    justify-content: center;
-  
-    h2 {
-      --font-level: 6;
     }
   }
 }

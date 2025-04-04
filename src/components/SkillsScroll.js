@@ -74,10 +74,27 @@ export const SkillsScroll = () => {
             <main>
                 <section className="scroll fluid">
                     <h2>I can</h2>
-                    <ul aria-hidden="true" style={{"--count": 5}}>
+                    <ul aria-hidden="true" style={{"--count": 22}}>
                     <li style={{"--i": 0}}>Code</li>
                     <li style={{"--i": 1}}>Design</li>
                     <li style={{"--i": 2}}>Learn</li>
+                    <li style={{"--i": 3}}>Create</li>
+                    <li style={{"--i": 4}}>Innovate</li>
+                    <li style={{"--i": 0}}>Code</li>
+                    <li style={{"--i": 1}}>Design</li>
+                    <li style={{"--i": 2}}>Learn</li>
+                    <li style={{"--i": 3}}>Create</li>
+                    <li style={{"--i": 4}}>Innovate</li>
+                    <li style={{"--i": 0}}>Code</li>
+                    <li style={{"--i": 1}}>Design</li>
+                    <li style={{"--i": 2}}>Learn</li>
+                    <li style={{"--i": 3}}>Create</li>
+                    <li style={{"--i": 4}}>Innovate</li>
+                    <li style={{"--i": 0}}>Code</li>
+                    <li style={{"--i": 1}}>Design</li>
+                    <li style={{"--i": 2}}>Learn</li>
+                    <li style={{"--i": 3}}>Create</li>
+                    <li style={{"--i": 4}}>Innovate</li>
                     <li style={{"--i": 3}}>Create</li>
                     <li style={{"--i": 4}}>Innovate</li>
                     </ul>

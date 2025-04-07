@@ -1,105 +1,63 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import '../assets/CSS/skillScroll.css';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 export const SkillsScroll = () => {
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        let items = gsap.utils.toArray('ul li');
 
-        gsap.set(items, { opacity: (i) => (i !== 0 ? 0.2 : 1) });
+  const hRef = useRef(null);
+  const listRef = useRef(null);
+  const lastLiRef = useRef(null);
 
-        const dimmer =gsap
-            .timeline()
-            .to(items.slice(1), {
-            opacity: 1,
-            stagger: 0.5,
-            })
-            .to(
-            items.slice(0, items.length - 1),
-            {
-                opacity: 0.2,
-                stagger: 0.5,
-            },
-            0
-            );
+  useEffect(() => {
+    gsap.set("li:not(:first-of-type)", {opacity:0.2, scale:0.8})
 
-        ScrollTrigger.create({
-            trigger: items[0],
-            endTrigger: items[items.length - 1],
-            start: 'center center',
-            end: 'center center',
-            animation: dimmer,
-            scrub: 0.2,
-          });
+    const h1 = hRef.current;
+    const lastLi = lastLiRef.current;
+    const list = listRef.current;
 
-        gsap.fromTo(
-            document.documentElement,
-            {
-              '--chroma': 0,
-            },
-            {
-              '--chroma': 0.3,
-              ease: 'none',
-              scrollTrigger: {
-                scrub: 0.2,
-                trigger: items[0],
-                start: 'center center+=40',
-                end: 'center center',
-              },
-            }
-          )
-        gsap.fromTo(
-            document.documentElement,
-            {
-              '--chroma': 0.3,
-            },
-            {
-              '--chroma': 0,
-              ease: 'none',
-              scrollTrigger: {
-                scrub: 0.2,
-                trigger: items[items.length - 2],
-                start: 'center center',
-                end: 'center center-=40',
-              },
-            }
-          );
-    });
+    // Move until h1 center aligns with last li center, then move 100px further
+    const h1TargetY = window.innerHeight / 2 - h1.offsetHeight / 2; // Center of screen
+
+
+
+    gsap.timeline({
+        scrollTrigger:{
+          trigger:list, 
+          start:"top top",
+          end:"bottom center",
+          markers:true,
+          scrub:true
+        }
+      })
+      .to("li:not(:first-of-type)", 
+        {opacity:1, scale:1, stagger:0.5}
+        )
+      .to("li:not(:last-of-type)", 
+        {opacity:0.2, scale:0.8, stagger:0.5}, 0)
+
+  }, []);
+  
     return (
         <div className='skillscroll-container'>
-            <main>
-                <section className="scroll fluid">
-                    <h2>I can</h2>
-                    <ul aria-hidden="true" style={{"--count": 22}}>
-                    <li style={{"--i": 0}}>Code</li>
-                    <li style={{"--i": 1}}>Design</li>
-                    <li style={{"--i": 2}}>Learn</li>
-                    <li style={{"--i": 3}}>Create</li>
-                    <li style={{"--i": 4}}>Innovate</li>
-                    <li style={{"--i": 0}}>Code</li>
-                    <li style={{"--i": 1}}>Design</li>
-                    <li style={{"--i": 2}}>Learn</li>
-                    <li style={{"--i": 3}}>Create</li>
-                    <li style={{"--i": 4}}>Innovate</li>
-                    <li style={{"--i": 0}}>Code</li>
-                    <li style={{"--i": 1}}>Design</li>
-                    <li style={{"--i": 2}}>Learn</li>
-                    <li style={{"--i": 3}}>Create</li>
-                    <li style={{"--i": 4}}>Innovate</li>
-                    <li style={{"--i": 0}}>Code</li>
-                    <li style={{"--i": 1}}>Design</li>
-                    <li style={{"--i": 2}}>Learn</li>
-                    <li style={{"--i": 3}}>Create</li>
-                    <li style={{"--i": 4}}>Innovate</li>
-                    <li style={{"--i": 3}}>Create</li>
-                    <li style={{"--i": 4}}>Innovate</li>
-                    </ul>
-                </section>
-            </main>
+          <section className="scroll fluid">
+            <h2 ref={hRef}>I can&nbsp;</h2>
+            <ul ref={listRef} style={{"--count": 11}}>
+              <li style={{"--i": 0}}>design.</li>
+              <li style={{"--i": 1}}>prototype.</li>
+              <li style={{"--i": 2}}>solve.</li>
+              <li style={{"--i": 3}}>build.</li>
+              <li style={{"--i": 4}}>develop.</li>
+              <li style={{"--i": 5}}>debug.</li>
+              <li style={{"--i": 6}}>learn.</li>
+              <li style={{"--i": 7}}>cook.</li>
+              <li style={{"--i": 8}}>ship.</li>
+              <li style={{"--i": 9}}>prompt.</li>
+              <li ref={lastLiRef} style={{"--i": 10}}>collaborate.</li>  
+            </ul>
+          </section>
         </div>
     )
 }

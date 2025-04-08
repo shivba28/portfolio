@@ -35,14 +35,16 @@
 
 html{
   scroll-behavior: smooth;
-  scroll-padding-top: 75px;
-  overflow-x: hidden;
+  /* scroll-padding-top: 75px; */
+  overflow: visible;
   background: #030f18;
+  scroll-snap-type: y proximity;
+  color-scheme: dark;
 }
 
 body{
   font-weight: 400;
-  overflow-x: hidden;
+  overflow: visible;
   position: relative;
   background-color: #030f18 !important;
   color: #fff !important;
@@ -372,7 +374,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   position: absolute;
   height: 350px;
   width: 350px;
-  top: 8%;
+  top: 7%;
   justify-content: center;
   align-items: center;
   animation: slide-in 1.5s ease-in-out forwards;

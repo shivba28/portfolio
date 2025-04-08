@@ -1,4 +1,5 @@
 import './App.css';
+import 'aos/dist/aos.css';
 import React, { useEffect, useState, useRef } from 'react';
 import { NavBar } from './components/Navbar';
 import { Banner } from './components/Banner';
@@ -12,6 +13,7 @@ import { IPadCursorProvider, useIPadCursor } from "ipad-cursor/react";
 import bgAudio from "./assets/Audios/binb.mp3";
 import gifImage from "./assets/Images/soundOn.gif";
 import gsap from "gsap";
+import AOS from 'aos';
 
 
 
@@ -81,9 +83,14 @@ function App() {
     }
   }, [loading]);
 
+  useEffect(() => {
+    AOS.init();
+    AOS.refreshHard();
+  }, [])
+
   return (
     <div className='App'>
-      {/* {
+      {
         loading ? <LoadingScreen setLoading={setLoading} /> :
         <div>
           <label data-cursor="block" data-cursor-style="background: transparent"
@@ -119,8 +126,7 @@ function App() {
             </IPadCursorProvider>
           }
         </div>
-      } */}
-      <Skills />
+      }
     </div>
   );
 }

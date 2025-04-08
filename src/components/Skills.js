@@ -6,16 +6,10 @@ import progImg from '../assets/Images/lang.png';
 import frameImg from '../assets/Images/framework.png';
 import techImg from '../assets/Images/tech.png';
 import testImg from '../assets/Images/test.png';
-import { useEffect } from 'react';
-
-import 'aos/dist/aos.css';
-import AOS from 'aos';
 import { SkillsScroll } from './SkillsScroll';
 
 export const Skills = () => {
-    useEffect(() => {
-        AOS.init();
-      }, [])
+
     return(
        <section className='skills content' id='skill'>
             {/* <div className="title text-center d-flex flex-wrap pt-4 bg-gradient w-100" data-aos="fade-down" data-aos-offset="500">

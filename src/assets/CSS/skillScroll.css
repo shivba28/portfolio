@@ -1,104 +1,157 @@
-:root {
-  --font-size-min: 14;
-  --font-size-max: 20;
-  --font-ratio-min: 1.1;
-  --font-ratio-max: 1.33;
-  --font-width-min: 375;
-  --font-width-max: 1500;
-}
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import url('https://unpkg.com/normalize.css') layer(normalize);
 
-:where(.fluid) {
-  --fluid-min: calc(
-    var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
-  );
-  --fluid-max: calc(
-    var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
-  );
-  --fluid-preferred: calc(
-    (var(--fluid-max) - var(--fluid-min)) /
-      (var(--font-width-max) - var(--font-width-min))
-  );
-  --fluid-type: clamp(
-    (var(--fluid-min) / 16) * 1rem,
-    ((var(--fluid-min) / 16) * 1rem) -
-      (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
-      (var(--fluid-preferred) * var(--variable-unit, 100vi)),
-    (var(--fluid-max) / 16) * 1rem
-  );
-  font-size: var(--fluid-type);
-}
+@layer normalize, base, demo, stick, effect;
 
-.skillscroll-container {
-  display: grid;
-  width: 100%;
-  justify-content: center;
-  min-height: 100vh;
-  font-family: 'Geist', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons',
-      'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
-  color-scheme: dark;
-
-  h2{
-    position: relative;
-  font-size: inherit;
-  margin: 0;
-  display: inline-block;
-  height: fit-content;
-  font-weight: 600;
-  --font-level: 6;
-  background: linear-gradient(
-      canvasText 50%,
-      color-mix(in oklch, canvas, canvasText 25%)
-    );
-  background-clip: text;
-  color: #0000;
+@layer effect {
+  :root {
+    --start: 0;
+    --end: 360;
+    --lightness: 75%;
+    --base-chroma: 0.3;
   }
-
-  .fluid{
-    display: flex;
-    align-items: flex-start;
-    --font-level: 6;
-    line-height: 1.25;
-    width: 100%;
-    padding-top: 100px;
-  }
-
   ul {
-    font-weight: 600;
-    padding-inline: 0;
-    margin: 0;
-    list-style-type: none;
-    top: calc(4.5% - 0.5lh);
-    position: relative;
     --step: calc((var(--end) - var(--start)) / (var(--count) - 1));
   }
-
-  li{
-    scroll-snap-align: center;
+  li:not(:last-of-type) {
     color: oklch(
       var(--lightness) var(--base-chroma)
         calc(var(--start) + (var(--step) * var(--i)))
     );
   }
+  li {
+    opacity: 0.2;
+    animation-name: brighten;
+
+    &:first-of-type {
+      --start-opacity: 1;
+    }
+    &:last-of-type {
+      --brightness: 1;
+      --end-opacity: 1;
+    }
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-range: cover calc(50% - 1lh) calc(50% + 1lh);
+    animation-timeline: view();
+  }
+
+  @keyframes brighten {
+    0% {
+      opacity: var(--start-opacity, 0.2);
+    }
+    50% {
+      opacity: 1;
+      filter: brightness(var(--brightness, 1.2));
+    }
+    100% {
+      opacity: var(--end-opacity, 0.2);
+    }
+  }
 }
 
-.skillscroll-container::before {
-  --size: 45px;
-  --line: color-mix(in hsl, canvasText, transparent 70%);
-  content: '';
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  background: linear-gradient(
-        90deg,
-        var(--line) 1px,
-        transparent 1px var(--size)
-      )
-      50% 50% / var(--size) var(--size),
-    linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
-      var(--size) var(--size);
-  mask: linear-gradient(-20deg, transparent 50%, white);
-  top: 0;
-  transform-style: flat;
-  pointer-events: none;
-  z-index: -1;
+@layer stick {
+  .fluid:first-of-type {
+    --font-level: 6;
+    display: flex;
+    line-height: 1.25;
+    width: 100%;
+  }
+  main {
+    width: 100%;
+  }
+  .fluid:first-of-type h2 {
+    position: sticky;
+    top: calc(50% - 0.5lh);
+    font-size: inherit !important;
+    margin: 0 !important;
+    display: inline-block;
+    height: fit-content;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+  }
+  ul {
+    font-weight: 600;
+    padding-inline: 0 !important;
+    margin: 0 !important;
+    list-style-type: none;
+    line-height: 1.25 !important;
+  }
+
+  li {
+    scroll-snap-align: center;
+  }
+
+  h2,li:last-of-type {
+    background: linear-gradient(
+      canvasText 50%,
+      color-mix(in oklch, canvas, canvasText 25%)
+    );
+    background-clip: text;
+    color: #0000 !important;
+  }
+}
+
+@layer base {
+  :root {
+    --font-size-min: 14;
+    --font-size-max: 20;
+    --font-ratio-min: 1.1;
+    --font-ratio-max: 1.33;
+    --font-width-min: 375;
+    --font-width-max: 1500;
+  }
+
+  :where(.fluid) {
+    --fluid-min: calc(
+      var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+    );
+    --fluid-max: calc(
+      var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+    );
+    --fluid-preferred: calc(
+      (var(--fluid-max) - var(--fluid-min)) /
+        (var(--font-width-max) - var(--font-width-min))
+    );
+    --fluid-type: clamp(
+      (var(--fluid-min) / 16) * 1rem,
+      ((var(--fluid-min) / 16) * 1rem) -
+        (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+        (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+      (var(--fluid-max) / 16) * 1rem
+    );
+    font-size: var(--fluid-type);
+  }
+
+  .skillscroll-container {
+    display: grid;
+    place-items: center;
+    background: transparent;
+    min-height: 100vh;
+    font-family: 'Geist', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons',
+      'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+  }
+
+  /* .skillscroll-container::before {
+    --size: 45px;
+    --line: color-mix(in hsl, canvasText, transparent 70%);
+    content: '';
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background: linear-gradient(
+          90deg,
+          var(--line) 1px,
+          transparent 1px var(--size)
+        )
+        50% 50% / var(--size) var(--size),
+      linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+        var(--size) var(--size);
+    mask: linear-gradient(-20deg, transparent 50%, white);
+    top: 0;
+    transform-style: flat;
+    pointer-events: none;
+    z-index: -1;
+  } */
+
 }

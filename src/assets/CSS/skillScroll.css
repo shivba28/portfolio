@@ -128,6 +128,8 @@
     place-items: center;
     background: transparent;
     min-height: 100vh;
+    width: 100%;
+    padding-left: 2rem !important;
     font-family: 'Geist', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons',
       'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
   }

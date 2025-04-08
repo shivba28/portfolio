@@ -8,7 +8,7 @@ export const SkillsScroll = () => {
   const lastLiRef = useRef(null);
   
     return (
-        <div className='skillscroll-container'>
+        <div className='skillscroll-container my-5'>
           <main>
             <section className="scroll fluid">
               <h2 ref={hRef}>I can&nbsp;</h2>

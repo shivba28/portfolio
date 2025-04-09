@@ -23,7 +23,7 @@ export const Skills = () => {
                 </Col>
                 <Col xs={12} md={6}>
                     <div className="card-container my-5">
-                        <div className="skill-card" id='card1' data-aos="fade-right" data-aos-once="false">
+                        <div className="skill-card" id='card1' data-aos="fade-left" data-aos-once="false">
                             <div className="background">
                                 <Clouds />
                                 <Stars />
@@ -44,7 +44,7 @@ export const Skills = () => {
                                         </div>
                             </div>
                         </div>
-                        <div className="skill-card" id='card2' data-aos="fade-right" data-aos-once="false" data-aos-delay="500">
+                        <div className="skill-card" id='card2' data-aos="fade-left" data-aos-once="false">
                             <div className="background">
                                 <Clouds />
                                 <Stars />
@@ -64,7 +64,7 @@ export const Skills = () => {
                                         </div>
                             </div>
                         </div>
-                        <div className="skill-card" id='card3' data-aos="fade-right" data-aos-once="false" data-aos-delay="500">
+                        <div className="skill-card" id='card3' data-aos="fade-left" data-aos-once="false">
                             <div className="background">
                                 <Clouds />
                                 <Stars />
@@ -85,7 +85,7 @@ export const Skills = () => {
                                         </div>
                             </div>
                         </div>
-                        <div className="skill-card" id='card4' data-aos="fade-right" data-aos-once="false" data-aos-delay="1000">
+                        <div className="skill-card" id='card4' data-aos="fade-left" data-aos-once="false" data-aos-delay="500">
                             <div className="background">
                                 <Clouds />
                                 <Stars />

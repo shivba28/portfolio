@@ -8,7 +8,7 @@ export const SkillsScroll = () => {
   const lastLiRef = useRef(null);
   
     return (
-        <div className='skillscroll-container my-5'>
+        <div className='skillscroll-container my-5' data-aos="fade-right" data-aos-once="false">
           <main>
             <section className="scroll fluid">
               <h2 ref={hRef}>I can&nbsp;</h2>

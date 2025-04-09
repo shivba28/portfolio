@@ -26,6 +26,11 @@ import propChain2 from '../assets/Lottie/PropChain-2.json';
 export const Project = () => {
     const imageRef = useRef(null);
     const [selectedProject, setSelectedProject] = useState(null);
+    const mm = gsap.matchMedia();
+
+    let dataAosOffset = 1500;
+
+    mm.add("(max-width: 767px)", () => {dataAosOffset = 0;})
 
     useGSAP(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -78,6 +83,7 @@ export const Project = () => {
             },
             { id: 5, title: "Valentine's Game", animationData: valentines, type: "lottie", 
                 link:"https://github.com/shivba28/v-game-app",
+                demo:"https://shivba28.github.io/v-game-app/",
                 Desc:"A lighthearted, interactive game celebrating Valentine's Day," + " " +
                 "designed to engage users with festive mini-games and challenges centered around themes of love and friendship."
             },
@@ -167,7 +173,7 @@ export const Project = () => {
                     <img src={front_img} ref={imageRef}/>
                 </div>
             </div>
-            <section className="project-content section my-5 py-5" id="project">
+            <section className="project-content section my-5 py-5" id="project" data-aos="slide-left" data-aos-offset={dataAosOffset} data-aos-duration="1500" data-aos-once="false">
                 {/* <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100 mb-4" data-aos="fade-down" data-aos-offset="500">
                     <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                     <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
@@ -226,6 +232,7 @@ export const Project = () => {
                                 <div className="info-section col d-grid">
                                     <p className="text-justify">{selectedProject.Desc}</p>
                                     <a data-cursor="block" data-cursor-style="background:transparent" className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>CODE</a>
+                                    {selectedProject.demo && (<a data-cursor="block" data-cursor-style="background:transparent" className="btn btn-dark mt-4" href={selectedProject.demo} target="_blank" style={{zIndex:100, position:"relative"}}>LIVE</a>)}
                                 </div>
                                 <div className="media-section col-6" id={"project-"+selectedProject.id}>
                                 {(() => {

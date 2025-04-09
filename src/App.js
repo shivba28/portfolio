@@ -84,7 +84,7 @@ function App() {
   }, [loading]);
 
   useEffect(() => {
-    AOS.init();
+    AOS.init({offset: (window.innerHeight * .3)});
     AOS.refreshHard();
   }, [])
 

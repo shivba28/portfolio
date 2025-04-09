@@ -47,8 +47,9 @@
     padding: 10px;
     text-align: center;
     color: white;
-    font-size: 30px;
-    font-family: 'Georgia', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    font-family: 'Allura', sans-serif;
 }
 #form-content form {
     margin: 30px 0;
@@ -57,6 +58,10 @@
 
 #form-content form input{
     margin-bottom: 10%;
+}
+
+#form-content form button{
+  letter-spacing: 0.05rem;
 }
 
 /* Color Variables */
@@ -77,7 +82,7 @@
   
   /* Form Field */
   .form__field {
-    font-family: 'Georgia', sans-serif;
+    font-family: 'Allura', sans-serif;
     width: 100%;
     border: 0;
     border-bottom: 2px solid var(--gray-color);
@@ -113,12 +118,12 @@
     transition: all 0.2s ease;
     font-size: 1rem;
     color: var(--primary-color);
-    font-weight: 700;
+    font-weight: 900;
   }
   
   .form__field:focus {
     padding-bottom: 6px;
-    font-weight: 700;
+    font-weight: 900;
     border-width: 3px;
     border-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     border-image-slice: 1;

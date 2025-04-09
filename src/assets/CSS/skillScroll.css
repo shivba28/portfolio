@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 @import url('https://unpkg.com/normalize.css') layer(normalize);
 
 @layer normalize, base, demo, stick, effect;
@@ -94,7 +93,7 @@
 
 @layer base {
   :root {
-    --font-size-min: 14;
+    --font-size-min: 18;
     --font-size-max: 20;
     --font-ratio-min: 1.1;
     --font-ratio-max: 1.33;
@@ -132,6 +131,12 @@
     padding-left: 2rem !important;
     font-family: 'Geist', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons',
       'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+  }
+
+  @media (max-width:500px){
+    .skillscroll-container{
+      min-height: 50vh;
+    }
   }
 
   /* .skillscroll-container::before {

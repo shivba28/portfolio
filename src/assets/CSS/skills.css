@@ -143,8 +143,9 @@ border-radius: 20px;
 }
 
 .skill-card .content h4{
-    font-family: "Kranky";
-    font-weight: bold;
+    font-family: "Allura";
+    font-weight: 600;
+    font-size: 40px;
 }
 
 .skill-card .content img{
@@ -168,12 +169,13 @@ border-radius: 20px;
 
 
 .list-group{
-    font-family: 'Kranky';
-    font-weight: 900;
+    font-family: 'Special+Elite';
+    font-weight: 600;
     font-size: 22px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
     align-items: center;
+    letter-spacing: 0.1rem;
   }
   
   .list-group-item{
@@ -816,8 +818,11 @@ background: url(../Images/trees-m.webp);
     .skill-card:hover .dark-bg {
         transform: translateY(150%) scaleY(2) !important;
     }
+    .skill-card h4{
+        font-size: 35px;
+    }
     .list-group-item{
-        font-size: 15px;
+        font-size: 22px;
     }
     #card2 .light-bg, #card4 .light-bg{
         transform: translate(2dvw, 90%) !important;

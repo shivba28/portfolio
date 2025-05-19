@@ -203,11 +203,10 @@
   }
 
 
-#project-3 video{
-  width: 240px;
+#project-3 img{
+  width: 280px;
   height: auto;
-  transform: translate(3dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
-  border-radius: 44%;
+  transform: translate(2dvw, -0.5dvh) rotateZ(47deg) skew(220deg, -30deg);
 }
 #project-3 .video-base{
   position: absolute;

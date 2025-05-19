@@ -12,7 +12,7 @@ import { IPadCursorProvider } from 'ipad-cursor/react';
 
 import constructionData from '../assets/Lottie/CCDP.json';
 import school from '../assets/Lottie/trimmed_school.json';
-import pacman from '../assets/videos/pacman.mp4';
+import pacman from '../assets/Lottie/pacman.gif';
 import ans from '../assets/Lottie/ANS.json';
 import valentines from '../assets/Lottie/Valentine.json';
 import chatbot from '../assets/Lottie/Chatbot.json';
@@ -197,11 +197,7 @@ export const Project = () => {
                                         case "video" :
                                         return (
                                             <div>
-                                                <video loop muted playsInline autoPlay>
-                                                    <source src={project.video} type="video/mp4" />
-                                                    Your browser does not support the video tag.
-                                                </video>
-                                                <div className="video-base"></div>
+                                                <img src={project.video} alt="pacman" />
                                             </div>
                                         );
                                         case "lottie-prop" :
@@ -246,11 +242,7 @@ export const Project = () => {
                                         case "video" :
                                             return (
                                                 <div>
-                                                    <video loop muted playsInline autoPlay> 
-                                                        <source src={selectedProject.video} type="video/mp4"/>
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                    <div className="video-base"></div>
+                                                    <img src={selectedProject.video} alt="pacman" />
                                                 </div>
                                             );
                                         case "lottie-prop" :

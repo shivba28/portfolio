@@ -18,7 +18,7 @@ export const Banner = () => {
 
     useGSAP(() => {
         gsap.registerPlugin(ScrollTrigger);
-        gsap.set(videoRef.current, {height:"140%"});
+        gsap.set(videoRef.current, {height:"60vh"});
         const mm = gsap.matchMedia();
          // Pin the video container when scrolling and scale video
         gsap.timeline({
@@ -36,7 +36,7 @@ export const Banner = () => {
             scale: 2.6,
             transformOrigin: "center center",
             ease: "power1.inOut",
-            height:"100%",
+            height:"45vh",
             scrollTrigger: {
                 trigger: '.banner', // Video animation is linked to .banner
                 start: 'top top',
@@ -79,9 +79,9 @@ export const Banner = () => {
         })
 
         mm.add("(max-width: 767px)", () => {
-            gsap.set(videoRef.current, { height: "200%" });
+            gsap.set(videoRef.current, { height: "20vh" });
             gsap.to(videoRef.current, {
-              height: "100%",
+              height: "10vh",
               borderRadius: 0,
               ease: "power1.inOut",
               scrollTrigger: {

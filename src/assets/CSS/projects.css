@@ -609,13 +609,25 @@
   }
 }
 
-@media screen and (width <= 375px) {
-  #project-3 video{
-    width: 140px;
+@media screen and (width <=505px) {
+  #project-3 img{
+    width: 250px;
+    transform: translate(-4dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg);
+  }
+  .modal-content{
+    height: 50dvh;
+    #project-3 img{
+    width: 250px;
+    transform: translate(-4dvw, 5dvh) rotateZ(46deg) skew(220deg, -30deg);
+  }
+  }
+  #project-3 .base, #project-3 .base::before{
+    width: 350px;
+    height: 300px;
   }
 }
-@media screen and (425px < width <= 768px) {
-  #project-3 video{
+@media screen and (506px < width <= 768px) {
+  #project-3 img{
     transform: translate(5dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg) scale(0.9);
   }
 }

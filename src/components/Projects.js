@@ -52,7 +52,7 @@ export const Project = () => {
           })
 
         md.add("(max-width: 400px)", () => {
-            gsap.set(".scroll-wrapper img", { scale: 1.1 });
+            gsap.set(".scroll-wrapper img", { scale: 2 });
           });
     });
 
@@ -154,11 +154,11 @@ export const Project = () => {
                 items: 3
             },
             tablet: {
-              breakpoint: { max: 1024, min: 464 },
+              breakpoint: { max: 1024, min: 505 },
               items: 2
             },
             mobile: {
-              breakpoint: { max: 464, min: 0 },
+              breakpoint: { max: 505, min: 0 },
               items: 1
             }
           };

@@ -62,7 +62,7 @@
   .fluid:first-of-type h2 {
     position: sticky;
     top: calc(50% - 0.5lh);
-    font-size: inherit !important;
+    font-size: calc(5vw) !important;
     margin: 0 !important;
     display: inline-block;
     height: fit-content;
@@ -75,6 +75,7 @@
     margin: 0 !important;
     list-style-type: none;
     line-height: 1.25 !important;
+    font-size: calc(5vw);
   }
 
   li {
@@ -131,11 +132,22 @@
     padding-left: 2rem !important;
     font-family: 'Geist', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons',
       'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+    justify-content: center;
+    align-items: start;
   }
 
   @media (max-width:500px){
     .skillscroll-container{
       min-height: 50vh;
+    }
+  }
+
+    @media (max-width:992px){
+    .fluid:first-of-type h2 {
+      font-size: calc(10vw) !important;
+    }
+    ul {
+      font-size: calc(10vw) !important;
     }
   }
 

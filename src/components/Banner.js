@@ -78,8 +78,23 @@ export const Banner = () => {
             }
         })
 
+        mm.add("(max-width: 425px)", () => {
+            gsap.set(containerRef.current, { top: "0px"});
+            gsap.to(containerRef.current, {
+                top: "-150px",
+                ease: "power1.inOut",
+                scrollTrigger: {
+                    trigger: '.banner', // Video animation is linked to .banner
+                    start: 'top top',
+                    end: 'bottom top', // Animation ends when the bottom of .banner reaches the top
+                    scrub: true,
+                    invalidateOnRefresh: true // Recalculate on refresh or resize
+                },
+            });
+          });
+
         mm.add("(max-width: 767px)", () => {
-            gsap.set(videoRef.current, { height: "20vh" });
+            gsap.set(videoRef.current, { height: "20vh"});
             gsap.to(videoRef.current, {
               height: "10vh",
               borderRadius: 0,
@@ -94,17 +109,34 @@ export const Banner = () => {
             });
           });
 
-          mm.add("(max-width: 900px)", () => {
-            gsap.set(".collage-left", {left:-50});
-            gsap.set(".collage-right", {right:-50});
+          mm.add("(767px < width <= 992px)", () => {
+            gsap.set(videoRef.current, { height: "40vh", y: "-300px"});
+            gsap.to(videoRef.current, {
+              height: "20vh",
+              y: "-200px",
+              borderRadius: 0,
+              ease: "power1.inOut",
+              scrollTrigger: {
+                trigger: '.banner', // Video animation is linked to .banner
+                start: 'top top',
+                end: 'bottom top', // Animation ends when the bottom of .banner reaches the top
+                scrub: true,
+                invalidateOnRefresh: true // Recalculate on refresh or resize
+            },
+            });
           });
 
-          mm.add("(max-width: 1200px)", () => {
-            gsap.set(".collage-left", {left:30});
-            gsap.set(".collage-right", {right:30});
+          mm.add("(max-width: 992px)", () => {
+            gsap.set(".collage-left", {left:"-50px"});
+            gsap.set(".collage-right", {right:"-50px"});
           });
 
-          mm.add("(max-width: 1500px)", () => {
+          mm.add("(992px < width <= 1200px)", () => {
+            gsap.set(".collage-left", {left:"30px"});
+            gsap.set(".collage-right", {right:"30px"});
+          });
+
+          mm.add("(1200px < width <= 1500px)", () => {
             gsap.set(".collage-left", {left:50});
             gsap.set(".collage-right", {right:50});
           });

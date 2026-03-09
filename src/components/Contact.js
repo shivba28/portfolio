@@ -89,10 +89,10 @@ export const Contact = () => {
                 <div className="slogan-right me-auto"><h1 className="right">ME</h1></div>
             </div> */}
             <Row>
-                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col' data-aos="fade-right" data-aos-once="false" data-aos-offset={dataAosOffset}>
+                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
                     <img className='img mx-auto' src={img} />
                 </Col>
-                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col' data-aos="fade-left" data-aos-once="false" data-aos-offset={dataAosOffset}>
+                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
                 <div id="form-content" className='mx-auto rounded-4 bg-light bg-gradient'>
                   <header id="header" className="bg-black bg-gradient rounded-top-4">Let's Connect</header>
                   <form className='form d-grid mx-5' ref={form} id="contact-form" onSubmit={sendEmail}>

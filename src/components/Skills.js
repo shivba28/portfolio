@@ -6,10 +6,16 @@ import progImg from '../assets/Images/lang.png';
 import frameImg from '../assets/Images/framework.png';
 import techImg from '../assets/Images/tech.png';
 import testImg from '../assets/Images/test.png';
-import { SkillsScroll } from './SkillsScroll';
+// import { SkillsScroll } from './SkillsScroll';
 import { Row, Col } from "react-bootstrap";
+import gsap from "gsap";
 
 export const Skills = () => {
+
+    const mm = gsap.matchMedia();
+    let dataAosDelay = 200;
+    let dataAosAnimation = 'fade-left';
+    mm.add("(width <= 767px)", () => {dataAosDelay = 0; dataAosAnimation = 'none';})
 
     return(
        <section className='skills content' id='skill'>
@@ -18,12 +24,12 @@ export const Skills = () => {
                 <div className="slogan-right me-auto"><h1 className="right">SKILLS</h1></div>
             </div> */}
             <Row>
-                <Col xs={12} lg={6}>
+                {/* <Col xs={12} lg={6}>
                     <SkillsScroll />
-                </Col>
-                <Col xs={12} lg={6}>
+                </Col> */}
+                <Col xs={12} lg={12}>
                     <div className="card-container my-5">
-                        <div className="skill-card" id='card1'>
+                        <div className="skill-card" id='card1' data-aos={dataAosAnimation} data-aos-once="false">
                             <div className="background">
                                 <Clouds />
                                 <Stars />
@@ -44,7 +50,7 @@ export const Skills = () => {
                                         </div>
                             </div>
                         </div>
-                        <div className="skill-card" id='card2'>
+                        <div className="skill-card" id='card2' data-aos={dataAosAnimation} data-aos-once="false" data-aos-delay={`${dataAosDelay * 1}`}>
                             <div className="background">
                                 <Clouds />
                                 <Stars />
@@ -64,7 +70,7 @@ export const Skills = () => {
                                         </div>
                             </div>
                         </div>
-                        <div className="skill-card" id='card3' data-aos="fade-left" data-aos-once="false">
+                        <div className="skill-card" id='card3' data-aos={dataAosAnimation} data-aos-once="false" data-aos-delay={`${dataAosDelay * 2}`}>
                             <div className="background">
                                 <Clouds />
                                 <Stars />
@@ -85,7 +91,7 @@ export const Skills = () => {
                                         </div>
                             </div>
                         </div>
-                        <div className="skill-card" id='card4' data-aos="fade-left" data-aos-once="false" data-aos-delay="500">
+                        <div className="skill-card" id='card4' data-aos={dataAosAnimation} data-aos-once="false" data-aos-delay={`${dataAosDelay * 3}`}>
                             <div className="background">
                                 <Clouds />
                                 <Stars />

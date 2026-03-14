@@ -106,56 +106,186 @@ export const LoadingScreen = ({ setLoading }) => {
     canvas.style.transition = "background-color 1s ease"; // Smooth transition for background color
 
     // Create a single dot with shooting star reverse movement
-    const createDot = () => ({
-      x: Math.random() * width, // Start randomly along the width
-      y: (Math.random() * height) + height, // Start slightly below the screen
-      size: Math.random() * 7 + 1, // Varying sizes
-      speed: Math.random() * 5 + 1, // Varying speeds
-      angle: Math.random() * 20 - 1, // Slightly different angles
-      opacity: 1,
-      color: Math.random() > 0.7 ? "#42edff" : "#2d9fcc",
-      vacuumSpeed: 0, // For vacuum effect later
-      driftSpeedX: (Math.random() - 0.5) * 0.5, // Random drift speed in X direction
-    });
+const createDot = () => ({
+  x: Math.random() * width,
+  y: (Math.random() * height) + height,
+  size: Math.random() * 7 + 1,
+  speed: Math.random() * 5 + 1,
+  angle: Math.random() * 20 - 1,
+  opacity: 1,
+  color: Math.random() > 0.7 ? "#42edff" : "#2d9fcc",
+  vacuumSpeed: 0,
+  driftSpeedX: (Math.random() - 0.5) * 0.5,
+  blur: Math.random() * 4 + 1,
+  // Wobble
+  wobblePhase: Math.random() * Math.PI * 2,
+  wobbleSpeed: Math.random() * 0.04 + 0.02,
+  wobbleAmount: Math.random() * 0.12 + 0.04,
+  // Sway
+  swayPhase: Math.random() * Math.PI * 2,
+  swaySpeed: Math.random() * 0.02 + 0.01,
+  swayAmount: Math.random() * 1.5 + 0.5,
+  // Opacity breathe
+  opacityPhase: Math.random() * Math.PI * 2,
+  opacitySpeed: Math.random() * 0.03 + 0.01,
+  baseOpacity: Math.random() * 0.3 + 0.7,
 
-    // Generate dots
-    dots.current = Array.from({ length: dotCount }, createDot);
+    // Shape deformation
+  morphPhase: Math.random() * Math.PI * 2,
+  morphSpeed: Math.random() * 0.03 + 0.01,
+  morphAmount: Math.random() * 0.18 + 0.05, // how much it squishes (5–23% of radius)
+});
 
-    // Draw function
-    const drawDots = () => {
-      ctx.clearRect(0, 0, width, height);
-      dots.current.forEach((dot) => {
-        ctx.globalAlpha = dot.opacity;
-        ctx.fillStyle = dot.color;
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-        ctx.fill();
-      });
-    };
+dots.current = Array.from({ length: dotCount }, createDot);
 
-    // Animate dots
-    const updateDots = () => {
-      dots.current.forEach((dot) => {
-        if (isVacuumActive) {
-          dot.vacuumSpeed += 0.99; // Increase speed upwards
-          dot.x += Math.sin(Math.PI / 1) * dot.vacuumSpeed; // Move towards right at 30 degrees
-          dot.y -= Math.cos(Math.PI / 6) * dot.vacuumSpeed; // Move upwards at 30 degrees
-          dot.opacity -= 0.02; // Fade out faster
-        } else {
-          dot.y -= Math.cos(Math.PI / 8) * dot.speed; // Move upwards at 30 degrees
-          dot.x += dot.driftSpeedX; // Drift slightly left or right
-        }
+// Call this wherever you previously called ctx.arc(x, y, r, 0, Math.PI * 2)
+const drawBubblePath = (cx, cy, r, morphPhase, morphAmount) => {
+  const m = Math.sin(morphPhase) * r * morphAmount;
+  const m2 = Math.cos(morphPhase) * r * morphAmount * 0.7; // secondary axis offset
 
-        if(!isVacuumActive)
-        {
-          // Reset dot when it moves off screen
-          if (dot.y < -dot.size || dot.opacity <= 0) {
-            Object.assign(dot, createDot());
-          }
-        }
-      });
-      drawDots();
-    };
+  // 4-point bezier approximation of a circle, with morph offsets applied
+  const k = 0.5522848; // bezier magic number for circle approximation
+
+  const top =    { x: cx,         y: cy - r - m  };
+  const right =  { x: cx + r + m2, y: cy          };
+  const bottom = { x: cx,         y: cy + r + m  };
+  const left =   { x: cx - r - m2, y: cy          };
+
+  const cpK = r * k;
+
+  ctx.beginPath();
+  ctx.moveTo(top.x, top.y);
+
+  // top → right
+  ctx.bezierCurveTo(
+    cx + cpK + m2, cy - r - m,
+    cx + r + m2,   cy - cpK,
+    right.x, right.y
+  );
+
+  // right → bottom
+  ctx.bezierCurveTo(
+    cx + r + m2, cy + cpK,
+    cx + cpK,    cy + r + m,
+    bottom.x, bottom.y
+  );
+
+  // bottom → left
+  ctx.bezierCurveTo(
+    cx - cpK + m2, cy + r + m,
+    cx - r - m2,   cy + cpK,
+    left.x, left.y
+  );
+
+  // left → top
+  ctx.bezierCurveTo(
+    cx - r - m2, cy - cpK,
+    cx - cpK,    cy - r - m,
+    top.x, top.y
+  );
+
+  ctx.closePath();
+};
+
+const drawDots = () => {
+  ctx.clearRect(0, 0, width, height);
+
+  dots.current.forEach((dot) => {
+    const { x, y, opacity } = dot;
+
+    // Apply wobble to radius at draw time (non-destructive, doesn't mutate dot.size)
+    const r = dot.size + Math.sin(dot.wobblePhase) * dot.size * dot.wobbleAmount;
+
+    ctx.save();
+    ctx.globalAlpha = opacity;
+
+    // --- Outer rim glow ---
+    const rimGradient = ctx.createRadialGradient(x, y, r * 0.85, x, y, r * 1.2);
+    rimGradient.addColorStop(0, "rgba(100, 220, 255, 0.25)");
+    rimGradient.addColorStop(1, "rgba(100, 220, 255, 0)");
+    ctx.fillStyle = rimGradient;
+    ctx.beginPath();
+    ctx.arc(x, y, r * 1.2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // --- Bubble body ---
+    const bodyGradient = ctx.createRadialGradient(x, y * 0.98, r * 0.1, x, y, r);
+    bodyGradient.addColorStop(0, "rgba(180, 240, 255, 0.05)");
+    bodyGradient.addColorStop(0.7, "rgba(80, 180, 220, 0.08)");
+    bodyGradient.addColorStop(1, "rgba(60, 160, 210, 0.18)");
+    ctx.fillStyle = bodyGradient;
+    ctx.beginPath();
+    drawBubblePath(x, y, r, dot.morphPhase, dot.morphAmount);
+    ctx.fill();
+
+    // --- Rim stroke ---
+    ctx.strokeStyle = "rgba(150, 230, 255, 0.55)";
+    ctx.lineWidth = r * 0.08;
+    ctx.beginPath();
+    drawBubblePath(x, y, r, dot.morphPhase, dot.morphAmount);
+    ctx.stroke();
+
+    // --- Primary specular highlight ---
+    const shine1 = ctx.createRadialGradient(
+      x - r * 0.35, y - r * 0.35, 0,
+      x - r * 0.35, y - r * 0.35, r * 0.55
+    );
+    shine1.addColorStop(0, "rgba(255, 255, 255, 0.75)");
+    shine1.addColorStop(0.5, "rgba(255, 255, 255, 0.15)");
+    shine1.addColorStop(1, "rgba(255, 255, 255, 0)");
+    ctx.fillStyle = shine1;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+
+    // --- Secondary specular ---
+    const shine2 = ctx.createRadialGradient(
+      x + r * 0.4, y + r * 0.4, 0,
+      x + r * 0.4, y + r * 0.4, r * 0.25
+    );
+    shine2.addColorStop(0, "rgba(255, 255, 255, 0.4)");
+    shine2.addColorStop(1, "rgba(255, 255, 255, 0)");
+    ctx.fillStyle = shine2;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore();
+  });
+};
+
+const updateDots = () => {
+  dots.current.forEach((dot) => {
+    if (isVacuumActive) {
+      dot.vacuumSpeed += 0.99;
+      dot.x += Math.sin(Math.PI / 1) * dot.vacuumSpeed;
+      dot.y -= Math.cos(Math.PI / 6) * dot.vacuumSpeed;
+      dot.opacity -= 0.02;
+    } else {
+      dot.y -= Math.cos(Math.PI / 8) * dot.speed;
+
+      // Sway replaces plain driftSpeedX for a smoother organic path
+      dot.x += Math.sin(dot.swayPhase) * dot.swayAmount + dot.driftSpeedX;
+      dot.swayPhase += dot.swaySpeed;
+
+      // Wobble phase advances each frame
+      dot.wobblePhase += dot.wobbleSpeed;
+      dot.morphPhase += dot.morphSpeed;
+
+      // Opacity breathe
+      dot.opacity = dot.baseOpacity + Math.sin(dot.opacityPhase) * 0.2;
+      dot.opacityPhase += dot.opacitySpeed;
+    }
+
+    if (!isVacuumActive) {
+      if (dot.y < -dot.size || dot.opacity <= 0) {
+        Object.assign(dot, createDot());
+      }
+    }
+  });
+
+  drawDots();
+};
 
     // Start the loading sound when animation begins
     playSound(loadStartRef);

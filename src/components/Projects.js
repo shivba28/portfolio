@@ -6,8 +6,9 @@ import '../assets/CSS/projects.css';
 import Lottie from 'lottie-react';
 import { Modal } from "react-bootstrap";
 import { useEffect, useRef, useState } from 'react';
-import Carousel from 'react-multi-carousel';
+// import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { Row, Col } from "react-bootstrap";
 import { IPadCursorProvider } from 'ipad-cursor/react';
 
 import constructionData from '../assets/Lottie/CCDP.json';
@@ -21,6 +22,31 @@ import miniProjects from '../assets/Lottie/Mini-projects.json';
 import portfolio from '../assets/Lottie/Portfolio.json';
 import propChain1 from '../assets/Lottie/PropChain-1.json';
 import propChain2 from '../assets/Lottie/PropChain-2.json';
+
+// At the top of Projects.jsx, keep all your lottie/asset imports as-is, then add:
+import projectsData from '../assets/json/projects.json';
+
+const assetMap = {
+  constructionData,
+  ans,
+  valentines,
+  chatbot,
+  portfolio,
+  miniProjects,
+  videoGame,
+  propChain1,
+  propChain2,
+  pacman,
+};
+
+// Resolve string keys in JSON to actual imported assets
+const projects = projectsData.map((p) => ({
+  ...p,
+  ...(p.animationData  && { animationData:  assetMap[p.animationData]  }),
+  ...(p.animationData2 && { animationData2: assetMap[p.animationData2] }),
+  ...(p.video          && { video:          assetMap[p.video]          }),
+}));
+
 
 
 export const Project = () => {
@@ -55,60 +81,6 @@ export const Project = () => {
             gsap.set(".scroll-wrapper img", { scale: 2 });
           });
     });
-
-
-        // Project data array (title, description, media) for simplicity
-        const projects = [
-            { id: 1, title: "Pacman-3D", video: pacman, type: "video",
-                link:"https://github.com/shivba28/PacMan3D",
-                Desc:"A 3D twist on the classic Pacman game, this project features enhanced graphics and interactive elements," + " " +
-                "offering players an immersive experience with challenging mazes and power-ups."
-            },
-            { 
-                id: 2, title: "CCDP", animationData: constructionData, type: "lottie",
-                link:"https://github.com/shivba28/CCDP",
-                Desc:"A robust construction project management tool designed to streamline documentation," + " " +
-                "progress tracking, and collaborative workflows," + " " +
-                "facilitating efficient project oversight from inception to completion."
-            },
-            { id: 3, title: "Adopt Not Shop", animationData: ans, type: "lottie",
-                link:"https://github.com/shivba28/ANS",
-                Desc:"An application promoting animal adoption by providing resources and profiles of pets," + " " + 
-                "helping users find adoptable pets and raise awareness about shelter animals."
-            },
-            { id: 4, title: "Valentine's Game", animationData: valentines, type: "lottie", 
-                link:"https://github.com/shivba28/v-game-app",
-                demo:"https://shivba28.github.io/v-game-app/",
-                Desc:"A lighthearted, interactive game celebrating Valentine's Day," + " " +
-                "designed to engage users with festive mini-games and challenges centered around themes of love and friendship."
-            },
-            { id: 5, title: "Chat-Bot", animationData: chatbot, type: "lottie", 
-                link:"https://github.com/shivba28/chat-bot", 
-                Desc:"An AI-driven chatbot that facilitates seamless user interactions," + " " +
-                "providing assistance and answers to frequently asked questions across various domains, with a focus on natural language processing."
-            },
-            { id: 6, title: "Portfolio", animationData: portfolio, type: "lottie", 
-                link:"https://github.com/shivba28/portfolio_2.0", 
-                Desc:"A personal portfolio showcasing development skills, projects," + " " +
-                "and accomplishments in a visually appealing format, serving as an online resume and professional introduction."
-            },
-            { id: 7, title: "Mini Projects", animationData: miniProjects, type: "lottie", 
-                link:"https://github.com/shivba28/Mini-Projects", 
-                Desc:"A collection of innovative small-scale projects designed to explore new technologies," + " " + 
-                "experiment with creative ideas, and develop unique, functional solutions to common challenges."
-            },
-            { id: 8, title: "Video Game Rental", animationData: videoGame, type: "lottie", 
-                link:"https://github.com/shivba28/Game_Rentel", 
-                Desc:"A platform for renting video games that allows users to browse," + " " +
-                "select, and rent games easily, while managing inventory and tracking rental history effectively."
-            },
-            { id: 9, title: "Prop-Chain", animationData: propChain1, animationData2: propChain2, type: "lottie-prop", 
-                link:"https://github.com/shivba28/PropChain",
-                Desc:"A blockchain-inspired project aimed at enhancing property management by securely recording transactions," + " " + 
-                "managing ownership records, and ensuring transparent real estate processes."
-            }
-            // Add other projects as needed
-        ];
     
         // Open modal and set selected project
         const openModal = (project) => setSelectedProject(project);
@@ -116,47 +88,47 @@ export const Project = () => {
         // Close modal by clearing the selected project
         const closeModal = () => setSelectedProject(null);
 
-        const CustomLeftArrow = ({ onClick, ...rest }) => {
-            const {
-              onMove,
-              carouselState: { currentSlide, deviceType }
-            } = rest;
-            // onMove means if dragging or swiping in progress.
-            return <IPadCursorProvider><button data-cursor="block" data-cursor-style="background: transparent;" className="custom-arrow arrow-left" onClick={() => onClick()}>◀</button></IPadCursorProvider>;
-          };
+        // const CustomLeftArrow = ({ onClick, ...rest }) => {
+        //     const {
+        //       onMove,
+        //       carouselState: { currentSlide, deviceType }
+        //     } = rest;
+        //     // onMove means if dragging or swiping in progress.
+        //     return <IPadCursorProvider><button data-cursor="block" data-cursor-style="background: transparent;" className="custom-arrow arrow-left" onClick={() => onClick()}>◀</button></IPadCursorProvider>;
+        //   };
 
-        const CustomRightArrow = ({ onClick, ...rest }) => {
-            const {
-              onMove,
-              carouselState: { currentSlide, deviceType }
-            } = rest;
-            // onMove means if dragging or swiping in progress.
-            return <button data-cursor="block" data-cursor-style="background: transparent;" className="custom-arrow arrow-right" onClick={() => onClick()}>▶</button>;
-          };
+        // const CustomRightArrow = ({ onClick, ...rest }) => {
+        //     const {
+        //       onMove,
+        //       carouselState: { currentSlide, deviceType }
+        //     } = rest;
+        //     // onMove means if dragging or swiping in progress.
+        //     return <button data-cursor="block" data-cursor-style="background: transparent;" className="custom-arrow arrow-right" onClick={() => onClick()}>▶</button>;
+        //   };
 
-          const responsive = {
-            superLargeDesktop: {
-              // the naming can be any, depends on you.
-              breakpoint: { max: 4000, min: 3000 },
-              items: 5
-            },
-            largeDesktop: {
-              breakpoint: { max: 3000, min: 1500 },
-              items: 4
-            },
-            laptop: {
-                breakpoint: { max: 1500, min: 1024 },
-                items: 3
-            },
-            tablet: {
-              breakpoint: { max: 1024, min: 505 },
-              items: 2
-            },
-            mobile: {
-              breakpoint: { max: 505, min: 0 },
-              items: 1
-            }
-          };
+        //   const responsive = {
+        //     superLargeDesktop: {
+        //       // the naming can be any, depends on you.
+        //       breakpoint: { max: 4000, min: 3000 },
+        //       items: 5
+        //     },
+        //     largeDesktop: {
+        //       breakpoint: { max: 3000, min: 1500 },
+        //       items: 4
+        //     },
+        //     laptop: {
+        //         breakpoint: { max: 1500, min: 1024 },
+        //         items: 3
+        //     },
+        //     tablet: {
+        //       breakpoint: { max: 1024, min: 505 },
+        //       items: 2
+        //     },
+        //     mobile: {
+        //       breakpoint: { max: 505, min: 0 },
+        //       items: 1
+        //     }
+        //   };
 
     return(
         <section className="project">
@@ -168,12 +140,50 @@ export const Project = () => {
                     <img src={front_img} ref={imageRef}/>
                 </div>
             </div>
-            <section className="project-content section my-5 py-5" id="project">
-                {/* <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100 mb-4" data-aos="fade-down" data-aos-offset="500">
+            <section className="project-content section" id="project">
+                <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100 mb-4" id="project-title">
                     <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                     <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
-                </div> */}
-                <Carousel responsive={responsive} infinite={true} draggable={false} customLeftArrow={<CustomLeftArrow />} customRightArrow={<CustomRightArrow />} 
+                </div>
+                <Row className="project-items my-3">
+                    {projects.map((project, index) => (
+                        <Col key={project.id} xs={12} md={6} xl={4} className="m-auto prj-col" data-aos="fade-left" data-aos-delay={200 * project.id} data-aos-anchor={"#project-"+(project.id - 1)} data-aos-offset="800">
+                            <div className="project-item my-5" id={"project-"+project.id}>
+                                <div className="project-item-active">
+                                <a style={{height:"100%", width:"100%", position:"absolute"}} onClick={() => openModal(project)}></a>
+                                </div>
+                                <div className="base"></div>
+                                <div className="lottie-figure">
+                                    {(() => {
+                                        switch (project.type) {
+                                            case 'lottie':
+                                            return (
+                                                <Lottie animationData={project.animationData} loop={true} autoplay={true} />
+                                            );
+                                            case "video" :
+                                            return (
+                                                <div>
+                                                    <img src={project.video} alt={project.title} />
+                                                </div>
+                                            );
+                                            case "lottie-prop" :
+                                                return (
+                                                    <div>
+                                                        <Lottie animationData={project.animationData} loop={true} autoplay={true} />
+                                                        <Lottie className="part-2" animationData={project.animationData2} loop={true} autoplay={true} style={{height:75, width:75 }} />
+                                                    </div>
+                                                );
+                                            default:
+                                                return null; // Optional: handle unexpected types
+                                                }
+                                    })()}
+                                </div>
+                                <div className="project-title noselect">{project.title}</div>
+                            </div>
+                        </Col>
+                    ))}
+                </Row>
+                {/* <Carousel responsive={responsive} infinite={true} draggable={false} customLeftArrow={<CustomLeftArrow />} customRightArrow={<CustomRightArrow />} 
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 >
                     {projects.map((project, index) => (
@@ -210,15 +220,15 @@ export const Project = () => {
                             <div className="project-title noselect">{project.title}</div>
                         </div>
                     ))}
-                </Carousel>
+                </Carousel> */}
 
                 {/* Modal to display project info dynamically */}
                 {selectedProject && (
                     <Modal show onHide={closeModal} centered size="lg" className="projects-modal fade rounded">
-                        <Modal.Header className="bg-black justify-content-center">
+                        <Modal.Header className="justify-content-center">
                             <Modal.Title className="text-center fs-1 rounded px-3">{selectedProject.title}</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body className="bg-black rounded-bottom">
+                        <Modal.Body className="rounded-bottom align-content-center">
                             <div className="project-modal-content row align-items-center">
                                 <div className="info-section col d-grid">
                                     <p className="text-justify">{selectedProject.Desc}</p>

@@ -32,7 +32,7 @@ export const NavBar = ({openModal}) => {
                 <img src={logo} alt="Logo" style={{width: "80px", height: "80px"}}/>
               </Navbar.Brand>
               {/* <h1 data-cursor="text" style={{fontFamily: "Kranky"}}>SHI<span style={{color:"#eb667e"}}>VB</span>A <span style={{color:"#eb667e"}}>C</span>ODES</h1> */}
-              <div className="neon" aria-hidden="true" aria-label="my skills" data-cursor="text">
+              <div className="neon d-lg-none d-md-flex d-xl-flex" aria-hidden="true" aria-label="my skills" data-cursor="text">
                 <span className='neon-animate'>S</span>
                 <span className='neon-animate'>h</span>
                 <span className='neon-animate'>i</span>

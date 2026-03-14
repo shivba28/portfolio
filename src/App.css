@@ -180,10 +180,11 @@ nav.navbar .navbar-nav .nav-link.navbar-link, .link {
   font-weight: 400;
   color: #fff !important;
   letter-spacing: 0.8px;
-  padding: 0 25px;
+  padding: 5px 25px;
   font-size: 20px;
   opacity: 0.75;
   transition: all 0.2s ease-in-out;
+  margin: 0px 10px;
 }
  nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
@@ -192,7 +193,9 @@ nav.navbar .navbar-nav a.nav-link.navbar-link.active {
   }
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover, .link.active{
   opacity: 1;
-  text-shadow: 0 0 10px #43b7ff, 0 0 20px #43b7ff, 0 0 40px #43b7ff, 0 0 50px #43b7ff, 0 0 60px #43b7ff;
+  /* text-shadow: 0 0 10px #43b7ff, 0 0 20px #43b7ff, 0 0 40px #43b7ff, 0 0 50px #43b7ff, 0 0 60px #43b7ff; */
+  background-color: #7878784d;
+  border-radius: 5px;
 }
 span.navbar-text {
     display: flex;

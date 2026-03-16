@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.d03a3e7b.css",
-    "main.js": "/portfolio/static/js/main.e41c7155.js",
-    "static/js/511.cd8b3da4.chunk.js": "/portfolio/static/js/511.cd8b3da4.chunk.js",
+    "main.css": "/portfolio/static/css/main.4aef6442.css",
+    "main.js": "/portfolio/static/js/main.8a846712.js",
+    "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
     "static/media/pacman.gif": "/portfolio/static/media/pacman.7132b0db41c27427fde3.gif",
     "static/media/2_edited.jpg": "/portfolio/static/media/2_edited.ba94f37e26503c9fe158.jpg",
     "static/media/intro.mp4": "/portfolio/static/media/intro.30cfa01e681f892c3dc7.mp4",
+    "static/media/contact.jpg": "/portfolio/static/media/contact.db2144ae32cc4993b088.jpg",
     "static/media/img1.HEIC": "/portfolio/static/media/img1.a69d7046843bef1cd865.HEIC",
     "static/media/contact.png": "/portfolio/static/media/contact.ccf9acac88fcbb86c4c1.png",
     "static/media/project_front.png": "/portfolio/static/media/project_front.f04a09ebeb918c458e1a.png",
@@ -42,12 +43,12 @@
     "static/media/github-mark-white.svg": "/portfolio/static/media/github-mark-white.97ed8e7eef60d61ca469881dd6f34511.svg",
     "index.html": "/portfolio/index.html",
     "static/media/nav-icon1.svg": "/portfolio/static/media/nav-icon1.721d5414c26365f117e71d46b6641cb2.svg",
-    "main.d03a3e7b.css.map": "/portfolio/static/css/main.d03a3e7b.css.map",
-    "main.e41c7155.js.map": "/portfolio/static/js/main.e41c7155.js.map",
-    "511.cd8b3da4.chunk.js.map": "/portfolio/static/js/511.cd8b3da4.chunk.js.map"
+    "main.4aef6442.css.map": "/portfolio/static/css/main.4aef6442.css.map",
+    "main.8a846712.js.map": "/portfolio/static/js/main.8a846712.js.map",
+    "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d03a3e7b.css",
-    "static/js/main.e41c7155.js"
+    "static/css/main.4aef6442.css",
+    "static/js/main.8a846712.js"
   ]
 }

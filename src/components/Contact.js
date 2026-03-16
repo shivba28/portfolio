@@ -84,18 +84,11 @@ export const Contact = () => {
 
     return(
         <section className="contact content" id='contact'>
-            {/* <div className="title text-center d-flex flex-wrap pt-4 bg-gradient" data-aos="fade-down">
-                <div className="slogan-left ms-auto"><h1 className="left">CONTACT</h1></div>
-                <div className="slogan-right me-auto"><h1 className="right">ME</h1></div>
-            </div> */}
             <Row>
-                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
-                    <img className='img mx-auto' src={img} />
-                </Col>
-                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
-                <div id="form-content" className='mx-auto rounded-4 bg-light bg-gradient'>
-                  <header id="header" className="bg-black bg-gradient rounded-top-4">Let's Connect</header>
-                  <form className='form d-grid mx-5' ref={form} id="contact-form" onSubmit={sendEmail}>
+                <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col m-auto'>
+                <div id="form-content" className='mx-auto rounded-4'>
+                  <header id="header" className="bg-black rounded-top-4 bg-gradient">Let's Connect</header>
+                  <form className='form d-grid px-5 rounded-4' ref={form} id="contact-form" onSubmit={sendEmail}>
                     <div className="form__group field">
                       <span className="form__label">Name</span>
                       <input data-cursor="text" ref={userName} className='form__field' type="text" name="user_name" placeholder='Name' id='name' />

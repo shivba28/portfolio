@@ -22,6 +22,12 @@ import miniProjects from '../assets/Lottie/Mini-projects.json';
 import portfolio from '../assets/Lottie/Portfolio.json';
 import propChain1 from '../assets/Lottie/PropChain-1.json';
 import propChain2 from '../assets/Lottie/PropChain-2.json';
+import cardHeart from '../assets/Lottie/Card-Heart.json';
+import foodservices from '../assets/Lottie/foodservices.json';
+import rsvp from '../assets/Lottie/rsvp.json';
+import secretSanta from '../assets/Lottie/secretSanta.json';
+import umbracoBase from '../assets/Lottie/umbracoBase.json';
+import voting from '../assets/Lottie/Voting.json';
 
 // At the top of Projects.jsx, keep all your lottie/asset imports as-is, then add:
 import projectsData from '../assets/json/projects.json';
@@ -37,6 +43,12 @@ const assetMap = {
   propChain1,
   propChain2,
   pacman,
+  foodservices,
+  umbracoBase,
+  voting,
+  rsvp,
+  secretSanta,
+  cardHeart
 };
 
 // Resolve string keys in JSON to actual imported assets

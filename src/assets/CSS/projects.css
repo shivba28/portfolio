@@ -1,3 +1,8 @@
+:root{
+  --cardHeart: rgb(246, 85, 112);
+  --cardHeartBase: rgb(147, 53, 69);
+}
+
 .vh-50{
   height: 50dvh;
   gap: 30px 0px;
@@ -270,13 +275,24 @@
 }
 
 /* Figure Sizes */
+.lottie-figure{
+  width: 200px;
+  transform: translate(0px, 0px);
+}
+.project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, 0px);
+}
+.project-modal-content .project-item .lottie-figure{
+  transform: translate(0px, 0px);
+}
+
 .project-modal-content #project-1 .lottie-figure{
   width: 100%;
   transform: translate(0);
 }
 
 #project-1 .lottie-figure{
-  transform: translate(0px, 0px);
+  transform: translate(-70px, 0px);
 }
 #project-1 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, 5px);
@@ -289,10 +305,10 @@
   transform: translate(85px,-28dvh) rotateX(65deg) rotateZ(55deg) skewX(20deg);
 }
 
-/* #project-2 .lottie-figure{
-  width: 45%;
-  transform: translate(5px, -70px);
-} */
+#project-2 .lottie-figure{
+  width: 50%;
+  transform: translate(0px, -30px);
+}
 #project-2 .project-item-active:active ~ .lottie-figure{
   transform: translate(-10px -5px);
 }
@@ -357,7 +373,7 @@
 }
 
 #project-8 .lottie-figure{
-  width: 150px;
+  width: 180px;
   transform: translate(0px, -20px);
 }
 #project-8 .project-item-active:active ~ .lottie-figure{
@@ -385,8 +401,88 @@
   transform: translate(100px, -100px);
 }
 
+#project-10 .lottie-figure{
+  width: 150px;
+  transform: translate(0px, -20px);
+}
+#project-10 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -15px);
+}
+.project-modal-content #project-10 .lottie-figure{
+  transform: translate(10px, 0px);
+}
+
+#project-11 .lottie-figure{
+  width: 300px;
+  transform: translate(0px, -20px);
+}
+#project-11 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -15px);
+}
+.project-modal-content #project-11 .lottie-figure{
+  transform: translate(10px, 50px);
+}
+
+#project-12 .lottie-figure{
+  width: 250px;
+  transform: translate(0px, -20px);
+}
+#project-12 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -15px);
+}
+.project-modal-content #project-12 .lottie-figure{
+  transform: translate(10px, 0px);
+}
+
+#project-13 .lottie-figure{
+  width: 250px;
+  transform: translate(0px, -20px) skew(0deg, 10deg);
+}
+#project-13 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -15px) skew(0deg, 10deg);
+}
+.project-modal-content #project-13 .lottie-figure{
+  transform: translate(10px, 0px);
+}
+
+#project-14 .lottie-figure{
+  width: 300px;
+  transform: translate(-20px, -70px);
+}
+#project-14 .project-item-active:active ~ .lottie-figure{
+  transform: translate(-20px, -65px);
+}
+.project-modal-content #project-14 .lottie-figure{
+  transform: translate(10px, 0px);
+}
+
+#project-15 .lottie-figure{
+  width: 250px;
+  transform: translate(0px, -20px);
+}
+#project-15 .project-item-active:active ~ .lottie-figure{
+  transform: translate(0px, -15px);
+}
+.project-modal-content #project-15 .lottie-figure{
+  transform: translate(10px, 0px);
+}
 
 /* Base and Button Colors for various projects */
+.base::before{
+  background-color: lightgrey;
+  border: 4px solid white;
+}
+.base::after{
+  background-color: grey;
+  box-shadow:
+  5px 5px 0px grey,
+  10px 10px 0px grey;
+}
+.project-title::before{
+  border: 4px solid gray;
+  box-shadow: 0px -10px 0px gray;
+}
+
 #project-1 .base::before{
   background-color: black;
   border: 4px solid white;
@@ -527,20 +623,95 @@
   font-size: 20px;
 }
 
-/* #project-10 .base::before{
-  background-color: olive;
+#project-10 .base::before{
+  background-color: var(--cardHeart);
   border: 4px solid white;
 }
 #project-10 .base::after{
+  background-color: var(--cardHeartBase);
+  box-shadow:
+  5px 5px 0px var(--cardHeartBase),
+  10px 10px 0px var(--cardHeartBase);
+}
+#project-10 .project-title::before{
+  border: 4px solid var(--cardHeartBase);
+  box-shadow: 0px -10px 0px var(--cardHeartBase);
+}
+
+#project-11 .base::before{
+  background-color: olive;
+  border: 4px solid white;
+}
+#project-11 .base::after{
   background-color: olivedrab;
   box-shadow:
   5px 5px 0px olivedrab,
   10px 10px 0px olivedrab;
 }
-#project-10 .project-title::before{
+#project-11 .project-title::before{
   border: 4px solid olivedrab;
   box-shadow: 0px -10px 0px olivedrab;
-} */
+}
+
+#project-12 .base::before{
+  background-color: white;
+  border: 4px solid olive;
+}
+#project-12 .base::after{
+  background-color: gray;
+  box-shadow:
+  5px 5px 0px gray,
+  10px 10px 0px gray;
+}
+#project-12 .project-title::before{
+  border: 4px solid gray;
+  box-shadow: 0px -10px 0px gray;
+}
+
+#project-13 .base::before{
+  background-color: rgb(59, 83, 123);
+  border: 4px solid white;
+}
+#project-13 .base::after{
+  background-color: rgb(104, 145, 216);
+  box-shadow:
+  5px 5px 0px rgb(104, 145, 216),
+  10px 10px 0px rgb(104, 145, 216);
+}
+#project-13 .project-title::before{
+  border: 4px solid rgb(104, 145, 216);
+  box-shadow: 0px -10px 0px rgb(104, 145, 216);
+}
+
+#project-14 .base::before{
+  background-color: white;
+  border: 4px solid coral;
+}
+#project-14 .base::after{
+  background-color: lightblue;
+  box-shadow:
+  5px 5px 0px lightblue,
+  10px 10px 0px lightblue;
+}
+#project-14 .project-title::before{
+  border: 4px solid lightblue;
+  box-shadow: 0px -10px 0px lightblue;
+}
+
+#project-15 .base::before{
+  background-color: rgb(5, 206, 5);
+  border: 4px solid white;
+}
+#project-15 .base::after{
+  background-color: #003768;
+  box-shadow:
+  5px 5px 0px #003768,
+  10px 10px 0px #003768;
+}
+#project-15 .project-title::before{
+  border: 4px solid #003768;
+  box-shadow: 0px -10px 0px #003768;
+}
 
 @media screen and (width <= 768px){
   .scroll-content .section{

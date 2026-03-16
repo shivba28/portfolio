@@ -72,5 +72,58 @@
     "animationData2": "propChain2",
     "link": "https://github.com/shivba28/PropChain",
     "Desc": "A blockchain-inspired project aimed at enhancing property management by securely recording transactions, managing ownership records, and ensuring transparent real estate processes."
+  },
+  {
+    "id": 10,
+    "title": "Jerryssa",
+    "type": "lottie-prop",
+    "animationData": "cardHeart",
+    "link": "https://github.com/shivba28/Jeryssa",
+    "demo": "https://shivba28.github.io/Jeryssa/",
+    "Desc": "A website to celebrate my friends getting engaged."
+  },
+  {
+    "id": 11,
+    "title": "RSVP",
+    "type": "lottie-prop",
+    "animationData": "rsvp",
+    "link": "https://github.com/shivba28/rsvp-website",
+    "demo": "https://shivba28.github.io/rsvp-website/",
+    "Desc": "RSVP website for inviting guests to his retirement party."
+  },
+  {
+    "id": 12,
+    "title": "Secret Santa",
+    "type": "lottie-prop",
+    "animationData": "secretSanta",
+    "link": "https://github.com/shivba28/secret-santa-form",
+    "demo": "https://shivba28.github.io/secret-santa-form/",
+    "Desc": "A fun and interactive website for organizing secret santa exchanges."
+  },
+  {
+    "id": 13,
+    "title": "Voting System",
+    "type": "lottie-prop",
+    "animationData": "voting",
+    "link": "https://github.com/shivba28/Voting-System",
+    "demo": "https://shivba28.github.io/Voting-System/",
+    "Desc": "An online voting system for company competitions: Salsa Competition and Jolly Costume Contest."
+  },
+  {
+    "id": 14,
+    "title": "Umbraco Base",
+    "type": "lottie-prop",
+    "animationData": "umbracoBase",
+    "link": "https://github.com/shivba28/Umbraco-Base",
+    "Desc": "A base template for building websites with Umbraco, providing a solid foundation for custom development and rapid prototyping."
+  },
+  {
+    "id": 15,
+    "title": "Food Services",
+    "type": "lottie-prop",
+    "animationData": "foodservices",
+    "link": "https://github.com/shivba28/Food-Services",
+    "demo": "https://foodservices.ggusd.us",
+    "Desc": "GGUSD Food Services Department Website to manage and promote food service offerings."
   }
 ]

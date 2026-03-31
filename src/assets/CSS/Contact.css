@@ -19,12 +19,12 @@
     font-size: 5rem !important;
 }
 
-#contact img{
-    height: 40%;
+#contact #header img{
+    height: 100px;
     width: auto;
-    top: 10%;
+    top: 10px;
     position: relative;
-    animation: imgFloat 6s ease-out infinite;
+    /* animation: imgFloat 6s ease-out infinite; */
 }
 
 @keyframes imgFloat {
@@ -37,6 +37,14 @@
 #form-content {
     height: 90%;
     width: 75%;
+    background-image: url("../Images/contact.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
 }
 #form-content::after {
     clear: both;
@@ -52,8 +60,11 @@
     font-family: 'Allura', sans-serif;
 }
 #form-content form {
-    margin: 30px 0;
+    padding: 30px 0;
+    margin: auto;
     color: #000;
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 80%;
 }
 
 #form-content form input{

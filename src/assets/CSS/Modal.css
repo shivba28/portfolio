@@ -15,11 +15,75 @@
   min-height: 50vh;
 }
 
+/* Keep modals above the fixed navbar (z-index: 9999) */
+.modal {
+  z-index: 10050;
+}
+.modal-backdrop {
+  z-index: 10040;
+}
+
 .about-modal .bio-section {
     /* background-color: black; */
     color: lightgrey;
     height: 100%;
   }
+
+/* Contact modal (match About liquid-glass readability) */
+.contact-modal .modal-content {
+  border: none;
+  overflow: hidden;
+  max-height: 80vh;
+}
+
+.contact-modal .modal-body {
+  padding: 0;
+}
+
+.contact-modal .contact.content {
+  color: rgba(245, 245, 245, 0.95);
+  font-family: "Inter", sans-serif;
+  height: 100%;
+}
+
+.contact-modal #form-content {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.contact-modal #form-content header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(245, 245, 245, 0.95);
+  font-family: "Kranky";
+  letter-spacing: 0.03em;
+}
+
+.contact-modal .form__field {
+  color: rgba(245, 245, 245, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.contact-modal .form__label {
+  color: rgba(245, 245, 245, 0.75);
+}
+
+.contact-modal .form__field:focus {
+  border-image: linear-gradient(to right, #7fffd4, rgba(56, 239, 125, 0.9));
+  border-image-slice: 1;
+}
+
+.contact-modal #form-content button {
+  color: rgba(245, 245, 245, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.contact-modal #form-content button:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
 
   .about-modal .modal-body p{
     font-family: "Inter", sans-serif;

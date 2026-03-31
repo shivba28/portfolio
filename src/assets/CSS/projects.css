@@ -276,8 +276,8 @@
 
 /* Figure Sizes */
 .lottie-figure{
-  width: 200px;
-  transform: translate(0px, 0px);
+  width: 300px;
+  transform: translate(0px, -60px) rotate(20deg);
 }
 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, 0px);
@@ -292,7 +292,7 @@
 }
 
 #project-1 .lottie-figure{
-  transform: translate(-70px, 0px);
+  transform: translate(-15px, 0px);
 }
 #project-1 .project-item-active:active ~ .lottie-figure{
   transform: translate(0px, 5px);
@@ -306,7 +306,7 @@
 }
 
 #project-2 .lottie-figure{
-  width: 50%;
+  width: 75%;
   transform: translate(0px, -30px);
 }
 #project-2 .project-item-active:active ~ .lottie-figure{
@@ -735,20 +735,20 @@
     margin-right: 20px;
   }
   .project-item .base{
-    height: 200px;
-    width: 250px;
+    height: 250px;
+    width: 300px;
   }.base::before{
     content: '';
-    width: 250px;
-    height: 200px;
+    width: 300px;
+    height: 250px;
   }
   .lottie-figure{
     width: 200px; 
-    transform: translate(0px, -20px);
+    transform: translate(0px, 0px) rotate(20deg);
   }
   #project-2 .lottie-figure{
-    width: 200px;
-    transform: translate(0px, -50px);
+    width: 250px;
+    transform: translate(0px, -20px);
   }
   #project-1 video{
     width: 140px;
@@ -762,32 +762,56 @@
   #project-4 .lottie-figure, #project-5 .lottie-figure{
     width: 150px;
   }
+  #project-5 .lottie-figure{
+    width: 200px;
+    transform: translateY(-50px);
+  }
   #project-6 .lottie-figure{
     width: 200px;
   }
   #project-7 .lottie-figure{
-    width: 200px;
-    transform: translateY(-35px);
-  }
-  #project-8 .lottie-figure{
-    width: 250px;
+    width: 300px;
     transform: translateY(-20px);
   }
-  #project-9 .lottie-figure{
-    width: 100px;
+  #project-8 .lottie-figure{
+    width: 150px;
+    transform: translateY(-20px);
   }
   #project-10 .lottie-figure{
+    width: 100px;
+  }
+  #project-9 .lottie-figure{
     width: 200px;
     transform: translateY(10px);
-  } #project-10 .lottie-figure .part-2{
+  } #project-9 .lottie-figure .part-2{
     transform: translate(60px, -80px);
+  }
+  #project-14 .lottie-figure{
+    width: 200px;
+    transform: translateY(0px);
+  }
+  #project-15 .lottie-figure{
+    width: 200px;
+    transform: translateY(0px);
+  }
+  #project-13 .lottie-figure{
+    width: 200px;
+    transform: translateY(0px);
+  }
+  #project-12 .lottie-figure{
+    width: 200px;
+    transform: translateY(0px);
+  }
+  #project-11 .lottie-figure{
+    width: 250px;
+    transform: translateY(0px);
   }
 }
 
 @media screen and (width <=505px) {
   #project-1 img{
-    width: 250px;
-    transform: translate(-4dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg);
+    width: 200px;
+    transform: translate(4dvw, 0dvh) rotateZ(46deg) skew(220deg, -30deg);
   }
   .modal-content{
     height: 50dvh;
@@ -797,8 +821,8 @@
   }
   }
   #project-1 .base, #project-1 .base::before{
-    width: 350px;
-    height: 300px;
+    width: 300px;
+    height: 250px;
   }
 }
 @media screen and (506px < width <= 768px) {

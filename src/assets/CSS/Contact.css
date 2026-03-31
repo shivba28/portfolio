@@ -1,9 +1,17 @@
-.contact.contact{
-    height: min-content;
+.contact-modal .modal-content{
+  background-color: transparent !important;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.contact.content .col{
-   height: 700px;
+.contact-modal .modal-dialog{
+  top: 50px;
+}
+
+/* When Contact is used inside the modal, avoid fixed heights */
+.contact-modal .contact.content .col{
+   height: auto;
 }
 
 .contact .left, .contact .right{
@@ -105,6 +113,37 @@
     transition: border-color 0.5s ease;
     resize: none;
   }
+
+  textarea.form__field{
+    min-height: 120px;
+  }
+
+/* Modal-specific sizing and layout */
+.contact-modal #form-content{
+  height: auto;
+  width: min(560px, 92%);
+  background-image: none;
+}
+
+.contact-modal #form-content form{
+  background-color: transparent;
+  color: rgba(245, 245, 245, 0.95);
+  width: 85%;
+  padding: 22px 0;
+}
+
+.contact-modal #form-content form .form__group{
+  padding: 12px 0 0;
+}
+
+@media screen and (width <= 991px) {
+  .contact-modal .contact.content img{
+    display: none;
+  }
+  .contact-modal #form-content{
+    width: min(560px, 92%);
+  }
+}
   
   .form__field::placeholder {
     color: transparent;

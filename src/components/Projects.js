@@ -5,7 +5,7 @@ import front_img from '../assets/Images/project_front.png';
 import '../assets/CSS/projects.css';
 import Lottie from 'lottie-react';
 import { Modal } from "react-bootstrap";
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 // import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Row, Col } from "react-bootstrap";
@@ -28,6 +28,7 @@ import rsvp from '../assets/Lottie/rsvp.json';
 import secretSanta from '../assets/Lottie/secretSanta.json';
 import umbracoBase from '../assets/Lottie/umbracoBase.json';
 import voting from '../assets/Lottie/Voting.json';
+import mealRoulette from '../assets/Lottie/mealRoulette.json';
 
 // At the top of Projects.jsx, keep all your lottie/asset imports as-is, then add:
 import projectsData from '../assets/json/projects.json';
@@ -48,7 +49,8 @@ const assetMap = {
   voting,
   rsvp,
   secretSanta,
-  cardHeart
+  cardHeart,
+  mealRoulette
 };
 
 // Resolve string keys in JSON to actual imported assets
@@ -63,14 +65,16 @@ const projects = projectsData.map((p) => ({
 
 export const Project = () => {
     const imageRef = useRef(null);
+    const rootRef = useRef(null);
+    const cardsRootRef = useRef(null);
+    const loadMoreBtnRef = useRef(null);
     const [selectedProject, setSelectedProject] = useState(null);
     const [visibleCount, setVisibleCount] = useState(6);
     const mm = gsap.matchMedia();
 
-    let dataAosOffset = 1500;
+    mm.add("(max-width: 767px)", () => {});
 
-    mm.add("(max-width: 767px)", () => {dataAosOffset = 0;})
-
+    // Pinned hero animation (set up once)
     useGSAP(() => {
         gsap.registerPlugin(ScrollTrigger);
         const md = gsap.matchMedia();
@@ -93,19 +97,60 @@ export const Project = () => {
         md.add("(max-width: 400px)", () => {
             gsap.set(".scroll-wrapper img", { scale: 2 });
           });
-    });
+    }, { scope: rootRef });
+
+    // Project cards reveal on scroll (rebuild when list grows)
+    useGSAP(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const scopeEl = cardsRootRef.current;
+        if (!scopeEl) return;
+
+        const cards = Array.from(scopeEl.querySelectorAll(".prj-col"));
+        gsap.set(cards, { autoAlpha: 0, x: 60 });
+
+        ScrollTrigger.batch(cards, {
+            start: "top 85%",
+            onEnter: (batch) =>
+                gsap.to(batch, {
+                    autoAlpha: 1,
+                    x: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    stagger: 0.08,
+                    overwrite: "auto",
+                }),
+            onLeaveBack: (batch) => gsap.set(batch, { autoAlpha: 0, x: 60 }),
+        });
+    }, { scope: cardsRootRef, dependencies: [visibleCount] });
 
         const sortedProjects = [...projects].sort((a, b) => {
             const aTime = a.createdDate ? new Date(a.createdDate).getTime() : 0;
             const bTime = b.createdDate ? new Date(b.createdDate).getTime() : 0;
             return bTime - aTime;
         });
+
+        const visibleProjects = sortedProjects.slice(0, visibleCount);
     
         // Open modal and set selected project
         const openModal = (project) => setSelectedProject(project);
     
         // Close modal by clearing the selected project
         const closeModal = () => setSelectedProject(null);
+
+        const handleLoadMore = () => {
+            const y = window.scrollY;
+            setVisibleCount((c) => Math.min(c + 3, sortedProjects.length));
+
+            // Preserve scroll position while pinned ScrollTriggers refresh due to new content height.
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    ScrollTrigger.refresh();
+                    window.scrollTo({ top: y, left: 0, behavior: "instant" });
+                    loadMoreBtnRef.current?.scrollIntoView({ block: "center", behavior: "instant" });
+                });
+            });
+        };
 
         // const CustomLeftArrow = ({ onClick, ...rest }) => {
         //     const {
@@ -150,7 +195,7 @@ export const Project = () => {
         //   };
 
     return(
-        <section className="project">
+        <section className="project" ref={rootRef}>
             <div className="scroll-wrapper">
                 <div className="scroll-content">
                     <section className="section hero"></section>
@@ -159,14 +204,20 @@ export const Project = () => {
                     <img src={front_img} ref={imageRef}/>
                 </div>
             </div>
-            <section className="project-content section" id="project">
+            <section className="project-content section" id="project" ref={cardsRootRef}>
                 <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100 mb-4" id="project-title">
                     <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
                     <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
                 </div>
                 <Row className="project-items my-3">
-                    {sortedProjects.slice(0, visibleCount).map((project) => (
-                        <Col key={project.id} xs={12} md={6} xl={4} className="m-auto prj-col" data-aos="fade-left" data-aos-delay={200 * project.id} data-aos-anchor={"#project-"+(project.id - 1)} data-aos-offset="800">
+                    {visibleProjects.map((project) => (
+                        <Col
+                            key={project.id}
+                            xs={12}
+                            md={6}
+                            xl={4}
+                            className="m-auto prj-col"
+                        >
                             <div className="project-item my-5" id={"project-"+project.id}>
                                 <div className="project-item-active">
                                 <a style={{height:"100%", width:"100%", position:"absolute"}} onClick={() => openModal(project)}></a>
@@ -207,7 +258,8 @@ export const Project = () => {
                         <button
                             type="button"
                             className="btn btn-outline-light"
-                            onClick={() => setVisibleCount((c) => Math.min(c + 3, sortedProjects.length))}
+                            onClick={handleLoadMore}
+                            ref={loadMoreBtnRef}
                         >
                             Load more
                         </button>
@@ -261,7 +313,7 @@ export const Project = () => {
                         <Modal.Body className="rounded-bottom align-content-center">
                             <div className="project-modal-content row align-items-center">
                                 <div className="info-section col d-grid">
-                                    <p className="text-justify">{selectedProject.Desc}</p>
+                                    <p className="text-left">{selectedProject.Desc}</p>
                                     <a data-cursor="block" data-cursor-style="background:transparent" className="btn btn-dark mt-4" href={selectedProject.link} target="_blank" style={{zIndex:100, position:"relative"}}>GITHUB</a>
                                     {selectedProject.demo && (<a data-cursor="block" data-cursor-style="background:transparent" className="btn btn-dark mt-4" href={selectedProject.demo} target="_blank" style={{zIndex:100, position:"relative"}}>LIVE</a>)}
                                 </div>

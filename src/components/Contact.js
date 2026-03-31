@@ -97,14 +97,8 @@ export const Contact = ({ show, handleClose }) => {
           className="contact-modal"
         >
           <Modal.Body className="p-0">
-            <section className="contact content">
-              <Row className="m-0">
-                  <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
-                      <img className='img mx-auto' src={img} />
-                  </Col>
-                  <Col sm={12} md={12} lg={6} xl={6} className='d-grid mt-5 col'>
+            <section className="contact">
                   <div id="form-content" className='mx-auto rounded-4 bg-light bg-gradient'>
-                    <header id="header" className="bg-black bg-gradient rounded-top-4">Let's Connect</header>
                     <form className='form d-grid mx-5' ref={form} id="contact-form" onSubmit={sendEmail}>
                       <div className="form__group field">
                         <span className="form__label">Name</span>
@@ -139,8 +133,6 @@ export const Contact = ({ show, handleClose }) => {
                       </div>
                     </form>
                   </div>
-                  </Col>
-              </Row>
             </section>
           </Modal.Body>
         </Modal>

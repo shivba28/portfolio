@@ -52,6 +52,7 @@ const projects = projectsData.map((p) => ({
 export const Project = () => {
     const imageRef = useRef(null);
     const [selectedProject, setSelectedProject] = useState(null);
+    const [visibleCount, setVisibleCount] = useState(6);
     const mm = gsap.matchMedia();
 
     let dataAosOffset = 1500;
@@ -81,6 +82,12 @@ export const Project = () => {
             gsap.set(".scroll-wrapper img", { scale: 2 });
           });
     });
+
+        const sortedProjects = [...projects].sort((a, b) => {
+            const aTime = a.createdDate ? new Date(a.createdDate).getTime() : 0;
+            const bTime = b.createdDate ? new Date(b.createdDate).getTime() : 0;
+            return bTime - aTime;
+        });
     
         // Open modal and set selected project
         const openModal = (project) => setSelectedProject(project);
@@ -146,7 +153,7 @@ export const Project = () => {
                     <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
                 </div>
                 <Row className="project-items my-3">
-                    {projects.map((project, index) => (
+                    {sortedProjects.slice(0, visibleCount).map((project) => (
                         <Col key={project.id} xs={12} md={6} xl={4} className="m-auto prj-col" data-aos="fade-left" data-aos-delay={200 * project.id} data-aos-anchor={"#project-"+(project.id - 1)} data-aos-offset="800">
                             <div className="project-item my-5" id={"project-"+project.id}>
                                 <div className="project-item-active">
@@ -183,6 +190,17 @@ export const Project = () => {
                         </Col>
                     ))}
                 </Row>
+                {visibleCount < sortedProjects.length && (
+                    <div className="d-flex justify-content-center pb-5">
+                        <button
+                            type="button"
+                            className="btn btn-outline-light"
+                            onClick={() => setVisibleCount((c) => Math.min(c + 3, sortedProjects.length))}
+                        >
+                            Load more
+                        </button>
+                    </div>
+                )}
                 {/* <Carousel responsive={responsive} infinite={true} draggable={false} customLeftArrow={<CustomLeftArrow />} customRightArrow={<CustomRightArrow />} 
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 >

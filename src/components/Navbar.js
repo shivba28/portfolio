@@ -6,7 +6,7 @@ import navIcon2 from '../assets/Logos/github-mark-white.svg';
 import logo from '../assets/Logos/bitmoji.ico';
 import '../assets/CSS/navbar.css';
 
-export const NavBar = ({openModal}) => {
+export const NavBar = ({ openAboutModal, openContactModal }) => {
     const [scrolled, setScrolled] = useState(false);
 
 
@@ -53,7 +53,7 @@ export const NavBar = ({openModal}) => {
                   <Link data-cursor="block" to="home" spy={true} smooth={true} offset={-50} duration={800} className={'navbar-link link'}>HOME</Link>
                   <Link data-cursor="block" to="skill" spy={true} smooth={true} offset={-250} duration={1500} className={'navbar-link link'}>SKILLS</Link>
                   <Link data-cursor="block" to="project" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link link'}>PROJECTS</Link>
-                  <Link data-cursor="block" to="/" spy={true} smooth={true} duration={800} onClick={openModal} className={'navbar-link link'}>ABOUT</Link>
+                  <Link data-cursor="block" to="/" spy={true} smooth={true} duration={800} onClick={openAboutModal} className={'navbar-link link'}>ABOUT</Link>
                 </Nav>
                 
                 <span className="navbar-text">
@@ -61,7 +61,15 @@ export const NavBar = ({openModal}) => {
                     <a data-cursor="block" data-cursor-style="background: transparent" href="https://www.linkedin.com/in/shivba-pawar/" target="_blank" rel="noreferrer"><img src={navIcon1} alt="" /></a>
                     <a data-cursor="block" data-cursor-style="background: transparent" href="https://github.com/shivba28" target="_blank" rel="noreferrer"><img src={navIcon2} alt="" /></a>
                   </div>
-                    <Link data-cursor="block" data-cursor-style="background: transparent; border-color:transparent;" href="#contact" to="contact" spy={true} smooth={true} offset={-70} duration={800} className={'navbar-link'}><button className="vvd"><span>Let’s Connect</span></button></Link>
+                    <button
+                      data-cursor="block"
+                      data-cursor-style="background: transparent; border-color:transparent;"
+                      className="vvd"
+                      onClick={openContactModal}
+                      type="button"
+                    >
+                      <span>Let’s Connect</span>
+                    </button>
                 </span>
               </Navbar.Collapse>
             </Container>       

@@ -20,7 +20,8 @@ import AOS from 'aos';
 
 function App() {
 
-  const [show, setShow] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
+  const [showContact, setShowContact] = useState(false);
   const [loading, setLoading] = useState(true);
   // const [showGif, setShowGif] = useState(false);
   // const [audioEnabled, setAudioEnabled] = useState(true);
@@ -28,9 +29,11 @@ function App() {
   // const gifRef = useRef(null);
   // const bgAudioRef = useRef(new Audio(bgAudio));
 
-  const handleShow = () => {setShow(true);};
+  const handleShowAbout = () => setShowAbout(true);
+  const handleCloseAbout = () => setShowAbout(false);
 
-  const handleClose = () => {setShow(false);};
+  const handleShowContact = () => setShowContact(true);
+  const handleCloseContact = () => setShowContact(false);
 
   const config = {};
 
@@ -93,12 +96,12 @@ function App() {
       {
         loading ? <LoadingScreen setLoading={setLoading} /> :
           <IPadCursorProvider config={config}>
-            <NavBar openModal={handleShow} />
-            <About show={show} handleClose={handleClose} />
+            <NavBar openAboutModal={handleShowAbout} openContactModal={handleShowContact} />
+            <About show={showAbout} handleClose={handleCloseAbout} />
+            <Contact show={showContact} handleClose={handleCloseContact} />
             <Banner />
             <Skills />
             <Project />
-            <Contact />
           </IPadCursorProvider>
   }
     </div>

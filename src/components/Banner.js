@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import video from "../assets/videos/intro.mp4";
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { TextScramble } from '../components/Text-Animations/scrambleText';
 
 import leftImg1 from "../assets/Images/banner_images/img1.HEIC";
 import leftImg2 from "../assets/Images/banner_images/img2.HEIC";
@@ -154,15 +153,18 @@ export const Banner = () => {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  const phrases = [
-    'What do tigers dream of when they take their little tiger snooze?',
-    "Do they dream of mauling zebras?",
-    'Or Halle Berry in her' + " 'Catwoman' " + 'suit?',
-  ];
-
     return(
         <section className="home" id='home'>
             <div className="banner">
+                <svg className="hero-doodles" style={{position:'absolute',top:0,left:0,right:0,bottom:0,width:'100%',height:'100%',pointerEvents:'none',zIndex:0,overflow:'visible'}} viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+                  <path d="M 580 320 Q 650 330 720 318 Q 790 306 860 320 Q 930 334 1000 318" stroke="#F5C842" strokeWidth="4" fill="none" strokeLinecap="round" className="hero-underline"/>
+                  <text x="60" y="80" fontSize="20" opacity="0.12" fill="#111">✦</text>
+                  <text x="1100" y="60" fontSize="14" opacity="0.1" fill="#111">✦</text>
+                  <text x="1050" y="200" fontSize="24" opacity="0.08" fill="#111">✦</text>
+                  <text x="20" y="300" fontSize="12" opacity="0.1" fill="#111">✦</text>
+                  <path d="M 1140 20 L 1180 20 L 1180 60" stroke="#111" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.12"/>
+                  <path d="M 20 360 L 20 380 L 60 380" stroke="#111" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.12"/>
+                </svg>
                 <div className="slogan-left"><h1 className="left">THIS IS</h1></div>
                 <div className="slogan-right"><h1 className="right">my story</h1></div>
             </div>
@@ -194,9 +196,6 @@ export const Banner = () => {
                 </video>
             </div>
             <div className='content'></div>
-            <div className="tagline-section">
-                <TextScramble phrases={phrases} />
-            </div>
         </section>
     )
 }

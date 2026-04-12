@@ -1,17 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 /* Style to prevent body scrolling */
 .no-scroll {
   overflow: hidden;
 }
 
 .modal-content{
-  background-color: rgba(255, 255, 255, 0.21) !important;
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: var(--cream) !important;
+  border-radius: 0;
+  box-shadow: var(--shadow-lg);
+  border: var(--border);
   min-height: 50vh;
 }
 
@@ -24,14 +20,22 @@
 }
 
 .about-modal .bio-section {
-    /* background-color: black; */
-    color: lightgrey;
+    color: var(--ink);
     height: 100%;
   }
 
+.about-highlight-name {
+  color: var(--teal);
+  font-style: italic;
+  font-family: var(--font-hand);
+  font-weight: 700;
+}
+
 /* Contact modal (match About liquid-glass readability) */
 .contact-modal .modal-content {
+  background: transparent !important;
   border: none;
+  box-shadow: none;
   overflow: hidden;
   max-height: 80vh;
 }
@@ -41,71 +45,86 @@
 }
 
 .contact-modal .contact.content {
-  color: rgba(245, 245, 245, 0.95);
-  font-family: "Inter", sans-serif;
+  color: var(--ink);
+  font-family: var(--font-body);
   height: 100%;
 }
 
 .contact-modal #form-content {
-  background-color: rgba(255, 255, 255, 0.12) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: var(--cream) !important;
+  border: var(--border);
+  box-shadow: var(--shadow-lg);
+  border-radius: 0;
 }
 
 .contact-modal #form-content header {
   background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  color: rgba(245, 245, 245, 0.95);
-  font-family: "Kranky";
+  border-bottom: var(--border-thin);
+  color: var(--ink);
+  font-family: var(--font-hand);
   letter-spacing: 0.03em;
 }
 
 .contact-modal .form__field {
-  color: rgba(245, 245, 245, 0.95);
-  border-bottom-color: rgba(255, 255, 255, 0.35);
+  color: var(--ink);
+  border-bottom: 2px solid var(--ink);
 }
 
 .contact-modal .form__label {
-  color: rgba(245, 245, 245, 0.75);
+  font-family: var(--font-hand);
+  color: #666;
 }
 
 .contact-modal .form__field:focus {
-  border-image: linear-gradient(to right, #7fffd4, rgba(56, 239, 125, 0.9));
+  border-image: linear-gradient(to right, var(--teal), var(--yellow));
   border-image-slice: 1;
 }
 
+.contact-modal .form__field:focus ~ .form__label {
+  color: var(--teal);
+  font-weight: 700;
+}
+
 .contact-modal #form-content button {
-  color: rgba(245, 245, 245, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  background-color: rgba(0, 0, 0, 0.15);
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--cream);
+  border-radius: 0;
 }
 
 .contact-modal #form-content button:hover {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: var(--ink);
+  color: var(--cream);
+  box-shadow: var(--shadow-yellow);
 }
 
   .about-modal .modal-body p{
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-body);
+    color: var(--ink);
     width: 65%;
     font-size: 19px;
-    transform: translateY(10%);
   }
 
-  .about-modal .modal-body p span{
-    display: flex;
-    width: 82%;
+  .about-modal .modal-body p .about-highlight-name{
+    font-size: 22px;
   }
 
   .about-modal .modal-body h2{
-    font-family: "Kranky";
-    font-size: 3rem;
-    transform: translateY(50%);
+    font-family: var(--font-display);
+    font-size: 48px;
+    color: var(--ink);
     width: 30%;
   }
   
   .about-modal .modal-content {
-    border: none;
+    background: var(--cream) !important;
+    border: var(--border);
+    box-shadow: var(--shadow-lg);
+    border-radius: 0;
     overflow: hidden;
     height: 75vh;
     transform: translateY(50px);
@@ -237,7 +256,7 @@
     }
 
     .about-modal .modal-body p{
-      font-size: 12px;
+      font-size: 15px;
       top: 0dvh;
       position: relative;
     }

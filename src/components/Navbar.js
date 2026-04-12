@@ -5,6 +5,7 @@ import navIcon1 from '../assets/Logos/nav-icon1.svg';
 import navIcon2 from '../assets/Logos/github-mark-white.svg';
 import logo from '../assets/Logos/bitmoji.ico';
 import '../assets/CSS/navbar.css';
+import '../assets/CSS/text.css';
 
 export const NavBar = ({ openAboutModal, openContactModal }) => {
     const [scrolled, setScrolled] = useState(false);

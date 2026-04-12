@@ -1,0 +1,113 @@
+/* Outer viewport — fills the screen, clips overflow */
+.canvas-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab !important;
+  background: #FAFAF5;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.canvas-container:active:not(.canvas-intro) {
+  cursor: grabbing !important;
+}
+
+.canvas-grid {
+  position: absolute;
+  top: -4000px;
+  left: -4000px;
+  width: 12000px;
+  height: 12000px;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right,  rgba(0,0,0,0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.055) 1px, transparent 1px),
+    linear-gradient(to right,  rgba(0,0,0,0.12)  1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.12)  1px, transparent 1px);
+  background-size:
+    32px  32px,
+    32px  32px,
+    160px 160px,
+    160px 160px;
+}
+
+/* Below .canvas-world so center content (BB-8, hero) is not washed out */
+.canvas-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 75% 75% at 50% 50%,
+    transparent 35%,
+    rgba(250, 250, 245, 0.5) 65%,
+    rgba(250, 250, 245, 0.92) 100%
+  );
+}
+
+/*
+  The world — full viewport hit target for pan; pan = translate only.
+  Content lives in a 0×0 anchor flex-centered so the scene is true viewport center.
+*/
+.canvas-world {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.canvas-world-anchor {
+  position: relative;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Override App.css global `* { cursor: none !important }` for pan UX (not during intro) */
+.canvas-container:not(.canvas-intro),
+.canvas-container:not(.canvas-intro) * {
+  cursor: grab !important;
+}
+
+.canvas-container.canvas-panning:not(.canvas-intro),
+.canvas-container.canvas-panning:not(.canvas-intro) * {
+  cursor: grabbing !important;
+}
+
+/*
+  Intro BB-8 in world anchor (0×0 at viewport center).
+  No percentage width — 100% of 0 is 0 and the stage vanishes.
+  No CSS transform here — GSAP animates x on this node and would overwrite it.
+*/
+.intro-bb8-world-stage {
+  position: absolute;
+  left: -50vw;
+  top: -50vh;
+  width: 100vw;
+  height: 60vh;
+  z-index: 5;
+  box-sizing: border-box;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.intro-bb8-world-stage #bb8-animate {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 60vh;
+  background: transparent !important;
+  z-index: auto;
+}
+
+/* Overlay: only volume + Enter; BB-8 is in world */
+.canvas-intro-overlay--chrome-only {
+  pointer-events: none;
+}

@@ -98,7 +98,7 @@ export const Contact = ({ show, handleClose }) => {
         >
           <Modal.Body className="p-0">
             <section className="contact">
-                  <div id="form-content" className='mx-auto rounded-4 bg-light bg-gradient'>
+                  <div id="form-content" className='mx-auto'>
                     <form className='form d-grid mx-5' ref={form} id="contact-form" onSubmit={sendEmail}>
                       <div className="form__group field">
                         <span className="form__label">Name</span>

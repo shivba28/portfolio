@@ -19,15 +19,25 @@ export const Skills = () => {
 
     return(
        <section className='skills content' id='skill'>
-            {/* <div className="title text-center d-flex flex-wrap pt-4 bg-gradient w-100" data-aos="fade-down" data-aos-offset="500">
-                <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
-                <div className="slogan-right me-auto"><h1 className="right">SKILLS</h1></div>
-            </div> */}
             <Row>
                 {/* <Col xs={12} lg={6}>
                     <SkillsScroll />
                 </Col> */}
                 <Col xs={12} lg={12}>
+                    <div style={{display:'flex',alignItems:'baseline',gap:'16px',padding:'40px 32px 20px',borderBottom:'1.5px solid #ccc'}}>
+                        <span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:'72px',color:'#E0DFD8',lineHeight:1,userSelect:'none'}}>01</span>
+                        <h2 style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:'48px',color:'#111',lineHeight:1}}>
+                            My{' '}
+                            <span style={{fontFamily:"'Caveat',cursive",fontSize:'52px',fontWeight:700,background:'#3BCEAC',padding:'0 6px'}}>
+                                <span style={{position:'relative',display:'inline-block'}}>
+                                    Skills
+                                    <svg className="draw-on-scroll" style={{position:'absolute',bottom:'-6px',left:0,width:'100%',overflow:'visible',pointerEvents:'none'}} viewBox="0 0 200 12">
+                                        <path d="M 0 8 Q 50 2 100 8 Q 150 14 200 8" stroke="#F5C842" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+                                    </svg>
+                                </span>
+                            </span>
+                        </h2>
+                    </div>
                     <div className="card-container my-5">
                         <div className="skill-card" id='card1' data-aos={dataAosAnimation} data-aos-once="false">
                             <div className="background">
@@ -36,7 +46,7 @@ export const Skills = () => {
                             </div>
                             <div className='content'>
                                     <img alt='languages' src={progImg} loading='lazy' />
-                                    <h4 className='p-3'>Languages</h4>
+                                    <h4>Languages</h4>
                                     <div className='card-content'>
                                             <ListGroup>
                                                 <ListGroup.Item data-cursor="block">Python</ListGroup.Item>
@@ -57,7 +67,7 @@ export const Skills = () => {
                             </div>
                             <div className='content'>
                                     <img alt='tech' src={techImg} loading='lazy' />
-                                    <h4 className='p-3'>Technologies</h4>
+                                    <h4>Technologies</h4>
                                     <div className='card-content'>
                                             <ListGroup>
                                                 <ListGroup.Item data-cursor="block">Docker</ListGroup.Item>
@@ -77,7 +87,7 @@ export const Skills = () => {
                             </div>
                             <div className='content'>
                                     <img alt='languages' src={frameImg} loading='lazy' />
-                                    <h4 className='p-3'>Frameworks</h4>
+                                    <h4>Frameworks</h4>
                                     <div className='card-content'>
                                             <ListGroup>
                                             <ListGroup.Item data-cursor="block">ASP.NET</ListGroup.Item>
@@ -98,7 +108,7 @@ export const Skills = () => {
                             </div>
                             <div className='content'>
                                     <img alt='languages' src={testImg} loading='lazy' />
-                                    <h4 className='p-3'>Testing Tools and Concepts</h4>
+                                    <h4>Testing Tools and Concepts</h4>
                                     <div className='card-content'>
                                             <ListGroup>
                                                 <ListGroup.Item data-cursor="block">Selenium</ListGroup.Item>

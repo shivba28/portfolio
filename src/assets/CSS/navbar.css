@@ -3,7 +3,7 @@
     and (-webkit-min-device-pixel-ratio: 2)   {
   
       nav.navbar {
-        background-color: #121212;
+        background-color: var(--cream);
       }
   
       nav.navbar .navbar-nav .nav-link.navbar-link {

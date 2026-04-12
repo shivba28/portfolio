@@ -205,9 +205,19 @@ export const Project = () => {
                 </div>
             </div>
             <section className="project-content section" id="project" ref={cardsRootRef}>
-                <div className="title text-center pt-4 bg-gradient d-flex flex-wrap w-100 mb-4" id="project-title">
-                    <div className="slogan-left ms-auto"><h1 className="left">MY</h1></div>
-                    <div className="slogan-right me-auto"><h1 className="right">PROJECTS</h1></div>
+                <div style={{display:'flex',alignItems:'baseline',gap:'16px',padding:'40px 32px 20px',borderBottom:'1.5px solid #ccc'}}>
+                    <span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:'72px',color:'#E0DFD8',lineHeight:1,userSelect:'none'}}>02</span>
+                    <h2 style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:'48px',color:'#111',lineHeight:1}}>
+                        My{' '}
+                        <span style={{fontFamily:"'Caveat',cursive",fontSize:'52px',fontWeight:700,background:'#FF5E5E',padding:'0 6px',color:'#111'}}>
+                            <span style={{position:'relative',display:'inline-block'}}>
+                                Projects
+                                <svg className="draw-on-scroll" style={{position:'absolute',bottom:'-6px',left:0,width:'100%',overflow:'visible',pointerEvents:'none'}} viewBox="0 0 200 12">
+                                    <path d="M 0 8 Q 50 2 100 8 Q 150 14 200 8" stroke="#F5C842" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+                                </svg>
+                            </span>
+                        </span>
+                    </h2>
                 </div>
                 <Row className="project-items my-3">
                     {visibleProjects.map((project) => (
@@ -257,7 +267,7 @@ export const Project = () => {
                     <div className="d-flex justify-content-center pb-5">
                         <button
                             type="button"
-                            className="btn btn-outline-light"
+                            className="btn project-load-more"
                             onClick={handleLoadMore}
                             ref={loadMoreBtnRef}
                         >

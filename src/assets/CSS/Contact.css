@@ -43,7 +43,7 @@
 /* form CSS */
 
 #form-content {
-    height: 90%;
+    height: 80%;
     width: 75%;
     background-image: url("../Images/contact.jpg");
     background-size: cover;
@@ -115,7 +115,7 @@
   }
 
   textarea.form__field{
-    min-height: 120px;
+    min-height: 70px;
   }
 
 /* Modal-specific sizing and layout */
@@ -127,7 +127,7 @@
 
 .contact-modal #form-content form{
   background-color: transparent;
-  color: rgba(245, 245, 245, 0.95);
+  color: var(--ink);
   width: 85%;
   padding: 22px 0;
 }

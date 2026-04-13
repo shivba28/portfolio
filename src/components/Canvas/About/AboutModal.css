@@ -1,0 +1,125 @@
+/* Override Bootstrap modal chrome */
+.about-modal-nb .modal-content {
+  background: #fafaf5;
+  border: 3px solid #111 !important;
+  box-shadow: 10px 10px 0 #ff5e5e !important;
+  border-radius: 0 !important;
+}
+
+.about-modal-nb .modal-dialog {
+  max-width: 680px;
+}
+
+.about-modal-nb-backdrop.show {
+  backdrop-filter: blur(4px);
+  background: rgba(250, 250, 245, 0.7);
+}
+
+/* Header bar */
+.about-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 28px 16px;
+  border-bottom: 2px solid #111;
+  background: #ff5e5e;
+}
+
+.about-modal-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: rgba(0, 0, 0, 0.15);
+  line-height: 1;
+  user-select: none;
+}
+
+.about-modal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  color: #111;
+  line-height: 1;
+  flex: 1;
+}
+
+.about-modal-accent {
+  font-family: 'Caveat', cursive;
+  font-size: 44px;
+  font-weight: 700;
+  background: #111;
+  color: #ff5e5e;
+  padding: 0 8px;
+}
+
+.about-modal-close {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #111;
+  border: 2.5px solid #111;
+  width: 40px;
+  height: 40px;
+  background: #fafaf5;
+  box-shadow: 3px 3px 0 #111;
+  cursor: pointer !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.about-modal-close:hover {
+  background: #111;
+  color: #fafaf5;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #f5c842;
+}
+
+/* Body */
+.about-modal-body {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 24px;
+  padding: 28px;
+  align-items: center;
+}
+
+.about-modal-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-modal-text p {
+  font-family: 'Figtree', sans-serif;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.7;
+}
+
+.about-modal-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.about-modal-img {
+  width: 100%;
+  border: 2.5px solid #111;
+  box-shadow: 4px 4px 0 #111;
+}
+
+.about-modal-sign {
+  width: 80%;
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .about-modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .about-modal-images {
+    display: none;
+  }
+}

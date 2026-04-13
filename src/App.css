@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Figtree:wght@400;700;900&family=Special+Elite&family=Kranky&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Figtree:wght@400;700;900&family=Kranky&family=Space+Mono:wght@400;700&family=Special+Elite&display=swap');
 
 @font-face {
   font-family: Centra;
@@ -25,6 +25,10 @@
   --red:       #FF5E5E;
   --teal:      #3BCEAC;
   --blue:      #5B8EE6;
+  --white:     #ffffff;
+  --black:     #111111;
+  --pink:      #ff5e5e;
+  --green:     #3bceac;
 
   --border:       3px solid #111111;
   --border-thin:  1.5px solid #111111;
@@ -34,6 +38,7 @@
   --shadow-md:     5px 5px 0 #111111;
   --shadow-lg:     8px 8px 0 #111111;
   --shadow-yellow: 5px 5px 0 #F5C842;
+  --shadow:        5px 5px 0 #111111;
 
   --font-display: 'Bebas Neue', sans-serif;
   --font-hand:    'Caveat', cursive;

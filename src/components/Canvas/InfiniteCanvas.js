@@ -7,10 +7,22 @@ import React, {
 } from 'react';
 import { gsap } from 'gsap';
 import { CanvasCenter } from './CanvasCenter';
+import { CanvasChrome } from './CanvasChrome';
+import { FloatingSkillBadges } from './FloatingSkillBadges';
+import { AboutCard } from './About/AboutCard';
 import { BB8animation } from '../BB8animation';
 import bb8Exit from '../../assets/Audios/bb8-exit.mp3';
 import '../../assets/CSS/LoadingScreen.css';
 import './InfiniteCanvas.css';
+import {
+  NODE_POSITIONS,
+  MINIMAP_NODES,
+  MINIMAP_DOM_SKIP,
+} from './canvasNavConfig';
+
+const CANVAS_PAN_BOUNDS = 8000;
+
+const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
 export const InfiniteCanvas = ({ children }) => {
   const containerRef = useRef(null);
@@ -19,6 +31,8 @@ export const InfiniteCanvas = ({ children }) => {
   const bb8StageRef = useRef(null);
   const bb8ExitRef = useRef(new Audio(bb8Exit));
   const applyTransformRef = useRef(() => {});
+  const updateChromeRef = useRef(() => {});
+  const zoomRef = useRef(1);
 
   const [exitMeta, setExitMeta] = useState({
     introComplete: false,
@@ -29,6 +43,7 @@ export const InfiniteCanvas = ({ children }) => {
 
   const [audioEnabled, setAudioEnabled] = useState(false);
   const [exitInProgress, setExitInProgress] = useState(false);
+  const [zoomPercentLabel, setZoomPercentLabel] = useState('100%');
 
   const introCompleteRef = useRef(false);
   useEffect(() => {
@@ -42,24 +57,95 @@ export const InfiniteCanvas = ({ children }) => {
   const isPanning = useRef(false);
   const startPos = useRef({ x: 0, y: 0 });
   const offset = useRef({ x: 0, y: 0 });
-  /* Large enough for cinematic exit (world pan 3000px+); must exceed |final offset|. */
-  const BOUNDS = 8000;
+  const adjustZoomRef = useRef(() => {});
 
-  const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+  const clampOffset = useCallback((o) => {
+    o.x = clamp(o.x, -CANVAS_PAN_BOUNDS, CANVAS_PAN_BOUNDS);
+    o.y = clamp(o.y, -CANVAS_PAN_BOUNDS, CANVAS_PAN_BOUNDS);
+  }, []);
 
   const applyTransform = useCallback(() => {
     if (worldRef.current) {
       const { x, y } = offset.current;
-      worldRef.current.style.transform = `translate(${x}px, ${y}px)`;
+      const z = zoomRef.current;
+      worldRef.current.style.transform = `translate(${x}px, ${y}px) scale(${z})`;
+      worldRef.current.style.transformOrigin = 'center center';
     }
+    updateChromeRef.current();
   }, []);
 
   applyTransformRef.current = applyTransform;
+
+  /**
+   * NAV pan — vanilla used `offsetX = W/2 - (cx + cw/2) * scale` with card `style.left/top`
+   * in world space and `transform-origin: 0 0`. We keep `transform-origin: center` and
+   * center via getBoundingClientRect so pan stays visually correct.
+   */
+  const panTo = useCallback((key) => {
+    const entry = NODE_POSITIONS[key];
+    if (!entry) return;
+    const el = document.getElementById(entry.card);
+    if (!el) return;
+
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const r = el.getBoundingClientRect();
+    const ddx = w / 2 - (r.left + r.width / 2);
+    const ddy = h / 2 - (r.top + r.height / 2);
+
+    const o = offset.current;
+    const targetX = clamp(
+      o.x + ddx,
+      -CANVAS_PAN_BOUNDS,
+      CANVAS_PAN_BOUNDS
+    );
+    const targetY = clamp(
+      o.y + ddy,
+      -CANVAS_PAN_BOUNDS,
+      CANVAS_PAN_BOUNDS
+    );
+
+    gsap.killTweensOf(o);
+    gsap.to(o, {
+      x: targetX,
+      y: targetY,
+      duration: 1,
+      ease: 'power3.inOut',
+      onUpdate: () => {
+        applyTransformRef.current();
+      },
+    });
+  }, []);
+
+  const adjustZoom = useCallback(
+    (delta, focalX, focalY) => {
+      const scale = zoomRef.current;
+      const newScale = Math.min(1.5, Math.max(0.35, scale + delta));
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const mx = focalX !== undefined ? focalX : w / 2;
+      const my = focalY !== undefined ? focalY : h / 2;
+      const o = offset.current;
+      o.x = mx - (mx - o.x) * (newScale / scale);
+      o.y = my - (my - o.y) * (newScale / scale);
+      zoomRef.current = newScale;
+      setZoomPercentLabel(`${Math.round(newScale * 100)}%`);
+      clampOffset(o);
+      applyTransform();
+    },
+    [applyTransform, clampOffset]
+  );
+
+  adjustZoomRef.current = adjustZoom;
 
   const onPointerDown = useCallback((e) => {
     if (!introCompleteRef.current) return;
     const world = worldRef.current;
     const t = e.target;
+    if (t.closest?.('.canvas-chrome')) return;
+    if (t.closest?.('.float-badge') || t.closest?.('.float-badges-root'))
+      return;
+    if (t.closest?.('.about-card')) return;
     if (
       t !== containerRef.current &&
       t !== world &&
@@ -78,8 +164,16 @@ export const InfiniteCanvas = ({ children }) => {
   const onPointerMove = useCallback(
     (e) => {
       if (!isPanning.current) return;
-      const newX = clamp(e.clientX - startPos.current.x, -BOUNDS, BOUNDS);
-      const newY = clamp(e.clientY - startPos.current.y, -BOUNDS, BOUNDS);
+      const newX = clamp(
+        e.clientX - startPos.current.x,
+        -CANVAS_PAN_BOUNDS,
+        CANVAS_PAN_BOUNDS
+      );
+      const newY = clamp(
+        e.clientY - startPos.current.y,
+        -CANVAS_PAN_BOUNDS,
+        CANVAS_PAN_BOUNDS
+      );
       offset.current = { x: newX, y: newY };
       applyTransform();
     },
@@ -96,6 +190,10 @@ export const InfiniteCanvas = ({ children }) => {
     const touch = e.touches[0];
     const world = worldRef.current;
     const t = e.target;
+    if (t.closest?.('.canvas-chrome')) return;
+    if (t.closest?.('.float-badge') || t.closest?.('.float-badges-root'))
+      return;
+    if (t.closest?.('.about-card')) return;
     if (
       t !== containerRef.current &&
       t !== world &&
@@ -115,8 +213,16 @@ export const InfiniteCanvas = ({ children }) => {
       if (!isPanning.current) return;
       e.preventDefault();
       const touch = e.touches[0];
-      const newX = clamp(touch.clientX - startPos.current.x, -BOUNDS, BOUNDS);
-      const newY = clamp(touch.clientY - startPos.current.y, -BOUNDS, BOUNDS);
+      const newX = clamp(
+        touch.clientX - startPos.current.x,
+        -CANVAS_PAN_BOUNDS,
+        CANVAS_PAN_BOUNDS
+      );
+      const newY = clamp(
+        touch.clientY - startPos.current.y,
+        -CANVAS_PAN_BOUNDS,
+        CANVAS_PAN_BOUNDS
+      );
       offset.current = { x: newX, y: newY };
       applyTransform();
     },
@@ -138,6 +244,23 @@ export const InfiniteCanvas = ({ children }) => {
     container.addEventListener('touchmove', onTouchMove, { passive: false });
     return () => container.removeEventListener('touchmove', onTouchMove);
   }, [onTouchMove]);
+
+  useEffect(() => {
+    if (!introComplete) return undefined;
+    const el = containerRef.current;
+    if (!el) return undefined;
+    const onWheel = (e) => {
+      if (e.target.closest?.('.canvas-chrome')) return;
+      e.preventDefault();
+      const o = offset.current;
+      o.x -= e.deltaX;
+      o.y -= e.deltaY;
+      clampOffset(o);
+      applyTransformRef.current();
+    };
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, [introComplete, clampOffset]);
 
   const exitIntro = () => {
     setExitInProgress(true);
@@ -253,10 +376,50 @@ export const InfiniteCanvas = ({ children }) => {
             handoffBallRotation={exitMeta.ballRotation}
             handoffWrapperX={exitMeta.handoffWrapperX}
           />
+          {introComplete ? (
+            <AboutCard
+              handoffX={
+                typeof exitMeta.handoffWrapperX === 'number'
+                  ? exitMeta.handoffWrapperX
+                  : 0
+              }
+            />
+          ) : null}
+          {introComplete
+            ? MINIMAP_NODES.filter((n) => !MINIMAP_DOM_SKIP.has(n.id)).map(
+                (n) => (
+                  <div
+                    key={n.id}
+                    id={n.id}
+                    className="canvas-card-marker"
+                    style={{
+                      left: n.left,
+                      top: n.top,
+                      width: n.w,
+                      height: n.h,
+                    }}
+                    aria-hidden
+                  />
+                )
+              )
+            : null}
+          {introComplete ? <FloatingSkillBadges /> : null}
           {children}
         </div>
       </div>
       <div className="canvas-vignette" aria-hidden="true" />
+
+      {introComplete ? (
+        <CanvasChrome
+          panTo={panTo}
+          zoomPercentLabel={zoomPercentLabel}
+          onZoomIn={() => adjustZoom(0.1)}
+          onZoomOut={() => adjustZoom(-0.1)}
+          offsetRef={offset}
+          zoomRef={zoomRef}
+          updateChromeRef={updateChromeRef}
+        />
+      ) : null}
 
       {!introComplete && (
         <div

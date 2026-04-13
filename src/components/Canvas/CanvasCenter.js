@@ -2,7 +2,6 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import '../../assets/CSS/BB8animation.css';
 import './CanvasCenter.css';
-
 /* Wobbly underline beneath "my story" — viewBox matches normalized path */
 const HERO_UNDERLINE_D =
   'M 0 12 Q 70 20 140 10 Q 210 2 280 12 Q 335 22 420 12';
@@ -22,9 +21,10 @@ export const CanvasCenter = ({
   const antennasRef = useRef(null);
   /** Matches intro BB-8: eyes / antennas / detail stripe flip with “look” direction */
   const [lookToTheRight, setLookToTheRight] = useState(true);
-
   useLayoutEffect(() => {
-    if (!introComplete) return undefined;
+    if (!introComplete) {
+      return undefined;
+    }
 
     const wrapper = bb8Ref.current;
     const ball = wrapper?.querySelector('.ball');
@@ -50,7 +50,9 @@ export const CanvasCenter = ({
 
     gsap.set([hThis, hStory], { opacity: 0, x: 0 });
 
-    const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+    const tl = gsap.timeline({
+      defaults: { ease: 'power2.out' },
+    });
 
     if (skipBb8EntryMotion) {
       gsap.set(wrapper, { clearProps: 'transform' });
@@ -196,7 +198,11 @@ export const CanvasCenter = ({
         </div>
       </div>
 
-      <div ref={heroRowRef} className="canvas-hero-text">
+      <div
+        ref={heroRowRef}
+        id="card-hero"
+        className="canvas-hero-text"
+      >
         <span ref={heroThisRef} className="hero-this-is">
           THIS IS
         </span>
@@ -223,6 +229,7 @@ export const CanvasCenter = ({
           </svg>
         </span>
       </div>
+
     </div>
   );
 };

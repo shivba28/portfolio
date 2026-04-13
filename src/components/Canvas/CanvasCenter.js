@@ -31,9 +31,12 @@ export const CanvasCenter = ({
     const hThis = heroThisRef.current;
     const hStory = heroStoryRef.current;
     const hRow = heroRowRef.current;
-
     const root = canvasRootRef.current;
     if (!root || !wrapper || !ball || !hThis || !hStory || !hRow) return undefined;
+    const underline = root.querySelector?.('.hero-underline');
+    if (underline) {
+      gsap.set(underline, { strokeDasharray: 500, strokeDashoffset: 500 });
+    }
 
     gsap.killTweensOf([root, wrapper, ball, hThis, hStory]);
 
@@ -52,6 +55,10 @@ export const CanvasCenter = ({
 
     const tl = gsap.timeline({
       defaults: { ease: 'power2.out' },
+      delay: 1,
+    });
+    tl.eventCallback('onComplete', () => {
+      window.dispatchEvent(new Event('canvas:titleDone'));
     });
 
     if (skipBb8EntryMotion) {
@@ -91,6 +98,13 @@ export const CanvasCenter = ({
       { x: 0, opacity: 1, duration: 0.75, ease: 'power3.out' },
       '+=0.45'
     );
+    if (underline) {
+      tl.to(
+        underline,
+        { strokeDashoffset: 0, duration: 0.9, ease: 'power2.out' },
+        '<'
+      );
+    }
 
     return () => {
       tl.kill();
@@ -147,6 +161,20 @@ export const CanvasCenter = ({
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [introComplete]);
+
+  useEffect(() => {
+    if (!introComplete) return undefined;
+    const root = canvasRootRef.current;
+    const underline = root?.querySelector?.('.hero-underline');
+    if (!underline) return undefined;
+
+    const notify = () => {
+      window.dispatchEvent(new Event('canvas:heroUnderlineStart'));
+    };
+
+    underline.addEventListener('animationstart', notify, { once: true });
+    return () => underline.removeEventListener('animationstart', notify);
   }, [introComplete]);
 
   return (

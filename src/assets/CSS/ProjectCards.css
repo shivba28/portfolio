@@ -1,0 +1,266 @@
+/* Project cards on the infinite canvas (tactile index-card aesthetic) */
+
+.project-cards-root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none; /* individual cards enable pointer events */
+  z-index: 4;
+}
+
+.project-card {
+  position: absolute;
+  width: 292px;
+  min-height: 360px;
+  background: var(--cream);
+  border: var(--border);
+  box-shadow: var(--shadow-md);
+  transform: rotate(var(--pc-rot, 0deg));
+  transform-origin: 50% 12%;
+  box-sizing: border-box;
+  pointer-events: auto;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 2px dashed rgba(10, 10, 10, 0.18);
+  pointer-events: none;
+}
+
+.project-card:hover {
+  transform: rotate(0deg) translate(-3px, -3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card--expanded {
+  background: color-mix(in srgb, var(--cream) 88%, var(--yellow));
+}
+
+.project-card__hit {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1; /* sits above card surface but below buttons */
+}
+
+.project-card__inner {
+  position: relative;
+  z-index: 2;
+  transform-origin: 50% 18%;
+  will-change: transform;
+}
+
+/* Reuse AboutCard tape motif on project cards */
+.project-card .about-card-tape {
+  top: -12px;
+  width: 76px;
+  height: 26px;
+  z-index: 6;
+}
+
+.project-card__header {
+  position: relative;
+  padding: 12px 12px 6px;
+}
+
+.project-card__pin {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.project-card__pin::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.project-card__title {
+  margin: 0;
+  padding-right: 32px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.project-card__meta {
+  margin-top: 6px;
+  font-family: var(--font-hand);
+  font-size: 14px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ink) 82%, #0000);
+}
+
+.project-card__hero {
+  position: relative;
+  height: 150px;
+  padding: 0 10px;
+}
+
+.project-card__lottie,
+.project-card__lottieStack {
+  width: 50%;
+  height: 50%;
+  display: grid;
+  place-items: center;
+  margin: auto;
+}
+
+.project-card__lottie > div,
+.project-card__lottieStack > div {
+  width: 100%;
+  height: 100%;
+}
+
+.project-card__lottieProp {
+  position: absolute;
+  right: 120px;
+  bottom: 10px;
+  width: 52px !important;
+  height: 52px !important;
+  filter: drop-shadow(2px 2px 0 rgba(10, 10, 10, 0.35));
+  pointer-events: none;
+}
+
+.project-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(2px 2px 0 rgba(10, 10, 10, 0.25));
+}
+
+.project-card__body {
+  position: relative;
+  padding: 8px 12px 10px;
+}
+
+.project-card__desc {
+  margin: 0;
+  font-family: 'Figtree', sans-serif;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--ink);
+  opacity: 0.95;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-card__desc.is-expanded {
+  -webkit-line-clamp: initial;
+  overflow: visible;
+}
+
+.project-card__footer {
+  position: relative;
+  padding: 0 12px 12px;
+  display: flex;
+  gap: 10px;
+  z-index: 3; /* above hit-area */
+}
+
+.project-card__btn {
+  appearance: none;
+  border: var(--border);
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-hand);
+  font-weight: 800;
+  font-size: 15px;
+  padding: 7px 10px;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease,
+    background-color 0.14s ease;
+}
+
+.project-card__btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+  background: var(--yellow);
+}
+
+.project-card__btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.project-card__btn--demo {
+  background: color-mix(in srgb, var(--cream) 70%, #6bcb77);
+}
+
+.project-card__btn--more {
+  margin-left: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Project Cards CSS */
+
+#project-card-propchain2 .project-card__lottieStack{
+  width: 80%;
+
+  > div svg{
+    transform: translate3d(5px, -50px, 0px);
+  }
+}
+
+#project-card-mealroulette .project-card__lottieStack > div{
+  transform: rotate(20deg);
+}
+
+#project-card-cardheart .project-card__lottieStack{
+  width: 30%;
+}
+
+#project-card-constructiondata .project-card__lottie{
+  width: 80%;
+}
+
+#project-card-portfolio .project-card__lottie{
+  width: 60%;
+}
+#project-card-miniprojects .project-card__lottie{
+  width: 70%;
+}

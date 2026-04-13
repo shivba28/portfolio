@@ -86,19 +86,7 @@
   vector-effect: non-scaling-stroke;
 }
 
-/* Draw runs only after intro — hero is hidden while .canvas-center--intro is present */
-.canvas-center:not(.canvas-center--intro) .hero-underline {
-  stroke-dasharray: 500;
-  stroke-dashoffset: 500;
-  animation: draw-line 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 1.5s;
-}
-
-@keyframes draw-line {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
+/* Underline draw is driven by GSAP to sync with "my story". */
 
 @media (min-width: 768px) {
   .canvas-hero-text {

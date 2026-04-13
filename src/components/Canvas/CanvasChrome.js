@@ -23,6 +23,13 @@ export const CanvasChrome = ({
     const updateMinimap = () => {
       const vp = minimapViewportRef.current;
       if (!vp || !offsetRef?.current || zoomRef?.current == null) return;
+      const minimapEl = vp.parentElement;
+      const labelEl =
+        minimapEl?.querySelector?.('#minimap-label') ||
+        document.getElementById('minimap-label');
+      const mmW = minimapEl?.clientWidth ?? 160;
+      const mmH = minimapEl?.clientHeight ?? 120;
+      const labelH = labelEl?.offsetHeight ?? 16;
 
       const z = zoomRef.current;
       const ox = offsetRef.current.x;
@@ -45,11 +52,11 @@ export const CanvasChrome = ({
       const vpW = viewW * SCALE_X;
       const vpH = viewH * SCALE_Y;
       let vpX = (camLeft + WORLD_W / 2) * SCALE_X;
-      let vpY = (camTop + WORLD_H / 2) * SCALE_Y + 16;
+      let vpY = (camTop + WORLD_H / 2) * SCALE_Y + labelH;
 
-      const minT = 16;
-      const maxL = 160 - vpW;
-      const maxT = 120 - vpH;
+      const minT = labelH;
+      const maxL = mmW - vpW;
+      const maxT = mmH - vpH;
       vpX = Math.max(0, Math.min(maxL, vpX));
       vpY = Math.max(minT, Math.min(maxT, vpY));
 
@@ -84,6 +91,14 @@ export const CanvasChrome = ({
         >
           <span className="dot" style={{ background: 'var(--yellow)' }} />
           HOME
+        </button>
+        <button
+          type="button"
+          className="nav-tab nav-tab--first"
+          onClick={() => panTo('about')}
+        >
+          <span className="dot" style={{ background: 'var(--forestGreen)' }} />
+          ABOUT
         </button>
         <button
           type="button"

@@ -30,9 +30,7 @@ function App() {
 
   return (
     <div className='App'>
-      <IPadCursorProvider config={config}>
         <InfiniteCanvas />
-      </IPadCursorProvider>
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { CanvasChrome } from './CanvasChrome';
 import { FloatingSkillBadges } from './FloatingSkillBadges';
 import { AboutCard } from './About/AboutCard';
 import { BB8animation } from '../BB8animation';
+import { ProjectCards } from '../ProjectCards';
 import bb8Exit from '../../assets/Audios/bb8-exit.mp3';
 import '../../assets/CSS/LoadingScreen.css';
 import './InfiniteCanvas.css';
@@ -33,6 +34,7 @@ export const InfiniteCanvas = ({ children }) => {
   const applyTransformRef = useRef(() => {});
   const updateChromeRef = useRef(() => {});
   const zoomRef = useRef(1);
+  const postTitleIntroAnimRanRef = useRef(false);
 
   const [exitMeta, setExitMeta] = useState({
     introComplete: false,
@@ -84,7 +86,11 @@ export const InfiniteCanvas = ({ children }) => {
   const panTo = useCallback((key) => {
     const entry = NODE_POSITIONS[key];
     if (!entry) return;
-    const el = document.getElementById(entry.card);
+    const target = entry.card;
+    const el =
+      typeof target === 'string' && (target.startsWith('.') || target.startsWith('#'))
+        ? document.querySelector(target)
+        : document.getElementById(target);
     if (!el) return;
 
     const w = window.innerWidth;
@@ -262,6 +268,113 @@ export const InfiniteCanvas = ({ children }) => {
     return () => el.removeEventListener('wheel', onWheel);
   }, [introComplete, clampOffset]);
 
+  useLayoutEffect(() => {
+    if (!introComplete) return;
+    // Prevent a flash of UI/cards between intro end and our reveal timeline.
+    gsap.set('#nav-tabs .nav-tab', { opacity: 0, x: 42 });
+    gsap.set(['#zoom-info', '#minimap'], { opacity: 0, x: 42 });
+    gsap.set(['.about-card', '.float-badges-root', '.float-badge'], { opacity: 0 });
+    gsap.set('.float-badge-inner', { scale: 0.86 });
+    gsap.set(['.project-card'], { opacity: 0 });
+    gsap.set('.project-card__inner', { scale: 0.86 });
+  }, [introComplete]);
+
+  useEffect(() => {
+    if (!introComplete) return undefined;
+
+    const run = () => {
+      if (postTitleIntroAnimRanRef.current) return;
+      postTitleIntroAnimRanRef.current = true;
+
+      const tl = gsap.timeline();
+
+      const cards = ['.about-card', '.float-badges-root', '.float-badge'];
+      tl.fromTo(
+        cards.join(','),
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.45,
+          ease: 'power3.out',
+          stagger: 0.06,
+          clearProps: 'opacity',
+        },
+        0
+      );
+
+      // Badges: pop in (zoom) without disturbing outer rotate transform.
+      tl.to(
+        '.float-badge-inner',
+        {
+          keyframes: [
+            { scale: 1.06, duration: 0.22, ease: 'power3.out' },
+            { scale: 1, duration: 0.18, ease: 'power2.out' },
+          ],
+          stagger: 0.035,
+          clearProps: 'transform',
+        },
+        0
+      );
+
+      tl.fromTo(
+        '.project-card',
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.45,
+          ease: 'power3.out',
+          stagger: 0.05,
+          clearProps: 'opacity',
+        },
+        0
+      );
+
+      tl.to(
+        '.project-card__inner',
+        {
+          keyframes: [
+            { scale: 1.06, duration: 0.22, ease: 'power3.out' },
+            { scale: 1, duration: 0.18, ease: 'power2.out' },
+          ],
+          stagger: 0.03,
+          clearProps: 'transform',
+        },
+        0
+      );
+
+      tl.fromTo(
+        '#nav-tabs .nav-tab',
+        { opacity: 0, x: 42 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.55,
+          ease: 'power3.out',
+          stagger: 0.07,
+          clearProps: 'opacity,transform',
+        },
+        0.15
+      );
+
+      tl.fromTo(
+        ['#zoom-info', '#minimap'],
+        { opacity: 0, x: 42 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.55,
+          ease: 'power3.out',
+          stagger: 0.08,
+          clearProps: 'opacity,transform',
+        },
+        0.25
+      );
+    };
+
+    window.addEventListener('canvas:titleDone', run);
+    return () => window.removeEventListener('canvas:titleDone', run);
+  }, [introComplete]);
+
   const exitIntro = () => {
     setExitInProgress(true);
 
@@ -280,21 +393,12 @@ export const InfiniteCanvas = ({ children }) => {
     const centerX0 = bb8Rect
       ? bb8Rect.left + bb8Rect.width / 2
       : W / 2;
-    /*
-      World + stage pan (0–3s): grid slides left while BB-8 rolls; ends with droid at viewport center.
-      Screen x = centerX0 + scrollProxy.x + stage.x → bx1 = W/2 - centerX0 - Ox1.
-      No follow-up pan: world stays at Ox1; handoffWrapperX = -Ox1 cancels for CanvasCenter.
-    */
+    // Intro exit (0–3s): keep camera/world centered; slide BB-8 stage into center.
+    // Move background grid to sell the "world is moving" feel.
+    const bx1 = W / 2 - centerX0;
+    const gridEl = worldRef.current?.querySelector?.('.canvas-grid');
     const phase1PanPx = Math.min(5200, Math.max(3000, Math.round(W * 1.05)));
-    const Ox1 = -phase1PanPx;
-    const bx1 = W / 2 - centerX0 - Ox1;
-
-    const scrollProxy = { x: offset.current.x };
-    const syncWorld = () => {
-      offset.current.x = scrollProxy.x;
-      offset.current.y = offset.current.y || 0;
-      applyTransformRef.current();
-    };
+    const gridX1 = -phase1PanPx;
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -306,22 +410,24 @@ export const InfiniteCanvas = ({ children }) => {
         setExitMeta({
           introComplete: true,
           ballRotation: rot,
-          handoffWrapperX: -Ox1,
+          handoffWrapperX: 0,
         });
         if (audioEnabled) bb8ExitRef.current.pause();
       },
     });
 
-    tl.to(
-      scrollProxy,
-      {
-        x: Ox1,
-        duration: 3,
-        ease: 'power2.inOut',
-        onUpdate: syncWorld,
-      },
-      0
-    );
+    if (gridEl) {
+      // Slide the background during the roll (no snap-back).
+      tl.to(
+        gridEl,
+        {
+          x: gridX1,
+          duration: 2.6,
+          ease: 'power2.inOut',
+        },
+        0
+      );
+    }
 
     if (bb8Stage) {
       tl.to(
@@ -404,6 +510,7 @@ export const InfiniteCanvas = ({ children }) => {
               )
             : null}
           {introComplete ? <FloatingSkillBadges /> : null}
+          {introComplete ? <ProjectCards /> : null}
           {children}
         </div>
       </div>

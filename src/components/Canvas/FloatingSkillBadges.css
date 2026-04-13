@@ -12,9 +12,7 @@
 
 .float-badge {
   position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-block;
   background: var(--white);
   border: var(--border);
   box-shadow: var(--shadow);
@@ -30,6 +28,18 @@
   pointer-events: auto;
   color: var(--black);
   white-space: nowrap;
+}
+
+.float-badge-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.float-badge-text {
+  display: inline-block;
 }
 
 .float-badge-icon {

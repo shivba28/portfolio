@@ -1,0 +1,154 @@
+import React, { useCallback, useRef, useState } from 'react';
+import './CookingCard.css';
+
+export const COOKING = {
+  platform: 'REACT NATIVE · MOBILE',
+  platformColor: '#3BCEAC',
+  title: 'Budget Tracker',
+  subtitle: 'Personal finance app',
+  stack: [
+    { label: 'React Native', hot: true },
+    { label: 'Expo', hot: true },
+    { label: 'AsyncStorage', hot: false },
+    { label: 'TypeScript', hot: false },
+  ],
+  progress: 30,
+  startedDate: 'Apr 2026',
+  eta: 'soon™',
+  chefNote: 'first time with React Native, wish me luck',
+};
+
+const BASE_POS = { left: -1200, top: 400 };
+
+export const CookingCard = () => {
+  const [drag, setDrag] = useState({ x: 0, y: 0 });
+  const dragRef = useRef({
+    active: false,
+    startClientX: 0,
+    startClientY: 0,
+    startX: 0,
+    startY: 0,
+  });
+
+  const onPointerDown = useCallback(
+    (e) => {
+      e.stopPropagation();
+      dragRef.current = {
+        active: true,
+        startClientX: e.clientX,
+        startClientY: e.clientY,
+        startX: drag.x,
+        startY: drag.y,
+      };
+      e.currentTarget.setPointerCapture(e.pointerId);
+    },
+    [drag.x, drag.y]
+  );
+
+  const onPointerMove = useCallback((e) => {
+    if (!dragRef.current.active) return;
+    const dx = e.clientX - dragRef.current.startClientX;
+    const dy = e.clientY - dragRef.current.startClientY;
+    setDrag({
+      x: dragRef.current.startX + dx,
+      y: dragRef.current.startY + dy,
+    });
+  }, []);
+
+  const onPointerUp = useCallback((e) => {
+    if (e.currentTarget.hasPointerCapture?.(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+    dragRef.current.active = false;
+  }, []);
+
+  const p = Math.min(100, Math.max(0, COOKING.progress));
+
+  return (
+    <div
+      id="cooking-card"
+      className="cooking-card"
+      style={{
+        position: 'absolute',
+        left: BASE_POS.left + drag.x,
+        top: BASE_POS.top + drag.y,
+      }}
+      onMouseDown={(e) => e.stopPropagation()}
+      onTouchStart={(e) => e.stopPropagation()}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+      aria-label="Currently cooking project"
+    >
+      <div className="cooking-card__inner">
+        <header className="cooking-card__header">
+          <div className="cooking-card__flames" aria-hidden="true">
+            <span className="cooking-card__flame cooking-card__flame--1" />
+            <span className="cooking-card__flame cooking-card__flame--2" />
+            <span className="cooking-card__flame cooking-card__flame--3" />
+          </div>
+          <div className="cooking-card__header-title-wrap">
+            <span className="cooking-card__header-label">CURRENTLY COOKING</span>
+          </div>
+          <span className="cooking-card__status-dot" aria-hidden="true" />
+        </header>
+
+        <div className="cooking-card__body">
+          <span
+            className="cooking-card__platform"
+            style={{ backgroundColor: COOKING.platformColor }}
+          >
+            {COOKING.platform}
+          </span>
+          <h2 className="cooking-card__title">{COOKING.title}</h2>
+          <p className="cooking-card__subtitle">{COOKING.subtitle}</p>
+
+          <section className="cooking-card__section cooking-card__section--ingredients">
+            <h3 className="cooking-card__section-label">INGREDIENTS</h3>
+            <ul className="cooking-card__tags">
+              {COOKING.stack.map((item) => (
+                <li key={item.label}>
+                  <span
+                    className={`cooking-card__tag${item.hot ? ' cooking-card__tag--hot' : ''}`}
+                  >
+                    {item.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="cooking-card__section cooking-card__section--progress">
+            <div className="cooking-card__progress-head">
+              <span className="cooking-card__progress-label">DONE</span>
+              <span className="cooking-card__progress-pct">{p}%</span>
+            </div>
+            <div className="cooking-card__bar">
+              <div className="cooking-card__fill" style={{ width: `${p}%` }}>
+                <span className="cooking-card__fill-cursor" aria-hidden="true" />
+              </div>
+            </div>
+            <div className="cooking-card__eta-row">
+              <span>{COOKING.startedDate}</span>
+              <span>{COOKING.eta}</span>
+            </div>
+          </section>
+        </div>
+
+        <footer className="cooking-card__footer">
+          <div className="cooking-card__footer-label">CHEF&apos;S NOTE</div>
+          <p className="cooking-card__footer-note">
+            <span className="cooking-card__quote" aria-hidden="true">
+              &ldquo;
+            </span>
+            {COOKING.chefNote}
+            <span className="cooking-card__quote" aria-hidden="true">
+              &rdquo;
+            </span>
+          </p>
+        </footer>
+      </div>
+    </div>
+  );
+};

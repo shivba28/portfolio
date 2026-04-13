@@ -1,0 +1,208 @@
+.vinyl-shelf {
+  touch-action: none;
+  pointer-events: auto;
+  z-index: 4;
+}
+
+.vinyl-shelf__outer {
+  width: 340px;
+  background: var(--cream);
+  border: var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: 10px 12px 0;
+  transform: rotate(-1.5deg);
+  transition: transform 0.2s ease;
+}
+
+.vinyl-shelf:hover .vinyl-shelf__outer {
+  transform: rotate(0deg);
+}
+
+.vinyl-shelf__label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  opacity: 0.45;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.vinyl-shelf__records {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  height: 140px;
+  overflow: visible;
+}
+
+.vinyl-shelf__slot {
+  position: relative;
+  width: 72px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.vinyl-shelf__tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+  padding: 4px 10px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-hand);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: var(--border-thin);
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 5;
+}
+
+.vinyl-shelf__slot:hover .vinyl-shelf__tooltip {
+  opacity: 1;
+}
+
+.vinyl-shelf__sleeve {
+  position: relative;
+  width: 68px;
+  height: 120px;
+  margin: 0 auto;
+  border: 1.5px solid var(--ink);
+  box-sizing: border-box;
+  transform-origin: bottom center;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.vinyl-shelf__slot:hover .vinyl-shelf__sleeve {
+  transform: translateY(-28px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.vinyl-shelf__disc {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #555 10%,
+    #111 11%,
+    #222 40%,
+    #111 41%,
+    #222 70%,
+    #111 71%
+  );
+  border: 1.5px solid var(--ink);
+  box-sizing: border-box;
+}
+
+.vinyl-shelf__disc::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--yellow);
+  border: 1px solid var(--ink);
+  box-sizing: border-box;
+}
+
+.vinyl-shelf__stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  padding: 2px 4px 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1.5px solid var(--ink);
+}
+
+.vinyl-shelf__stripe-title {
+  font-family: var(--font-hand);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vinyl-shelf__stripe-artist {
+  font-family: var(--font-hand);
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--ink);
+  opacity: 0.7;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vinyl-shelf__plank {
+  height: 14px;
+  margin-top: 2px;
+  background: #8b6914;
+  border: var(--border-thin);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.vinyl-shelf__plank::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 2px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.12) 70%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.vinyl-shelf__supports {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+  margin-top: 0;
+}
+
+.vinyl-shelf__leg {
+  width: 10px;
+  height: 14px;
+  background: #6b4f10;
+  border: 1.5px solid var(--ink);
+  border-top: none;
+  box-sizing: border-box;
+}

@@ -18,6 +18,8 @@ import { ContactCluster } from '../ContactCluster';
 import { StickyNotes } from '../StickyNotes';
 import { NowLearning } from '../NowLearning';
 import { NowPlaying } from '../NowPlaying';
+import { VinylShelf } from '../VinylShelf';
+import { CookingCard } from '../CookingCard';
 import bb8Exit from '../../assets/Audios/bb8-exit.mp3';
 import '../../assets/CSS/LoadingScreen.css';
 import './InfiniteCanvas.css';
@@ -158,6 +160,7 @@ export const InfiniteCanvas = ({ children }) => {
     if (t.closest?.('.float-badge') || t.closest?.('.float-badges-root'))
       return;
     if (t.closest?.('.about-card')) return;
+    if (t.closest?.('#vinyl-shelf') || t.closest?.('#cooking-card')) return;
     if (
       t !== containerRef.current &&
       t !== world &&
@@ -206,6 +209,7 @@ export const InfiniteCanvas = ({ children }) => {
     if (t.closest?.('.float-badge') || t.closest?.('.float-badges-root'))
       return;
     if (t.closest?.('.about-card')) return;
+    if (t.closest?.('#vinyl-shelf') || t.closest?.('#cooking-card')) return;
     if (
       t !== containerRef.current &&
       t !== world &&
@@ -278,6 +282,11 @@ export const InfiniteCanvas = ({ children }) => {
     if (!introComplete) return;
     // Prevent a flash of UI/cards between intro end and our reveal timeline.
     gsap.set('#nav-tabs .nav-tab', { opacity: 0, x: 42 });
+    gsap.set('#nav-tabs .nav-menu-toggle', {
+      opacity: 0,
+      scale: 0.86,
+      transformOrigin: '50% 50%',
+    });
     gsap.set(['#zoom-info', '#minimap'], { opacity: 0, x: 42 });
     gsap.set(['.about-card', '.float-badges-root', '.float-badge'], { opacity: 0 });
     gsap.set('.float-badge-inner', { scale: 0.86 });
@@ -285,13 +294,19 @@ export const InfiniteCanvas = ({ children }) => {
     gsap.set('.project-card__inner', { scale: 0.86 });
     gsap.set(['.skill-cards-cluster', '.timeline-strip', '.contact-cluster'], { opacity: 0 });
     gsap.set(['.sticky-note'], { opacity: 0 });
-    gsap.set(['.now-learning', '.now-playing'], { opacity: 0 });
+    gsap.set(
+      ['.now-learning', '.now-playing', '#vinyl-shelf', '#cooking-card'],
+      { opacity: 0 }
+    );
 
     gsap.set(['.about-card-pop', '.skill-card-title-badge'], { scale: 0.86 });
     gsap.set(['.skill-cards-canvas-card'], { scale: 0.94 });
     gsap.set(['.timeline-note__pop', '.sticky-note__pop'], { scale: 0.86 });
     gsap.set(['.contact-cluster'], { scale: 0.94, transformOrigin: '50% 20%' });
-    gsap.set(['.now-learning', '.now-playing'], { scale: 0.94, transformOrigin: '50% 20%' });
+    gsap.set(
+      ['.now-learning', '.now-playing', '#vinyl-shelf', '#cooking-card'],
+      { scale: 0.94, transformOrigin: '50% 20%' }
+    );
   }, [introComplete]);
 
   useEffect(() => {
@@ -449,12 +464,28 @@ export const InfiniteCanvas = ({ children }) => {
       );
 
       tl.to(
-        ['.now-learning', '.now-playing'],
-        { opacity: 1, duration: 0.25, ease: 'power2.out', stagger: 0.05, clearProps: 'opacity' },
+        [
+          '.now-learning',
+          '.now-playing',
+          '#vinyl-shelf',
+          '#cooking-card',
+        ],
+        {
+          opacity: 1,
+          duration: 0.25,
+          ease: 'power2.out',
+          stagger: 0.05,
+          clearProps: 'opacity',
+        },
         0.12
       );
       tl.to(
-        ['.now-learning', '.now-playing'],
+        [
+          '.now-learning',
+          '.now-playing',
+          '#vinyl-shelf',
+          '#cooking-card',
+        ],
         {
           keyframes: [
             { scale: 1.03, duration: 0.18, ease: 'power3.out' },
@@ -476,6 +507,29 @@ export const InfiniteCanvas = ({ children }) => {
           ease: 'power3.out',
           stagger: 0.07,
           clearProps: 'opacity,transform',
+        },
+        0.15
+      );
+
+      tl.fromTo(
+        '#nav-tabs .nav-menu-toggle',
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.28,
+          ease: 'power2.out',
+          clearProps: 'opacity',
+        },
+        0.15
+      );
+      tl.to(
+        '#nav-tabs .nav-menu-toggle',
+        {
+          keyframes: [
+            { scale: 1.06, duration: 0.18, ease: 'power3.out' },
+            { scale: 1, duration: 0.16, ease: 'power2.out' },
+          ],
+          clearProps: 'transform',
         },
         0.15
       );
@@ -641,6 +695,8 @@ export const InfiniteCanvas = ({ children }) => {
           {introComplete ? <StickyNotes /> : null}
           {introComplete ? <NowLearning /> : null}
           {introComplete ? <NowPlaying /> : null}
+          {introComplete ? <VinylShelf /> : null}
+          {introComplete ? <CookingCard /> : null}
           {children}
         </div>
       </div>

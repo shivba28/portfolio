@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import './CanvasChrome.css';
 import {
   MINIMAP_NODES,
@@ -18,6 +18,40 @@ export const CanvasChrome = ({
   updateChromeRef,
 }) => {
   const minimapViewportRef = useRef(null);
+  const [navOpen, setNavOpen] = useState(false);
+
+  useEffect(() => {
+    if (!navOpen) return undefined;
+    const onKey = (e) => {
+      if (e.key === 'Escape') setNavOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [navOpen]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 769px)');
+    const onChange = () => {
+      if (mq.matches) setNavOpen(false);
+    };
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  useEffect(() => {
+    const narrow = window.matchMedia('(max-width: 768px)');
+    if (!navOpen || !narrow.matches) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [navOpen]);
+
+  const go = (section) => {
+    setNavOpen(false);
+    panTo(section);
+  };
 
   useLayoutEffect(() => {
     const updateMinimap = () => {
@@ -83,61 +117,83 @@ export const CanvasChrome = ({
 
   return (
     <div className="canvas-chrome" aria-hidden={false}>
-      <nav id="nav-tabs">
+      <nav
+        id="nav-tabs"
+        className={navOpen ? 'nav-tabs--open' : ''}
+        aria-label="Canvas sections"
+      >
         <button
           type="button"
-          className="nav-tab nav-tab--first"
-          onClick={() => panTo('home')}
+          className="nav-menu-toggle"
+          aria-label={navOpen ? 'Close section menu' : 'Open section menu'}
+          aria-expanded={navOpen}
+          aria-controls="nav-tabs-panel"
+          onClick={() => setNavOpen((o) => !o)}
         >
-          <span className="dot" style={{ background: 'var(--yellow)' }} />
-          HOME
+          <span className="nav-menu-toggle__bar" aria-hidden />
+          <span className="nav-menu-toggle__bar" aria-hidden />
+          <span className="nav-menu-toggle__bar" aria-hidden />
         </button>
-        <button
-          type="button"
-          className="nav-tab nav-tab--first"
-          onClick={() => panTo('about')}
+        <div
+          id="nav-tabs-panel"
+          className="nav-tabs__panel"
+          role="navigation"
         >
-          <span className="dot" style={{ background: 'var(--forestGreen)' }} />
-          ABOUT
-        </button>
-        <button
-          type="button"
-          className="nav-tab"
-          onClick={() => panTo('projects')}
-        >
-          <span className="dot" style={{ background: 'var(--pink)' }} />
-          PROJECTS
-        </button>
-        <button
-          type="button"
-          className="nav-tab"
-          onClick={() => panTo('skills')}
-        >
-          <span className="dot" style={{ background: 'var(--blue)' }} />
-          SKILLS
-        </button>
-        <button
-          type="button"
-          className="nav-tab"
-          onClick={() => panTo('experience')}
-        >
-          <span
-            className="dot"
-            style={{
-              background: 'var(--white)',
-              borderColor: 'var(--black)',
-            }}
-          />
-          EXP
-        </button>
-        <button
-          type="button"
-          className="nav-tab"
-          onClick={() => panTo('contact')}
-        >
-          <span className="dot" style={{ background: 'var(--green)' }} />
-          CONTACT
-        </button>
+          <button
+            type="button"
+            className="nav-tab nav-tab--first"
+            onClick={() => go('home')}
+          >
+            <span className="dot" style={{ background: 'var(--yellow)' }} />
+            HOME
+          </button>
+          <button
+            type="button"
+            className="nav-tab nav-tab--first"
+            onClick={() => go('about')}
+          >
+            <span className="dot" style={{ background: 'var(--forestGreen)' }} />
+            ABOUT
+          </button>
+          <button
+            type="button"
+            className="nav-tab"
+            onClick={() => go('projects')}
+          >
+            <span className="dot" style={{ background: 'var(--pink)' }} />
+            PROJECTS
+          </button>
+          <button
+            type="button"
+            className="nav-tab"
+            onClick={() => go('skills')}
+          >
+            <span className="dot" style={{ background: 'var(--blue)' }} />
+            SKILLS
+          </button>
+          <button
+            type="button"
+            className="nav-tab"
+            onClick={() => go('experience')}
+          >
+            <span
+              className="dot"
+              style={{
+                background: 'var(--white)',
+                borderColor: 'var(--black)',
+              }}
+            />
+            EXP
+          </button>
+          <button
+            type="button"
+            className="nav-tab"
+            onClick={() => go('contact')}
+          >
+            <span className="dot" style={{ background: 'var(--green)' }} />
+            CONTACT
+          </button>
+        </div>
       </nav>
 
       <div id="minimap">

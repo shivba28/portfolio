@@ -12,11 +12,10 @@ export const SCALE_Y = MM_H / WORLD_H;
 export const NODE_POSITIONS = {
   home: { card: '.canvas-center' },
   about: { card: '.about-card' },
-  hero: { card: 'card-hero' },
   projects: { card: 'card-projects' },
-  skills: { card: 'card-skills' },
-  experience: { card: 'card-experience' },
-  contact: { card: 'card-contact' },
+  skills: { card: '.skill-cards-cluster' },
+  experience: { card: '#card-timeline' },
+  contact: { card: '.contact-cluster__stack' },
 };
 
 /**
@@ -40,7 +39,9 @@ export const MINIMAP_NODES = [
   { id: 'card-contacts', left: 980, top: 720, w: 380, h: 240, color: '#3BCEAC' },
   { id: 'now-learning', left: 800, top: -300, w: 320, h: 200, color: '#F5C842' },
   { id: 'now-playing', left: 1100, top: -280, w: 220, h: 300, color: '#FF5E5E' },
+  { id: 'vinyl-shelf', left: -1000, top: 0, w: 340, h: 180, color: '#2a2a2a' },
+  { id: 'cooking-card', left: -1000, top: 600, w: 280, h: 320, color: '#FF8C42' },
 ];
 
-/** Rendered elsewhere (CanvasCenter / AboutCard) — not duplicated as empty markers */
-export const MINIMAP_DOM_SKIP = new Set([]);
+/** Real DOM nodes use these ids — skip invisible duplicate markers */
+export const MINIMAP_DOM_SKIP = new Set(['vinyl-shelf', 'cooking-card']);

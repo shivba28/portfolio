@@ -49,3 +49,128 @@
   transform: rotate(0deg) translate(-1px, -1px);
   box-shadow: 5px 5px 0 var(--black);
 }
+
+/* --- Responsive: canvas cards stay readable on smaller viewports --- */
+
+.skill-cards-cluster--medium .skill-cards-canvas-card.skill-card {
+  width: 260px;
+  height: 360px;
+  margin: 12px;
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card .sun {
+  top: 145px;
+  left: 22px;
+  transform: rotate(90deg) translateX(-145px) rotate(-90deg);
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card .moon {
+  top: 125px;
+  left: 155px;
+  transform: rotate(0deg) translateX(105px) rotate(0deg);
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card.skill-card:hover .sun {
+  transform: rotate(0deg) translateX(-105px) rotate(0deg);
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card.skill-card:hover .moon {
+  transform: rotate(-90deg) translateX(105px) rotate(90deg);
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card .sun img {
+  width: 85px;
+  height: 85px;
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card .moon img {
+  width: 64px;
+  height: 64px;
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card .content {
+  margin-top: 12%;
+  padding: 14px;
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card .content h4 {
+  font-size: 26px;
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card .list-group {
+  font-size: 14px;
+}
+
+.skill-cards-cluster--medium .skill-cards-canvas-card .skill-card-title-badge {
+  font-size: 9px;
+  padding: 5px 10px;
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card.skill-card {
+  width: min(300px, calc(100vw - 40px));
+  height: min(360px, 52vh);
+  max-height: 380px;
+  margin: 0;
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .sun {
+  top: 130px;
+  left: 18px;
+  transform: rotate(90deg) translateX(-130px) rotate(-90deg);
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .moon {
+  top: 112px;
+  left: 130px;
+  transform: rotate(0deg) translateX(92px) rotate(0deg);
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card.skill-card:hover .sun {
+  transform: rotate(0deg) translateX(-92px) rotate(0deg);
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card.skill-card:hover .moon {
+  transform: rotate(-90deg) translateX(92px) rotate(90deg);
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .sun img {
+  width: 72px;
+  height: 72px;
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .moon img {
+  width: 56px;
+  height: 56px;
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .content {
+  margin-top: 10%;
+  padding: 10px 12px;
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .content h4 {
+  font-size: 22px;
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .list-group {
+  font-size: 13px;
+  letter-spacing: 0.06rem;
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .list-group-item {
+  padding: 0.35rem 0;
+}
+
+.skill-cards-cluster--narrow .skill-cards-canvas-card .skill-card-title-badge {
+  font-size: 9px;
+  padding: 5px 10px;
+  bottom: 8px;
+  left: 8px;
+}
+
+/* Narrow stack spacing matches ~340px step in JSX; shrink if cards are shorter */
+@media (max-width: 640px) and (max-height: 700px) {
+  .skill-cards-cluster--narrow .skill-cards-canvas-card.skill-card {
+    height: min(300px, 48vh);
+  }
+}

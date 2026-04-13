@@ -776,7 +776,7 @@ background: url(../Images/trees-m.webp);
         transform: translateY(-30%);
     }
     .list-group-item{
-        font-size: 15px;
+        font-size: 12px;
         padding: 5px 0px !important;
     }
     .light-bg {
@@ -806,27 +806,14 @@ background: url(../Images/trees-m.webp);
   }
 
   @media screen and (376px <= width <= 900px) {
-    .skills{
-        height: max-content;
-    }
-    .skill-card{
-        height:380px;
-    }
-    #skill .slogan-left {
-        top: 0;
-        margin-right: 20px;
-    }
-    #skill .slogan-left .left, #skill .slogan-right .right {
-        font-size: 3.5rem !important;
-    }
     .skill-card .content {
         transform: translateY(10%);
     }
     .skill-card:hover .content{
-        transform: translateY(-25%);
+        transform: translateY(-15%);
     }
     .light-bg {
-        transform: translate(-1dvw, 80%) !important;
+        transform: translate(-5%, 30%) !important;
     }
     .skill-card:hover .light-bg{
         transform: translateY(100dvh) !important;
@@ -838,14 +825,11 @@ background: url(../Images/trees-m.webp);
     .skill-card:hover .dark-bg {
         transform: translateY(150%) scaleY(2) !important;
     }
-    .skill-card h4{
-        font-size: 35px;
-    }
     .list-group-item{
-        font-size: 22px;
+        font-size: 15px;
     }
     #card2 .light-bg, #card4 .light-bg{
-        transform: translate(2dvw, 90%) !important;
+        transform: translate(4dvw, 40%) !important;
     }
     #card2:hover .light-bg, #card4:hover .light-bg {
         transform: translateY(70dvh) !important;

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { Clouds } from './Bg-Animations/Clouds';
 import { Stars } from './Bg-Animations/Stars';
@@ -9,16 +9,61 @@ import testImg from '../assets/Images/test.png';
 import '../assets/CSS/skills.css';
 import './SkillCards.css';
 
-/** Cluster anchor on the canvas world (world px). */
-const SKILL_CARDS_CLUSTER = { left: -500, top: 300 };
+/** World-space layouts by viewport (drag offsets still apply on top). */
+const SKILL_LAYOUTS = {
+  wide: {
+    cluster: { left: -500, top: 300 },
+    positions: [
+      { id: 'card1', x: 100, y: 0 },
+      { id: 'card2', x: 450, y: 0 },
+      { id: 'card3', x: 800, y: 0 },
+      { id: 'card4', x: -250, y: 0 },
+    ],
+  },
+  medium: {
+    cluster: { left: -420, top: 340 },
+    positions: [
+      { id: 'card1', x: 0, y: 0 },
+      { id: 'card2', x: 280, y: 0 },
+      { id: 'card3', x: 560, y: 0 },
+      { id: 'card4', x: -260, y: 0 },
+    ],
+  },
+  narrow: {
+    cluster: { left: -140, top: 520 },
+    positions: [
+      { id: 'card1', x: 0, y: 0 },
+      { id: 'card2', x: 0, y: 400 },
+      { id: 'card3', x: 0, y: 800 },
+      { id: 'card4', x: 0, y: 1200 },
+    ],
+  },
+};
 
-/** Relative offsets inside the cluster (2×2). */
-const SKILL_CARD_POSITIONS = [
-  { id: 'card1', x: 100, y: 0 },
-  { id: 'card2', x: 450, y: 0 },
-  { id: 'card3', x: 800, y: 0 },
-  { id: 'card4', x: -250, y: 0 },
-];
+function useSkillCardsLayout() {
+  const [layout, setLayout] = useState('wide');
+
+  useEffect(() => {
+    const mqNarrow = window.matchMedia('(max-width: 640px)');
+    const mqMedium = window.matchMedia('(max-width: 1024px)');
+
+    const pick = () => {
+      if (mqNarrow.matches) setLayout('narrow');
+      else if (mqMedium.matches) setLayout('medium');
+      else setLayout('wide');
+    };
+
+    pick();
+    mqNarrow.addEventListener('change', pick);
+    mqMedium.addEventListener('change', pick);
+    return () => {
+      mqNarrow.removeEventListener('change', pick);
+      mqMedium.removeEventListener('change', pick);
+    };
+  }, []);
+
+  return layout;
+}
 
 const CARD_DATA = [
   {
@@ -74,6 +119,10 @@ const CARD_DATA = [
 ];
 
 export const SkillCards = () => {
+  const layoutKey = useSkillCardsLayout();
+  const { cluster: clusterPos, positions: layoutPositions } =
+    SKILL_LAYOUTS[layoutKey];
+
   const [dragById, setDragById] = useState(() => ({}));
   const dragRef = useRef({
     id: null,
@@ -130,16 +179,16 @@ export const SkillCards = () => {
 
   return (
     <div
-      className="skill-cards-cluster"
+      className={`skill-cards-cluster skill-cards-cluster--${layoutKey}`}
       style={{
         position: 'absolute',
-        left: SKILL_CARDS_CLUSTER.left,
-        top: SKILL_CARDS_CLUSTER.top,
+        left: clusterPos.left,
+        top: clusterPos.top,
       }}
     >
       {CARD_DATA.map((card) => {
         const pos =
-          SKILL_CARD_POSITIONS.find((p) => p.id === card.id) || { x: 0, y: 0 };
+          layoutPositions.find((p) => p.id === card.id) || { x: 0, y: 0 };
         const off = getOffset(card.id);
         return (
           <div

@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState, memo } from 'react';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import Lottie from 'lottie-react';
 import '../assets/CSS/ProjectCards.css';
+import { useIsInView } from '../hooks/useIsInView';
 
 import projectsData from '../assets/json/projects.json';
 
@@ -25,6 +26,8 @@ import voting from '../assets/Lottie/Voting.json';
 import mealRoulette from '../assets/Lottie/mealRoulette.json';
 import { PROJECT_CARD_POSITIONS } from './projectCardPositions';
 
+const PRIORITY_IDS = [1, 6, 10];
+
 const assetMap = {
   constructionData,
   ans,
@@ -43,6 +46,25 @@ const assetMap = {
   secretSanta,
   cardHeart,
   mealRoulette,
+};
+
+const LOTTIE_IMPORTERS = {
+  CCDP: () => import('../assets/Lottie/CCDP.json'),
+  ANS: () => import('../assets/Lottie/ANS.json'),
+  Valentine: () => import('../assets/Lottie/Valentine.json'),
+  Chatbot: () => import('../assets/Lottie/Chatbot.json'),
+  Portfolio: () => import('../assets/Lottie/Portfolio.json'),
+  'Mini-projects': () => import('../assets/Lottie/Mini-projects.json'),
+  'video-game': () => import('../assets/Lottie/video-game.json'),
+  'PropChain-1': () => import('../assets/Lottie/PropChain-1.json'),
+  'PropChain-2': () => import('../assets/Lottie/PropChain-2.json'),
+  'Card-Heart': () => import('../assets/Lottie/Card-Heart.json'),
+  foodservices: () => import('../assets/Lottie/foodservices.json'),
+  rsvp: () => import('../assets/Lottie/rsvp.json'),
+  secretSanta: () => import('../assets/Lottie/secretSanta.json'),
+  umbracoBase: () => import('../assets/Lottie/umbracoBase.json'),
+  Voting: () => import('../assets/Lottie/Voting.json'),
+  mealRoulette: () => import('../assets/Lottie/mealRoulette.json'),
 };
 
 const resolveProjects = (data) =>
@@ -101,9 +123,251 @@ const clampText = (s, max = 160) => {
 
 gsap.registerPlugin(Draggable);
 
+const ZOOM_COMPACT = 0.6;
+const ZOOM_EXPANDED = 0.85;
+
+function useCanvasCameraRefs() {
+  const zoomRef = useRef(1);
+  const offsetRef = useRef({ x: 0, y: 0 });
+  const [, bump] = useState(0);
+  const last = useRef({ x: 0, y: 0, z: 1 });
+
+  useEffect(() => {
+    let raf = 0;
+    const tick = () => {
+      const world = document.querySelector('.canvas-world');
+      if (world) {
+        const tr = world.style.transform || '';
+        // translate(px, px) scale(z)
+        const m = tr.match(/translate\(([-0-9.]+)px,\s*([-0-9.]+)px\)\s*scale\(([-0-9.]+)\)/);
+        if (m) {
+          const x = parseFloat(m[1]) || 0;
+          const y = parseFloat(m[2]) || 0;
+          const z = parseFloat(m[3]) || 1;
+          const changed = x !== last.current.x || y !== last.current.y || z !== last.current.z;
+          if (changed) {
+            last.current = { x, y, z };
+            offsetRef.current = { x, y };
+            zoomRef.current = z;
+            bump((n) => (n + 1) % 1000000);
+          }
+        }
+      }
+      raf = window.requestAnimationFrame(tick);
+    };
+    raf = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(raf);
+  }, []);
+
+  return { zoomRef, offsetRef };
+}
+
+const ProjectCard = memo(function ProjectCard({
+  p,
+  i,
+  zoomRef,
+  offsetRef,
+  forceExpanded,
+  setForceExpandedId,
+}) {
+  const cardRef = useRef(null);
+  const draggableRef = useRef(null);
+  const { left, top, rotate } = getCardPos(p, i);
+  const { inView, isNear } = useIsInView(cardRef, offsetRef, zoomRef);
+  const zoom = zoomRef.current || 1;
+
+  const compact = zoom < ZOOM_COMPACT && !forceExpanded;
+  const expanded = zoom >= ZOOM_EXPANDED || forceExpanded;
+
+  const [open, setOpen] = useState(false);
+
+  const [loadedAssets, setLoadedAssets] = useState({});
+  const shouldLazyLoad = isNear && !PRIORITY_IDS.includes(p.id);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return undefined;
+
+    // Re-enable dragging (same plugin used by AboutCard).
+    // Use transforms for drag so we don't mutate absolute left/top.
+    draggableRef.current?.kill?.();
+    const d = Draggable.create(el, {
+      type: 'x,y',
+      bounds: { minX: -2600, maxX: 2600, minY: -2600, maxY: 2600 },
+      inertia: false,
+      cursor: 'grab',
+      activeCursor: 'grabbing',
+      onPress(e) {
+        e?.stopPropagation?.();
+      },
+      onDrag(e) {
+        e?.stopPropagation?.();
+      },
+    })[0];
+
+    draggableRef.current = d;
+    return () => {
+      d?.kill?.();
+      draggableRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLazyLoad) return;
+    if (loadedAssets[p.id]) return;
+
+    const imp = LOTTIE_IMPORTERS[p.animationKey];
+    if (!imp) return;
+
+    let cancelled = false;
+    imp().then((mod) => {
+      if (cancelled) return;
+      setLoadedAssets((prev) => ({ ...prev, [p.id]: mod.default }));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [shouldLazyLoad, loadedAssets, p.id, p.animationKey]);
+
+  const resolvedAnim =
+    PRIORITY_IDS.includes(p.id) || !p.animationKey
+      ? p.animationData
+      : loadedAssets[p.id] || null;
+
+  const resolvedAnim2 =
+    p.type === 'lottie-prop'
+      ? PRIORITY_IDS.includes(p.id)
+        ? p.animationData2
+        : p.animationKey2 && loadedAssets[p.id]?.__secondary
+      : null;
+
+  return (
+    <article
+      ref={cardRef}
+      id={`project-card-${toDomId(p.__assetKey) || p.id}`}
+      className={[
+        'project-card',
+        compact ? 'project-card--compact' : '',
+        expanded ? 'project-card--expanded' : '',
+        open ? 'project-card--open' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      style={{
+        left,
+        top,
+        ['--pc-rot']: `${rotate}deg`,
+      }}
+      onMouseDown={(e) => e.stopPropagation()}
+      onPointerDown={(e) => e.stopPropagation()}
+      onTouchStart={(e) => e.stopPropagation()}
+    >
+      {forceExpanded ? (
+        <button
+          type="button"
+          className="project-card-close"
+          onClick={(e) => {
+            e.stopPropagation();
+            setForceExpandedId(null);
+          }}
+          aria-label="Close"
+        >
+          ×
+        </button>
+      ) : null}
+
+      <div className="about-card-tape project-card__tape" aria-hidden="true" />
+
+      <button
+        type="button"
+        className="project-card__hit"
+        onClick={() => {
+          if (zoom < ZOOM_EXPANDED) {
+            setForceExpandedId(p.id);
+            setOpen(true);
+            return;
+          }
+          setOpen((v) => !v);
+        }}
+        aria-expanded={open || forceExpanded}
+      >
+        <span className="sr-only">Open {p.title}</span>
+      </button>
+
+      <div className="project-card__inner">
+        <header className="project-card__header">
+          <div className="project-card__pin" aria-hidden="true" />
+          <h3 className="project-card__title">{p.title}</h3>
+        </header>
+
+        <div className="project-card__hero" aria-hidden={false}>
+          {p.type === 'video' ? (
+            <img className="project-card__img" src={p.video} alt={p.title} />
+          ) : isNear && resolvedAnim ? (
+            p.type === 'lottie-prop' ? (
+              <div className="project-card__lottieStack" aria-hidden="true">
+                <Lottie animationData={resolvedAnim} loop autoplay={inView} />
+                {p.animationData2 ? (
+                  <Lottie
+                    className="project-card__lottieProp"
+                    animationData={p.animationData2}
+                    loop
+                    autoplay={inView}
+                  />
+                ) : null}
+              </div>
+            ) : (
+              <div className="project-card__lottie" aria-hidden="true">
+                <Lottie animationData={resolvedAnim} loop autoplay={inView} />
+              </div>
+            )
+          ) : (
+            <div className="lottie-placeholder" aria-hidden>
+              <span className="lottie-placeholder-shimmer" />
+            </div>
+          )}
+        </div>
+
+        <div className="project-card__body project-card-desc">
+          <p className={`project-card__desc${open || forceExpanded ? ' is-expanded' : ''}`}>
+            {open || forceExpanded ? p.Desc : clampText(p.Desc, 170)}
+          </p>
+        </div>
+
+        <footer className="project-card__footer project-card-actions">
+          <a className="project-card__btn project-card__btn--primary" href={p.link} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          {p.demo ? (
+            <a
+              className="project-card__btn project-card__btn--demo project-card__btn--primary"
+              href={p.demo}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Live
+            </a>
+          ) : null}
+          <button
+            type="button"
+            className="project-card__btn project-card__btn--more"
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen((v) => !v);
+            }}
+          >
+            {open ? 'Less' : 'More'}
+          </button>
+        </footer>
+      </div>
+    </article>
+  );
+});
+
 export const ProjectCards = () => {
-  const [expandedId, setExpandedId] = useState(null);
-  const cardRefs = useRef(new Map());
+  const { zoomRef, offsetRef } = useCanvasCameraRefs();
+  const [forceExpandedId, setForceExpandedId] = useState(null);
+  const rootRef = useRef(null);
 
   const projects = useMemo(() => {
     const resolved = resolveProjects(projectsData);
@@ -111,152 +375,29 @@ export const ProjectCards = () => {
   }, []);
 
   useEffect(() => {
-    const draggables = [];
-
-    projects.forEach((p) => {
-      const el = cardRefs.current.get(p.id);
-      if (!el) return;
-
-      const draggable = Draggable.create(el, {
-        type: 'x,y',
-        bounds: { minX: -2200, maxX: 2200, minY: -2200, maxY: 2200 },
-        inertia: false,
-        cursor: 'grab',
-        activeCursor: 'grabbing',
-        onPress() {
-          gsap.to(el, {
-            scale: 1.03,
-            duration: 0.18,
-            ease: 'power2.out',
-          });
-        },
-        onRelease() {
-          gsap.to(el, {
-            scale: 1,
-            duration: 0.22,
-            ease: 'power2.out',
-          });
-        },
-      })[0];
-
-      draggables.push(draggable);
-    });
-
-    return () => {
-      draggables.forEach((d) => d.kill());
+    const onDocDown = (e) => {
+      const root = rootRef.current;
+      if (!root) return;
+      if (root.contains(e.target)) return;
+      setForceExpandedId(null);
     };
-  }, [projects]);
+    document.addEventListener('pointerdown', onDocDown, true);
+    return () => document.removeEventListener('pointerdown', onDocDown, true);
+  }, []);
 
   return (
-    <div className="project-cards-root" aria-label="Project cards">
-      {projects.map((p, i) => {
-        const { left, top, rotate } = getCardPos(p, i);
-        const expanded = expandedId === p.id;
-
-        return (
-          <article
-            key={p.id}
-            id={`project-card-${toDomId(p.__assetKey) || p.id}`}
-            ref={(node) => {
-              if (!node) {
-                cardRefs.current.delete(p.id);
-                return;
-              }
-              cardRefs.current.set(p.id, node);
-            }}
-            className={`project-card${expanded ? ' project-card--expanded' : ''}`}
-            style={{
-              left,
-              top,
-              ['--pc-rot']: `${rotate}deg`,
-            }}
-            onPointerDown={(e) => e.stopPropagation()}
-            onTouchStart={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="project-card__hit"
-              onClick={() => setExpandedId((cur) => (cur === p.id ? null : p.id))}
-              aria-expanded={expanded}
-            >
-              <span className="sr-only">
-                {expanded ? 'Collapse' : 'Expand'} {p.title}
-              </span>
-            </button>
-
-            <div className="project-card__inner">
-              <div className="about-card-tape" aria-hidden="true" />
-              <header className="project-card__header">
-                <div className="project-card__pin" aria-hidden="true" />
-                <h3 className="project-card__title">{p.title}</h3>
-                {p.createdDate ? (
-                  <div className="project-card__meta">{p.createdDate}</div>
-                ) : null}
-              </header>
-
-              <div className="project-card__hero" aria-hidden={false}>
-                {p.type === 'video' ? (
-                  <img className="project-card__img" src={p.video} alt={p.title} />
-                ) : p.type === 'lottie-prop' ? (
-                  <div className="project-card__lottieStack" aria-hidden="true">
-                    <Lottie animationData={p.animationData} loop autoplay />
-                    {p.animationData2 ? (
-                      <Lottie
-                        className="project-card__lottieProp"
-                        animationData={p.animationData2}
-                        loop
-                        autoplay
-                      />
-                    ) : null}
-                  </div>
-                ) : (
-                  <div className="project-card__lottie" aria-hidden="true">
-                    <Lottie animationData={p.animationData} loop autoplay />
-                  </div>
-                )}
-              </div>
-
-              <div className="project-card__body">
-                <p className={`project-card__desc${expanded ? ' is-expanded' : ''}`}>
-                  {expanded ? p.Desc : clampText(p.Desc, 170)}
-                </p>
-              </div>
-
-              <footer className="project-card__footer">
-                <a
-                  className="project-card__btn"
-                  href={p.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  onPointerDown={(e) => e.stopPropagation()}
-                  onTouchStart={(e) => e.stopPropagation()}
-                >
-                  GitHub
-                </a>
-                {p.demo ? (
-                  <a
-                    className="project-card__btn project-card__btn--demo"
-                    href={p.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    onPointerDown={(e) => e.stopPropagation()}
-                    onTouchStart={(e) => e.stopPropagation()}
-                  >
-                    Live
-                  </a>
-                ) : null}
-                <button
-                  type="button"
-                  className="project-card__btn project-card__btn--more"
-                  onClick={() => setExpandedId((cur) => (cur === p.id ? null : p.id))}
-                >
-                  {expanded ? 'Less' : 'More'}
-                </button>
-              </footer>
-            </div>
-          </article>
-        );
-      })}
+    <div ref={rootRef} className="project-cards-root" aria-label="Project cards">
+      {projects.map((p, i) => (
+        <ProjectCard
+          key={p.id}
+          p={p}
+          i={i}
+          zoomRef={zoomRef}
+          offsetRef={offsetRef}
+          forceExpanded={forceExpandedId === p.id}
+          setForceExpandedId={setForceExpandedId}
+        />
+      ))}
     </div>
   );
 };

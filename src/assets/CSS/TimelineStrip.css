@@ -1,0 +1,83 @@
+.timeline-strip {
+  width: 1120px;
+  height: 210px;
+  color: var(--ink);
+}
+
+.timeline-notes {
+  position: relative;
+  width: 1120px;
+  height: 210px;
+}
+
+.timeline-notes__links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+}
+
+.timeline-notes__links path {
+  fill: none;
+  stroke: rgba(10, 10, 10, 0.35);
+  stroke-width: 2.5px;
+  stroke-dasharray: 6 6;
+  stroke-linecap: round;
+}
+
+.timeline-note {
+  position: absolute;
+  width: 180px;
+  height: 108px;
+  background: color-mix(in srgb, var(--cream) 88%, var(--tn-accent));
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-md);
+  transform: rotate(var(--tn-rot, 0deg));
+  transform-origin: 30% 10%;
+  box-sizing: border-box;
+  padding: 10px 12px 10px;
+  z-index: 2;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+}
+
+.timeline-note__pop {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 20%;
+  will-change: transform;
+}
+
+.timeline-note:active {
+  cursor: grabbing;
+}
+
+.timeline-note__band {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.timeline-note__year {
+  position: relative;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.timeline-note__label {
+  position: relative;
+  margin-top: 6px;
+  font-family: var(--font-hand);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+

@@ -1,14 +1,11 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { IPadCursorProvider, useIPadCursor } from "ipad-cursor/react";
 import { InfiniteCanvas } from './components/Canvas/InfiniteCanvas';
 
 function App() {
 
   const config = {};
-
-  useIPadCursor();
 
   useEffect(() => {
     const originalTitle = document.title;

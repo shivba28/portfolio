@@ -27,19 +27,20 @@ export const MINIMAP_NODES = [
   // Keep this marker centered on world origin (0,0).
   { id: 'canvas-center', left: -360, top: -80, w: 720, h: 160, color: '#868686' },
   { id: 'card-about', left: -1040, top: -720, w: 280, h: 420, color: '#2e8b57' },
-];
-
-/** Rendered elsewhere (CanvasCenter / AboutCard) — not duplicated as empty markers */
-export const MINIMAP_DOM_SKIP = new Set([]);
-
-
-/**
   { id: 'card-projects', left: 1100, top: -200, w: 360, h: 200, color: '#FF6B9D' },
   { id: 'card-skills', left: -1100, top: -200, w: 360, h: 200, color: '#4ECDC4' },
   { id: 'card-experience', left: -200, top: -980, w: 360, h: 200, color: '#f5f0e8' },
   { id: 'card-contact', left: 0, top: 780, w: 360, h: 200, color: '#6BCB77' },
   { id: 'card-cooking', left: 1300, top: 600, w: 320, h: 180, color: '#FF8C42' },
   { id: 'card-stats', left: -1300, top: 700, w: 280, h: 240, color: '#0a0a0a' },
-  
   { id: 'card-easter', left: 800, top: -1100, w: 120, h: 80, color: '#ccc' },
- */
+
+  // New canvas elements
+  { id: 'card-timeline', left: -420, top: -840, w: 1120, h: 210, color: '#F5C842' },
+  { id: 'card-contacts', left: 980, top: 720, w: 380, h: 240, color: '#3BCEAC' },
+  { id: 'now-learning', left: 800, top: -300, w: 320, h: 200, color: '#F5C842' },
+  { id: 'now-playing', left: 1100, top: -280, w: 220, h: 300, color: '#FF5E5E' },
+];
+
+/** Rendered elsewhere (CanvasCenter / AboutCard) — not duplicated as empty markers */
+export const MINIMAP_DOM_SKIP = new Set([]);

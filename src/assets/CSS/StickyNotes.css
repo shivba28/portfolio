@@ -1,0 +1,68 @@
+.sticky-notes-root {
+  width: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.sticky-note {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: var(--sn-bg, #fff59d);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
+  transform: rotate(var(--sn-rot, 0deg));
+  transform-origin: 30% 12%;
+  border: 1.5px solid rgba(10, 10, 10, 0.25);
+  box-sizing: border-box;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.sticky-note__pop {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 20%;
+  will-change: transform;
+}
+
+.sticky-note:active {
+  cursor: grabbing;
+}
+
+.sticky-note__band {
+  height: 20px;
+  width: 100%;
+  background: color-mix(in srgb, var(--sn-bg) 78%, #000);
+  opacity: 0.16;
+}
+
+.sticky-note__text {
+  padding: 12px 12px 10px;
+  font-family: var(--font-hand);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.sticky-note:hover {
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.18);
+  animation: stickyWobble 0.3s ease-in-out;
+}
+
+@keyframes stickyWobble {
+  0% {
+    transform: rotate(calc(var(--sn-rot) - 2deg)) translateY(0);
+  }
+  50% {
+    transform: rotate(calc(var(--sn-rot) + 2deg)) translateY(-6px);
+  }
+  100% {
+    transform: rotate(var(--sn-rot)) translateY(-4px);
+  }
+}
+

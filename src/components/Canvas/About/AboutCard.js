@@ -64,34 +64,36 @@ export const AboutCard = ({ handoffX = 0 }) => {
           onPointerDown={(e) => e.stopPropagation()}
           onTouchStart={(e) => e.stopPropagation()}
         >
-        <div className="about-card-photo">
-          <img src={logo} alt="" className="about-bitmoji" />
-          <div className="about-card-photo-label">shivba.exe</div>
-        </div>
+          <div className="about-card-pop">
+            <div className="about-card-photo">
+              <img src={logo} alt="" className="about-bitmoji" />
+              <div className="about-card-photo-label">shivba.exe</div>
+            </div>
 
-        <div className="about-card-strip">
-          <div className="about-card-name">Shivba Pawar</div>
-          <p className="about-card-bio">
-            Full-stack dev by day, bug-squasher by night. Building things with
-            .NET, React &amp; way too much coffee ☕
-          </p>
-          <div className="about-card-tags">
-            <span className="about-tag">Garden Grove USD</span>
-            <span className="about-tag">MS @ Westcliff</span>
+            <div className="about-card-strip">
+              <div className="about-card-name">Shivba Pawar</div>
+              <p className="about-card-bio">
+                Full-stack dev by day, bug-squasher by night. Building things with
+                .NET, React &amp; way too much coffee ☕
+              </p>
+              <div className="about-card-tags">
+                <span className="about-tag">Garden Grove USD</span>
+                <span className="about-tag">MS @ Westcliff</span>
+              </div>
+              <button
+                type="button"
+                className="about-learn-more"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowModal(true);
+                }}
+              >
+                Learn More →
+              </button>
+            </div>
+
+            <div className="about-card-tape" aria-hidden="true" />
           </div>
-          <button
-            type="button"
-            className="about-learn-more"
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowModal(true);
-            }}
-          >
-            Learn More →
-          </button>
-        </div>
-
-        <div className="about-card-tape" aria-hidden="true" />
         </div>
       </div>
 

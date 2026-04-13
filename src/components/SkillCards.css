@@ -1,0 +1,51 @@
+/* Canvas skill cards — cluster + drag; hover/day-night lives in skills.css */
+
+.skill-cards-cluster {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.skill-cards-cluster .skill-cards-canvas-card {
+  pointer-events: auto;
+  touch-action: none;
+  margin: 0;
+}
+
+/* Title as canvas skill badge (float-badge aesthetic), top-left of card */
+.skill-cards-canvas-card .skill-card-title-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 20;
+  margin: 0;
+  padding: 6px 14px;
+  max-width: calc(100% - 20px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: var(--white);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  color: var(--black);
+  transform: rotate(-1.5deg);
+  transform-origin: 0 0;
+  pointer-events: none;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.skill-cards-canvas-card:hover .skill-card-title-badge {
+  transform: rotate(0deg) translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--black);
+}

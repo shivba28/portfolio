@@ -21,8 +21,8 @@ export const PROJECT_CARD_POSITIONS = {
 
   // lottie-prop projects
   propChain2: { left: 1460, top: -410, rotate: 1.0 },
-  chatbot: { left: 350, top: 800, rotate: -1.2 },
-  mealRoulette: { left: 260, top: 320, rotate: 1.5 },
+  chatbot: { left: 2350, top: 0, rotate: -1.2 },
+  mealRoulette: { left: 660, top: 120, rotate: 1.5 },
   constructionData: { left: 1960, top: -800, rotate: -1.5 },
   foodservices: { left: 1040, top: 0, rotate: 1.2 },
   umbracoBase: { left: 1920, top: -260, rotate: 1.0 },

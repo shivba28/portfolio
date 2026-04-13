@@ -1,0 +1,81 @@
+.contact-cluster {
+  width: 380px;
+  height: 240px;
+  color: var(--ink);
+  pointer-events: none;
+}
+
+.contact-cluster__label {
+  font-family: var(--font-hand);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 10px;
+  pointer-events: none;
+}
+
+.contact-cluster__stack {
+  position: relative;
+  width: 360px;
+  height: 190px;
+  pointer-events: none;
+}
+
+.contact-card {
+  position: absolute;
+  width: 140px;
+  height: 160px;
+  background: var(--cream);
+  border: var(--border);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transform: rotate(var(--cc-rot, 0deg));
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+  pointer-events: auto;
+}
+
+.contact-card:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-pin {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 42px;
+}
+
+.contact-card__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.contact-card__icon svg {
+  width: 34px;
+  height: 34px;
+  color: var(--ink);
+}
+
+.contact-card__name {
+  font-family: var(--font-hand);
+  font-size: 22px;
+  font-weight: 700;
+}
+

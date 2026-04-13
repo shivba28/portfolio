@@ -12,6 +12,12 @@ import { FloatingSkillBadges } from './FloatingSkillBadges';
 import { AboutCard } from './About/AboutCard';
 import { BB8animation } from '../BB8animation';
 import { ProjectCards } from '../ProjectCards';
+import { SkillCards } from '../SkillCards';
+import { TimelineStrip } from '../TimelineStrip';
+import { ContactCluster } from '../ContactCluster';
+import { StickyNotes } from '../StickyNotes';
+import { NowLearning } from '../NowLearning';
+import { NowPlaying } from '../NowPlaying';
 import bb8Exit from '../../assets/Audios/bb8-exit.mp3';
 import '../../assets/CSS/LoadingScreen.css';
 import './InfiniteCanvas.css';
@@ -277,6 +283,15 @@ export const InfiniteCanvas = ({ children }) => {
     gsap.set('.float-badge-inner', { scale: 0.86 });
     gsap.set(['.project-card'], { opacity: 0 });
     gsap.set('.project-card__inner', { scale: 0.86 });
+    gsap.set(['.skill-cards-cluster', '.timeline-strip', '.contact-cluster'], { opacity: 0 });
+    gsap.set(['.sticky-note'], { opacity: 0 });
+    gsap.set(['.now-learning', '.now-playing'], { opacity: 0 });
+
+    gsap.set(['.about-card-pop', '.skill-card-title-badge'], { scale: 0.86 });
+    gsap.set(['.skill-cards-canvas-card'], { scale: 0.94 });
+    gsap.set(['.timeline-note__pop', '.sticky-note__pop'], { scale: 0.86 });
+    gsap.set(['.contact-cluster'], { scale: 0.94, transformOrigin: '50% 20%' });
+    gsap.set(['.now-learning', '.now-playing'], { scale: 0.94, transformOrigin: '50% 20%' });
   }, [introComplete]);
 
   useEffect(() => {
@@ -340,6 +355,115 @@ export const InfiniteCanvas = ({ children }) => {
           clearProps: 'transform',
         },
         0
+      );
+
+      // About card: fade + pop (inner wrapper, so we don't clobber Draggable rotation).
+      tl.to(
+        '.about-card-pop',
+        {
+          keyframes: [
+            { scale: 1.06, duration: 0.22, ease: 'power3.out' },
+            { scale: 1, duration: 0.18, ease: 'power2.out' },
+          ],
+          clearProps: 'transform',
+        },
+        0
+      );
+
+      // Skill cards cluster: fade + pop each card slightly.
+      tl.fromTo(
+        '.skill-cards-cluster',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.35, ease: 'power2.out', clearProps: 'opacity' },
+        0.05
+      );
+      tl.to(
+        '.skill-cards-canvas-card',
+        {
+          keyframes: [
+            { scale: 1.04, duration: 0.18, ease: 'power3.out' },
+            { scale: 1, duration: 0.16, ease: 'power2.out' },
+          ],
+          stagger: 0.04,
+          clearProps: 'transform',
+        },
+        0.05
+      );
+
+      // Timeline notes: fade + pop the inner content (outer keeps rotation).
+      tl.fromTo(
+        '.timeline-strip',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.35, ease: 'power2.out', clearProps: 'opacity' },
+        0.08
+      );
+      tl.to(
+        '.timeline-note__pop',
+        {
+          keyframes: [
+            { scale: 1.06, duration: 0.2, ease: 'power3.out' },
+            { scale: 1, duration: 0.18, ease: 'power2.out' },
+          ],
+          stagger: 0.035,
+          clearProps: 'transform',
+        },
+        0.08
+      );
+
+      // Sticky notes: fade + pop (inner content).
+      tl.to(
+        '.sticky-note',
+        { opacity: 1, duration: 0.3, ease: 'power2.out', stagger: 0.04, clearProps: 'opacity' },
+        0.1
+      );
+      tl.to(
+        '.sticky-note__pop',
+        {
+          keyframes: [
+            { scale: 1.06, duration: 0.2, ease: 'power3.out' },
+            { scale: 1, duration: 0.18, ease: 'power2.out' },
+          ],
+          stagger: 0.04,
+          clearProps: 'transform',
+        },
+        0.1
+      );
+
+      // Contact + retro widgets: fade + pop as whole cards (no navbar changes).
+      tl.fromTo(
+        '.contact-cluster',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: 'power2.out', clearProps: 'opacity' },
+        0.12
+      );
+      tl.to(
+        '.contact-cluster',
+        {
+          keyframes: [
+            { scale: 1.03, duration: 0.18, ease: 'power3.out' },
+            { scale: 1, duration: 0.16, ease: 'power2.out' },
+          ],
+          clearProps: 'transform',
+        },
+        0.12
+      );
+
+      tl.to(
+        ['.now-learning', '.now-playing'],
+        { opacity: 1, duration: 0.25, ease: 'power2.out', stagger: 0.05, clearProps: 'opacity' },
+        0.12
+      );
+      tl.to(
+        ['.now-learning', '.now-playing'],
+        {
+          keyframes: [
+            { scale: 1.03, duration: 0.18, ease: 'power3.out' },
+            { scale: 1, duration: 0.16, ease: 'power2.out' },
+          ],
+          stagger: 0.05,
+          clearProps: 'transform',
+        },
+        0.12
       );
 
       tl.fromTo(
@@ -511,6 +635,12 @@ export const InfiniteCanvas = ({ children }) => {
             : null}
           {introComplete ? <FloatingSkillBadges /> : null}
           {introComplete ? <ProjectCards /> : null}
+          {introComplete ? <SkillCards /> : null}
+          {introComplete ? <TimelineStrip /> : null}
+          {introComplete ? <ContactCluster /> : null}
+          {introComplete ? <StickyNotes /> : null}
+          {introComplete ? <NowLearning /> : null}
+          {introComplete ? <NowPlaying /> : null}
           {children}
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import '../assets/CSS/BB8animation.css';
+import '../styles/BB8animation.css';
 import bb8Sound from '../assets/Audios/bb8.mp3';
 import bb8Sound2 from '../assets/Audios/bb8-2.mp3';
 import bb8Sound3 from '../assets/Audios/bb8-3.mp3';

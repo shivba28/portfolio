@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import '../assets/CSS/StickyNotes.css';
+import '../styles/StickyNotes.css';
 
 const NOTES = [
   { id: 'n1', text: '☕ Fueled by coffee and curiosity', rotation: -3, color: '#FFF176' },

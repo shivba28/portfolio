@@ -21,7 +21,7 @@ import { NowPlaying } from '../NowPlaying';
 import { VinylShelf } from '../VinylShelf';
 import { CookingCard } from '../CookingCard';
 import bb8Exit from '../../assets/Audios/bb8-exit.mp3';
-import '../../assets/CSS/LoadingScreen.css';
+import '../../styles/LoadingScreen.css';
 import './InfiniteCanvas.css';
 import {
   NODE_POSITIONS,

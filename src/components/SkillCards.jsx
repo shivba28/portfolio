@@ -6,7 +6,7 @@ import progImg from '../assets/Images/lang.png';
 import frameImg from '../assets/Images/framework.png';
 import techImg from '../assets/Images/tech.png';
 import testImg from '../assets/Images/test.png';
-import '../assets/CSS/skills.css';
+import '../styles/skills.css';
 import './SkillCards.css';
 
 /** World-space layouts by viewport (drag offsets still apply on top). */

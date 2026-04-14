@@ -214,7 +214,7 @@ opacity: 0;
 transform: translateY(50dvh);
 transition: all 0.3s ease-in-out;
 width: 150%;
-background: url(../Images/trees-m.webp);
+background: url(../assets/Images/trees-m.webp);
 }
 
 .skill-card .light-bg{
@@ -224,7 +224,7 @@ background: url(../Images/trees-m.webp);
     height: 70%;
     width: 110%;
     transform: translate(-1dvw, 15vh);
-    background: url(../Images/mountain.png);
+    background: url(../assets/Images/mountain.png);
     }
 
 #card1:hover .dark-bg, #card3:hover .dark-bg{
@@ -239,7 +239,7 @@ background: url(../Images/trees-m.webp);
 }
 
 #card2 .light-bg, #card4 .light-bg{
-    background: url(../Images/palm.png);
+    background: url(../assets/Images/palm.png);
     background-repeat: no-repeat;
     background-size: contain;
     left: 1dvw;
@@ -251,7 +251,7 @@ background: url(../Images/trees-m.webp);
 }
 
 #card2 .dark-bg, #card4 .dark-bg{
-    background: url(../Images/city.png);
+    background: url(../assets/Images/city.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;

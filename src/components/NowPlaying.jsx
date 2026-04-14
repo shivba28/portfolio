@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import '../assets/CSS/NowPlaying.css';
+import '../styles/NowPlaying.css';
 
 const NOW_PLAYING = {
   label: 'NOW PLAYING',

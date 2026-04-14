@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import '../assets/CSS/NowLearning.css';
+import '../styles/NowLearning.css';
 
 const NOW_LEARNING = {
   label: 'NOW LISTENING',

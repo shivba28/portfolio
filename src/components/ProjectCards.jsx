@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState, memo } from 'react';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import Lottie from 'lottie-react';
-import '../assets/CSS/ProjectCards.css';
+import '../styles/ProjectCards.css';
 import { useIsInView } from '../hooks/useIsInView';
 
 import projectsData from '../assets/json/projects.json';

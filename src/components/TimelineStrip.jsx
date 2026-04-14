@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import '../assets/CSS/TimelineStrip.css';
+import '../styles/TimelineStrip.css';
 
 const TIMELINE_EVENTS = [
   { year: '2017', label: 'Started CS Degree', type: 'education' },

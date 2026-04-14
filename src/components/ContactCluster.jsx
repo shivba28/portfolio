@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import '../assets/CSS/ContactCluster.css';
+import '../styles/ContactCluster.css';
 
 const CONTACTS = [
   { label: 'GitHub', href: 'https://github.com/shivba28', icon: 'github', rot: -3, x: 0, y: 0 },

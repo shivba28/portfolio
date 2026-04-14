@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import '../../assets/CSS/BB8animation.css';
+import '../../styles/BB8animation.css';
 import './CanvasCenter.css';
 /* Wobbly underline beneath "my story" — viewBox matches normalized path */
 const HERO_UNDERLINE_D =

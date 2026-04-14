@@ -27,6 +27,7 @@ const BADGES = [
     top: 220,
     rotate: -3,
     icon: faPostgresql,
+    bg: 'var(--badge-pop-5)',
   },
   {
     label: 'REST APIs',
@@ -35,6 +36,7 @@ const BADGES = [
     top: -380,
     rotate: 2,
     icon: faNodeJs,
+    bg: 'var(--badge-pop-2)',
   },
   {
     label: 'Git / CI-CD',
@@ -43,6 +45,7 @@ const BADGES = [
     top: -200,
     rotate: -1.5,
     icon: faGithub,
+    bg: 'var(--badge-pop-1)',
   },
   {
     label: 'Agile / Scrum',
@@ -51,6 +54,7 @@ const BADGES = [
     top: -240,
     rotate: 3,
     icon: faJira,
+    bg: 'var(--badge-pop-6)',
   },
   {
     label: 'Figma',
@@ -59,6 +63,7 @@ const BADGES = [
     top: 20,
     rotate: -2,
     icon: faFigma,
+    bg: 'var(--badge-pop-4)',
   },
   {
     label: 'PWA',
@@ -67,6 +72,7 @@ const BADGES = [
     top: 0,
     rotate: 1.5,
     icon: faChrome,
+    bg: 'var(--badge-pop-3)',
   },
   {
     label: 'OAuth 2.0',
@@ -75,6 +81,7 @@ const BADGES = [
     top: 60,
     rotate: -2.5,
     icon: faOpenid,
+    bg: 'var(--badge-pop-5)',
   },
   {
     label: 'Web Push API',
@@ -83,6 +90,7 @@ const BADGES = [
     top: 180,
     rotate: 1,
     icon: faFirefoxBrowser,
+    bg: 'var(--badge-pop-2)',
   },
   {
     label: 'React',
@@ -91,6 +99,7 @@ const BADGES = [
     top: -40,
     rotate: 2.5,
     icon: faAtom,
+    bg: 'var(--badge-pop-4)',
   },
   {
     label: 'TypeScript',
@@ -99,6 +108,7 @@ const BADGES = [
     top: -520,
     rotate: -2,
     icon: faIcons,
+    bg: 'var(--badge-pop-1)',
   },
   {
     label: 'Docker',
@@ -107,6 +117,7 @@ const BADGES = [
     top: -120,
     rotate: 2,
     icon: faDiagramPredecessor,
+    bg: 'var(--badge-pop-6)',
   },
   {
     label: 'Security',
@@ -115,6 +126,7 @@ const BADGES = [
     top: -360,
     rotate: -1.5,
     icon: faFingerprint,
+    bg: 'var(--badge-pop-3)',
   },
   {
     label: 'Perf',
@@ -123,6 +135,7 @@ const BADGES = [
     top: -180,
     rotate: -2,
     icon: faFireFlameSimple,
+    bg: 'var(--badge-pop-2)',
   },
 ];
 
@@ -136,6 +149,7 @@ export const FloatingSkillBadges = () => (
           left: b.left,
           top: b.top,
           transform: `rotate(${b.rotate}deg)`,
+          background: b.bg,
         }}
         onPointerDown={(e) => e.stopPropagation()}
         onTouchStart={(e) => e.stopPropagation()}

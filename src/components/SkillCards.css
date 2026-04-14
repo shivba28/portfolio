@@ -28,7 +28,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   box-sizing: border-box;
-  background: var(--white);
+  background: var(--badge-pop-1);
   border: var(--border);
   box-shadow: var(--shadow);
   font-family: 'Space Mono', monospace;
@@ -43,6 +43,22 @@
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease;
+}
+
+.skill-cards-canvas-card#card1 .skill-card-title-badge {
+  background: var(--badge-pop-1);
+}
+
+.skill-cards-canvas-card#card2 .skill-card-title-badge {
+  background: var(--badge-pop-2);
+}
+
+.skill-cards-canvas-card#card3 .skill-card-title-badge {
+  background: var(--badge-pop-3);
+}
+
+.skill-cards-canvas-card#card4 .skill-card-title-badge {
+  background: var(--badge-pop-4);
 }
 
 .skill-cards-canvas-card:hover .skill-card-title-badge {

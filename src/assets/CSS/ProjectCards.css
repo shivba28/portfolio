@@ -15,7 +15,8 @@
   position: absolute;
   width: 280px;
   height: 380px;
-  background: var(--cream);
+  /* Pop surface (article background). Intentionally separate from the hero background. */
+  background: var(--pc-bg, var(--cream));
   border: var(--border);
   box-shadow: var(--shadow-md);
   transform: rotate(var(--pc-rot, 0deg));
@@ -45,7 +46,7 @@
 }
 
 .project-card--open {
-  background: color-mix(in srgb, var(--cream) 88%, var(--yellow));
+  background: color-mix(in srgb, var(--pc-bg, var(--cream)) 88%, var(--yellow));
 }
 
 .project-card__hit {
@@ -125,7 +126,8 @@
 .project-card__hero {
   position: relative;
   height: 150px;
-  padding: 0 10px;
+  background-color: var(--cream);
+  margin: 0px 20px;
 }
 
 /* Shimmer skeleton */

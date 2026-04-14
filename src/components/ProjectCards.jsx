@@ -126,6 +126,10 @@ gsap.registerPlugin(Draggable);
 const ZOOM_COMPACT = 0.6;
 const ZOOM_EXPANDED = 0.85;
 
+// Deterministic "never repeats" (within practical ranges) pop colors per card.
+// Golden-angle hue stepping spreads colors evenly without collisions.
+const pcHue = (i) => (i * 137.508) % 360;
+
 function useCanvasCameraRefs() {
   const zoomRef = useRef(1);
   const offsetRef = useRef({ x: 0, y: 0 });
@@ -257,6 +261,8 @@ const ProjectCard = memo(function ProjectCard({
         left,
         top,
         ['--pc-rot']: `${rotate}deg`,
+        // Pop background for the article surface (NOT the hero background).
+        ['--pc-bg']: `hsl(${pcHue(i)} 92% 74%)`,
       }}
       onMouseDown={(e) => e.stopPropagation()}
       onPointerDown={(e) => e.stopPropagation()}

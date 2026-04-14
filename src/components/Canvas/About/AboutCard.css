@@ -96,7 +96,7 @@
 
 .about-card-strip {
   padding: 16px 18px 20px;
-  background: #fff;
+  background: var(--forestGreen);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -106,14 +106,14 @@
   font-family: 'Caveat', cursive;
   font-size: 28px;
   font-weight: 700;
-  color: #111;
+  color: #fff;
   line-height: 1;
 }
 
 .about-card-bio {
   font-family: 'Figtree', sans-serif;
   font-size: 13px;
-  color: #444;
+  color: #fff;
   line-height: 1.55;
 }
 

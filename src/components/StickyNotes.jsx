@@ -10,11 +10,11 @@ const NOTES = [
 ];
 
 const NOTE_POSITIONS = [
-  { id: 'n1', x: -1200, y: -400 },
-  { id: 'n2', x: 900, y: -600 },
+  { id: 'n1', x: 200, y: 800 },
+  { id: 'n2', x: 1600, y: 350 },
   { id: 'n3', x: -900, y: 700 },
-  { id: 'n4', x: 1400, y: 300 },
-  { id: 'n5', x: 200, y: 900 },
+  { id: 'n4', x: -300, y: -300 },
+  { id: 'n5', x: -300, y: -200 },
 ];
 
 const NOTES_ROOT_POS = { left: 0, top: 0 };

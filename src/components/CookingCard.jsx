@@ -18,7 +18,7 @@ export const COOKING = {
   chefNote: 'first time with React Native, wish me luck',
 };
 
-const BASE_POS = { left: -1200, top: 400 };
+const BASE_POS = { left: 360, top: -615 };
 
 export const CookingCard = () => {
   const [drag, setDrag] = useState({ x: 0, y: 0 });

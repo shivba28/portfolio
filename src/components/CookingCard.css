@@ -37,7 +37,7 @@
 
 .cooking-card__inner {
   width: 280px;
-  background: var(--cream);
+  background: var(--silver);
   border: var(--border);
   box-shadow: var(--shadow-lg);
   overflow: hidden;

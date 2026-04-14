@@ -30,6 +30,16 @@
   --pink:      #ff5e5e;
   --green:     #3bceac;
   --forestGreen: #2e8b57;
+  --skyBlue: #87CEEB;
+  --silver: #E6E6E6;
+
+  /* Badge pop colors (intentionally high-contrast vs the cream grid background) */
+  --badge-pop-1: #F5C842; /* yellow */
+  --badge-pop-2: #3BCEAC; /* teal */
+  --badge-pop-3: #5B8EE6; /* blue */
+  --badge-pop-4: #FF5E5E; /* red */
+  --badge-pop-5: #B59BFF; /* purple */
+  --badge-pop-6: #FF9F43; /* orange */
 
   --border:       3px solid #111111;
   --border-thin:  1.5px solid #111111;

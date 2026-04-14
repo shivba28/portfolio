@@ -114,6 +114,7 @@ export const ContactCluster = () => {
           <a
             key={c.label}
             className="contact-card"
+            data-kind={c.icon}
             href={c.href}
             target="_blank"
             rel="noreferrer"

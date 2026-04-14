@@ -1,7 +1,6 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import img1 from '../../../assets/Images/about1.png';
-import sign from '../../../assets/Images/sign-nobg.png';
 import './AboutModal.css';
 
 export const AboutModal = ({ show, handleClose }) => {

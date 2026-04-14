@@ -6,8 +6,8 @@ export const ALBUMS = [
     id: 1,
     title: 'Blonde',
     artist: 'Frank Ocean',
-    sleeveColor: '#1a1a1a',
-    stripeColor: '#F5C842',
+    sleeveColor: '#B59BFF',
+    stripeColor: '#c698e7',
   },
   {
     id: 2,

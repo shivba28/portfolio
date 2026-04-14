@@ -6,7 +6,7 @@
 
 .vinyl-shelf__outer {
   width: 340px;
-  background: var(--cream);
+  background: rgba(245, 200, 66, 0.8);
   border: var(--border);
   box-shadow: var(--shadow-lg);
   padding: 10px 12px 0;

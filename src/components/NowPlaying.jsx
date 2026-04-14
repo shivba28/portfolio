@@ -3,11 +3,11 @@ import '../styles/NowPlaying.css';
 
 const NOW_PLAYING = {
   label: 'NOW PLAYING',
-  title: 'Elden Ring',
+  title: 'Crimson Desert',
   platform: 'PS5',
   genre: 'Action RPG',
-  hoursLogged: '120+ hrs',
-  status: 'NG+',
+  hoursLogged: '5+ hrs',
+  status: 'In Progress',
 };
 
 const BASE_POS = { left: 100, top: -750 };

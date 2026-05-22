@@ -1,26 +1,50 @@
 import React, { useCallback, useRef, useState } from 'react';
 import './CookingCard.css';
 
-export const COOKING = {
-  platform: 'REACT NATIVE · MOBILE',
-  platformColor: '#3BCEAC',
-  title: 'Budget Tracker',
-  subtitle: 'Personal finance app',
-  stack: [
-    { label: 'React Native', hot: true },
-    { label: 'Expo', hot: true },
-    { label: 'AsyncStorage', hot: false },
-    { label: 'TypeScript', hot: false },
-  ],
-  progress: 80,
-  startedDate: 'Apr 2026',
-  eta: 'under app store review™',
-  chefNote: 'first time with React Native, wish me luck',
-};
+export const COOKING_PROJECTS = [
+  {
+    id: 'cooking-card',
+    basePos: { left: 400, top: -615 },
+    platform: 'REACT NATIVE · MOBILE',
+    platformColor: '#3BCEAC',
+    title: 'Budget Tracker',
+    subtitle: 'Personal finance app',
+    stack: [
+      { label: 'React Native', hot: true },
+      { label: 'Expo', hot: true },
+      { label: 'AsyncStorage', hot: false },
+      { label: 'TypeScript', hot: false },
+    ],
+    progress: 80,
+    startedDate: 'Apr 2026',
+    eta: 'under app store review™',
+    chefNote: 'first time with React Native, wish me luck',
+  },
+  {
+    id: 'cooking-card-traffic',
+    basePos: { left: 100, top: -780 },
+    platform: 'WEB · SIMULATION',
+    platformColor: '#F5C842',
+    title: 'Traffic Simul8r',
+    subtitle: 'Multi-intersection traffic simulator',
+    url: 'https://multi-intersection-traffic-simul8r.vercel.app/',
+    stack: [
+      { label: 'React', hot: true },
+      { label: 'Canvas', hot: true },
+      { label: 'TypeScript', hot: false },
+      { label: 'Vercel', hot: false },
+    ],
+    progress: 90,
+    startedDate: 'May 2026',
+    eta: 'live — still tuning signals',
+    chefNote: 'crank density to High and watch the queue times spiral',
+  },
+];
 
-const BASE_POS = { left: 360, top: -615 };
+/** @deprecated Use COOKING_PROJECTS */
+export const COOKING = COOKING_PROJECTS[0];
 
-export const CookingCard = () => {
+function CookingCardItem({ project }) {
   const [drag, setDrag] = useState({ x: 0, y: 0 });
   const dragRef = useRef({
     active: false,
@@ -62,16 +86,29 @@ export const CookingCard = () => {
     dragRef.current.active = false;
   }, []);
 
-  const p = Math.min(100, Math.max(0, COOKING.progress));
+  const p = Math.min(100, Math.max(0, project.progress));
+  const titleEl = project.url ? (
+    <a
+      className="cooking-card__title-link"
+      href={project.url}
+      target="_blank"
+      rel="noreferrer"
+      onPointerDown={(e) => e.stopPropagation()}
+    >
+      {project.title}
+    </a>
+  ) : (
+    project.title
+  );
 
   return (
     <div
-      id="cooking-card"
+      id={project.id}
       className="cooking-card"
       style={{
         position: 'absolute',
-        left: BASE_POS.left + drag.x,
-        top: BASE_POS.top + drag.y,
+        left: project.basePos.left + drag.x,
+        top: project.basePos.top + drag.y,
       }}
       onMouseDown={(e) => e.stopPropagation()}
       onTouchStart={(e) => e.stopPropagation()}
@@ -79,7 +116,7 @@ export const CookingCard = () => {
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
-      aria-label="Currently cooking project"
+      aria-label={`Currently cooking: ${project.title}`}
     >
       <div className="cooking-card__inner">
         <header className="cooking-card__header">
@@ -97,17 +134,17 @@ export const CookingCard = () => {
         <div className="cooking-card__body">
           <span
             className="cooking-card__platform"
-            style={{ backgroundColor: COOKING.platformColor }}
+            style={{ backgroundColor: project.platformColor }}
           >
-            {COOKING.platform}
+            {project.platform}
           </span>
-          <h2 className="cooking-card__title">{COOKING.title}</h2>
-          <p className="cooking-card__subtitle">{COOKING.subtitle}</p>
+          <h2 className="cooking-card__title">{titleEl}</h2>
+          <p className="cooking-card__subtitle">{project.subtitle}</p>
 
           <section className="cooking-card__section cooking-card__section--ingredients">
             <h3 className="cooking-card__section-label">INGREDIENTS</h3>
             <ul className="cooking-card__tags">
-              {COOKING.stack.map((item) => (
+              {project.stack.map((item) => (
                 <li key={item.label}>
                   <span
                     className={`cooking-card__tag${item.hot ? ' cooking-card__tag--hot' : ''}`}
@@ -130,8 +167,8 @@ export const CookingCard = () => {
               </div>
             </div>
             <div className="cooking-card__eta-row">
-              <span>{COOKING.startedDate}</span>
-              <span>{COOKING.eta}</span>
+              <span>{project.startedDate}</span>
+              <span>{project.eta}</span>
             </div>
           </section>
         </div>
@@ -142,7 +179,7 @@ export const CookingCard = () => {
             <span className="cooking-card__quote" aria-hidden="true">
               &ldquo;
             </span>
-            {COOKING.chefNote}
+            {project.chefNote}
             <span className="cooking-card__quote" aria-hidden="true">
               &rdquo;
             </span>
@@ -151,4 +188,12 @@ export const CookingCard = () => {
       </div>
     </div>
   );
-};
+}
+
+export const CookingCard = () => (
+  <>
+    {COOKING_PROJECTS.map((project) => (
+      <CookingCardItem key={project.id} project={project} />
+    ))}
+  </>
+);

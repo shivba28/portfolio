@@ -41,7 +41,19 @@ export const MINIMAP_NODES = [
   { id: 'now-playing', left: 1100, top: -280, w: 220, h: 300, color: '#FF5E5E' },
   { id: 'vinyl-shelf', left: -1000, top: 0, w: 340, h: 180, color: '#2a2a2a' },
   { id: 'cooking-card', left: -1000, top: 600, w: 280, h: 320, color: '#FF8C42' },
+  {
+    id: 'cooking-card-traffic',
+    left: -650,
+    top: 600,
+    w: 280,
+    h: 320,
+    color: '#F5C842',
+  },
 ];
 
 /** Real DOM nodes use these ids — skip invisible duplicate markers */
-export const MINIMAP_DOM_SKIP = new Set(['vinyl-shelf', 'cooking-card']);
+export const MINIMAP_DOM_SKIP = new Set([
+  'vinyl-shelf',
+  'cooking-card',
+  'cooking-card-traffic',
+]);

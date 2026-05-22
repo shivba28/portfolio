@@ -160,7 +160,7 @@ export const InfiniteCanvas = ({ children }) => {
     if (t.closest?.('.float-badge') || t.closest?.('.float-badges-root'))
       return;
     if (t.closest?.('.about-card')) return;
-    if (t.closest?.('#vinyl-shelf') || t.closest?.('#cooking-card')) return;
+    if (t.closest?.('#vinyl-shelf') || t.closest?.('.cooking-card')) return;
     if (
       t !== containerRef.current &&
       t !== world &&
@@ -209,7 +209,7 @@ export const InfiniteCanvas = ({ children }) => {
     if (t.closest?.('.float-badge') || t.closest?.('.float-badges-root'))
       return;
     if (t.closest?.('.about-card')) return;
-    if (t.closest?.('#vinyl-shelf') || t.closest?.('#cooking-card')) return;
+    if (t.closest?.('#vinyl-shelf') || t.closest?.('.cooking-card')) return;
     if (
       t !== containerRef.current &&
       t !== world &&
@@ -295,7 +295,7 @@ export const InfiniteCanvas = ({ children }) => {
     gsap.set(['.skill-cards-cluster', '.timeline-strip', '.contact-cluster'], { opacity: 0 });
     gsap.set(['.sticky-note'], { opacity: 0 });
     gsap.set(
-      ['.now-learning', '.now-playing', '#vinyl-shelf', '#cooking-card'],
+      ['.now-learning', '.now-playing', '#vinyl-shelf', '.cooking-card'],
       { opacity: 0 }
     );
 
@@ -304,7 +304,7 @@ export const InfiniteCanvas = ({ children }) => {
     gsap.set(['.timeline-note__pop', '.sticky-note__pop'], { scale: 0.86 });
     gsap.set(['.contact-cluster'], { scale: 0.94, transformOrigin: '50% 20%' });
     gsap.set(
-      ['.now-learning', '.now-playing', '#vinyl-shelf', '#cooking-card'],
+      ['.now-learning', '.now-playing', '#vinyl-shelf', '.cooking-card'],
       { scale: 0.94, transformOrigin: '50% 20%' }
     );
   }, [introComplete]);
@@ -468,7 +468,7 @@ export const InfiniteCanvas = ({ children }) => {
           '.now-learning',
           '.now-playing',
           '#vinyl-shelf',
-          '#cooking-card',
+          '.cooking-card',
         ],
         {
           opacity: 1,
@@ -484,7 +484,7 @@ export const InfiniteCanvas = ({ children }) => {
           '.now-learning',
           '.now-playing',
           '#vinyl-shelf',
-          '#cooking-card',
+          '.cooking-card',
         ],
         {
           keyframes: [

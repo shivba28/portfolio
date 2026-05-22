@@ -10,7 +10,7 @@ const NOW_PLAYING = {
   status: 'In Progress',
 };
 
-const BASE_POS = { left: 100, top: -750 };
+const BASE_POS = { left: -150, top: -800 };
 
 export const NowPlaying = () => {
   const [drag, setDrag] = useState({ x: 0, y: 0 });

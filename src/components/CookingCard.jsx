@@ -12,9 +12,9 @@ export const COOKING = {
     { label: 'AsyncStorage', hot: false },
     { label: 'TypeScript', hot: false },
   ],
-  progress: 30,
+  progress: 80,
   startedDate: 'Apr 2026',
-  eta: 'soon™',
+  eta: 'under app store review™',
   chefNote: 'first time with React Native, wish me luck',
 };
 
